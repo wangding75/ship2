@@ -3,8 +3,8 @@
 这是制作候选，不是验收结论。视觉由 A07 看，模块数据和技术约束由 A04 看。
 
 - 作者 UUID `913948fc-cfc0-41f2-a6fd-c7f661450afd`
-- 作者 Run `01a1c14f-e6ce-7db0-9fd7-e8e7644df216`
-- Grok 会话 `01a1c14f-ed14-7ae3-be8f-3e25ec19af15`
+- 作者 Run `01a1c217-cf85-743d-bc6b-752eb0a3646f`
+- Grok 会话 `01a1c217-d815-7392-a7a9-98b5dde67a0d`
 - 实际模型 grok-4.7 / high。平台身份说明里的 gpt-6.1-sol 名称没有沿用。
 - Blender 5.2.3 LTS，构建哈希 e13b728c6880。
 - 基线 `ca391a4f341f25d7a99aa27a35de678fd684eaf4` 在 `refs/heads/t06/ship-assets-rework-1`，`refs/heads/main` 是 `bddd5441777b521045edd0549958704b23d82036`。该基线不是 main 已合并。
@@ -17,7 +17,12 @@ ISL-S / ISL-M / ISL-L 的陆地包围直径是 48 / 110 / 200 米，取模块原
 
 锚点净空下限是 1.5 × R_nav,max = 12 米。重型船船长 32 米、R_nav 8 米，轴向胶囊中心线半长 8 米，艏艉尖端距枢轴 16 米。本模块把锚点放到实测净空大于 16 米的可航水里，使允许的全部朝向都放得下这只胶囊。16 米是这只已验收船的几何结果，不是新的冻结阈值，也不把 12 米下限降掉。
 
-LOD 切换建议仍是相机高度 50 米和 140 米。预制件里的 screenRelativeHeight 只是按这个建议和假定垂直 FOV 60° 换算，大岛在 140 米高度仍可能铺满画面，不把建议写成硬阈值。
+LOD 切换建议仍是相机高度 50 米和 140 米，不是硬阈值。假定垂直 FOV 60° 时，大岛在这两个高度会铺满或超出画面，旧换算把 screenRelativeHeight 夹到 0.99，质量 lodBias 放大后又让 35/85/220 米自然机位停在 LOD0。预制件只在建议值能分出两档时沿用建议；建议值饱和时用一组更低的过渡，让连续拉远能经过三档，LOD2 保留到 0.01，避免突然消失。这些数不是新的冻结门槛。
+
+## T07-REWORK-1 水线与沙环
+
+每个 LOD 的 y=0 水线使用同一条 canonical 陆地环的全部顶点。减面发生在沙环以内的山体，以及放不下竖向裙边时的水下封底。沙环内缘放在各自 sand_t（S 0.70、M 0.78、L 0.80），外缘就是水线，顶面按这个环分到沙，不再把两环中点 0.75 整圈分给草。
+
 
 ## 图4 和 T05
 
@@ -33,17 +38,16 @@ LOD 切换建议仍是相机高度 50 米和 140 米。预制件里的 screenRel
 
 锚点实测到陆地、浅滩、礁和栈桥的最小距离是 17.0000 米。
 
-- ISL-S 三角 1160 / 360 / 160
-- ISL-M 三角 1776 / 652 / 248
-- ISL-L 三角 2640 / 880 / 400
+- ISL-S 三角 1160 / 480 / 200
+  - LOD0 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 120，裙边 wall
+  - LOD1 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 90，裙边 wall
+  - LOD2 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 80，裙边 cone
+- ISL-M 三角 1776 / 812 / 328
+  - LOD0 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 160，裙边 wall
+  - LOD1 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 120，裙边 wall
+  - LOD2 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 100，裙边 cone
+- ISL-L 三角 2640 / 1072 / 688
+  - LOD0 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 192，裙边 wall
+  - LOD1 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 144，裙边 wall
+  - LOD2 水线顶点误差 0.000000 m，弦偏离 0.000000 m，向上沙三角 120，裙边 wall
 - PORT 三角 758 / 382 / 254
-
-## Unity 导入
-
-隔离工程在 `C:\t07isl\client\UnityProject`。Unity 6000.6.6f1（d20c9ac777da），URP Lit，batchmode，没有使用 `-nographics`。命令和退出码在 `evidence/unity-command.txt`，编辑器日志在 `evidence/unity-editor.log`。导入脚本留在 `art_source/production/islands/unity/T07Import.cs`，没有放进仓库的 `Assets/Game/Editor`。
-
-FBX 使用 globalScale 1、useFileScale、关闭 bakeAxisConversion、materialImportMode None。实测导入网格是 `(-x, -z, y)`。预制件子网格使用 Rx(-90) 且 `localScale.x = -1` 后，包围盒与模块 Unity 空间的误差约 1e-5 米。根节点保持单位变换。地标 `LM-PORT-01` 和锚点 `ANCHOR-PORT-01` 挂在根上，不跟着网格镜像。这是这次 FBX 轴烘焙的测量结果，不是新阈值。
-
-子网格按 UV 排成砂、草、岩和木、墙，序号分别是 0/1/2 和 0/1。Unity 三角与 Blender 一致。LOD0/LOD1 用 1024 图，LOD2 用 512 图。`screenRelativeHeight` 仍按建议高度 50 米、140 米和假定垂直 FOV 60° 换算。
-
-导入图在 `evidence/unity-turntable`。这份记录是 DEVELOPMENT_OK，验收 NOT_RUN。资产分支没有合并进 main。

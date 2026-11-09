@@ -1,0 +1,6 @@
+﻿start=2026-11-09T21:17:43.9109342Z
+end=2026-11-09T21:18:49.5193546Z
+exit=0
+exe=D:\install\Blender 5.2\blender.exe
+args=--background --python generate_islands.py
+T07_SKIP_RENDER=unset

@@ -2,11 +2,11 @@
   "generator": "art_source/production/islands/generate_islands.py",
   "blender": "5.2.3 LTS",
   "blender_hash": "e13b728c6880",
-  "utc": "2026-11-09T17:46:20Z",
+  "utc": "2026-11-09T21:18:48Z",
   "author": {
     "uuid": "913948fc-cfc0-41f2-a6fd-c7f661450afd",
-    "run": "01a1c14f-e6ce-7db0-9fd7-e8e7644df216",
-    "session": "01a1c14f-ed14-7ae3-be8f-3e25ec19af15",
+    "run": "01a1c217-cf85-743d-bc6b-752eb0a3646f",
+    "session": "01a1c217-d815-7392-a7a9-98b5dde67a0d",
     "model": "grok-4.7",
     "effort": "high"
   },
@@ -21,6 +21,8 @@
     "evidence/turntable/ISL-S_LOD0_yaw225.png",
     "evidence/turntable/ISL-S_LOD0_yaw270.png",
     "evidence/turntable/ISL-S_LOD0_yaw315.png",
+    "evidence/turntable/ISL-S_LOD0_top.png",
+    "evidence/turntable/ISL-S_LOD0_oblique.png",
     "evidence/turntable/ISL-S_LOD1_yaw000.png",
     "evidence/turntable/ISL-S_LOD1_yaw045.png",
     "evidence/turntable/ISL-S_LOD1_yaw090.png",
@@ -29,6 +31,8 @@
     "evidence/turntable/ISL-S_LOD1_yaw225.png",
     "evidence/turntable/ISL-S_LOD1_yaw270.png",
     "evidence/turntable/ISL-S_LOD1_yaw315.png",
+    "evidence/turntable/ISL-S_LOD1_top.png",
+    "evidence/turntable/ISL-S_LOD1_oblique.png",
     "evidence/turntable/ISL-S_LOD2_yaw000.png",
     "evidence/turntable/ISL-S_LOD2_yaw045.png",
     "evidence/turntable/ISL-S_LOD2_yaw090.png",
@@ -37,6 +41,8 @@
     "evidence/turntable/ISL-S_LOD2_yaw225.png",
     "evidence/turntable/ISL-S_LOD2_yaw270.png",
     "evidence/turntable/ISL-S_LOD2_yaw315.png",
+    "evidence/turntable/ISL-S_LOD2_top.png",
+    "evidence/turntable/ISL-S_LOD2_oblique.png",
     "evidence/turntable/ISL-M_LOD0_yaw000.png",
     "evidence/turntable/ISL-M_LOD0_yaw045.png",
     "evidence/turntable/ISL-M_LOD0_yaw090.png",
@@ -45,6 +51,8 @@
     "evidence/turntable/ISL-M_LOD0_yaw225.png",
     "evidence/turntable/ISL-M_LOD0_yaw270.png",
     "evidence/turntable/ISL-M_LOD0_yaw315.png",
+    "evidence/turntable/ISL-M_LOD0_top.png",
+    "evidence/turntable/ISL-M_LOD0_oblique.png",
     "evidence/turntable/ISL-M_LOD1_yaw000.png",
     "evidence/turntable/ISL-M_LOD1_yaw045.png",
     "evidence/turntable/ISL-M_LOD1_yaw090.png",
@@ -53,6 +61,8 @@
     "evidence/turntable/ISL-M_LOD1_yaw225.png",
     "evidence/turntable/ISL-M_LOD1_yaw270.png",
     "evidence/turntable/ISL-M_LOD1_yaw315.png",
+    "evidence/turntable/ISL-M_LOD1_top.png",
+    "evidence/turntable/ISL-M_LOD1_oblique.png",
     "evidence/turntable/ISL-M_LOD2_yaw000.png",
     "evidence/turntable/ISL-M_LOD2_yaw045.png",
     "evidence/turntable/ISL-M_LOD2_yaw090.png",
@@ -61,6 +71,8 @@
     "evidence/turntable/ISL-M_LOD2_yaw225.png",
     "evidence/turntable/ISL-M_LOD2_yaw270.png",
     "evidence/turntable/ISL-M_LOD2_yaw315.png",
+    "evidence/turntable/ISL-M_LOD2_top.png",
+    "evidence/turntable/ISL-M_LOD2_oblique.png",
     "evidence/turntable/ISL-L_LOD0_yaw000.png",
     "evidence/turntable/ISL-L_LOD0_yaw045.png",
     "evidence/turntable/ISL-L_LOD0_yaw090.png",
@@ -69,6 +81,8 @@
     "evidence/turntable/ISL-L_LOD0_yaw225.png",
     "evidence/turntable/ISL-L_LOD0_yaw270.png",
     "evidence/turntable/ISL-L_LOD0_yaw315.png",
+    "evidence/turntable/ISL-L_LOD0_top.png",
+    "evidence/turntable/ISL-L_LOD0_oblique.png",
     "evidence/turntable/ISL-L_LOD1_yaw000.png",
     "evidence/turntable/ISL-L_LOD1_yaw045.png",
     "evidence/turntable/ISL-L_LOD1_yaw090.png",
@@ -77,6 +91,8 @@
     "evidence/turntable/ISL-L_LOD1_yaw225.png",
     "evidence/turntable/ISL-L_LOD1_yaw270.png",
     "evidence/turntable/ISL-L_LOD1_yaw315.png",
+    "evidence/turntable/ISL-L_LOD1_top.png",
+    "evidence/turntable/ISL-L_LOD1_oblique.png",
     "evidence/turntable/ISL-L_LOD2_yaw000.png",
     "evidence/turntable/ISL-L_LOD2_yaw045.png",
     "evidence/turntable/ISL-L_LOD2_yaw090.png",
@@ -85,6 +101,8 @@
     "evidence/turntable/ISL-L_LOD2_yaw225.png",
     "evidence/turntable/ISL-L_LOD2_yaw270.png",
     "evidence/turntable/ISL-L_LOD2_yaw315.png",
+    "evidence/turntable/ISL-L_LOD2_top.png",
+    "evidence/turntable/ISL-L_LOD2_oblique.png",
     "evidence/turntable/PORT_LOD0_yaw000.png",
     "evidence/turntable/PORT_LOD0_yaw045.png",
     "evidence/turntable/PORT_LOD0_yaw090.png",
@@ -120,7 +138,16 @@
     "evidence/turntable/ISL-L_LOD0_far_h220.png",
     "evidence/turntable/PORT_LOD0_near_h35.png",
     "evidence/turntable/PORT_LOD0_mid_h85.png",
-    "evidence/turntable/PORT_LOD0_far_h220.png"
+    "evidence/turntable/PORT_LOD0_far_h220.png",
+    "evidence/turntable/ISL-S_LOD0_waterline.png",
+    "evidence/turntable/ISL-S_LOD1_waterline.png",
+    "evidence/turntable/ISL-S_LOD2_waterline.png",
+    "evidence/turntable/ISL-M_LOD0_waterline.png",
+    "evidence/turntable/ISL-M_LOD1_waterline.png",
+    "evidence/turntable/ISL-M_LOD2_waterline.png",
+    "evidence/turntable/ISL-L_LOD0_waterline.png",
+    "evidence/turntable/ISL-L_LOD1_waterline.png",
+    "evidence/turntable/ISL-L_LOD2_waterline.png"
   ],
   "clearance_m": {
     "contract_min_m": 12.0,
@@ -153,9 +180,9 @@
         "0": {
           "triangles": 1160,
           "material_triangles": {
-            "rock": 662,
-            "grass": 78,
-            "sand": 420
+            "rock": 756,
+            "grass": 104,
+            "sand": 300
           },
           "bounds_unity_m": {
             "min": [
@@ -169,49 +196,112 @@
               20.02279
             ]
           },
-          "shore_chord_deviation_m": 0.0
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 60,
+          "canonical_vertices": 60,
+          "interior_step": 1,
+          "skirt": "wall",
+          "sand_ring_t": 0.7,
+          "estimate_wall_triangles": 1160,
+          "estimate_cone_triangles": 1040,
+          "upward_triangles": {
+            "rock": 504,
+            "grass": 104,
+            "sand": 120
+          },
+          "upward_sand_triangles": 120,
+          "blender_upward_triangles": {
+            "Rock": 504,
+            "Grass": 104,
+            "Sand": 120
+          },
+          "blender_upward_sand_triangles": 120
         },
         "1": {
-          "triangles": 360,
+          "triangles": 480,
           "material_triangles": {
-            "rock": 180,
-            "grass": 30,
-            "sand": 150
-          },
-          "bounds_unity_m": {
-            "min": [
-              -20.86734,
-              -1.5,
-              -21.35565
-            ],
-            "max": [
-              23.77054,
-              10.566391623126107,
-              20.02279
-            ]
-          },
-          "shore_chord_deviation_m": 0.30099297278515963
-        },
-        "2": {
-          "triangles": 160,
-          "material_triangles": {
-            "rock": 55,
-            "grass": 5,
-            "sand": 100
+            "rock": 186,
+            "grass": 24,
+            "sand": 270
           },
           "bounds_unity_m": {
             "min": [
               -21.006,
               -1.5,
-              -21.1621
+              -21.35565
             ],
             "max": [
-              23.77054,
+              23.86853,
               10.566391623126107,
               20.02279
             ]
           },
-          "shore_chord_deviation_m": 0.5718313746226008
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 60,
+          "canonical_vertices": 60,
+          "interior_step": 2,
+          "skirt": "wall",
+          "sand_ring_t": 0.7,
+          "estimate_wall_triangles": 480,
+          "estimate_cone_triangles": 360,
+          "upward_triangles": {
+            "rock": 144,
+            "grass": 24,
+            "sand": 90
+          },
+          "upward_sand_triangles": 90,
+          "blender_upward_triangles": {
+            "Rock": 144,
+            "Grass": 24,
+            "Sand": 90
+          },
+          "blender_upward_sand_triangles": 90
+        },
+        "2": {
+          "triangles": 200,
+          "material_triangles": {
+            "rock": 55,
+            "grass": 5,
+            "sand": 140
+          },
+          "bounds_unity_m": {
+            "min": [
+              -21.006,
+              -1.5,
+              -21.35565
+            ],
+            "max": [
+              23.86853,
+              10.566391623126107,
+              20.02279
+            ]
+          },
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 60,
+          "canonical_vertices": 60,
+          "interior_step": 3,
+          "skirt": "cone",
+          "sand_ring_t": 0.7,
+          "estimate_wall_triangles": 320,
+          "estimate_cone_triangles": 200,
+          "upward_triangles": {
+            "rock": 27,
+            "grass": 5,
+            "sand": 80
+          },
+          "upward_sand_triangles": 80,
+          "blender_upward_triangles": {
+            "RockLOD2": 27,
+            "GrassLOD2": 5,
+            "SandLOD2": 80
+          },
+          "blender_upward_sand_triangles": 80
         }
       },
       "lod0_shore_max_error_m": 0.0
@@ -221,8 +311,8 @@
         "0": {
           "triangles": 1776,
           "material_triangles": {
-            "grass": 720,
-            "sand": 560,
+            "grass": 880,
+            "sand": 400,
             "rock": 496
           },
           "bounds_unity_m": {
@@ -237,49 +327,112 @@
               49.82253
             ]
           },
-          "shore_chord_deviation_m": 0.0
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 80,
+          "canonical_vertices": 80,
+          "interior_step": 1,
+          "skirt": "wall",
+          "sand_ring_t": 0.78,
+          "estimate_wall_triangles": 1776,
+          "estimate_cone_triangles": 1616,
+          "upward_triangles": {
+            "grass": 880,
+            "sand": 160,
+            "rock": 121
+          },
+          "upward_sand_triangles": 160,
+          "blender_upward_triangles": {
+            "Grass": 880,
+            "Sand": 160,
+            "Rock": 121
+          },
+          "blender_upward_sand_triangles": 160
         },
         "1": {
-          "triangles": 652,
+          "triangles": 812,
           "material_triangles": {
             "grass": 280,
-            "sand": 200,
+            "sand": 360,
             "rock": 172
           },
           "bounds_unity_m": {
             "min": [
-              -50.17372,
+              -50.25705,
               -1.5,
               -49.6643
             ],
             "max": [
-              54.2033,
+              54.2914,
               15.80717953301017,
-              49.62803
+              49.82253
             ]
           },
-          "shore_chord_deviation_m": 0.31717585103189566
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 80,
+          "canonical_vertices": 80,
+          "interior_step": 2,
+          "skirt": "wall",
+          "sand_ring_t": 0.78,
+          "estimate_wall_triangles": 812,
+          "estimate_cone_triangles": 652,
+          "upward_triangles": {
+            "grass": 280,
+            "sand": 120,
+            "rock": 48
+          },
+          "upward_sand_triangles": 120,
+          "blender_upward_triangles": {
+            "Grass": 280,
+            "Sand": 120,
+            "Rock": 48
+          },
+          "blender_upward_sand_triangles": 120
         },
         "2": {
-          "triangles": 248,
+          "triangles": 328,
           "material_triangles": {
-            "grass": 60,
-            "sand": 60,
+            "grass": 20,
+            "sand": 180,
             "rock": 128
           },
           "bounds_unity_m": {
             "min": [
-              -49.89064,
+              -50.25705,
               -1.5,
-              -48.94329
+              -49.6643
             ],
             "max": [
-              53.75936,
+              54.2914,
               15.80717953301017,
-              49.58039
+              49.82253
             ]
           },
-          "shore_chord_deviation_m": 1.257997745006661
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 80,
+          "canonical_vertices": 80,
+          "interior_step": 4,
+          "skirt": "cone",
+          "sand_ring_t": 0.78,
+          "estimate_wall_triangles": 488,
+          "estimate_cone_triangles": 328,
+          "upward_triangles": {
+            "grass": 20,
+            "sand": 100,
+            "rock": 36
+          },
+          "upward_sand_triangles": 100,
+          "blender_upward_triangles": {
+            "GrassLOD2": 20,
+            "SandLOD2": 100,
+            "RockLOD2": 36
+          },
+          "blender_upward_sand_triangles": 100
         }
       },
       "lod0_shore_max_error_m": 0.0
@@ -289,8 +442,8 @@
         "0": {
           "triangles": 2640,
           "material_triangles": {
-            "grass": 1056,
-            "sand": 672,
+            "grass": 1248,
+            "sand": 480,
             "rock": 912
           },
           "bounds_unity_m": {
@@ -305,13 +458,34 @@
               82.74242
             ]
           },
-          "shore_chord_deviation_m": 0.0
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 96,
+          "canonical_vertices": 96,
+          "interior_step": 1,
+          "skirt": "wall",
+          "sand_ring_t": 0.8,
+          "estimate_wall_triangles": 2640,
+          "estimate_cone_triangles": 2448,
+          "upward_triangles": {
+            "grass": 1248,
+            "sand": 192,
+            "rock": 225
+          },
+          "upward_sand_triangles": 192,
+          "blender_upward_triangles": {
+            "Grass": 1248,
+            "Sand": 192,
+            "Rock": 225
+          },
+          "blender_upward_sand_triangles": 192
         },
         "1": {
-          "triangles": 880,
+          "triangles": 1072,
           "material_triangles": {
             "grass": 336,
-            "sand": 240,
+            "sand": 432,
             "rock": 304
           },
           "bounds_unity_m": {
@@ -326,28 +500,70 @@
               82.74242
             ]
           },
-          "shore_chord_deviation_m": 0.4601012411777029
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 96,
+          "canonical_vertices": 96,
+          "interior_step": 2,
+          "skirt": "wall",
+          "sand_ring_t": 0.8,
+          "estimate_wall_triangles": 1072,
+          "estimate_cone_triangles": 880,
+          "upward_triangles": {
+            "grass": 336,
+            "sand": 144,
+            "rock": 84
+          },
+          "upward_sand_triangles": 144,
+          "blender_upward_triangles": {
+            "Grass": 336,
+            "Sand": 144,
+            "Rock": 84
+          },
+          "blender_upward_sand_triangles": 144
         },
         "2": {
-          "triangles": 400,
+          "triangles": 688,
           "material_triangles": {
-            "grass": 72,
-            "sand": 72,
+            "grass": 24,
+            "sand": 408,
             "rock": 256
           },
           "bounds_unity_m": {
             "min": [
-              -89.33123,
+              -89.78026,
               -1.5,
               -86.92385
             ],
             "max": [
-              97.16658,
+              98.69259,
               25.312070265633317,
               82.74242
             ]
           },
-          "shore_chord_deviation_m": 1.8148435671008414
+          "shore_chord_deviation_m": 0.0,
+          "mesh_waterline_chord_deviation_m": 0.0,
+          "waterline_max_error_m": 0.0,
+          "waterline_vertices": 96,
+          "canonical_vertices": 96,
+          "interior_step": 4,
+          "skirt": "wall",
+          "sand_ring_t": 0.8,
+          "estimate_wall_triangles": 688,
+          "estimate_cone_triangles": 496,
+          "upward_triangles": {
+            "grass": 24,
+            "sand": 120,
+            "rock": 72
+          },
+          "upward_sand_triangles": 120,
+          "blender_upward_triangles": {
+            "GrassLOD2": 24,
+            "SandLOD2": 120,
+            "RockLOD2": 72
+          },
+          "blender_upward_sand_triangles": 120
         }
       },
       "lod0_shore_max_error_m": 0.0

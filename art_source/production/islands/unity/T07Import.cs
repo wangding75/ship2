@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -37,6 +38,7 @@ public static class T07Import
             var rotations = ChooseRotations(meshes, metrics);
             Debug.Log("T07 stage slots");
             var ordered = OrderSlots(meshes);
+            var waterline = MeasureWaterlines(meshes, rotations, paths.metrics);
             MakeUnreadable(meshes.Keys);
             Debug.Log("T07 stage prefabs");
             WritePrefabs(ordered, materials, rotations, metrics);
@@ -52,7 +54,9 @@ public static class T07Import
                 { "rotations_rx_deg", RotationReport(rotations) },
                 { "triangles", TriangleReport(ordered) },
                 { "shots", shots },
-                { "lod_note", "screenRelativeHeight uses suggested heights 50 m and 140 m with an assumed 60 degree vertical FOV. It is not a new threshold." }
+                { "waterline_unity", waterline },
+                { "lod_transitions", TransitionReport() },
+                { "lod_note", "Yaw, top and oblique frames disable LODGroup and show one mesh. natural_lod.json is the automatic LODGroup sweep. 50 m and 140 m stay suggestions. A saturated suggestion is not clamped to 0.99." }
             };
             File.WriteAllText(paths.report, MiniJson.Serialize(report));
             AssetDatabase.SaveAssets();
@@ -294,11 +298,9 @@ public static class T07Import
                 : new[] { materials["sand"], materials["grass"], materials["rock"] };
             renderers[lod] = renderer;
         }
-        var height0 = Suggested(Diameters[asset], 50f);
-        var height1 = Suggested(Diameters[asset], 140f);
-        if (height1 >= height0) height1 = height0 * 0.45f;
-        lods[0] = new LOD(height0, new[] { renderers[0] });
-        lods[1] = new LOD(height1, new[] { renderers[1] });
+        var choice = Transition(Diameters[asset]);
+        lods[0] = new LOD(choice.height0, new[] { renderers[0] });
+        lods[1] = new LOD(choice.height1, new[] { renderers[1] });
         lods[2] = new LOD(0.01f, new[] { renderers[2] });
         group.SetLODs(lods);
         group.RecalculateBounds();
@@ -329,13 +331,11 @@ public static class T07Import
                 : new[] { materials["wood"], materials["wall"] };
             renderers[lod] = renderer;
         }
-        var height0 = Suggested(Diameters["PORT"], 50f);
-        var height1 = Suggested(Diameters["PORT"], 140f);
-        if (height1 >= height0) height1 = height0 * 0.45f;
+        var choice = Transition(Diameters["PORT"]);
         group.SetLODs(new[]
         {
-            new LOD(height0, new[] { renderers[0] }),
-            new LOD(height1, new[] { renderers[1] }),
+            new LOD(choice.height0, new[] { renderers[0] }),
+            new LOD(choice.height1, new[] { renderers[1] }),
             new LOD(0.01f, new[] { renderers[2] })
         });
         group.RecalculateBounds();
@@ -392,13 +392,20 @@ public static class T07Import
                     foreach (var yaw in new[] { 0f, 45f, 90f, 135f, 180f, 225f, 270f, 315f })
                     {
                         Aim(camera, asset, instance, yaw, 28f);
-                        shots.Add(Shot(camera, texture, directory, asset + "_LOD0_yaw" + yaw.ToString("000")));
+                        shots.Add(Shot(camera, texture, directory, asset + "_LOD0_forced_yaw" + yaw.ToString("000")));
                     }
                 }
                 else
                 {
                     Aim(camera, asset, instance, 40f, 28f);
-                    shots.Add(Shot(camera, texture, directory, asset + "_LOD" + lod + "_yaw040"));
+                    shots.Add(Shot(camera, texture, directory, asset + "_LOD" + lod + "_forced_yaw040"));
+                }
+                if (asset != "PORT")
+                {
+                    Aim(camera, asset, instance, 40f, 78f);
+                    shots.Add(Shot(camera, texture, directory, asset + "_LOD" + lod + "_forced_top"));
+                    Aim(camera, asset, instance, 40f, 32f);
+                    shots.Add(Shot(camera, texture, directory, asset + "_LOD" + lod + "_forced_oblique"));
                 }
             }
             UnityEngine.Object.DestroyImmediate(instance);
@@ -417,10 +424,16 @@ public static class T07Import
             if (new Vector2(camX, look.z).magnitude < 206f) camX = 208f;
             camera.transform.position = new Vector3(camX, height, look.z);
             camera.transform.LookAt(look);
-            shots.Add(Shot(camera, texture, directory, "ISL-L_PORT_LOD0_" + item[0] + "_h" + item[1]));
+            shots.Add(Shot(camera, texture, directory, "ISL-L_PORT_LOD0_forced_" + item[0] + "_h" + item[1]));
+            SetLodNatural(island);
+            SetLodNatural(port);
+            shots.Add(Shot(camera, texture, directory, "ISL-L_PORT_natural_" + item[0] + "_h" + item[1]));
+            SetLodVisible(island, "ISL-L", 0);
+            SetLodVisible(port, "PORT", 0);
         }
         UnityEngine.Object.DestroyImmediate(island);
         UnityEngine.Object.DestroyImmediate(port);
+        File.WriteAllText(Path.Combine(directory, "natural_lod.json"), NaturalSweep(camera, texture, directory));
         UnityEngine.Object.DestroyImmediate(texture);
         UnityEngine.Object.DestroyImmediate(cameraObject);
         UnityEngine.Object.DestroyImmediate(sun);
@@ -438,10 +451,23 @@ public static class T07Import
 
     static void SetLodVisible(GameObject root, string asset, int lod)
     {
+        var group = root.GetComponentInChildren<LODGroup>(true);
+        if (group != null) group.enabled = false;
         foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
         {
             renderer.enabled = renderer.gameObject.name == asset + "_LOD" + lod;
         }
+    }
+
+    static void SetLodNatural(GameObject root)
+    {
+        var group = root.GetComponentInChildren<LODGroup>(true);
+        if (group != null)
+        {
+            group.enabled = true;
+            group.ForceLOD(-1);
+        }
+        foreach (var renderer in root.GetComponentsInChildren<Renderer>(true)) renderer.enabled = true;
     }
 
     static void RenderCamera(Camera camera, RenderTexture texture)
@@ -471,13 +497,65 @@ public static class T07Import
         return path;
     }
 
-    static float Suggested(float diameter, float height)
+    struct TransitionChoice
+    {
+        public float height0;
+        public float height1;
+        public float legacy0;
+        public float legacy1;
+        public string reason;
+    }
+
+    static float Unclamped(float diameter, float height)
     {
         var distance = height / Mathf.Sin(55f * Mathf.Deg2Rad);
-        var value = diameter / (2f * distance * Mathf.Tan(30f * Mathf.Deg2Rad));
-        if (value > 0.99f) value = 0.99f;
-        if (value < 0.02f) value = 0.02f;
-        return value;
+        return diameter / (2f * distance * Mathf.Tan(30f * Mathf.Deg2Rad));
+    }
+
+    static TransitionChoice Transition(float diameter)
+    {
+        var near = Unclamped(diameter, 50f);
+        var far = Unclamped(diameter, 140f);
+        var legacy0 = near > 0.99f ? 0.99f : near < 0.02f ? 0.02f : near;
+        var legacy1 = far > 0.99f ? 0.99f : far < 0.02f ? 0.02f : far;
+        if (legacy1 >= legacy0) legacy1 = legacy0 * 0.45f;
+        var choice = new TransitionChoice { legacy0 = legacy0, legacy1 = legacy1 };
+        if (near <= 0.90f && far <= near - 0.08f && far >= 0.05f)
+        {
+            choice.height0 = near;
+            choice.height1 = far;
+            choice.reason = "50m/140m suggestion separates at an assumed 60 degree FOV. Not a new threshold.";
+            return choice;
+        }
+        if (near > 0.90f && far < 0.85f && far > 0.08f)
+        {
+            choice.height0 = Mathf.Min(0.78f, far + 0.18f);
+            choice.height1 = far;
+            choice.reason = "50m suggestion saturates the frame. LOD1 keeps the 140m fraction. Not a new threshold.";
+            return choice;
+        }
+        choice.height0 = 0.55f;
+        choice.height1 = 0.20f;
+        choice.reason = "Both suggested heights saturate a 60 degree frame, so the old code clamped LOD0 to 0.99. Production split 0.55/0.20 lets a continuous zoom cross three LODs. LOD2 remains until 0.01. Not a new threshold.";
+        return choice;
+    }
+
+    static Dictionary<string, object> TransitionReport()
+    {
+        var report = new Dictionary<string, object>();
+        foreach (var asset in Islands.Concat(new[] { "PORT" }))
+        {
+            var choice = Transition(Diameters[asset]);
+            report[asset] = new Dictionary<string, object>
+            {
+                { "height0", (double)choice.height0 },
+                { "height1", (double)choice.height1 },
+                { "legacy0", (double)choice.legacy0 },
+                { "legacy1", (double)choice.legacy1 },
+                { "reason", choice.reason }
+            };
+        }
+        return report;
     }
 
     static Dictionary<string, object> RotationReport(Dictionary<string, AxisFix> rotations)
@@ -517,6 +595,275 @@ public static class T07Import
     static string ModelPath(string asset, int lod)
     {
         return "Assets/Game/Art/Islands/Models/" + asset + "_LOD" + lod + ".fbx";
+    }
+
+    static string NaturalSweep(Camera camera, RenderTexture texture, string directory)
+    {
+        var quality = QualitySettings.names[QualitySettings.GetQualityLevel()];
+        var bias = QualitySettings.lodBias;
+        var maxLod = QualitySettings.maximumLODLevel;
+        var builder = new StringBuilder();
+        builder.Append("{\"fov\":").Append(camera.fieldOfView.ToString(CultureInfo.InvariantCulture));
+        builder.Append(",\"lodBias\":").Append(bias.ToString(CultureInfo.InvariantCulture));
+        builder.Append(",\"maximumLODLevel\":").Append(maxLod.ToString(CultureInfo.InvariantCulture));
+        builder.Append(",\"quality\":").Append(JsonString(quality));
+        builder.Append(",\"note\":\"Automatic LODGroup. ForceLOD is -1. Forced mesh frames are separate and are not this sweep.\",\"assets\":[");
+        var firstAsset = true;
+        foreach (var asset in Islands.Concat(new[] { "PORT" }))
+        {
+            if (!firstAsset) builder.Append(",");
+            firstAsset = false;
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Game/Art/Islands/Prefabs/" + asset + ".prefab");
+            var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+            SetLodNatural(instance);
+            var group = instance.GetComponentInChildren<LODGroup>(true);
+            var lods = group.GetLODs();
+            builder.Append("{\"asset\":").Append(JsonString(asset));
+            builder.Append(",\"size\":").Append(group.size.ToString(CultureInfo.InvariantCulture));
+            builder.Append(",\"thresholds\":[");
+            for (var i = 0; i < lods.Length; i++)
+            {
+                if (i > 0) builder.Append(",");
+                builder.Append(lods[i].screenRelativeTransitionHeight.ToString(CultureInfo.InvariantCulture));
+            }
+            builder.Append("],\"samples\":[");
+            var seen = new bool[3];
+            var multipliers = new[] { 0.45f, 0.8f, 1.3f, 2f, 3f, 4.5f, 7f, 10f, 15f, 22f };
+            var firstSample = true;
+            foreach (var multiplier in multipliers)
+            {
+                var distance = Mathf.Max(group.size, 1f) * multiplier;
+                var center = group.transform.TransformPoint(group.localReferencePoint);
+                var rotation = Quaternion.Euler(28f, 40f, 0f);
+                camera.transform.position = center + rotation * new Vector3(0f, 0f, -distance);
+                camera.transform.LookAt(center);
+                var relative = RelativeHeight(group, camera);
+                var predicted = PredictLod(lods, relative);
+                var image = ReadShot(camera, texture);
+                var empty = EmptyFraction(image);
+                UnityEngine.Object.DestroyImmediate(image);
+                var visible = new List<string>();
+                foreach (var renderer in instance.GetComponentsInChildren<Renderer>(true))
+                {
+                    if (renderer.isVisible) visible.Add(renderer.gameObject.name);
+                }
+                if (predicted >= 0 && predicted < seen.Length) seen[predicted] = true;
+                var name = asset + "_natural_d" + multiplier.ToString("0.00", CultureInfo.InvariantCulture).Replace(".", "p");
+                Shot(camera, texture, directory, name);
+                if (!firstSample) builder.Append(",");
+                firstSample = false;
+                builder.Append("{\"distance_m\":").Append(distance.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"relative_height\":").Append(relative.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"predicted_lod\":").Append(predicted.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"empty_fraction\":").Append(empty.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"visible\":[");
+                for (var v = 0; v < visible.Count; v++)
+                {
+                    if (v > 0) builder.Append(",");
+                    builder.Append(JsonString(visible[v]));
+                }
+                builder.Append("],\"file\":").Append(JsonString(name + ".png")).Append("}");
+            }
+            builder.Append("],\"matched\":[");
+            var firstMatch = true;
+            for (var lod = 0; lod < 3; lod++)
+            {
+                var band = BandDistance(group, camera, lods, lod);
+                if (float.IsNaN(band)) continue;
+                var center = group.transform.TransformPoint(group.localReferencePoint);
+                var rotation = Quaternion.Euler(28f, 40f, 0f);
+                camera.transform.position = center + rotation * new Vector3(0f, 0f, -band);
+                camera.transform.LookAt(center);
+                SetLodNatural(instance);
+                var natural = ReadShot(camera, texture);
+                var naturalEmpty = EmptyFraction(natural);
+                var bestLod = -1;
+                var bestDiff = double.MaxValue;
+                var diffs = new double[3];
+                for (var forced = 0; forced < 3; forced++)
+                {
+                    SetLodVisible(instance, asset, forced);
+                    var image = ReadShot(camera, texture);
+                    diffs[forced] = MeanAbs(natural, image);
+                    UnityEngine.Object.DestroyImmediate(image);
+                    if (diffs[forced] < bestDiff)
+                    {
+                        bestDiff = diffs[forced];
+                        bestLod = forced;
+                    }
+                }
+                var file = asset + "_natural_match_LOD" + lod;
+                var bytes = natural.EncodeToPNG();
+                File.WriteAllBytes(Path.Combine(directory, file + ".png"), bytes);
+                UnityEngine.Object.DestroyImmediate(natural);
+                SetLodNatural(instance);
+                if (!firstMatch) builder.Append(",");
+                firstMatch = false;
+                builder.Append("{\"target_lod\":").Append(lod.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"distance_m\":").Append(band.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"empty_fraction\":").Append(naturalEmpty.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"closest_forced_lod\":").Append(bestLod.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"mean_abs\":[");
+                for (var i = 0; i < 3; i++)
+                {
+                    if (i > 0) builder.Append(",");
+                    builder.Append(diffs[i].ToString(CultureInfo.InvariantCulture));
+                }
+                builder.Append("],\"file\":").Append(JsonString(file + ".png")).Append("}");
+            }
+            builder.Append("],\"saw_predicted\":[");
+            for (var i = 0; i < seen.Length; i++)
+            {
+                if (i > 0) builder.Append(",");
+                builder.Append(seen[i] ? "true" : "false");
+            }
+            builder.Append("]}");
+            UnityEngine.Object.DestroyImmediate(instance);
+        }
+        builder.Append("]}");
+        return builder.ToString();
+    }
+
+    static float BandDistance(LODGroup group, Camera camera, LOD[] lods, int lod)
+    {
+        var size = WorldSize(group);
+        var half = Mathf.Tan(camera.fieldOfView * Mathf.Deg2Rad * 0.5f);
+        var bias = Mathf.Max(QualitySettings.lodBias, 0.01f);
+        var high = lod == 0 ? 2.5f : lods[lod - 1].screenRelativeTransitionHeight;
+        var low = lods[lod].screenRelativeTransitionHeight;
+        var mid = Mathf.Sqrt(Mathf.Max(high, 0.02f) * Mathf.Max(low, 0.02f));
+        if (lod == 0) mid = Mathf.Max(lods[0].screenRelativeTransitionHeight * 1.35f, 0.9f);
+        var distance = size / (2f * mid * half) * bias;
+        return distance;
+    }
+
+    static int PredictLod(LOD[] lods, float relative)
+    {
+        for (var i = 0; i < lods.Length; i++)
+        {
+            if (relative >= lods[i].screenRelativeTransitionHeight) return i;
+        }
+        return -1;
+    }
+
+    static float RelativeHeight(LODGroup group, Camera camera)
+    {
+        var world = group.transform.TransformPoint(group.localReferencePoint);
+        var distance = Vector3.Distance(camera.transform.position, world);
+        if (distance < 0.01f) distance = 0.01f;
+        var half = Mathf.Tan(camera.fieldOfView * Mathf.Deg2Rad * 0.5f);
+        return WorldSize(group) / (2f * distance * half) * QualitySettings.lodBias;
+    }
+
+    static float WorldSize(LODGroup group)
+    {
+        var scale = group.transform.lossyScale;
+        var max = Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z));
+        return group.size * max;
+    }
+
+    static Texture2D ReadShot(Camera camera, RenderTexture texture)
+    {
+        RenderCamera(camera, texture);
+        var previous = RenderTexture.active;
+        RenderTexture.active = texture;
+        var image = new Texture2D(texture.width, texture.height, TextureFormat.RGB24, false);
+        image.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0);
+        image.Apply();
+        RenderTexture.active = previous;
+        return image;
+    }
+
+    static float EmptyFraction(Texture2D image)
+    {
+        var pixels = image.GetPixels32();
+        var empty = 0;
+        for (var i = 0; i < pixels.Length; i++)
+        {
+            var pixel = pixels[i];
+            if (Mathf.Abs(pixel.r - 59) <= 10 && Mathf.Abs(pixel.g - 122) <= 10 && Mathf.Abs(pixel.b - 158) <= 10) empty++;
+        }
+        return empty / (float)pixels.Length;
+    }
+
+    static double MeanAbs(Texture2D a, Texture2D b)
+    {
+        var pa = a.GetPixels32();
+        var pb = b.GetPixels32();
+        double total = 0;
+        var count = Math.Min(pa.Length, pb.Length);
+        for (var i = 0; i < count; i++)
+        {
+            total += Math.Abs(pa[i].r - pb[i].r) + Math.Abs(pa[i].g - pb[i].g) + Math.Abs(pa[i].b - pb[i].b);
+        }
+        return total / (count * 3.0);
+    }
+
+    static string JsonString(string value)
+    {
+        return "\"" + value.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\"";
+    }
+
+    static Dictionary<string, object> MeasureWaterlines(Dictionary<string, Mesh> meshes, Dictionary<string, AxisFix> rotations, string metricsPath)
+    {
+        var packagePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(metricsPath), "..", "data", "island_module_package.json"));
+        var package = MiniJson.Parse(File.ReadAllText(packagePath)) as Dictionary<string, object>;
+        var canon = (Dictionary<string, object>)package["canonical_integers"];
+        var archetypes = (List<object>)canon["archetypes"];
+        var report = new Dictionary<string, object>();
+        foreach (var asset in Islands)
+        {
+            List<double[]> ring = null;
+            foreach (var item in archetypes)
+            {
+                var archetype = (Dictionary<string, object>)item;
+                if ((string)archetype["archetype_id"] != asset) continue;
+                foreach (var polyItem in (List<object>)archetype["polygons"])
+                {
+                    var poly = (Dictionary<string, object>)polyItem;
+                    if ((string)poly["kind"] != "land") continue;
+                    ring = new List<double[]>();
+                    foreach (var pointItem in (List<object>)poly["outer"])
+                    {
+                        var point = (List<object>)pointItem;
+                        ring.Add(new[] { Convert.ToDouble(point[0]) / 100000.0, Convert.ToDouble(point[1]) / 100000.0 });
+                    }
+                }
+            }
+            var fix = rotations[asset];
+            var lodReport = new Dictionary<string, object>();
+            for (var lod = 0; lod < 3; lod++)
+            {
+                var mesh = meshes[ModelPath(asset, lod)];
+                var water = new List<Vector2>();
+                foreach (var vertex in mesh.vertices)
+                {
+                    var point = Quaternion.Euler(fix.rx, 0f, 0f) * Vector3.Scale(new Vector3(fix.sx, 1f, 1f), vertex);
+                    if (Mathf.Abs(point.y) <= 0.02f) water.Add(new Vector2(point.x, point.z));
+                }
+                var worst = 0.0;
+                foreach (var wanted in ring)
+                {
+                    var best = double.MaxValue;
+                    for (var index = 0; index < water.Count; index++)
+                    {
+                        var dx = water[index].x - wanted[0];
+                        var dz = water[index].y - wanted[1];
+                        var dist = Math.Sqrt(dx * dx + dz * dz);
+                        if (dist < best) best = dist;
+                    }
+                    if (best > worst) worst = best;
+                }
+                lodReport[lod.ToString(CultureInfo.InvariantCulture)] = new Dictionary<string, object>
+                {
+                    { "waterline_vertices", water.Count },
+                    { "canonical_vertices", ring.Count },
+                    { "max_error_m", worst }
+                };
+            }
+            report[asset] = lodReport;
+        }
+        return report;
     }
 
     static GameObject Child(GameObject parent, string name)

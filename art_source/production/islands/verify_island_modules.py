@@ -203,6 +203,16 @@ def verify(package_path, metrics_path=None):
                     errors.append(archetype_id + " empty material")
             if metrics["meshes"][archetype_id]["lod0_shore_max_error_m"] > 1e-6:
                 errors.append(archetype_id + " lod0 shore drift")
+            for lod in (0, 1, 2):
+                lod_metrics = metrics["meshes"][archetype_id]["lods"][str(lod)]
+                if lod_metrics.get("waterline_max_error_m", 1.0) > 1e-6:
+                    errors.append("%s LOD%d waterline error" % (archetype_id, lod))
+                if lod_metrics.get("mesh_waterline_chord_deviation_m", 1.0) > 1e-6:
+                    errors.append("%s LOD%d waterline chord" % (archetype_id, lod))
+                if lod_metrics.get("upward_sand_triangles", 0) < 1:
+                    errors.append("%s LOD%d no upward sand" % (archetype_id, lod))
+                if lod_metrics.get("waterline_vertices") != lod_metrics.get("canonical_vertices"):
+                    errors.append("%s LOD%d waterline count" % (archetype_id, lod))
         port_counts = [metrics["meshes"]["PORT"]["lods"][str(lod)]["triangles"] for lod in (0, 1, 2)]
         if not (port_counts[0] > port_counts[1] > port_counts[2]):
             errors.append("port lod counts " + str(port_counts))

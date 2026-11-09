@@ -266,76 +266,194 @@ def rect_for(mat, leaf=False):
     return {SAND: SAND_UV, GRASS: GRASS_UV, ROCK: ROCK_UV, WOOD: WOOD_UV, WALL: WALL_UV}[mat]
 
 
-def add_terrain(builder, spec, lod, land_ring):
+def icosphere_triangles(subdiv):
+    return 20 * (4 ** subdiv)
+
+
+def estimate_prop_triangles(spec, lod):
+    total = 0
+    for _rock in spec["rocks"][: lod["rock_keep"]]:
+        total += icosphere_triangles(lod["rock_sub"])
+    sides = lod.get("trunk", 4)
+    leaf = lod.get("leaf", 0)
+    for t, theta, _height in spec["trees"]:
+        if spec["id"] == "ISL-L" and t > 0.62 and abs((theta + math.pi) % math.tau - math.pi) < 0.45:
+            continue
+        total += 4 * sides + icosphere_triangles(leaf)
+    return total
+
+
+def terrain_triangles(shore_n, inner_n, rings, cone):
+    # Coarse interior bands, one full-resolution sand annulus, then the cap.
+    # A wall skirt is 3N (sides + bottom). A cone cap is N and stays underwater.
+    bands = max(rings - 2, 0)
+    skirt = shore_n if cone else shore_n * 3
+    return inner_n + (2 * inner_n * bands) + (shore_n + inner_n) + skirt
+
+
+def skirt_is_cone(spec, lod, shore_n, inner_n, lod_index):
+    props = estimate_prop_triangles(spec, lod)
+    cap = spec["caps"][lod_index]
+    wall = terrain_triangles(shore_n, inner_n, lod["rings"], False) + props
+    cone = terrain_triangles(shore_n, inner_n, lod["rings"], True) + props
+    if wall <= cap:
+        return False, wall, cone, props
+    if cone <= cap:
+        return True, wall, cone, props
+    raise RuntimeError(
+        "%s LOD%d cannot keep the full waterline inside cap %d (wall %d, cone %d)"
+        % (spec["id"], lod_index, cap, wall, cone)
+    )
+
+
+def radial_ts(spec, rings):
+    # The last sample is the waterline. The sample before it is sand_t,
+    # so the outer top annulus is the beach and does not straddle the grass.
+    if rings < 2:
+        raise RuntimeError("%s needs a sand ring and a waterline" % spec["id"])
+    inner_rings = rings - 1
+    samples = [spec["sand_t"] * index / inner_rings for index in range(1, inner_rings + 1)]
+    samples.append(1.0)
+    return samples
+
+
+def add_annulus(builder, spec, shore, kept, inner_ids, outer_ids, t0, t1):
+    inner_n = len(inner_ids)
+    outer_n = len(outer_ids)
+    if outer_n % inner_n != 0:
+        raise RuntimeError("%s annulus %d/%d" % (spec["id"], outer_n, inner_n))
+    span = outer_n // inner_n
+    full_outer = outer_n == len(shore)
+    for slot in range(inner_n):
+        shore_index = kept[slot]
+        nxt_slot = (slot + 1) % inner_n
+        theta = shore[shore_index][2]
+        mat = material_for(spec, 0.5 * (t0 + t1), theta)
+        rect = rect_for(mat)
+        origin = shore_index if full_outer else slot
+
+        def shore_at(outer_slot):
+            if full_outer:
+                return outer_slot % len(shore)
+            return kept[outer_slot % inner_n]
+
+        for step_index in range(span):
+            o0 = (origin + step_index) % outer_n
+            o1 = (origin + step_index + 1) % outer_n
+            s0 = shore_at(o0)
+            s1 = shore_at(o1)
+            builder.tri_dot(
+                inner_ids[slot],
+                outer_ids[o0],
+                outer_ids[o1],
+                mat,
+                (
+                    planar(rect, shore[shore_index][0] * t0, shore[shore_index][1] * t0, spec["diameter"]),
+                    planar(rect, shore[s0][0] * t1, shore[s0][1] * t1, spec["diameter"]),
+                    planar(rect, shore[s1][0] * t1, shore[s1][1] * t1, spec["diameter"]),
+                ),
+                (0, 1, 0),
+            )
+        o_end = (origin + span) % outer_n
+        s_end = shore_at(o_end)
+        nxt_shore = kept[nxt_slot]
+        builder.tri_dot(
+            inner_ids[slot],
+            outer_ids[o_end],
+            inner_ids[nxt_slot],
+            mat,
+            (
+                planar(rect, shore[shore_index][0] * t0, shore[shore_index][1] * t0, spec["diameter"]),
+                planar(rect, shore[s_end][0] * t1, shore[s_end][1] * t1, spec["diameter"]),
+                planar(rect, shore[nxt_shore][0] * t0, shore[nxt_shore][1] * t0, spec["diameter"]),
+            ),
+            (0, 1, 0),
+        )
+
+
+def add_terrain(builder, spec, lod, land_ring, lod_index):
+    # Waterline vertices are the shared canonical ring. Interior rings use
+    # lod["step"] so the triangle budget comes out of the mound, not the shore.
     step = lod["step"]
     rings = lod["rings"]
-    kept = list(range(0, len(land_ring), step))
     shore = []
-    for index in kept:
-        x = land_ring[index][0] / geo.QUANTUM
-        z = land_ring[index][1] / geo.QUANTUM
+    for x_i, z_i in land_ring:
+        x = x_i / geo.QUANTUM
+        z = z_i / geo.QUANTUM
         shore.append((x, z, math.atan2(z, x) % math.tau))
     count = len(shore)
+    if step < 1 or count % step != 0:
+        raise RuntimeError("%s land %d step %d" % (spec["id"], count, step))
+    kept = list(range(0, count, step))
+    inner_count = len(kept)
+    cone, wall_total, cone_total, props = skirt_is_cone(spec, lod, count, inner_count, lod_index)
+    ts = radial_ts(spec, rings)
     centre = builder.v((0.0, height_at(0.0, spec), 0.0))
     grid = []
-    for ring_index in range(1, rings + 1):
-        t = ring_index / rings
+    for ring_index, t in enumerate(ts):
         row = []
-        for x, z, theta in shore:
-            y = 0.0 if ring_index == rings else height_at(t, spec)
-            row.append(builder.v((x * t, y, z * t)))
+        if ring_index == len(ts) - 1:
+            for x, z, _theta in shore:
+                row.append(builder.v((x, 0.0, z)))
+        else:
+            y = height_at(t, spec)
+            for index in kept:
+                x, z, _theta = shore[index]
+                row.append(builder.v((x * t, y, z * t)))
         grid.append(row)
-    for index in range(count):
-        nxt = (index + 1) % count
+    t_mid = ts[0] * 0.5
+    for slot, index in enumerate(kept):
+        nxt = kept[(slot + 1) % inner_count]
         theta = shore[index][2]
-        t_mid = 0.5 / rings
         mat = material_for(spec, t_mid, theta)
         rect = rect_for(mat)
         builder.tri_dot(
             centre,
-            grid[0][index],
-            grid[0][nxt],
+            grid[0][slot],
+            grid[0][(slot + 1) % inner_count],
             mat,
-            (planar(rect, 0, 0, spec["diameter"]), planar(rect, shore[index][0] * t_mid, shore[index][1] * t_mid, spec["diameter"]), planar(rect, shore[nxt][0] * t_mid, shore[nxt][1] * t_mid, spec["diameter"])),
+            (
+                planar(rect, 0, 0, spec["diameter"]),
+                planar(rect, shore[index][0] * ts[0], shore[index][1] * ts[0], spec["diameter"]),
+                planar(rect, shore[nxt][0] * ts[0], shore[nxt][1] * ts[0], spec["diameter"]),
+            ),
             (0, 1, 0),
         )
     for ring_index in range(rings - 1):
-        t0 = (ring_index + 1) / rings
-        t1 = (ring_index + 2) / rings
-        inner = grid[ring_index]
-        outer = grid[ring_index + 1]
+        add_annulus(builder, spec, shore, kept, grid[ring_index], grid[ring_index + 1], ts[ring_index], ts[ring_index + 1])
+    top = grid[-1]
+    if cone:
+        bottom = builder.v((0.0, SKIRT_Y, 0.0))
         for index in range(count):
             nxt = (index + 1) % count
-            theta = shore[index][2]
-            mat = material_for(spec, 0.5 * (t0 + t1), theta)
-            rect = rect_for(mat)
-            a = inner[index]
-            b = outer[index]
-            c = outer[nxt]
-            d = inner[nxt]
-            uvs = (
-                planar(rect, shore[index][0] * t0, shore[index][1] * t0, spec["diameter"]),
-                planar(rect, shore[index][0] * t1, shore[index][1] * t1, spec["diameter"]),
-                planar(rect, shore[nxt][0] * t1, shore[nxt][1] * t1, spec["diameter"]),
-                planar(rect, shore[nxt][0] * t0, shore[nxt][1] * t0, spec["diameter"]),
+            outward = (shore[index][0] + shore[nxt][0], -1.0, shore[index][1] + shore[nxt][1])
+            builder.tri_dot(
+                top[index],
+                top[nxt],
+                bottom,
+                SAND,
+                (uv(SAND_UV, 0.2, 0.8), uv(SAND_UV, 0.8, 0.8), uv(SAND_UV, 0.5, 0.2)),
+                outward,
             )
-            builder.tri_dot(a, b, c, mat, uvs[:3], (0, 1, 0))
-            builder.tri_dot(a, c, d, mat, (uvs[0], uvs[2], uvs[3]), (0, 1, 0))
-    skirt = []
-    for x, z, _theta in shore:
-        skirt.append(builder.v((x, SKIRT_Y, z)))
-    top = grid[-1]
-    for index in range(count):
-        nxt = (index + 1) % count
-        outward = (shore[index][0] + shore[nxt][0], 0.0, shore[index][1] + shore[nxt][1])
-        rect = SAND_UV
-        builder.tri_dot(top[index], top[nxt], skirt[nxt], SAND, (uv(rect, 0.2, 0.8), uv(rect, 0.8, 0.8), uv(rect, 0.8, 0.2)), outward)
-        builder.tri_dot(top[index], skirt[nxt], skirt[index], SAND, (uv(rect, 0.2, 0.8), uv(rect, 0.8, 0.2), uv(rect, 0.2, 0.2)), outward)
-    bottom = builder.v((0.0, SKIRT_Y, 0.0))
-    for index in range(count):
-        nxt = (index + 1) % count
-        builder.tri_dot(bottom, skirt[nxt], skirt[index], SAND, (uv(SAND_UV, 0.5, 0.5), uv(SAND_UV, 0.7, 0.4), uv(SAND_UV, 0.4, 0.4)), (0, -1, 0))
-    return shore
+    else:
+        skirt = [builder.v((x, SKIRT_Y, z)) for x, z, _theta in shore]
+        for index in range(count):
+            nxt = (index + 1) % count
+            outward = (shore[index][0] + shore[nxt][0], 0.0, shore[index][1] + shore[nxt][1])
+            builder.tri_dot(top[index], top[nxt], skirt[nxt], SAND, (uv(SAND_UV, 0.2, 0.8), uv(SAND_UV, 0.8, 0.8), uv(SAND_UV, 0.8, 0.2)), outward)
+            builder.tri_dot(top[index], skirt[nxt], skirt[index], SAND, (uv(SAND_UV, 0.2, 0.8), uv(SAND_UV, 0.8, 0.2), uv(SAND_UV, 0.2, 0.2)), outward)
+        bottom = builder.v((0.0, SKIRT_Y, 0.0))
+        for index in range(count):
+            nxt = (index + 1) % count
+            builder.tri_dot(bottom, skirt[nxt], skirt[index], SAND, (uv(SAND_UV, 0.5, 0.5), uv(SAND_UV, 0.7, 0.4), uv(SAND_UV, 0.4, 0.4)), (0, -1, 0))
+    return {
+        "shore": shore,
+        "shore_ids": top,
+        "skirt": "cone" if cone else "wall",
+        "estimate_wall": wall_total,
+        "estimate_cone": cone_total,
+        "estimate_props": props,
+    }
 
 
 def add_icosphere(builder, centre, radius, subdiv, mat, rect, displace):
@@ -701,22 +819,56 @@ def bounds_of(builder):
     }
 
 
-def shore_error(builder, land_ring, step):
-    wanted = []
-    for index in range(0, len(land_ring), step):
-        wanted.append((land_ring[index][0] / geo.QUANTUM, land_ring[index][1] / geo.QUANTUM))
-    worst = 0.0
+def _point_segment(px, pz, ax, az, bx, bz):
+    return geo._dist_point_seg(px, pz, ax, az, bx, bz)
+
+
+def waterline_report(builder, land_ring, shore_ids):
+    """Error of the authored y=0 loop against every canonical land vertex."""
+    wanted = [(point[0] / geo.QUANTUM, point[1] / geo.QUANTUM) for point in land_ring]
+    loop = [(builder.verts[index][0], builder.verts[index][2]) for index in shore_ids]
+    y_zero = [(vx, vz) for vx, vy, vz in builder.verts if abs(vy) <= 1e-8]
+    worst_vertex = 0.0
     for x, z in wanted:
         best = None
-        for vx, vy, vz in builder.verts:
-            if abs(vy) > 0.02:
-                continue
+        for vx, vz in y_zero:
             dist = math.hypot(vx - x, vz - z)
             if best is None or dist < best:
                 best = dist
-        if best is None or best > worst:
-            worst = 0.0 if best is None else best
-    return worst
+        worst_vertex = max(worst_vertex, 0.0 if best is None else best)
+    worst_edge = 0.0
+    count = len(loop)
+    for x, z in wanted:
+        best = None
+        for index in range(count):
+            ax, az = loop[index]
+            bx, bz = loop[(index + 1) % count]
+            dist = _point_segment(x, z, ax, az, bx, bz)
+            if best is None or dist < best:
+                best = dist
+        worst_edge = max(worst_edge, 0.0 if best is None else best)
+    upward = {}
+    for a, b, c, mat in builder.faces:
+        ax, ay, az = builder.verts[a]
+        bx, by, bz = builder.verts[b]
+        cx, cy, cz = builder.verts[c]
+        nx = (by - ay) * (cz - az) - (bz - az) * (cy - ay)
+        ny = (bz - az) * (cx - ax) - (bx - ax) * (cz - az)
+        nz = (bx - ax) * (cy - ay) - (by - ay) * (cx - ax)
+        length = math.sqrt(nx * nx + ny * ny + nz * nz)
+        if length < 1e-12:
+            continue
+        if ny / length > 0.5:
+            upward[mat] = upward.get(mat, 0) + 1
+    return {
+        "waterline_vertices": len(shore_ids),
+        "y0_vertices": len(y_zero),
+        "canonical_vertices": len(wanted),
+        "waterline_max_error_m": worst_vertex,
+        "mesh_waterline_chord_deviation_m": worst_edge,
+        "upward_triangles": upward,
+        "upward_sand_triangles": upward.get(SAND, 0),
+    }
 
 
 def paint(size, kind):
@@ -803,6 +955,62 @@ def to_blender(name, builder, materials, slot_names):
     return obj
 
 
+def blender_build_hash():
+    value = getattr(bpy.app, "build_hash", "")
+    if isinstance(value, bytes):
+        value = value.decode("ascii", "replace")
+    return str(value)
+
+
+def make_waterline_ribbon(name, land_ring, material):
+    builder = Builder()
+    points = [(point[0] / geo.QUANTUM, point[1] / geo.QUANTUM) for point in land_ring]
+    count = len(points)
+    height = 0.7
+    half = 0.6
+    inner = []
+    outer = []
+    for index, (x, z) in enumerate(points):
+        previous = points[(index - 1) % count]
+        nxt = points[(index + 1) % count]
+        tx, tz = nxt[0] - previous[0], nxt[1] - previous[1]
+        length = math.hypot(tx, tz) or 1.0
+        nx, nz = tz / length, -tx / length
+        if nx * x + nz * z < 0.0:
+            nx, nz = -nx, -nz
+        inner.append(builder.v((x - nx * half, height, z - nz * half)))
+        outer.append(builder.v((x + nx * half, height, z + nz * half)))
+    for index in range(count):
+        nxt = (index + 1) % count
+        builder.tri(inner[index], outer[index], outer[nxt], SAND, (uv(SAND_UV, 0.1, 0.1), uv(SAND_UV, 0.9, 0.1), uv(SAND_UV, 0.9, 0.9)))
+        builder.tri(inner[index], outer[nxt], inner[nxt], SAND, (uv(SAND_UV, 0.1, 0.1), uv(SAND_UV, 0.9, 0.9), uv(SAND_UV, 0.1, 0.9)))
+    return to_blender(name, builder, [material], (SAND,))
+
+
+def waterline_material():
+    mat = bpy.data.materials.new("Waterline")
+    mat.use_nodes = True
+    bsdf = mat.node_tree.nodes.get("Principled BSDF")
+    bsdf.inputs["Base Color"].default_value = (1.0, 0.22, 0.05, 1.0)
+    for key, value in (("Emission Color", (1.0, 0.15, 0.04, 1.0)), ("Emission", (1.0, 0.15, 0.04, 1.0))):
+        if key in bsdf.inputs:
+            bsdf.inputs[key].default_value = value
+    if "Emission Strength" in bsdf.inputs:
+        bsdf.inputs["Emission Strength"].default_value = 8.0
+    return mat
+
+
+def blender_upward(obj):
+    mesh = obj.data
+    mesh.calc_loop_triangles()
+    counts = {}
+    for tri in mesh.loop_triangles:
+        if tri.normal.z > 0.5:
+            name = mesh.materials[tri.material_index].name
+            counts[name] = counts.get(name, 0) + 1
+    return counts
+
+
 def export_fbx(obj, path):
     bpy.ops.object.select_all(action="DESELECT")
     obj.select_set(True)
@@ -858,7 +1066,7 @@ def write_note(package, metrics):
         "- 作者 Run `%s`" % metrics["author"]["run"],
         "- Grok 会话 `%s`" % metrics["author"]["session"],
         "- 实际模型 grok-4.7 / high。平台身份说明里的 gpt-6.1-sol 名称没有沿用。",
-        "- Blender %s，构建哈希 e13b728c6880。" % metrics["blender"],
+        "- Blender %s，构建哈希 %s。" % (metrics["blender"], metrics["blender_hash"]),
         "- 基线 `ca391a4f341f25d7a99aa27a35de678fd684eaf4` 在 `refs/heads/t06/ship-assets-rework-1`，`refs/heads/main` 是 `bddd5441777b521045edd0549958704b23d82036`。该基线不是 main 已合并。",
         "- 已验收舰船目录没有修改。",
         "- 模块包 `data/island_module_package.json` 的 geometry_sha `%s`。" % package["geometry_sha"],
@@ -869,7 +1077,12 @@ def write_note(package, metrics):
         "",
         "锚点净空下限是 1.5 × R_nav,max = 12 米。重型船船长 32 米、R_nav 8 米，轴向胶囊中心线半长 8 米，艏艉尖端距枢轴 16 米。本模块把锚点放到实测净空大于 16 米的可航水里，使允许的全部朝向都放得下这只胶囊。16 米是这只已验收船的几何结果，不是新的冻结阈值，也不把 12 米下限降掉。",
         "",
-        "LOD 切换建议仍是相机高度 50 米和 140 米。预制件里的 screenRelativeHeight 只是按这个建议和假定垂直 FOV 60° 换算，大岛在 140 米高度仍可能铺满画面，不把建议写成硬阈值。",
+        "LOD 切换建议仍是相机高度 50 米和 140 米，不是硬阈值。假定垂直 FOV 60° 时，大岛在这两个高度会铺满或超出画面，旧换算把 screenRelativeHeight 夹到 0.99，质量 lodBias 放大后又让 35/85/220 米自然机位停在 LOD0。预制件只在建议值能分出两档时沿用建议；建议值饱和时用一组更低的过渡，让连续拉远能经过三档，LOD2 保留到 0.01，避免突然消失。这些数不是新的冻结门槛。",
+        "",
+        "## T07-REWORK-1 水线与沙环",
+        "",
+        "每个 LOD 的 y=0 水线使用同一条 canonical 陆地环的全部顶点。减面发生在沙环以内的山体，以及放不下竖向裙边时的水下封底。沙环内缘放在各自 sand_t（S 0.70、M 0.78、L 0.80），外缘就是水线，顶面按这个环分到沙，不再把两环中点 0.75 整圈分给草。",
+        "",
         "",
         "## 图4 和 T05",
         "",
@@ -889,6 +1102,20 @@ def write_note(package, metrics):
     for key, mesh in metrics["meshes"].items():
         counts = [mesh["lods"][str(lod)]["triangles"] for lod in (0, 1, 2)]
         lines.append("- %s 三角 %d / %d / %d" % (key, counts[0], counts[1], counts[2]))
+        for lod in (0, 1, 2):
+            item = mesh["lods"][str(lod)]
+            if "waterline_max_error_m" not in item:
+                continue
+            lines.append(
+                "  - LOD%d 水线顶点误差 %.6f m，弦偏离 %.6f m，向上沙三角 %d，裙边 %s"
+                % (
+                    lod,
+                    item["waterline_max_error_m"],
+                    item["mesh_waterline_chord_deviation_m"],
+                    item["upward_sand_triangles"],
+                    item["skirt"],
+                )
+            )
     path = os.path.join(ROOT, "S1_T07_production_note.md")
     with open(path, "w", encoding="utf-8") as handle:
         handle.write("\n".join(lines) + "\n")
@@ -1026,35 +1253,52 @@ def main():
         entry = {"lods": {}}
         for lod_index, lod in enumerate(spec["lod"]):
             builder = Builder()
-            add_terrain(builder, spec, lod, module["land"])
+            terrain = add_terrain(builder, spec, lod, module["land"], lod_index)
             add_props(builder, spec, lod, module["samples"])
             counts = builder.counts()
             total = sum(counts.values())
             cap = spec["caps"][lod_index]
+            report = waterline_report(builder, module["land"], terrain["shore_ids"])
             if total > cap:
                 raise RuntimeError("%s LOD%d triangles %d over %d" % (spec["id"], lod_index, total, cap))
             for name in ("sand", "grass", "rock"):
                 if counts.get(name, 0) < 1:
                     raise RuntimeError("%s LOD%d missing %s" % (spec["id"], lod_index, name))
+            if report["waterline_max_error_m"] > 1e-6 or report["mesh_waterline_chord_deviation_m"] > 1e-6:
+                raise RuntimeError("%s LOD%d waterline %s" % (spec["id"], lod_index, json.dumps(report)))
+            if report["y0_vertices"] != report["canonical_vertices"] or report["waterline_vertices"] != report["canonical_vertices"]:
+                raise RuntimeError("%s LOD%d waterline vertex count %s" % (spec["id"], lod_index, json.dumps(report)))
+            if report["upward_sand_triangles"] < 1:
+                raise RuntimeError("%s LOD%d upward sand %s" % (spec["id"], lod_index, json.dumps(report["upward_triangles"])))
             size = 512 if lod_index == 2 else 1024
             obj = to_blender("%s_LOD%d" % (spec["id"], lod_index), builder, island_mats[size], ISLAND_SLOTS)
             export_fbx(obj, os.path.join(EXPORT_DIR, "%s_LOD%d.fbx" % (spec["id"], lod_index)))
             objects[(spec["id"], lod_index)] = obj
+            blender_up = blender_upward(obj)
+            sand_names = [name for name in blender_up if name.lower().startswith("sand")]
+            blender_sand = sum(blender_up[name] for name in sand_names)
+            if blender_sand < 1:
+                raise RuntimeError("%s LOD%d blender upward sand %s" % (spec["id"], lod_index, json.dumps(blender_up)))
             entry["lods"][str(lod_index)] = {
                 "triangles": total,
                 "material_triangles": counts,
                 "bounds_unity_m": bounds_of(builder),
-                "shore_chord_deviation_m": geo.chord_deviation_m(module["land"], lod["step"]),
+                "shore_chord_deviation_m": report["mesh_waterline_chord_deviation_m"],
+                "mesh_waterline_chord_deviation_m": report["mesh_waterline_chord_deviation_m"],
+                "waterline_max_error_m": report["waterline_max_error_m"],
+                "waterline_vertices": report["waterline_vertices"],
+                "canonical_vertices": report["canonical_vertices"],
+                "interior_step": lod["step"],
+                "skirt": terrain["skirt"],
+                "sand_ring_t": spec["sand_t"],
+                "estimate_wall_triangles": terrain["estimate_wall"],
+                "estimate_cone_triangles": terrain["estimate_cone"],
+                "upward_triangles": report["upward_triangles"],
+                "upward_sand_triangles": report["upward_sand_triangles"],
+                "blender_upward_triangles": blender_up,
+                "blender_upward_sand_triangles": blender_sand,
             }
-        entry["lod0_shore_max_error_m"] = shore_error(
-            # Recompute from the exported object's mesh is in blender space.
-            # The builder was not kept. Chord deviation of step 1 is the exact-vertex error.
-            Builder(),
-            module["land"],
-            1,
-        )
-        # step 1 keeps every vertex, so the authored waterline error is 0.
-        entry["lod0_shore_max_error_m"] = 0.0
+        entry["lod0_shore_max_error_m"] = entry["lods"]["0"]["waterline_max_error_m"]
         metrics_meshes[spec["id"]] = entry
     port_entry = {"lods": {}}
     for lod_index, lod in enumerate(PORT_LOD):
@@ -1147,6 +1391,19 @@ def main():
                 path = os.path.join(TURN_DIR, "%s_LOD%d_yaw%03d.png" % (asset, lod_index, yaw))
                 render_path(scene, path)
                 rendered.append(path)
+            if asset != "PORT":
+                for label, pitch_deg, distance_scale in (("top", 78.0, 0.95), ("oblique", 32.0, 1.05)):
+                    pitch = math.radians(pitch_deg)
+                    yaw_r = math.radians(40.0)
+                    location = blender_vec(
+                        distance * math.cos(pitch) * math.sin(yaw_r),
+                        distance * distance_scale * math.sin(pitch),
+                        distance * math.cos(pitch) * math.cos(yaw_r),
+                    )
+                    look_at(cam, location, blender_vec(0.0, 2.0, 0.0))
+                    path = os.path.join(TURN_DIR, "%s_LOD%d_%s.png" % (asset, lod_index, label))
+                    render_path(scene, path)
+                    rendered.append(path)
         # Suggested sailing-camera heights, pitched toward the beach, not a new threshold.
         for asset, spec in (("ISL-S", ISLANDS[0]), ("ISL-M", ISLANDS[1]), ("ISL-L", ISLANDS[2]), ("PORT", None)):
             hide_all(all_objs, True)
@@ -1175,12 +1432,42 @@ def main():
                 path = os.path.join(TURN_DIR, "%s_LOD0_%s_h%d.png" % (asset, name, int(height)))
                 render_path(scene, path)
                 rendered.append(path)
+        ribbon_mat = waterline_material()
+        ribbons = {}
+        for module in modules:
+            ribbon = make_waterline_ribbon(module["archetype_id"] + "_WATERLINE", module["land"], ribbon_mat)
+            ribbon.hide_render = True
+            ribbon.hide_set(True)
+            ribbons[module["archetype_id"]] = ribbon
+        for module in modules:
+            asset = module["archetype_id"]
+            ribbon = ribbons[asset]
+            for lod_index in (0, 1, 2):
+                hide_all(all_objs, True)
+                for other in ribbons.values():
+                    if other is None:
+                        continue
+                    other.hide_render = True
+                    other.hide_set(True)
+                obj = objects[(asset, lod_index)]
+                obj.hide_render = False
+                obj.hide_set(False)
+                ribbon.hide_render = False
+                ribbon.hide_set(False)
+                distance = next(spec["diameter"] for spec in ISLANDS if spec["id"] == asset) * 1.2
+                pitch = math.radians(80.0)
+                look_at(cam, blender_vec(distance * math.cos(pitch), distance * math.sin(pitch), distance * 0.02), blender_vec(0.0, 0.0, 0.0))
+                path = os.path.join(TURN_DIR, "%s_LOD%d_waterline.png" % (asset, lod_index))
+                render_path(scene, path)
+                rendered.append(path)
+            bpy.data.objects.remove(ribbon, do_unlink=True)
+            ribbons[asset] = None
 
     bpy.ops.wm.save_as_mainfile(filepath=SOURCE_BLEND)
     metrics = {
         "generator": "art_source/production/islands/generate_islands.py",
         "blender": bpy.app.version_string,
-        "blender_hash": "e13b728c6880",
+        "blender_hash": blender_build_hash(),
         "utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "author": {
             "uuid": "913948fc-cfc0-41f2-a6fd-c7f661450afd",

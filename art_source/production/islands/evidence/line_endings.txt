@@ -1,0 +1,13 @@
+T07-REWORK-1 line endings. SHA256SUMS.txt hashes working-tree bytes and does not hash itself. It does not list __pycache__.
+
+core.autocrlf is true. .gitattributes sets * text=auto, and eol=lf on cs, json, unity, asset, and meta. png and zip are binary.
+
+Working tree versus the existing git index:
+- CRLF on disk, LF in the index: generate_islands.py, verify_island_modules.py, geometry_hash.py (unchanged), the two markdown notes, and the newline-bearing json files (island_module_package.json, mesh_metrics.json, verify.json, and the client data copy). Git will keep storing LF. The CR-only difference is autocrlf, not a mesh edit.
+- LF on disk and in the index: T07Import.cs, prefabs, materials, slot assets, and meta files. FBX and texture GUIDs were not regenerated.
+- Single line, no newline byte: unity_import_report.json and natural_lod.json.
+- Binary, not normalized: fbx, png, blend, blend1. Client model FBX bytes match art_source/production/islands/export. Git already records fbx and png as -text.
+- NUL / UTF-16 logs stay binary: evidence/generate_islands.log, evidence/rework1-blender-skip-stdout.txt, evidence/rework1-blender-skip-stderr.txt.
+- Mixed CRLF and LF text logs stay as authored bytes aside from the repository's ordinary text conversion of CR LF pairs: evidence/rework1-blender-stdout.txt.
+
+Do not renormalize binaries. A checkout with autocrlf may show py, md, and json as CRLF again; compare meshes by the binary SHA, not by a text diff.

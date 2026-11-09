@@ -1,0 +1,6 @@
+C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-54-752eb0a3646f\workdir\ship2\art_source\production\islands\generate_islands.py:924: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-54-752eb0a3646f\workdir\ship2\art_source\production\islands\generate_islands.py:1346: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-54-752eb0a3646f\workdir\ship2\art_source\production\islands\generate_islands.py:992: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
