@@ -1,0 +1,119 @@
+{
+    "task_id":  "S1-T03",
+    "title":  "工程环境与可重复构建",
+    "goal":  "收口Windows Unity工程初始化、可重复构建与启动；生产Gate和跨凭证共享租约隔离显式挂起，不冒充通过。独立审查身份仍采用可追溯Multica UUID/Run与精确SHA核对。",
+    "producer_role":  "A14",
+    "reviewer_roles":  [
+                           "A04",
+                           "A13"
+                       ],
+    "dependencies":  [
+                         "S1-T02"
+                     ],
+    "allowed_paths":  [
+                          "tools/build/",
+                          "tools/gates/",
+                          "tools/leases/",
+                          ".github/workflows/",
+                          "releases/",
+                          "client/UnityProject/ProjectSettings/",
+                          "client/UnityProject/Packages/",
+                          "client/UnityProject/Assets/Game/Scenes/",
+                          ".gitignore",
+                          ".gitattributes",
+                          "README.md",
+                          "docs/product/",
+                          "docs/decisions/",
+                          "references/style/",
+                          "client/UnityProject/Assets/Game/Editor/",
+                          "client/UnityProject/Assets/Game/Tests/"
+                      ],
+    "operation_permissions_ref":  {
+                                      "registry":  "agents_registry.json",
+                                      "role_id":  "A14"
+                                  },
+    "deliverables":  [
+                         "Unity工程/场景/版本锁、main远端commit与源码附件",
+                         "干净检出Windows构建、真实GPU启动截图/日志、编译错误注入红与回滚绿证据",
+                         "现有Gate/租约原语及测试如实交接为开发侧夹具；未实测生产安全能力标BLOCKED/NOT_RUN",
+                         "原始规格、产品文档、图4输入和版本化挂起清单",
+                         "独立验收者可实际取得对应Windows构建，服务上传不可用时采用经授权的同机只读工作副本或可复现构建；不以本地路径冒充已交付用户"
+                     ],
+    "acceptance_ids":  [
+                           "S1-T03-AC01"
+                       ],
+    "candidate_ref":  null,
+    "budget":  {
+                   "max_repair_attempts":  2,
+                   "max_run_minutes":  240,
+                   "max_cost_cny":  null
+               },
+    "status":  "BACKLOG",
+    "not_executed":  true,
+    "contract_version":  "T03-contract-v2-bootstrap-slice",
+    "producer_agent_uuid":  "f22db727-a17b-473a-ba27-149945878372",
+    "reviewer_agent_uuids":  [
+                                 "4702408e-ea84-463c-8697-4f083ab903ed",
+                                 "44a5c3cb-185b-4b55-a0d1-a4f43449c0de"
+                             ],
+    "owner_override":  {
+                           "source_comment":  "01a1be0f-ddc1-71c1-8b43-a90bc4e84b8d",
+                           "decision":  "挂起已报告问题并进入下一步；Windows未冻结参数不再阻塞T03工程启动，最终验收仍须解决",
+                           "historical_requirements_preserved":  true,
+                           "no_fail_overwritten":  true,
+                           "deferred":  [
+                                            "T04 CAT-02岛屿外围操作定义与SHIP-37剩余修复/独立验收",
+                                            "Windows内存计数器/对象/峰值/增长规则",
+                                            "最终低中画质参数",
+                                            "20:9最终模拟或N/A决定"
+                                        ],
+                           "not_authorized":  "把未测项目写成PASS或发布阶段最终合格结论"
+                       },
+    "platform_scope":  {
+                           "target":  "Windows",
+                           "android":  "本阶段不开发；设备与租约不适用，原条款只读保留",
+                           "performance_target":  "1920x1080 30fps p95\u003c=33.3ms on AMD Radeon(TM) Graphics DEV1638 driver30.0.14030.4003; final measurement deferred",
+                           "memory_final":  null,
+                           "quality_final":  null,
+                           "aspect_20_9_final":  null,
+                           "provisional_config":  "A14为可构建启动选择必要工程默认配置，逐项提交锁文件，标PROVISIONAL可替换，不冒充最终画质/性能签核；16:9与4:3仍保留测试定义"
+                       },
+    "allowed_paths_note":  "仅为T03初始化必要的工程脚本/测试、元文件和目录父级，不实现后续航行/生产美术功能。Unity生成meta文件可随授权资产提交。",
+    "inputs":  {
+                   "git":  "https://github.com/wangding75/ship2.git",
+                   "branch":  "main；owner已授权空仓库首次提交推送，不强推、不覆盖远端既有内容；若远端已变先核对",
+                   "unity":  "C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Unity.exe（实际核实入口）",
+                   "blender":  "D:/install/Blender 5.2/blender.exe（报告5.2.3 LTS，核实登记，不因美术暂不使用阻塞）",
+                   "figure4_attachment":  "01a1b050-f10f-7be8-a788-d954c2cb9dbf",
+                   "figure4_sha256":  "47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2",
+                   "t01_attachment":  "01a1b083-0e0f-778b-a5b3-4c2d32690c1c",
+                   "t01_sha256":  "4cf141de3796dc0b2232a56a3fd6925559b9b538c66f8a3e75e1ff8348c52b37",
+                   "t01_pass_attachment":  "01a1b08d-3917-7c90-9169-4db04ba107e6",
+                   "t02_attachment":  "01a1b403-be22-7473-9c94-5da5c3607470",
+                   "t02_sha256":  "22abc110927e155e5642d1dded7947306257525fd6a62861ca356c31edb9cfcb",
+                   "t02_pass_attachment":  "01a1b410-fd07-7b13-a689-a8bd6aa0abf8",
+                   "interface_version":  "S1-INTERFACES/1.0.2",
+                   "interface_sha256":  "e1f982b991fb2c95ea6b54981b5a99fb97d7242a020f3e844c4a3fd41e1942bb"
+               },
+    "acceptance_override":  {
+                                "id":  "S1-T03-AC01",
+                                "original":  "见冻结task_acceptance.json原文；不改原文件",
+                                "required_now":  "工程版本锁、远端main与源码、干净构建启动、编译错误注入红/回滚绿、元数据与输入哈希、可追溯真实作者/验收者UUID和不同Run、独立A04/A13实际取件验收；本机Unity/GPU保持单一作者和独占，不以合成租约测试冒充跨凭证权限隔离。",
+                                "deferred_not_pass":  "Windows最终性能/内存/画质/20:9；T04独立结论；未来实机/功能任务。保留BLOCKED/NOT_RUN或DEFERRED_OWNER，不折算为PASS；生产Gate部署/受保护签核信任存储/跨凭证共享租约broker及G10/G12权限隔离实测；CI远端执行及安装包平台上传恢复。保留原要求和失败记录，非静默删除。",
+                                "android":  "Windows-only范围决定，不登记Android设备/租约；历史原文保留",
+                                "downstream":  "本工程切片A04/A13独立通过后，可按DAG推进单作者且明确工程独占的制作；未验证共享租约前不得并发写同工程/GPU。阶段最终合格与生产Gate安全能力未获批准。"
+                            },
+    "contract_review":  "A02对本精确SHA独立G14后A00启动既有制作单。A02仅审契约，不参与候选制作；新产物由A04/A13独立验收。",
+    "scope_change":  {
+                         "previous_version":  "T03-contract-v1-owner-deferred",
+                         "previous_sha256":  "d8feb47928806feb790650507e5950120fcf5dc7ab6485da93a818104e362eb5",
+                         "owner_comment":  "01a1bf62-a3a3-7b81-a07c-dd5b5a5bba97",
+                         "owner_text":  "这些是必须的吗 不是必须的就挂起",
+                         "interpretation":  "挂起非工程运行必要的基础设施选型；保留作者分离/独立验收/资源独占",
+                         "author":  "A00",
+                         "author_run":  "01a1bf63-75b0-7930-8212-6d52c356e7aa",
+                         "effective":  false,
+                         "requires":  "A02精确SHA G14后生效",
+                         "history_preserved":  true
+                     }
+}

@@ -1,0 +1,363 @@
+{
+  "task_id": "S1-T03",
+  "artifact_id": "T03-contract-v2-bootstrap-slice",
+  "idempotency_key": "T03-CONTRACT-V2-ACC-A02",
+  "issue_id": "01a1bf64-b82c-7200-b4dd-002078a15dc4",
+  "issue_identifier": "SHIP-40",
+  "producer_agent_uuid": "a2be22eb-d538-44a4-baff-ed18df4c19c7",
+  "producer_run_id": "01a1bf63-75b0-7930-8212-6d52c356e7aa",
+  "producer_role": "A00",
+  "reviewer_agent_uuid": "1e385681-ce16-4e44-9db3-c82ea8dcd2e4",
+  "reviewer_run_id": "01a1bf64-b852-7aab-8326-6e5baf4a8747",
+  "reviewer_role": "A02",
+  "candidate_commit": "NOT_APPLICABLE_NO_GIT",
+  "artifact_sha256": "10d8e06582d550a6c488efdb5a590d259c9ee4374ba349100709d50a222b44d0",
+  "spec_sha256": "870ee7637dee62bfea3f528c84193fb455a6cea1f00c87ffc798b9dae39f0215",
+  "test_version": "S1-T03-AC01@task_acceptance.json:910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+  "effective_model": "grok-4.7",
+  "effective_effort": "high",
+  "profile_id": "X_REVIEW",
+  "verdict": "PASS",
+  "signoff_scope": "G14有界可用性：精确SHA 10d8e06582d550a6c488efdb5a590d259c9ee4374ba349100709d50a222b44d0 的范围解释可以用于既有SHIP-38。只收口工程初始化与构建切片。不是Unity产物PASS，不是S1-T03-AC01全文ACCEPTED，不是父Issue Done，不是阶段最终PASS，也不是生产Gate、G10、G12或跨凭证共享租约PASS。",
+  "full_schema_pass_claimed": false,
+  "product_acceptance": "NOT_RUN",
+  "source_unchanged": true,
+  "gates_not_waived": true,
+  "dag_signoff": {
+    "id": "CHK-DAG-CONTROLLED",
+    "status": "PASS",
+    "decision": "允许受控单作者推进，拒绝通用Gate绕过。",
+    "starts_downstream_now": false,
+    "conditions": [
+      "A04与A13先对同一Windows构建切片独立PASS，UUID和Run与A14以及彼此不同，并实际取得该构建。",
+      "下一任务是冻结DAG后继，且其全部其他依赖已经独立通过。T04 CAT-02与SHIP-37继续BLOCKED。",
+      "同一时间只有一个作者。Unity与GPU独占。已有占用时后来的写入者停止，不并发写，不接管进程。",
+      "身份继续使用可追溯Multica UUID/Run和精确SHA。G10与G12生产实测保持NOT_RUN。",
+      "父Issue Done仍按冻结workflow_routing要求Gate PASS。本签核不提供该PASS。",
+      "每个下游任务仍要自己的契约G14和指定验收者。本签核不预批那些契约。"
+    ]
+  },
+  "schema_conformance": {
+    "schema_file_sha256": "fddd2ae49c8869e2b98ba52c1784cfb9ae60c6caaa6a72c920f9d2456db17305",
+    "structural_validation": "PASS",
+    "structural_error_count": 0,
+    "additional_properties_declared": false,
+    "expresses_owner_override_or_phased_acceptance": false,
+    "full_schema_pass_claimed": false,
+    "note": "必填字段、角色枚举、状态枚举和预算上下限通过。schema未声明owner_override、platform_scope、acceptance_override、scope_change，也未把additionalProperties设为false，因此不能判定分阶段口径。结构通过不是全schema签核。"
+  },
+  "bindings": {
+    "reviewed_attachment_id": "01a1bf65-3357-7228-8b35-822474c84b25",
+    "reviewed_filename": "T03-contract-v2-bootstrap-slice-reviewed-input.json",
+    "reviewed_bytes": 8792,
+    "reviewed_bom": false,
+    "contract_sha256": "10d8e06582d550a6c488efdb5a590d259c9ee4374ba349100709d50a222b44d0",
+    "draft_attachment_id": "01a1bf64-b817-74a2-83a9-35ccef5761af",
+    "draft_filename": "T03-contract-v2-bootstrap-slice.json",
+    "draft_sha256": "6ea7881641cd2e44fcbf55cfaa7b68c54d7d943a72153051b575460d041a5ae2",
+    "draft_bytes": 7936,
+    "draft_bound_as_input": false,
+    "previous_contract_sha256": "d8feb47928806feb790650507e5950120fcf5dc7ab6485da93a818104e362eb5",
+    "previous_contract_attachment": "01a1be11-9e49-75b5-93fd-ea6e5e1ea36c",
+    "previous_contract_bytes": 5900,
+    "previous_g14_issue": "SHIP-39",
+    "previous_g14_record_attachment": "01a1be1f-f2d2-73e4-948c-e109ba097a87",
+    "previous_g14_verdict": "PASS",
+    "previous_g14_scope": "只允许启动SHIP-38，其中4项DEFERRED_OWNER为BLOCKED，产品/Gate/租约/最终性能为NOT_RUN",
+    "specs_zip_attachment": "01a1be11-9e53-76e6-92c5-fc834a1c4624",
+    "specs_zip_sha256": "870ee7637dee62bfea3f528c84193fb455a6cea1f00c87ffc798b9dae39f0215",
+    "workflow_routing_sha256": "3d8daf5c49592adca7f77e3f2343d94c79fcc2c15019cbf02c19343f245715d1",
+    "task_acceptance_sha256": "910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+    "acceptance_gate_policy_sha256": "fd2305a093b83bbc9ca47f1a911ec4eef4931caf901a6b4457388052056f9b15",
+    "owner_comment_id": "01a1bf62-a3a3-7b81-a07c-dd5b5a5bba97",
+    "owner_comment_issue": "01a1be11-9ad2-72f4-b643-e716b16f3113",
+    "owner_comment_author_type": "member",
+    "owner_comment_author_id": "902a2d4d-b2eb-4a8d-b4bb-3373fd78e177",
+    "owner_comment_text": "这些是必须的吗  不是必须的就挂起",
+    "a14_comment_id": "01a1bf63-3671-7d98-91ec-516de601a252",
+    "a14_comment_author_id": "f22db727-a17b-473a-ba27-149945878372",
+    "reported_main_commit_not_candidate": "416629e6c94667a37e357b4d5eb26b2d49c42618",
+    "reported_source_attachment": "01a1bf5a-231f-7762-8c06-77b037777845",
+    "reported_evidence_attachment": "01a1bf5a-2339-74f2-bbeb-a0f06a9a7a13",
+    "ship38_issue_id": "01a1be11-9ad2-72f4-b643-e716b16f3113",
+    "fields_unchanged_from_v1": [
+      "task_id",
+      "title",
+      "producer_role",
+      "reviewer_roles",
+      "dependencies",
+      "allowed_paths",
+      "operation_permissions_ref",
+      "acceptance_ids",
+      "candidate_ref",
+      "budget",
+      "status",
+      "not_executed",
+      "producer_agent_uuid",
+      "reviewer_agent_uuids",
+      "owner_override",
+      "platform_scope",
+      "allowed_paths_note",
+      "inputs",
+      "contract_review"
+    ],
+    "fields_changed_from_v1": [
+      "goal",
+      "deliverables",
+      "acceptance_override",
+      "contract_version",
+      "scope_change"
+    ]
+  },
+  "checks": [
+    {
+      "id": "CHK-CONTRACT-BYTES",
+      "status": "PASS",
+      "evidence": [
+        "受审附件01a1bf65-3357-7228-8b35-822474c84b25，文件名T03-contract-v2-bootstrap-slice-reviewed-input.json。",
+        "本Run实测8792字节、无BOM，SHA256为10d8e06582d550a6c488efdb5a590d259c9ee4374ba349100709d50a222b44d0，与SHIP-40声明一致。",
+        "scope_change.effective为false。本Run未改该文件。"
+      ]
+    },
+    {
+      "id": "CHK-DRAFT-NOT-INPUT",
+      "status": "PASS",
+      "evidence": [
+        "较早附件01a1bf64-b817-74a2-83a9-35ccef5761af实测SHA256为6ea7881641cd2e44fcbf55cfaa7b68c54d7d943a72153051b575460d041a5ae2，7936字节。",
+        "该草稿缺少scope_change，按本单说明只保留历史，不绑定为本结论输入。"
+      ]
+    },
+    {
+      "id": "CHK-SCHEMA-STRUCTURE",
+      "status": "PASS",
+      "evidence": [
+        "对照task_contract.schema.json fddd2ae49c8869e2b98ba52c1784cfb9ae60c6caaa6a72c920f9d2456db17305。必填字段齐全。",
+        "producer_role=A14，reviewer_roles为A04与A13且不重复，status=BACKLOG，candidate_ref=null，预算2/240/null均在枚举和上下限内。",
+        "schema不能表达挂起和切片口径。full_schema_pass_claimed=false。"
+      ]
+    },
+    {
+      "id": "CHK-FROZEN-ROUTING",
+      "status": "PASS",
+      "evidence": [
+        "workflow_routing.json实测SHA256 3d8daf5c49592adca7f77e3f2343d94c79fcc2c15019cbf02c19343f245715d1，与规格包SHA256SUMS一致。implemented=false。",
+        "bootstrap写明T03由A04/A13独立检验后启用Gate；Gate未实现前使用平台可追溯身份；生产任务在T03通过后开始；不要求不存在的Gate批准自己的前置实现。",
+        "父Issue Done的条件仍是必需PASS且Gate校验通过。契约声明不改冻结原文，本Run也未改该文件。"
+      ]
+    },
+    {
+      "id": "CHK-V1-SHA",
+      "status": "PASS",
+      "evidence": [
+        "原契约附件01a1be11-9e49-75b5-93fd-ea6e5e1ea36c实测SHA256 d8feb47928806feb790650507e5950120fcf5dc7ab6485da93a818104e362eb5，5900字节。",
+        "v2的scope_change.previous_version与previous_sha256指向该契约。除goal、deliverables、acceptance_override、contract_version和新增scope_change外，其余字段与v1一致。"
+      ]
+    },
+    {
+      "id": "CHK-OWNER-COMMENT",
+      "status": "PASS",
+      "evidence": [
+        "SHIP-38评论01a1bf62-a3a3-7b81-a07c-dd5b5a5bba97，作者类型member，作者902a2d4d-b2eb-4a8d-b4bb-3373fd78e177，时间2026-11-09T08:17:55Z。",
+        "原文为“这些是必须的吗  不是必须的就挂起”，问号后是两个空格。",
+        "契约owner_text写成一个空格，句子相同。旧owner_override仍指向01a1be0f-ddc1-71c1-8b43-a90bc4e84b8d，没有覆盖上一次挂起决定。"
+      ]
+    },
+    {
+      "id": "CHK-A14-NECESSITY",
+      "status": "PASS",
+      "evidence": [
+        "A14回复01a1bf63-3671-7d98-91ec-516de601a252，作者f22db727-a17b-473a-ba27-149945878372。",
+        "原文确认独立公钥存储和常驻broker是A14选择的实现方案，不是Unity工程运行和继续开发游戏的前置。",
+        "同一回复要求保留审查身份、资源互斥、权限隔离和A04/A13独立验收，并写明现有夹具不能把T03报完成。",
+        "同一回复允许把生产Gate与共享租约隔离另列挂起，允许挂起安装包上传恢复，同时要求验收者实际取得构建。"
+      ]
+    },
+    {
+      "id": "CHK-EFFECTIVE-GUARD",
+      "status": "PASS",
+      "evidence": [
+        "scope_change.effective=false，requires为A02精确SHA G14后生效，author为A00，author_run为01a1bf63-75b0-7930-8212-6d52c356e7aa。",
+        "该Run属于A00 a2be22eb-d538-44a4-baff-ed18df4c19c7，位于SHIP-1，状态completed。",
+        "契约字节继续保持effective=false。本记录是该requires所指的G14，不另改契约字节。"
+      ]
+    },
+    {
+      "id": "CHK-AUTHOR-SEPARATION",
+      "status": "PASS",
+      "evidence": [
+        "契约作者A00 a2be22eb-d538-44a4-baff-ed18df4c19c7，Run 01a1bf63-75b0-7930-8212-6d52c356e7aa。",
+        "审查A02 1e385681-ce16-4e44-9db3-c82ea8dcd2e4，Run 01a1bf64-b852-7aab-8326-6e5baf4a8747。UUID与Run都不同。",
+        "制作角色A14 f22db727-a17b-473a-ba27-149945878372。产物验收A04 4702408e-ea84-463c-8697-4f083ab903ed与A13 44a5c3cb-185b-4b55-a0d1-a4f43449c0de。",
+        "contract_review写明A02只审契约，不参与候选制作。本Run未改契约、未制作Unity产物。"
+      ]
+    },
+    {
+      "id": "CHK-SLICE-ACCEPTABLE",
+      "status": "PASS",
+      "evidence": [
+        "required_now把工程版本锁、远端main与源码、干净构建启动、编译错误注入红与回滚绿、元数据与输入哈希、真实UUID/不同Run、A04/A13实际取件、单作者独占列为当前可观察项。",
+        "这些项可以独立于生产Gate部署和跨凭证broker单独取证。candidate_ref仍为null。",
+        "本条只确认契约允许独立验收该切片。本Run没有给任何构建候选PASS。"
+      ]
+    },
+    {
+      "id": "CHK-SUSPEND-SCOPE",
+      "status": "PASS",
+      "evidence": [
+        "deferred_not_pass新增生产Gate部署、受保护签核信任存储、跨凭证共享租约broker、G10/G12权限隔离实测、CI远端执行、安装包平台上传恢复，并要求保留BLOCKED/NOT_RUN或DEFERRED_OWNER。",
+        "信任存储、常驻broker、生产Gate和上传恢复与A14回复及owner“不是必须的就挂起”一致。远端CI不在v1 required_now中，冻结AC01也没有把远端CI绿作为T03条文；列入未通过项没有删除workflow_routing或acceptance_gate_policy。",
+        "该挂起没有把这些能力写成PASS，也没有从冻结文件删除原要求。"
+      ]
+    },
+    {
+      "id": "CHK-IDENTITY-RETAINED",
+      "status": "PASS",
+      "evidence": [
+        "goal保留可追溯Multica UUID/Run与精确SHA核对。",
+        "required_now保留元数据与输入哈希、真实作者/验收者UUID、不同Run，以及A04/A13实际取件。",
+        "交付物要求上传不可用时使用同机只读工作副本或可复现构建，并以实际取得为准，不以本地路径冒充已交付用户。",
+        "G10生产实测仍在deferred_not_pass，不因UUID字段存在而变成PASS。"
+      ]
+    },
+    {
+      "id": "CHK-RESOURCE-EXCLUSIVE",
+      "status": "PASS",
+      "evidence": [
+        "required_now要求本机Unity/GPU保持单一作者和独占，并禁止用合成租约测试冒充跨凭证权限隔离。",
+        "downstream写明未验证共享租约前不得并发写同工程/GPU。本签核把该句执行为：已有占用时后来的写入者停止，不接管进程。",
+        "交付物要求现有Gate/租约原语只作为开发侧夹具交接，未实测生产安全能力标BLOCKED/NOT_RUN。"
+      ]
+    },
+    {
+      "id": "CHK-DAG-CONTROLLED",
+      "status": "PASS",
+      "evidence": [
+        "明确签核：工程切片经A04与A13独立PASS后，可以按冻结DAG推进单作者且工程独占的制作。",
+        "该签核同时拒绝通用Gate绕过。父Issue Done仍要冻结路由中的Gate PASS；G10与G12保持NOT_RUN；下游任务不免除自己的契约审查和指定验收者。",
+        "T06、T07、T08、T10、T11等后继还依赖T05、T02或更早资产任务。其他依赖未独立通过时不得提前启动。T04 CAT-02与SHIP-37继续BLOCKED。",
+        "本审查本身不派发下游。切片独立PASS出现之前，不启动舰船、岛港或海水制作。"
+      ]
+    },
+    {
+      "id": "CHK-HISTORY-PRESERVED",
+      "status": "PASS",
+      "evidence": [
+        "owner_override.no_fail_overwritten与historical_requirements_preserved仍为true，deferred四项与v1相同。",
+        "not_authorized仍禁止把未测项目写成PASS或发布阶段最终合格结论。scope_change.history_preserved为true。",
+        "SHIP-39记录中的4项BLOCKED与产品/Gate/租约/最终性能NOT_RUN没有被本契约改成PASS。本Run未重写SHIP-9。"
+      ]
+    },
+    {
+      "id": "CHK-BUDGET-UNCHANGED",
+      "status": "PASS",
+      "evidence": [
+        "budget仍为max_repair_attempts 2、max_run_minutes 240、max_cost_cny null，与冻结S1-T03和v1相同。null不是0，也不是免费。",
+        "契约没有attempts_consumed或attempt_index归零字段。本签核不重置SHIP-38已消耗的业务返工次数，本Run也没有重数该次数。"
+      ]
+    },
+    {
+      "id": "CHK-PATHS-INPUTS-UNCHANGED",
+      "status": "PASS",
+      "evidence": [
+        "allowed_paths、inputs、platform_scope、allowed_paths_note与已签核v1字段一致，仍引用T02 SHA 22abc110927e155e5642d1dded7947306257525fd6a62861ca356c31edb9cfcb和接口e1f982b991fb2c95ea6b54981b5a99fb97d7242a020f3e844c4a3fd41e1942bb。",
+        "本Run没有重新下载T01、T02或图4附件；结论只确认v2沿用了已签核v1的同一组引用。"
+      ]
+    },
+    {
+      "id": "CHK-DEFERRED-MEMORY",
+      "status": "BLOCKED",
+      "evidence": [
+        "DEFERRED_OWNER。Windows内存计数器、对象、峰值和增长规则仍未冻结，memory_final为null。",
+        "沿用SHIP-39结论。不阻塞工程切片。本项不是PASS。"
+      ]
+    },
+    {
+      "id": "CHK-DEFERRED-QUALITY",
+      "status": "BLOCKED",
+      "evidence": [
+        "DEFERRED_OWNER。最终低中画质参数未冻结，quality_final为null。",
+        "PROVISIONAL默认配置不能称为最终画质签核。本项不是PASS。"
+      ]
+    },
+    {
+      "id": "CHK-DEFERRED-ASPECT-20-9",
+      "status": "BLOCKED",
+      "evidence": [
+        "DEFERRED_OWNER。20:9最终模拟或N/A仍未决定，aspect_20_9_final为null。",
+        "16:9与4:3测试定义仍保留。本项不是PASS。"
+      ]
+    },
+    {
+      "id": "CHK-T04-CAT02-SHIP37",
+      "status": "BLOCKED",
+      "evidence": [
+        "DEFERRED_OWNER。T04 CAT-02岛屿外围操作定义与SHIP-37剩余修复及独立验收继续挂起。",
+        "本签核不启动T04，也不把该项折算为PASS。"
+      ]
+    },
+    {
+      "id": "CHK-PRODUCT-CANDIDATE",
+      "status": "NOT_RUN",
+      "evidence": [
+        "本Run未打开Unity工程，未做干净检出构建，未注入编译错误，未核对启动画面。",
+        "issue所述main 416629e6c94667a37e357b4d5eb26b2d49c42618及附件01a1bf5a-231f-7762-8c06-77b037777845、01a1bf5a-2339-74f2-bbeb-a0f06a9a7a13不是本审查的候选，不构成独立PASS。",
+        "契约candidate_ref为null。"
+      ]
+    },
+    {
+      "id": "CHK-GATE-EXECUTION",
+      "status": "NOT_RUN",
+      "evidence": [
+        "生产Gate部署和身份/哈希/必需项负例没有在本Run执行。",
+        "开发侧夹具即使已经存在，也不能记为生产Gate PASS。冻结negative_probes文件未被删除，执行状态仍是NOT_RUN。"
+      ]
+    },
+    {
+      "id": "CHK-LEASE-ISOLATION-EXECUTION",
+      "status": "NOT_RUN",
+      "evidence": [
+        "未实测受保护签核信任存储、跨凭证共享租约broker、G10或G12。",
+        "单作者独占规则是未实测期间的安全约束，不是隔离能力PASS。"
+      ]
+    },
+    {
+      "id": "CHK-CI-REMOTE",
+      "status": "NOT_RUN",
+      "evidence": [
+        "本Run未收取远端CI结果。",
+        "挂起远端CI只表示它不是工程切片前置，不表示CI工作流通过。"
+      ]
+    },
+    {
+      "id": "CHK-PLATFORM-UPLOAD",
+      "status": "NOT_RUN",
+      "evidence": [
+        "本Run未验证安装包平台上传，也未代替A04或A13取得Windows构建。",
+        "上传恢复可以挂起。实际取件仍是切片验收的必做项。"
+      ]
+    },
+    {
+      "id": "CHK-A04-A13-PICKUP",
+      "status": "NOT_RUN",
+      "evidence": [
+        "契约保留A04与A13实际取件。本Run没有执行该取件，也没有创建这两个验收单。"
+      ]
+    },
+    {
+      "id": "CHK-FINAL-PERFORMANCE",
+      "status": "NOT_RUN",
+      "evidence": [
+        "1920x1080、30fps、p95<=33.3ms仍是目标。本Run未测量p95，未采集最终性能样本。",
+        "final measurement deferred。目标保留不是测量PASS。"
+      ]
+    }
+  ],
+  "evidence_paths": [
+    "T03-contract-v2-acc-a02-review-record.json"
+  ],
+  "not_done": [
+    "未修改受审契约、草稿、冻结规格或SHIP-38。",
+    "未派发A14、A04、A13或下游制作任务。",
+    "未把main 416629e6c94667a37e357b4d5eb26b2d49c42618验收为候选。"
+  ]
+}
