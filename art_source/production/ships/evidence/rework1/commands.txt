@@ -1,0 +1,34 @@
+T06-REWORK-1 development commands. Exit code 0 is not an acceptance result.
+
+Blender 5.2.3 LTS build e13b728c6880
+command: blender.exe --background --python art_source/production/ships/generate_ships.py
+env: T06_SKIP_RENDER=1
+start_utc: 2026-11-09T15:43:02.7958838Z
+end_utc: 2026-11-09T15:43:06.4069895Z
+process_exit: 0
+stderr: DeprecationWarning for Material.use_nodes and World.use_nodes. PowerShell reported NativeCommandError because warnings were on stderr. The process exit code was 0 and the script printed WROTE for the blend file.
+stdout_log: generate_ships.log
+
+Unity 6000.6.6f1 (d20c9ac777da)
+command: Unity.exe -batchmode -quit -projectPath <short junction to this checkout> -executeMethod ReworkMeasure.Run -logFile unity-editor.log
+nographics: false
+window: Hidden
+start_utc: 2026-11-09T15:49:55.4694200Z
+end_utc: 2026-11-09T15:52:11.5922485Z
+process_exit: 0
+log_marker: REWORK1_MEASURE_OK
+quality: PC
+lod_bias: 2
+graphics: AMD Radeon(TM) Graphics, Direct3D 11.0 [level 11.1]
+capture: empty scene, solid RGB(115,158,184), no ground, no skybox, no ship atlas on the environment
+
+Unity waterline pass
+command: Unity.exe -batchmode -quit -executeMethod ReworkMeasure.Waterline -logFile unity-waterline.log
+start_utc: 2026-11-09T15:54:55.4034409Z
+end_utc: 2026-11-09T15:55:17.7460985Z
+process_exit: 0
+log_marker: REWORK1_WATERLINE_OK
+
+The measurement script stayed in the isolated Unity project and is not part of this commit.
+An incidental rewrite of UniversalRenderPipelineGlobalSettings.asset was reverted and is not in this commit.
+Hub serve process was not stopped. No owner Editor was attached to the project.

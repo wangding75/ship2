@@ -2,12 +2,20 @@
 
 这是制作候选，不是验收结论。视觉由 A07 看，工程约束由 A04 看。作者与验收者不是同一次 Run。
 
+## T06-REWORK-1 轴向
+
+上一候选 `354d2e5340e3edae62ea2cd993501b25aef59799` 在身份 ShipRoot 下尖船首位于 Unity -Z。原因是生成器把船首放在网格局部 +Y，而预制件网格子物体保留 FBX 的 Rx(-90)。该旋转把局部 +Y 送到世界 -Z。WakeSocket 仍是 ShipRoot 的子物体，局部 z 为 -7.4 / -11.2 / -15.2，于是落在船首。
+
+本轮只改网格局部长度轴：船首改存到局部 -Y。Rx(-90) 之后世界 +Z 是船首，世界 -Z 是方尾。WakeSocket、VisualRoot、胶囊和预制件 GUID / 网格 fileID 都没有改。没有把 ShipRoot 和 WakeSocket 一起旋转。重新运行生成器会保持这个映射。
+
+开发侧测量在 `art_source/production/ships/evidence/rework1/`。那不是独立验收。15° 转台覆盖 0 到 345，每种船每个 LOD 各 24 张。没有看连续动画，中间角度不算逐帧通过，也没有新的角度或像素阈值。旧目录 `evidence/turntable` 和 `evidence/unity-turntable` 仍是上一候选的图，保留，不拿来当本轮通过。
+
 ## 工具与基线
 
 - Blender 5.2.3 LTS，构建哈希 e13b728c6880。源文件 `art_source/production/ships/source/S1_T06_ships.blend`，生成脚本 `art_source/production/ships/generate_ships.py`。
 - Unity 6000.6.6f1（d20c9ac777da），URP Lit。导入在短路径隔离副本里用 batchmode 完成，没有把编辑器脚本或测试场景提交进仓库。
-- 源码基线 `bddd5441777b521045edd0549958704b23d82036`。作者 Run `01a1bfa4-f724-7e10-9bff-6e5f96c04ece`。实际模型 grok-4.7/high。
-- 坐标：Unity +X 右舷，+Y 向上，+Z 船首。枢轴在水线中心，水线 Y=0。
+- 源码基线 `bddd5441777b521045edd0549958704b23d82036`。本轮作者 Run `01a1c0f0-eb65-70db-84ab-237f2f437de3`，UUID `913948fc-cfc0-41f2-a6fd-c7f661450afd`。实际模型 grok-4.7/high。上一制作 Run `01a1bfa4-f724-7e10-9bff-6e5f96c04ece` 保留在历史提交里。
+- 坐标：Unity +X 右舷，+Y 向上，+Z 船首。枢轴在水线中心，水线 Y=0。网格局部船首是 -Y，只为抵消预制件上的 Rx(-90)。
 
 ## 冻结数值与生产选择
 
@@ -51,7 +59,7 @@ LOD 屏幕相对高度按建议相机高度 50 m 和 140 m、俯角 55°、假�
 
 ## Unity 导入
 
-FBX 使用 `globalScale=1`、`useFileScale=true`、`bakeAxisConversion=false`。导入包围盒与冻结长、宽、吃水加主桅高一致，分数 0。Prefab 根名称是 ShipRoot。网格子物体保留 FBX 根上的轴向校正旋转，清掉该旋转会把船体放到侧面。
+FBX 使用 `globalScale=1`、`useFileScale=true`、`bakeAxisConversion=false`，导出仍是 `axis_forward=Y`、`axis_up=Z`。导入包围盒与冻结长、宽、吃水加主桅高一致。Prefab 根名称是 ShipRoot。网格子物体保留 Rx(-90)，清掉该旋转会把船体放到侧面。船首方向由网格局部 -Y 配合这个旋转得到，不靠再转根节点。
 
 ## 没有改成通过的事项
 

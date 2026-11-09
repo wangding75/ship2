@@ -1,0 +1,90 @@
+Working tree versus manifest hash.
+Manifest hash for .png .fbx .blend is the raw file bytes. Those files are not newline-normalized.
+Manifest hash for other files is SHA256 after converting CRLF to LF, matching .gitattributes *.json eol=lf and text=auto storage.
+A raw hash is listed below only when it differs from the LF hash. Do not treat the two as the same value.
+
+art_source/production/.gitattributes
+  working_tree_raw_sha256: 1a09d6dc67f299935d0fe242a9ebd87958bfe8151908c80ffa4847fae71edbb5
+  lf_manifest_sha256: b3e4e17b1d5c3fc358db4b6a0158de3418c207ad1830d0f6de19a8c9e7f41a24
+  crlf_count: 3
+  bytes: 44
+art_source/production/ships/S1_T06_production_note.md
+  working_tree_raw_sha256: 6fcffc228ae590f6a2f6b84100ae21587e03b0ce9d94bab94fd910effd936dd0
+  lf_manifest_sha256: 68e47b9b9a261ccaf59a6d4c838d61905e40b915cde92d33ae19b615963c772e
+  crlf_count: 66
+  bytes: 4947
+art_source/production/ships/evidence/mesh_metrics.json
+  working_tree_raw_sha256: c066946bd9d5e9b735bf082d330e80b183ac713e43ea0c364a9e1f6d6449d379
+  lf_manifest_sha256: e3ba4db14e7237e257821f77f5d368a310445f51b30af86706a6be4ccd470839
+  crlf_count: 901
+  bytes: 23069
+art_source/production/ships/generate_ships.py
+  working_tree_raw_sha256: 19ca255d08870ac4ae030a0a0964575e96524b23efac8df3be9fc41c2ffa62cb
+  lf_manifest_sha256: 80bc97dea2363c7a6608cff4cd4f367ee65fb43936e42332758a8731f0f4d6f5
+  crlf_count: 1244
+  bytes: 48057
+client/UnityProject/Assets/Game/Art/.gitattributes
+  working_tree_raw_sha256: 08af1204d00bf21f1ad1d2f669611206c57d1618b451c13bcadbb5fb44d96544
+  lf_manifest_sha256: a452197c08e12f1a0e145bda9f034c37e602a3c558fd128c517ff7240ab4ded9
+  crlf_count: 2
+  bytes: 28
+client/UnityProject/Assets/Game/Art/Ships/Materials/M_Ship_Hull.mat
+  working_tree_raw_sha256: 6bfa3a3c0512fcbdf39c62db9f2108d9eddc9ddc62be501e3cc8580328168172
+  lf_manifest_sha256: bbbb3d2d4b3d20c88803a2567f17868943ed7a766a501973c15bd0a12f2a3ce8
+  crlf_count: 139
+  bytes: 4141
+client/UnityProject/Assets/Game/Art/Ships/Materials/M_Ship_Hull_LOD2.mat
+  working_tree_raw_sha256: 11faec61afe335144c671450f1c720092dc02744eb1a2c1ef06a8d0407f127d0
+  lf_manifest_sha256: a4021f8daa8b693da3b3052c68468c7565f3ac56d5f89a072c2d45e9a7871c7b
+  crlf_count: 139
+  bytes: 4146
+client/UnityProject/Assets/Game/Art/Ships/Materials/M_Ship_Sail.mat
+  working_tree_raw_sha256: fc88aeccbc68f84800514d50dd3767668c76cc3a8ae898409541a57b93f0ed6c
+  lf_manifest_sha256: 356d0e1de41a85f12a21c7cd4d4611963d8f20745f61bc00320c80f6b94bb39f
+  crlf_count: 139
+  bytes: 4142
+client/UnityProject/Assets/Game/Art/Ships/Materials/M_Ship_Sail_LOD2.mat
+  working_tree_raw_sha256: e794d51f8afbd953bad79319a538f2e92a61df86e6dd94d3b9a91ba9f931e4dc
+  lf_manifest_sha256: 29e7148e2e6d68130d2c4c92d43591910444c1eae6117b8e66d03c39d0d9431f
+  crlf_count: 139
+  bytes: 4146
+client/UnityProject/Assets/Game/Art/Ships/Materials/M_Ship_Trim.mat
+  working_tree_raw_sha256: 889640966f03c86d66c2b8b1d6cf80cc699218fbfb17aa2572ee70fd742d1a24
+  lf_manifest_sha256: ed42095e1cf5f02ed9f5cae92f8bb5297310c2f0df15b03db94b0ed82ac9adfd
+  crlf_count: 139
+  bytes: 4141
+client/UnityProject/Assets/Game/Art/Ships/Materials/M_Ship_Trim_LOD2.mat
+  working_tree_raw_sha256: 984abfd3dfefe6aed25c7860987eb42ab20c5400e3f2567244a50dbacd10783d
+  lf_manifest_sha256: 8edb6c4764bca5cf1af1e91bc3e6623d060159c3ec9f11c350300501bd39c198
+  crlf_count: 139
+  bytes: 4146
+client/UnityProject/Assets/Game/Art/Ships/Prefabs/SHIP-H/ShipRoot.prefab
+  working_tree_raw_sha256: ed5b41c4b55c33fbf93ce46f2ef3a4d4de61126947313c0dafab6590f88c62b8
+  lf_manifest_sha256: d323e05e0e0377f441e4e591752d3f97c4a593d05168c38d5fcec428b7c931e9
+  crlf_count: 1103
+  bytes: 33266
+client/UnityProject/Assets/Game/Art/Ships/Prefabs/SHIP-L/ShipRoot.prefab
+  working_tree_raw_sha256: 2a61fdbd7b880ed332a2146d1e8726842da20df0591bc1f4c37e0e96966d6c6d
+  lf_manifest_sha256: b050fdc1baf429aaa339a3b088c4e54132dfd6317a2f6a07d55d52c054aae345
+  crlf_count: 1103
+  bytes: 33266
+client/UnityProject/Assets/Game/Art/Ships/Prefabs/SHIP-M/ShipRoot.prefab
+  working_tree_raw_sha256: 620025d991aefec6e95bc42060920e9d4899805c4cedf7aca3cfd6c8eb65840c
+  lf_manifest_sha256: 27e8dc45801a9356f1d763434ad05d5369e3338e5135ba5233a72247060c8a46
+  crlf_count: 1103
+  bytes: 33273
+art_source/production/ships/evidence/rework1/unity-command.txt
+  working_tree_raw_sha256: 7b890528e1ea93f9d3554b4a6250440a248176354907220aa9012bb69fd708bf
+  lf_manifest_sha256: 1931c7306473e4e2fafc470c25888047c6fe4bd25e922770ee9aca1f6c122625
+  crlf_count: 2
+  bytes: 475
+art_source/production/ships/evidence/rework1/unity-editor.log
+  working_tree_raw_sha256: cbeb4a6674fad97d6c9b1d80037a61abfa3c9f51a23204cde4799afc2440c7a0
+  lf_manifest_sha256: 128bce40437dabf02cabcd873fe71b9eb731d07831f28122b1469e87581a7700
+  crlf_count: 8351
+  bytes: 1771896
+art_source/production/ships/evidence/rework1/unity-waterline.log
+  working_tree_raw_sha256: 8bf157b78cdea7621b7f8f54eb7bde7362b3184a62555e827013c273c2e70878
+  lf_manifest_sha256: 981efbf598ae7cd092cc7ac63da8ecba46fd919a0617efd33690ba2e6ba5958f
+  crlf_count: 386
+  bytes: 26651

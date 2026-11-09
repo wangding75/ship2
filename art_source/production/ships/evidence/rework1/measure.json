@@ -1,0 +1,170 @@
+{
+  "capture_environment": "empty scene, solid clear RGB(115,158,184), no ground, no skybox, flat ambient, directional light only. No ship atlas in the environment. Waterline bar and wake cube are measurement aids and are hidden during the turntable.",
+  "unity": "6000.6.6f1",
+  "quality": "PC",
+  "lod_bias": 2,
+  "graphics_device": "AMD Radeon(TM) Graphics",
+  "graphics_api": "Direct3D 11.0 [level 11.1]",
+  "fov_recorded_not_a_threshold": 50,
+  "resolution": [1024, 576],
+  "turntable_camera": "yaw 0 places the camera on -Z looking toward +Z, so the +Z bow faces the camera. Yaw increases toward +X. 15 degree steps from 0 through 345. This is sampled coverage, not a continuous-animation pass and not a pixel threshold.",
+  "models": [
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD0.fbx", "mesh": "Hull", "guid": "a204abacfb353ab43b9171a37eda3b69", "local_file_id": -6989282167128152099, "triangles": 588, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD0.fbx", "mesh": "Masts", "guid": "a204abacfb353ab43b9171a37eda3b69", "local_file_id": 6348277151667544631, "triangles": 348, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD0.fbx", "mesh": "Sails", "guid": "a204abacfb353ab43b9171a37eda3b69", "local_file_id": -9151976083251152156, "triangles": 396, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD1.fbx", "mesh": "Hull", "guid": "502dff4725618a04193e2269d60a6d22", "local_file_id": -6989282167128152099, "triangles": 276, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD1.fbx", "mesh": "Masts", "guid": "502dff4725618a04193e2269d60a6d22", "local_file_id": 6348277151667544631, "triangles": 64, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD1.fbx", "mesh": "Sails", "guid": "502dff4725618a04193e2269d60a6d22", "local_file_id": -9151976083251152156, "triangles": 124, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD2.fbx", "mesh": "Hull", "guid": "5232096f1962d6947ae618f4a2118a97", "local_file_id": -6989282167128152099, "triangles": 112, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD2.fbx", "mesh": "Masts", "guid": "5232096f1962d6947ae618f4a2118a97", "local_file_id": 6348277151667544631, "triangles": 60, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-L_LOD2.fbx", "mesh": "Sails", "guid": "5232096f1962d6947ae618f4a2118a97", "local_file_id": -9151976083251152156, "triangles": 72, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD0.fbx", "mesh": "Hull", "guid": "7c784268a8a93f845a23f40f6803865f", "local_file_id": -6989282167128152099, "triangles": 716, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD0.fbx", "mesh": "Sails", "guid": "7c784268a8a93f845a23f40f6803865f", "local_file_id": -9151976083251152156, "triangles": 984, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD0.fbx", "mesh": "Masts", "guid": "7c784268a8a93f845a23f40f6803865f", "local_file_id": 6348277151667544631, "triangles": 540, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD1.fbx", "mesh": "Masts", "guid": "a5b8bea3c7ff20e478110fd6e95fbd96", "local_file_id": 6348277151667544631, "triangles": 116, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD1.fbx", "mesh": "Hull", "guid": "a5b8bea3c7ff20e478110fd6e95fbd96", "local_file_id": -6989282167128152099, "triangles": 276, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD1.fbx", "mesh": "Sails", "guid": "a5b8bea3c7ff20e478110fd6e95fbd96", "local_file_id": -9151976083251152156, "triangles": 128, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD2.fbx", "mesh": "Sails", "guid": "ffa65e1a4b194364bb011e70fc580668", "local_file_id": -9151976083251152156, "triangles": 24, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD2.fbx", "mesh": "Masts", "guid": "ffa65e1a4b194364bb011e70fc580668", "local_file_id": 6348277151667544631, "triangles": 76, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-M_LOD2.fbx", "mesh": "Hull", "guid": "ffa65e1a4b194364bb011e70fc580668", "local_file_id": -6989282167128152099, "triangles": 112, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD0.fbx", "mesh": "Hull", "guid": "7774bfa928564104996d3820fa4fa725", "local_file_id": -6989282167128152099, "triangles": 948, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD0.fbx", "mesh": "Sails", "guid": "7774bfa928564104996d3820fa4fa725", "local_file_id": -9151976083251152156, "triangles": 1476, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD0.fbx", "mesh": "Masts", "guid": "7774bfa928564104996d3820fa4fa725", "local_file_id": 6348277151667544631, "triangles": 708, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD1.fbx", "mesh": "Masts", "guid": "b8f8f800fded9144996dfc0101659839", "local_file_id": 6348277151667544631, "triangles": 168, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD1.fbx", "mesh": "Hull", "guid": "b8f8f800fded9144996dfc0101659839", "local_file_id": -6989282167128152099, "triangles": 348, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD1.fbx", "mesh": "Sails", "guid": "b8f8f800fded9144996dfc0101659839", "local_file_id": -9151976083251152156, "triangles": 360, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD2.fbx", "mesh": "Sails", "guid": "5d45d0b771b78764981ff80c5248b0a3", "local_file_id": -9151976083251152156, "triangles": 36, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD2.fbx", "mesh": "Hull", "guid": "5d45d0b771b78764981ff80c5248b0a3", "local_file_id": -6989282167128152099, "triangles": 112, "is_readable": false},
+    {"path": "Assets/Game/Art/Ships/Models/SHIP-H_LOD2.fbx", "mesh": "Masts", "guid": "5d45d0b771b78764981ff80c5248b0a3", "local_file_id": 6348277151667544631, "triangles": 108, "is_readable": false}
+  ],
+  "ships": [
+    {
+      "id": "SHIP-L",
+      "root": {"name": "ShipRoot", "local_position": [0,0,0], "local_euler": [0,0,0], "lossy_scale": [1,1,1]},
+      "visual_root_euler": [0,0,0],
+      "wake_world": [0,0,-7.4], "wake_local": [0,0,-7.4], "wake_parent": "ShipRoot", "wake_lossy_scale": [1,1,1],
+      "capsule": {"radius": 4.5, "height": 16, "direction": 2, "center_world": [0,0,0], "full_extent_z": [-8,8], "lossy_scale": [1,1,1]},
+      "lod_group": {"size": 16, "local_reference": [0,6.4,0], "screen_relative": [0.227, 0.0811, 0.01]},
+      "lods": [
+        {
+          "lod": 0,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-2,-1.2,-8], "max": [2,14,8], "size": [4,15.2,16]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2,-1.2,-8], "bounds_max": [2,1.655,8]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-1.8765,-0.93,-8], "bounds_max": [1.8765,14,7.0725]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-0.5694,1.2875,-6.122], "bounds_max": [0.0152,11.7652,7.92]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 455, "z_min": -8, "z_max": 8, "plus_z_x_spread": 0.0361, "minus_z_x_spread": 0.9224, "y_min": -1.2, "y_max": 1.655, "x_min": -2, "x_max": 2},
+          "sails_lod0": {"readable": true, "vertices": 436, "x_span": 0.5846, "z_span": 14.042, "z_min": -6.122, "z_max": 7.92, "cutter_vertices_forward_of_mast": 279, "cutter_vertices_aft_of_mast": 157, "mast_z_reference": 1.278},
+          "end_views": {"from_plus_z": "SHIP-L_LOD0_from_plusZ.png", "from_minus_z": "SHIP-L_LOD0_from_minusZ.png", "side": "SHIP-L_LOD0_side.png"},
+          "turntable_15_deg": ["SHIP-L_LOD0_yaw000.png", "SHIP-L_LOD0_yaw015.png", "SHIP-L_LOD0_yaw030.png", "SHIP-L_LOD0_yaw045.png", "SHIP-L_LOD0_yaw060.png", "SHIP-L_LOD0_yaw075.png", "SHIP-L_LOD0_yaw090.png", "SHIP-L_LOD0_yaw105.png", "SHIP-L_LOD0_yaw120.png", "SHIP-L_LOD0_yaw135.png", "SHIP-L_LOD0_yaw150.png", "SHIP-L_LOD0_yaw165.png", "SHIP-L_LOD0_yaw180.png", "SHIP-L_LOD0_yaw195.png", "SHIP-L_LOD0_yaw210.png", "SHIP-L_LOD0_yaw225.png", "SHIP-L_LOD0_yaw240.png", "SHIP-L_LOD0_yaw255.png", "SHIP-L_LOD0_yaw270.png", "SHIP-L_LOD0_yaw285.png", "SHIP-L_LOD0_yaw300.png", "SHIP-L_LOD0_yaw315.png", "SHIP-L_LOD0_yaw330.png", "SHIP-L_LOD0_yaw345.png"]
+        },
+        {
+          "lod": 1,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-2,-1.2,-8], "max": [2,14,8], "size": [4,15.2,16]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2,-1.2,-8], "bounds_max": [2,1.655,8]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-0.105,-0.93,-7.96], "bounds_max": [0.105,14,1.367]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-0.5641,1.2875,-6.122], "bounds_max": [0.0151,11.7652,7.92]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 256, "z_min": -8, "z_max": 8, "plus_z_x_spread": 0.036, "minus_z_x_spread": 0.92, "y_min": -1.2, "y_max": 1.655, "x_min": -2, "x_max": 2},
+          "end_views": {"from_plus_z": "SHIP-L_LOD1_from_plusZ.png", "from_minus_z": "SHIP-L_LOD1_from_minusZ.png", "side": "SHIP-L_LOD1_side.png"},
+          "turntable_15_deg": ["SHIP-L_LOD1_yaw000.png", "SHIP-L_LOD1_yaw015.png", "SHIP-L_LOD1_yaw030.png", "SHIP-L_LOD1_yaw045.png", "SHIP-L_LOD1_yaw060.png", "SHIP-L_LOD1_yaw075.png", "SHIP-L_LOD1_yaw090.png", "SHIP-L_LOD1_yaw105.png", "SHIP-L_LOD1_yaw120.png", "SHIP-L_LOD1_yaw135.png", "SHIP-L_LOD1_yaw150.png", "SHIP-L_LOD1_yaw165.png", "SHIP-L_LOD1_yaw180.png", "SHIP-L_LOD1_yaw195.png", "SHIP-L_LOD1_yaw210.png", "SHIP-L_LOD1_yaw225.png", "SHIP-L_LOD1_yaw240.png", "SHIP-L_LOD1_yaw255.png", "SHIP-L_LOD1_yaw270.png", "SHIP-L_LOD1_yaw285.png", "SHIP-L_LOD1_yaw300.png", "SHIP-L_LOD1_yaw315.png", "SHIP-L_LOD1_yaw330.png", "SHIP-L_LOD1_yaw345.png"]
+        },
+        {
+          "lod": 2,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-2,-1.2,-8], "max": [2,14,8], "size": [4,15.2,16]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2,-1.2,-8], "bounds_max": [2,1.655,8]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-0.1106,-0.93,-7.96], "bounds_max": [0.1106,14,1.388]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-0.5652,1.2875,-6.122], "bounds_max": [0.0151,11.7652,7.92]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 122, "z_min": -8, "z_max": 8, "plus_z_x_spread": 0.036, "minus_z_x_spread": 0.92, "y_min": -1.2, "y_max": 1.655, "x_min": -2, "x_max": 2},
+          "end_views": {"from_plus_z": "SHIP-L_LOD2_from_plusZ.png", "from_minus_z": "SHIP-L_LOD2_from_minusZ.png", "side": "SHIP-L_LOD2_side.png"},
+          "turntable_15_deg": ["SHIP-L_LOD2_yaw000.png", "SHIP-L_LOD2_yaw015.png", "SHIP-L_LOD2_yaw030.png", "SHIP-L_LOD2_yaw045.png", "SHIP-L_LOD2_yaw060.png", "SHIP-L_LOD2_yaw075.png", "SHIP-L_LOD2_yaw090.png", "SHIP-L_LOD2_yaw105.png", "SHIP-L_LOD2_yaw120.png", "SHIP-L_LOD2_yaw135.png", "SHIP-L_LOD2_yaw150.png", "SHIP-L_LOD2_yaw165.png", "SHIP-L_LOD2_yaw180.png", "SHIP-L_LOD2_yaw195.png", "SHIP-L_LOD2_yaw210.png", "SHIP-L_LOD2_yaw225.png", "SHIP-L_LOD2_yaw240.png", "SHIP-L_LOD2_yaw255.png", "SHIP-L_LOD2_yaw270.png", "SHIP-L_LOD2_yaw285.png", "SHIP-L_LOD2_yaw300.png", "SHIP-L_LOD2_yaw315.png", "SHIP-L_LOD2_yaw330.png", "SHIP-L_LOD2_yaw345.png"]
+        }
+      ],
+      "lod_probe": {"note": "Temporary unlit tints on the instance only. Prefab materials are not saved. Editor camera, not a player build.", "samples": [{"distance_m": 30, "screen_relative_before_bias": 0.5719, "file": "SHIP-L_auto_030.png", "green": 8936, "blue": 0, "red": 0}, {"distance_m": 90, "screen_relative_before_bias": 0.1906, "file": "SHIP-L_auto_090.png", "green": 765, "blue": 0, "red": 0}, {"distance_m": 220, "screen_relative_before_bias": 0.078, "file": "SHIP-L_auto_220.png", "green": 0, "blue": 99, "red": 0}, {"distance_m": 500, "screen_relative_before_bias": 0.0343, "file": "SHIP-L_auto_500.png", "green": 0, "blue": 0, "red": 16}], "tints": ["LOD0_green", "LOD1_blue", "LOD2_red"]}
+    },
+    {
+      "id": "SHIP-M",
+      "root": {"name": "ShipRoot", "local_position": [0,0,0], "local_euler": [0,0,0], "lossy_scale": [1,1,1]},
+      "visual_root_euler": [0,0,0],
+      "wake_world": [0,0,-11.2], "wake_local": [0,0,-11.2], "wake_parent": "ShipRoot", "wake_lossy_scale": [1,1,1],
+      "capsule": {"radius": 6.5, "height": 24, "direction": 2, "center_world": [0,0,0], "full_extent_z": [-12,12], "lossy_scale": [1,1,1]},
+      "lod_group": {"size": 24, "local_reference": [0,8.2,0], "screen_relative": [0.3405, 0.1216, 0.01]},
+      "lods": [
+        {
+          "lod": 0,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-2.8,-1.6,-12], "max": [2.8,18,12], "size": [5.6,19.6,24]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.8,-1.6,-12], "bounds_max": [2.8,2.035,12]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.6129,-1.24,-12], "bounds_max": [2.6129,18,10.87]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.3797,4.2665,-2.5675], "bounds_max": [2.3797,14.4175,4.5414]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 531, "z_min": -12, "z_max": 12, "plus_z_x_spread": 0.0505, "minus_z_x_spread": 1.2902, "y_min": -1.6, "y_max": 2.035, "x_min": -2.8, "x_max": 2.8},
+          "sails_lod0": {"readable": true, "vertices": 1032, "x_span": 4.7593, "z_span": 7.1089, "z_min": -2.5675, "z_max": 4.5414, "cutter_vertices_forward_of_mast": 0, "cutter_vertices_aft_of_mast": 0, "mast_z_reference": 0},
+          "end_views": {"from_plus_z": "SHIP-M_LOD0_from_plusZ.png", "from_minus_z": "SHIP-M_LOD0_from_minusZ.png", "side": "SHIP-M_LOD0_side.png"},
+          "turntable_15_deg": ["SHIP-M_LOD0_yaw000.png", "SHIP-M_LOD0_yaw015.png", "SHIP-M_LOD0_yaw030.png", "SHIP-M_LOD0_yaw045.png", "SHIP-M_LOD0_yaw060.png", "SHIP-M_LOD0_yaw075.png", "SHIP-M_LOD0_yaw090.png", "SHIP-M_LOD0_yaw105.png", "SHIP-M_LOD0_yaw120.png", "SHIP-M_LOD0_yaw135.png", "SHIP-M_LOD0_yaw150.png", "SHIP-M_LOD0_yaw165.png", "SHIP-M_LOD0_yaw180.png", "SHIP-M_LOD0_yaw195.png", "SHIP-M_LOD0_yaw210.png", "SHIP-M_LOD0_yaw225.png", "SHIP-M_LOD0_yaw240.png", "SHIP-M_LOD0_yaw255.png", "SHIP-M_LOD0_yaw270.png", "SHIP-M_LOD0_yaw285.png", "SHIP-M_LOD0_yaw300.png", "SHIP-M_LOD0_yaw315.png", "SHIP-M_LOD0_yaw330.png", "SHIP-M_LOD0_yaw345.png"]
+        },
+        {
+          "lod": 1,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-2.8,-1.6,-12], "max": [2.8,18,12], "size": [5.6,19.6,24]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.8,-1.6,-12], "bounds_max": [2.8,2.035,12]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.36,-1.24,-11.96], "bounds_max": [2.36,18,4.3133]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.36,5.2385,-2.5675], "bounds_max": [2.36,13.3375,4.5555]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 256, "z_min": -12, "z_max": 12, "plus_z_x_spread": 0.0504, "minus_z_x_spread": 1.288, "y_min": -1.6, "y_max": 2.035, "x_min": -2.8, "x_max": 2.8},
+          "end_views": {"from_plus_z": "SHIP-M_LOD1_from_plusZ.png", "from_minus_z": "SHIP-M_LOD1_from_minusZ.png", "side": "SHIP-M_LOD1_side.png"},
+          "turntable_15_deg": ["SHIP-M_LOD1_yaw000.png", "SHIP-M_LOD1_yaw015.png", "SHIP-M_LOD1_yaw030.png", "SHIP-M_LOD1_yaw045.png", "SHIP-M_LOD1_yaw060.png", "SHIP-M_LOD1_yaw075.png", "SHIP-M_LOD1_yaw090.png", "SHIP-M_LOD1_yaw105.png", "SHIP-M_LOD1_yaw120.png", "SHIP-M_LOD1_yaw135.png", "SHIP-M_LOD1_yaw150.png", "SHIP-M_LOD1_yaw165.png", "SHIP-M_LOD1_yaw180.png", "SHIP-M_LOD1_yaw195.png", "SHIP-M_LOD1_yaw210.png", "SHIP-M_LOD1_yaw225.png", "SHIP-M_LOD1_yaw240.png", "SHIP-M_LOD1_yaw255.png", "SHIP-M_LOD1_yaw270.png", "SHIP-M_LOD1_yaw285.png", "SHIP-M_LOD1_yaw300.png", "SHIP-M_LOD1_yaw315.png", "SHIP-M_LOD1_yaw330.png", "SHIP-M_LOD1_yaw345.png"]
+        },
+        {
+          "lod": 2,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-2.8,-1.6,-12], "max": [2.8,18,12], "size": [5.6,19.6,24]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.8,-1.6,-12], "bounds_max": [2.8,2.035,12]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.3643,-1.24,-11.96], "bounds_max": [2.3643,18,4.34]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-2.3643,6.4985,-2.5675], "bounds_max": [2.3643,10.4575,4.2675]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 122, "z_min": -12, "z_max": 12, "plus_z_x_spread": 0.0504, "minus_z_x_spread": 1.288, "y_min": -1.6, "y_max": 2.035, "x_min": -2.8, "x_max": 2.8},
+          "end_views": {"from_plus_z": "SHIP-M_LOD2_from_plusZ.png", "from_minus_z": "SHIP-M_LOD2_from_minusZ.png", "side": "SHIP-M_LOD2_side.png"},
+          "turntable_15_deg": ["SHIP-M_LOD2_yaw000.png", "SHIP-M_LOD2_yaw015.png", "SHIP-M_LOD2_yaw030.png", "SHIP-M_LOD2_yaw045.png", "SHIP-M_LOD2_yaw060.png", "SHIP-M_LOD2_yaw075.png", "SHIP-M_LOD2_yaw090.png", "SHIP-M_LOD2_yaw105.png", "SHIP-M_LOD2_yaw120.png", "SHIP-M_LOD2_yaw135.png", "SHIP-M_LOD2_yaw150.png", "SHIP-M_LOD2_yaw165.png", "SHIP-M_LOD2_yaw180.png", "SHIP-M_LOD2_yaw195.png", "SHIP-M_LOD2_yaw210.png", "SHIP-M_LOD2_yaw225.png", "SHIP-M_LOD2_yaw240.png", "SHIP-M_LOD2_yaw255.png", "SHIP-M_LOD2_yaw270.png", "SHIP-M_LOD2_yaw285.png", "SHIP-M_LOD2_yaw300.png", "SHIP-M_LOD2_yaw315.png", "SHIP-M_LOD2_yaw330.png", "SHIP-M_LOD2_yaw345.png"]
+        }
+      ],
+      "lod_probe": {"note": "Temporary unlit tints on the instance only. Prefab materials are not saved. Editor camera, not a player build.", "samples": [{"distance_m": 30, "screen_relative_before_bias": 0.8578, "file": "SHIP-M_auto_030.png", "green": 41422, "blue": 0, "red": 0}, {"distance_m": 90, "screen_relative_before_bias": 0.2859, "file": "SHIP-M_auto_090.png", "green": 3188, "blue": 0, "red": 0}, {"distance_m": 220, "screen_relative_before_bias": 0.117, "file": "SHIP-M_auto_220.png", "green": 0, "blue": 399, "red": 0}, {"distance_m": 500, "screen_relative_before_bias": 0.0515, "file": "SHIP-M_auto_500.png", "green": 0, "blue": 0, "red": 53}], "tints": ["LOD0_green", "LOD1_blue", "LOD2_red"]}
+    },
+    {
+      "id": "SHIP-H",
+      "root": {"name": "ShipRoot", "local_position": [0,0,0], "local_euler": [0,0,0], "lossy_scale": [1,1,1]},
+      "visual_root_euler": [0,0,0],
+      "wake_world": [0,0,-15.2], "wake_local": [0,0,-15.2], "wake_parent": "ShipRoot", "wake_lossy_scale": [1,1,1],
+      "capsule": {"radius": 8, "height": 32, "direction": 2, "center_world": [0,0,0], "full_extent_z": [-16,16], "lossy_scale": [1,1,1]},
+      "lod_group": {"size": 32, "local_reference": [0,11,0], "screen_relative": [0.454, 0.1622, 0.01]},
+      "lods": [
+        {
+          "lod": 0,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-3.6,-2,-16], "max": [3.6,24,16], "size": [7.2,26,32]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.6,-2,-16], "bounds_max": [3.6,2.52,16]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.3177,-1.55,-16], "bounds_max": [3.3177,24,14.7323]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.0291,3.9725,-7.5675], "bounds_max": [3.0291,19.2175,7.6003]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 670, "z_min": -16, "z_max": 16, "plus_z_x_spread": 0.0649, "minus_z_x_spread": 1.658, "y_min": -2, "y_max": 2.52, "x_min": -3.6, "x_max": 3.6},
+          "sails_lod0": {"readable": true, "vertices": 1548, "x_span": 6.0583, "z_span": 15.1679, "z_min": -7.5675, "z_max": 7.6003, "cutter_vertices_forward_of_mast": 0, "cutter_vertices_aft_of_mast": 0, "mast_z_reference": 0},
+          "end_views": {"from_plus_z": "SHIP-H_LOD0_from_plusZ.png", "from_minus_z": "SHIP-H_LOD0_from_minusZ.png", "side": "SHIP-H_LOD0_side.png"},
+          "turntable_15_deg": ["SHIP-H_LOD0_yaw000.png", "SHIP-H_LOD0_yaw015.png", "SHIP-H_LOD0_yaw030.png", "SHIP-H_LOD0_yaw045.png", "SHIP-H_LOD0_yaw060.png", "SHIP-H_LOD0_yaw075.png", "SHIP-H_LOD0_yaw090.png", "SHIP-H_LOD0_yaw105.png", "SHIP-H_LOD0_yaw120.png", "SHIP-H_LOD0_yaw135.png", "SHIP-H_LOD0_yaw150.png", "SHIP-H_LOD0_yaw165.png", "SHIP-H_LOD0_yaw180.png", "SHIP-H_LOD0_yaw195.png", "SHIP-H_LOD0_yaw210.png", "SHIP-H_LOD0_yaw225.png", "SHIP-H_LOD0_yaw240.png", "SHIP-H_LOD0_yaw255.png", "SHIP-H_LOD0_yaw270.png", "SHIP-H_LOD0_yaw285.png", "SHIP-H_LOD0_yaw300.png", "SHIP-H_LOD0_yaw315.png", "SHIP-H_LOD0_yaw330.png", "SHIP-H_LOD0_yaw345.png"]
+        },
+        {
+          "lod": 1,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-3.6,-2,-16], "max": [3.6,24,16], "size": [7.2,26,32]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.6,-2,-16], "bounds_max": [3.6,2.52,16]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.048,-1.55,-15.96], "bounds_max": [3.048,24,7.3456]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.048,5.0225,-7.5675], "bounds_max": [3.048,17.7775,7.5298]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 301, "z_min": -16, "z_max": 16, "plus_z_x_spread": 0.0651, "minus_z_x_spread": 1.6635, "y_min": -2, "y_max": 2.52, "x_min": -3.6, "x_max": 3.6},
+          "end_views": {"from_plus_z": "SHIP-H_LOD1_from_plusZ.png", "from_minus_z": "SHIP-H_LOD1_from_minusZ.png", "side": "SHIP-H_LOD1_side.png"},
+          "turntable_15_deg": ["SHIP-H_LOD1_yaw000.png", "SHIP-H_LOD1_yaw015.png", "SHIP-H_LOD1_yaw030.png", "SHIP-H_LOD1_yaw045.png", "SHIP-H_LOD1_yaw060.png", "SHIP-H_LOD1_yaw075.png", "SHIP-H_LOD1_yaw090.png", "SHIP-H_LOD1_yaw105.png", "SHIP-H_LOD1_yaw120.png", "SHIP-H_LOD1_yaw135.png", "SHIP-H_LOD1_yaw150.png", "SHIP-H_LOD1_yaw165.png", "SHIP-H_LOD1_yaw180.png", "SHIP-H_LOD1_yaw195.png", "SHIP-H_LOD1_yaw210.png", "SHIP-H_LOD1_yaw225.png", "SHIP-H_LOD1_yaw240.png", "SHIP-H_LOD1_yaw255.png", "SHIP-H_LOD1_yaw270.png", "SHIP-H_LOD1_yaw285.png", "SHIP-H_LOD1_yaw300.png", "SHIP-H_LOD1_yaw315.png", "SHIP-H_LOD1_yaw330.png", "SHIP-H_LOD1_yaw345.png"]
+        },
+        {
+          "lod": 2,
+          "renderers": 3, "material_slots": 3, "meshes_present": true,
+          "renderer_bounds": {"min": [-3.6,-2,-16], "max": [3.6,24,16], "size": [7.2,26,32]},
+          "parts": [{"name": "Hull", "mesh": "Hull", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.6,-2,-16], "bounds_max": [3.6,2.52,16]}, {"name": "Masts", "mesh": "Masts", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.0398,-1.55,-15.96], "bounds_max": [3.0398,24,7.38]}, {"name": "Sails", "mesh": "Sails", "materials": 1, "shader": "Universal Render Pipeline/Lit", "bounds_min": [-3.0398,6.2925,-7.5675], "bounds_max": [3.0398,13.9375,7.2675]}],
+          "hull_vertices_readable": true,
+          "hull_world": {"count": 122, "z_min": -16, "z_max": 16, "plus_z_x_spread": 0.0648, "minus_z_x_spread": 1.656, "y_min": -2, "y_max": 2.52, "x_min": -3.6, "x_max": 3.6},
+          "end_views": {"from_plus_z": "SHIP-H_LOD2_from_plusZ.png", "from_minus_z": "SHIP-H_LOD2_from_minusZ.png", "side": "SHIP-H_LOD2_side.png"},
+          "turntable_15_deg": ["SHIP-H_LOD2_yaw000.png", "SHIP-H_LOD2_yaw015.png", "SHIP-H_LOD2_yaw030.png", "SHIP-H_LOD2_yaw045.png", "SHIP-H_LOD2_yaw060.png", "SHIP-H_LOD2_yaw075.png", "SHIP-H_LOD2_yaw090.png", "SHIP-H_LOD2_yaw105.png", "SHIP-H_LOD2_yaw120.png", "SHIP-H_LOD2_yaw135.png", "SHIP-H_LOD2_yaw150.png", "SHIP-H_LOD2_yaw165.png", "SHIP-H_LOD2_yaw180.png", "SHIP-H_LOD2_yaw195.png", "SHIP-H_LOD2_yaw210.png", "SHIP-H_LOD2_yaw225.png", "SHIP-H_LOD2_yaw240.png", "SHIP-H_LOD2_yaw255.png", "SHIP-H_LOD2_yaw270.png", "SHIP-H_LOD2_yaw285.png", "SHIP-H_LOD2_yaw300.png", "SHIP-H_LOD2_yaw315.png", "SHIP-H_LOD2_yaw330.png", "SHIP-H_LOD2_yaw345.png"]
+        }
+      ],
+      "lod_probe": {"note": "Temporary unlit tints on the instance only. Prefab materials are not saved. Editor camera, not a player build.", "samples": [{"distance_m": 30, "screen_relative_before_bias": 1.1437, "file": "SHIP-H_auto_030.png", "green": 77373, "blue": 0, "red": 0}, {"distance_m": 90, "screen_relative_before_bias": 0.3812, "file": "SHIP-H_auto_090.png", "green": 6493, "blue": 0, "red": 0}, {"distance_m": 220, "screen_relative_before_bias": 0.156, "file": "SHIP-H_auto_220.png", "green": 0, "blue": 866, "red": 0}, {"distance_m": 500, "screen_relative_before_bias": 0.0686, "file": "SHIP-H_auto_500.png", "green": 0, "blue": 0, "red": 113}], "tints": ["LOD0_green", "LOD1_blue", "LOD2_red"]}
+    }
+  ],
+  "lineup": {"file": "lineup_LOD0_oblique.png", "placement_x": [-42, 0, 46], "roots_at_y0": true, "note": "Same identity scale. Shared world waterline is Y=0. Camera is development framing, not a threshold."},
+  "tool_ok": true
+}

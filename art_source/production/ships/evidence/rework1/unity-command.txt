@@ -1,0 +1,9 @@
+﻿start_utc=2026-11-09T15:49:55.4694200Z
+exe=C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Unity.exe
+project=C:\t06r1\client\UnityProject
+args=-batchmode -quit -projectPath <junction> -executeMethod ReworkMeasure.Run -logFile unity-editor.log
+nographics=false
+window=Hidden
+note=Junction C:\t06r1 points at this issue's isolated ship2 checkout. Hub serve process was left running. No Editor process was using the project.
+end_utc=2026-11-09T15:52:11.5922485Z
+exit=0

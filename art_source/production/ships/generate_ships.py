@@ -1,9 +1,15 @@
 # Procedural production meshes for S1-T06.
-# Coordinates in this file are Unity space: +X starboard, +Y up, +Z bow.
-# Pivot is the waterline center. Frozen meters come from S1_T05_visual_sample_spec.md
-# section 4.1 and 4.5. Freeboard, lesser mast heights, and the light-ship mast step
-# are production choices. The light-ship step follows the sailplan drawing but that
-# drawing explicitly does not freeze a meter value.
+# Coordinates in this file, until to_blender_mesh, are Unity space:
+# +X starboard, +Y up, +Z bow. Pivot is the waterline center.
+# Frozen meters come from S1_T05_visual_sample_spec.md section 4.1 and 4.5.
+# Freeboard, lesser mast heights, and the light-ship mast step are production choices.
+# The light-ship step follows the sailplan drawing but that drawing does not freeze a meter value.
+#
+# Export mapping (T06-REWORK-1): FBX stays Z-up with axis_forward=Y, axis_up=Z.
+# Unity prefab mesh children keep Rx(-90), which sends mesh-local +Y to world -Z.
+# to_blender_mesh therefore stores the bow on mesh-local -Y so an identity ShipRoot
+# has the bow on world +Z. WakeSocket is not parented to those mesh children and
+# keeps the stern-centerline coordinates. Do not yaw ShipRoot together with WakeSocket.
 
 import array
 import json
@@ -770,13 +776,16 @@ def validate_rig(ship, records):
 
 def to_blender_mesh(name, builder, material):
     mesh = bpy.data.meshes.new(name)
-    # Y/Z swap is a reflection, so reverse winding once on the way into Blender.
-    verts = [(v[0], v[2], v[1]) for v in builder.verts]
-    faces = [(f[0], f[2], f[1]) for f in builder.faces]
+    # Unity (x, y up, z bow) -> mesh local (x, -z, y).
+    # Determinant is +1, so the Unity face order is kept.
+    # Rx(-90) on the prefab then maps local (x, y, z) to world (x, z, -y),
+    # which restores +X starboard, +Y up, and +Z bow.
+    verts = [(v[0], -v[2], v[1]) for v in builder.verts]
+    faces = [(f[0], f[1], f[2]) for f in builder.faces]
     uvs = []
     for n in range(len(builder.faces)):
         u0, u1, u2 = builder.uvs[n * 3 : n * 3 + 3]
-        uvs.extend((u0, u2, u1))
+        uvs.extend((u0, u1, u2))
     mesh.from_pydata(verts, [], faces)
     mesh.validate(clean_customdata=False)
     mesh.update()
@@ -899,6 +908,46 @@ def paint_atlas(size):
     return img
 
 
+def assert_prefab_heading(obj, ship):
+    """Identity ShipRoot plus the prefab Rx(-90) must put the pointed bow on +Z."""
+    xs, zs = [], []
+    for v in obj.data.vertices:
+        x, y, z = v.co.x, v.co.y, v.co.z
+        xs.append(x)
+        zs.append(-y)
+    zmin, zmax = min(zs), max(zs)
+    tol = max(0.45, ship["length"] * 0.03)
+
+    def x_spread(target):
+        selected = [abs(x) for x, z in zip(xs, zs) if abs(z - target) <= tol]
+        if len(selected) < 3:
+            return None
+        return max(selected)
+
+    bow = x_spread(zmax)
+    stern = x_spread(zmin)
+    if bow is None or stern is None or not (bow < stern * 0.55):
+        raise RuntimeError(
+            "%s heading fail: +Z x-spread %s, -Z x-spread %s"
+            % (ship["id"], bow, stern)
+        )
+    if max(xs) < ship["beam"] * 0.45 or min(xs) > -ship["beam"] * 0.45:
+        raise RuntimeError("%s starboard extent lost %s %s" % (ship["id"], min(xs), max(xs)))
+    wake_z = ship["wake"][2]
+    if not (zmin < wake_z < 0.0 and (wake_z - zmin) < 1.2):
+        raise RuntimeError(
+            "%s wake %s is not just inboard of the -Z stern %s" % (ship["id"], wake_z, zmin)
+        )
+    return {
+        "unity_z_min": zmin,
+        "unity_z_max": zmax,
+        "bow_plus_z_x_spread": bow,
+        "stern_minus_z_x_spread": stern,
+        "wake_z": wake_z,
+        "wake_inboard_of_stern_m": wake_z - zmin,
+    }
+
+
 def export_fbx(objects, path):
     bpy.ops.object.select_all(action="DESELECT")
     for obj in objects:
@@ -973,7 +1022,7 @@ def main():
     report = {
         "generator": "art_source/production/ships/generate_ships.py",
         "blender": bpy.app.version_string,
-        "coordinate_space": "Unity +X starboard, +Y up, +Z bow, pivot waterline center",
+        "coordinate_space": "Builder space is Unity +X starboard, +Y up, +Z bow. Mesh-local bow is -Y so prefab Rx(-90) restores world +Z bow. WakeSocket stays on the stern and is not rotated with the mesh.",
         "texture": {
             "lod0_and_lod1": "textures/ship_atlas_1024.png",
             "lod2_optional_drop": "textures/ship_atlas_512.png",
@@ -1028,6 +1077,7 @@ def main():
                 obj["t06_lod"] = lod
                 if role == "Hull":
                     ensure_starboard_outward(obj)
+                    heading = assert_prefab_heading(obj, ship)
                 objs.append(obj)
             # Export a renamed selection so Unity sees Hull / Masts / Sails.
             temps = []
@@ -1058,6 +1108,7 @@ def main():
                 "fbx": "export/%s_LOD%d.fbx" % (ship["id"], lod),
                 "manifold": manifolds,
                 "bounds_unity_m": {"min": lo, "max": hi},
+                "prefab_heading": heading,
                 "different_from_other_lods": True,
             })
             render_groups.append({"ship": ship, "lod": lod, "objects": objs, "records": records})

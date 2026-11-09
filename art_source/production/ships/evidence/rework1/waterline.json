@@ -1,0 +1,1 @@
+{"note": "Yellow bar is Y=0 and extends past both ends so it is not hidden inside the hull. It is a measurement aid. Camera sits on +X looking toward -X, so screen right is world +Z (bow).", "images": ["SHIP-L_LOD0_waterline.png", "SHIP-M_LOD0_waterline.png", "SHIP-H_LOD0_waterline.png"]}
