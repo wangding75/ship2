@@ -1,0 +1,225 @@
+{
+  "task_id": "S1-T01",
+  "artifact_id": "S1-T01-CANDIDATE-v1.2-20261106",
+  "producer_agent_uuid": "df0859d2-a436-4389-9c83-da8890471e97",
+  "producer_run_id": "01a1b071-1d70-741a-9f14-2d64d5530ea8",
+  "reviewer_agent_uuid": "1e385681-ce16-4e44-9db3-c82ea8dcd2e4",
+  "reviewer_run_id": "01a1b084-5850-7517-a40e-fb98fbbb683c",
+  "candidate_commit": "NOT_APPLICABLE_NO_GIT",
+  "artifact_sha256": "4cf141de3796dc0b2232a56a3fd6925559b9b538c66f8a3e75e1ff8348c52b37",
+  "spec_sha256": "22d5eb65bfaafd00de9b337f24078c9bdf104807bdc2c2c6135c1b718de87ea7",
+  "test_version": "S1-T01-AC01@task_acceptance.json:910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+  "effective_model": "grok-4.7",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "id": "candidate-bytes",
+      "status": "PASS",
+      "evidence": [
+        "SHIP-11 attachment 01a1b084-5504-7b96-90df-ddf4dadcca38 and source attachment 01a1b083-0e0f-778b-a5b3-4c2d32690c1c are both 78456 bytes and SHA256 4cf141de3796dc0b2232a56a3fd6925559b9b538c66f8a3e75e1ff8348c52b37",
+        "Contract attachment 01a1b039-3640-7bb3-9d01-7795e54ceae8 is 2629 bytes, SHA256 eb16b7b6b7b10cac2a2fd73f250e4580b09f6a6cb8e794ac4baa2715c12b2947, and still begins with UTF-8 BOM EF BB BF",
+        "Frozen pack 01a1b039-364d-7e94-b7d3-e861a7806854 is 32148 bytes, SHA256 870ee7637dee62bfea3f528c84193fb455a6cea1f00c87ffc798b9dae39f0215. The ten spec files inside match SHA256SUMS.txt, including S1_tasks.json 22d5eb65bfaafd00de9b337f24078c9bdf104807bdc2c2c6135c1b718de87ea7, S1_acceptance.json 2f4b70701b21610e5af2a55d1af7dd1e1f591ec07394dff2717f718a265dc441, task_acceptance.json 910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22, and S1任务与验收细则.txt 7d87681e14d5fe715fe601111fc44039c21ef7f2a1e35ec523ffbb0d32cd5df6",
+        "Rejected v1.1 zip attachment 01a1b066-19ca-797c-9202-d0f31139ddf6 is 66511 bytes, SHA256 c88eba1ea39699dc3895957d4544427d902c7041af049135134edbff508c33fa",
+        "SHIP-11 copy 01a1b084-550c-7bce-ae40-4e53cc522aad and original SHIP-8 attachment 01a1b06f-87a2-7c3b-9c5f-e4fbf45beb47 are the same 13945 bytes, SHA256 11662edf534e53f1b9594a8e0abfdc32c325276980438780cfda40dd98f1c676. This run did not replace that FAIL record",
+        "No git commit exists. candidate_commit is NOT_APPLICABLE_NO_GIT"
+      ]
+    },
+    {
+      "id": "path-layout",
+      "status": "PASS",
+      "evidence": [
+        "The v1.2 zip contains docs/product/ for all six declared files plus two identical SHA256SUMS.txt copies, one at the archive root and one at docs/product/SHA256SUMS.txt. Both copies are 680 bytes, SHA256 a7cf6ed6ad3dde106e9137dc3cbdfda4cc531f62c28039616e8040062fe608a9",
+        "From the zip root, each path in SHA256SUMS.txt exists and matches: baseline b5fd492363ef52b089d8d9c18659384003028d4cf910fcd2e854cab63fbc64d9, behavior 6c9226b7e3dc9d0bce328cabb8842de67db549d4b74d69092ce6b06ef8236217, matrix md 1d5e6282d23983803b7b94ee784f08da22aca2279b2a1156bc6b214aff6100f7, matrix json ce564c7770082c1a868a8b11467c12d1018dc4efa1ada2657734c8f512adc960, inputs d5a1dd2c6235ac0d76c56ca313201e0e9f94698cf6d89d72c8a5029e2a380c1a, manifest db1047a4a55e13113b32e81713b6eb807390df283860a86ee43ab4dba5c1b5b5",
+        "v1.1 was flat and needed a manual move before the declared docs/product/ paths would check. v1.2 reproduces those paths on extract. The duplicate sums file is not itself a summed entry"
+      ]
+    },
+    {
+      "id": "identity-separation",
+      "status": "PASS",
+      "evidence": [
+        "Producer A01 df0859d2-a436-4389-9c83-da8890471e97 run 01a1b071-1d70-741a-9f14-2d64d5530ea8 on SHIP-10. That run is completed and names model gemini-4-argon-high",
+        "Reviewer A02 1e385681-ce16-4e44-9db3-c82ea8dcd2e4 run 01a1b084-5850-7517-a40e-fb98fbbb683c, configuration X_REVIEW, effective model grok-4.7",
+        "UUID and run differ. This run did not edit the candidate, the contract, the frozen pack, the figure, the owner registration, or the old FAIL record"
+      ]
+    },
+    {
+      "id": "scope-journey-units",
+      "status": "PASS",
+      "evidence": [
+        "Re-read of v1.2 baseline sections 2-4, not the v1.1 verdict: 2048 m by 2048 m, X/Z navigation plane, Y visual-only, 3 island modules, 12 instances, 1 port landmark, 1 water anchor, and scenario_seed remain",
+        "The journey remains select ship, click water, route around islands, arrive, stop, retarget, unreachable feedback, and return to the anchor. Out of scope still excludes economy, combat, and fleet control",
+        "Units remain m, s, ms, tick, m/s, m/s2, deg, deg/s, GiB/MiB, and px. Arrival remains D_arr = 0.50 * R_nav, v <= 0.20 m/s, 5 ticks, one OnArrived. Stop threshold remains 0.05 m/s"
+      ]
+    },
+    {
+      "id": "unreachable-stop-return",
+      "status": "PASS",
+      "evidence": [
+        "Behavior spec still contains TR-03, TR-05, TR-06, and TR-08. Stop, blocked, and no land penetration remain. Return still uses the single legal water anchor and does not open economy or combat",
+        "JSON unreachable_negative_spec is unchanged from v1.1: NEG-01 through NEG-04 quotas 6, 5, 4, and 5, min_total_negative_cases 20, counted separately from the 100 routes",
+        "Markdown REQ-S1-013, REQ-S1-015, and REQ-S1-016 still name stop, unreachable feedback, and return to the port anchor"
+      ]
+    },
+    {
+      "id": "routes-100",
+      "status": "PASS",
+      "evidence": [
+        "JSON routes_100_sample_spec is unchanged from v1.1. CAT-01 through CAT-06 quotas are 15, 15, 20, 15, 20, and 15, summing to 100. Ranges are R001-R100. required_pass_rate is 1.0",
+        "CAT-04 channel clearance remains 2.5 to 6.0 times R_nav. The only behavior-spec wording change on that row is the typo 航道居平滑通过 to 航道平滑通过",
+        "The 100 routes and 20 negative cases are still a target for A11 and A13, not a measured run in this candidate. numbers_are_targets_not_results stays true"
+      ]
+    },
+    {
+      "id": "observability-content",
+      "status": "PASS",
+      "evidence": [
+        "JSON requirements is 26 objects, REQ-S1-001 through REQ-S1-026, each with summary, observable_outcome, and negative_probe. Markdown has the same 26 table rows in the same order",
+        "Domain labels differ in wording on 11 rows, for example 视觉样板与海水 versus 视觉基线与海水. Those labels are the same pair as v1.1. The requirement bodies that changed are only REQ-S1-002, 006, 018, 022, and 023",
+        "REQ-S1-022 JSON producer_roles remains [A12] and task_ids remains [S1-T20], while the markdown row still lists upstream tasks A08, A09, and A14 plus verifier A12. That split is unchanged from v1.1 and is not a new requirement",
+        "S1-AC01 through S1-AC12 stay NOT_RUN in the candidate. The cited S1-T00 PASS is the earlier A13 record, not a new execution in this run"
+      ]
+    },
+    {
+      "id": "matrix-range-and-version",
+      "status": "PASS",
+      "evidence": [
+        "The v1.1 headings that said REQ-S1-028 are gone. Matrix markdown and matrix JSON contain zero occurrences of REQ-S1-027 and REQ-S1-028. total_requirements_count is 26 and requirement_id_range is REQ-S1-001..REQ-S1-026",
+        "The unknowns file mentions 027 and 028 only to record the old error and to say they were not invented. They are not requirement rows",
+        "Current self-labels are v1.2.0: baseline S1-REQ-BASELINE-v1.2, behavior S1-BEHAVIOR-SPEC-v1.2, matrix S1-TRACE-MATRIX-v1.2, unknowns S1-INPUTS-UNKNOWNS-v1.2, manifest spec_version v1.2.0. Mentions of v1.1.0 name the rejected candidate"
+      ]
+    },
+    {
+      "id": "fig4-obs-01-05",
+      "status": "PASS",
+      "evidence": [
+        "This run read SHIP-11 figure attachment 01a1b084-5516-7d49-b5a7-039eb33337f1. It is 269377 bytes, SHA256 47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2, IHDR 1006 by 303, 8-bit RGB, and has no tEXt, zTXt, iTXt, eXIf, or pHYs chunk",
+        "The image title is 1. 海水表现，是当前画面最明显的短板. Left caption 平坦水面示意: turquoise water, hard white sparkles, exposed rocks including a green-topped rock, a straight shore, no ship and no wake. Right caption 丰富水面示意: sand-to-deep color bands, white shoreline foam, rounded islands with grass and trees, rocks, one sailing ship, and a curved white wake",
+        "FIG4-OBS-01 through FIG4-OBS-05 in baseline section 5.2, behavior section 7, and JSON figure04_reference match that reading as qualitative criteria. This run did not treat color names as instrument measurements"
+      ]
+    },
+    {
+      "id": "fig4-nulls",
+      "status": "PASS",
+      "evidence": [
+        "The same image has no HUD, no port or dock building, and one ship rather than three ships side by side. It has no scale bar and no angle annotation",
+        "Baseline 5.3, behavior spec, unknowns U-01, manifest, and JSON now use the same keys: hud_elements_in_figure04, port_landmark_architecture_in_figure04, and three_ship_types_lineup_in_figure04, all null",
+        "The v1.1 phrase 单桅/双桅 is removed. Baseline 5.3 says the PNG is not used to state an exact mast count"
+      ]
+    },
+    {
+      "id": "fig4-obs-06",
+      "status": "PASS",
+      "evidence": [
+        "This run did not measure an angle from the PNG. The right panel is an elevated oblique view, neither top-down nor horizon-level. That is all the image supports for camera pose",
+        "55.0 degrees plus or minus 2.0 degrees is labeled as the owner direction and the frozen S1-AC02 target in baseline PARAM-07 and FIG4-OBS-06, behavior section 4.1 and FIG4-OBS-06, matrix REQ-S1-006 and REQ-S1-018, JSON pitch_provenance, unknowns U-01, and the manifest. Frozen S1-AC02 text is 约55度俯视起测机位",
+        "85.0 m, together with 35.0 m and 220.0 m, and the channel width of 4 to 8 ship widths, are labeled as A01 category-B design suggestions. CAT-04 keeps the separate hard clearance of 2.5 to 6.0 times R_nav. The candidate no longer says those numbers were read off the figure"
+      ]
+    },
+    {
+      "id": "numbers-are-targets",
+      "status": "PASS",
+      "evidence": [
+        "Manifest, baseline, behavior spec, and JSON set numbers_are_targets_not_results true, implemented false, and executed false",
+        "World size, speeds, arrival tolerance, route quotas, p95 33.3 ms, and PSS 1.2 GiB are written as targets. This run found no game-run log presented as a measurement",
+        "Closing the figure provenance gap does not make S1-AC02 a visual runtime PASS. That stage row remains NOT_RUN"
+      ]
+    },
+    {
+      "id": "windows-hold",
+      "status": "PASS",
+      "evidence": [
+        "This run hashed owner registration attachment 01a1b071-19ca-7c43-a79d-4d458df8e040: 2327 bytes, SHA256 03280271aadd21e89806f1b3d69924369f9856ad8f215a44d0a027e8c003cf2c. It says platform Windows-only, android_registration false, android_device_lease false, 1920x1080, minimum 30 fps, p95_max_ms 33.3, quality still 低-中须锁定可复现具体档位, memory_metric_threshold still 待修订明确, and 20:9 still 待审. It forbids deleting the memory check and forbids equating Android PSS with a Windows metric",
+        "JSON performance_baseline is unchanged on the numbers: Android real device, 6 GB, 1280x720, 30 ships, warmup 300 s, measure 1800 s, p95 33.3 ms, PSS 1.2 GiB and 1228.8 MiB, allow_monotonic_memory_leak false. g14_resigned is false",
+        "REQ-S1-022 keeps the Android clause and adds a hold note. This review does not accept the Windows amendment, does not lower 33.3 ms, does not delete memory, and does not treat a PC result as an Android test. SHIP-9 was not re-judged here. T03 stays unreleased"
+      ]
+    },
+    {
+      "id": "t03-owner",
+      "status": "PASS",
+      "evidence": [
+        "Frozen S1_tasks.json task S1-T03 producer_role is A14 and reviewer_roles are A04 and A13",
+        "Candidate markdown task row S1-T03-AC01 still lists producer A14 and reviewers A04, A13. REQ-S1-023 summary now states 负责人A14. JSON producer_roles remain A14 and A12, the same as v1.1",
+        "U-03 still says T03 does not start until T02 has an independent PASS and the revised contract has a G14 signature. This run did not move T03 to another author"
+      ]
+    },
+    {
+      "id": "diff-scope",
+      "status": "PASS",
+      "evidence": [
+        "Against v1.1, JSON requirement fields changed only on REQ-S1-002, 006, 018, 022, and 023. Those edits are the figure provenance, the 26-row range and v1.2.0 label, and the Windows hold sentence",
+        "Other edits are version and run metadata, the docs/product zip layout, the removed mast-count claim, the CAT-04 typo, and the conflict note required by this rework",
+        "Baseline PARAM-11 category B no longer repeats 后15分钟较前15分钟. REQ-S1-022 observable_outcome and the JSON performance numbers are unchanged, so this is not a lower threshold and not a deleted memory check"
+      ]
+    },
+    {
+      "id": "sources-author-hashes",
+      "status": "PASS",
+      "evidence": [
+        "Manifest producer UUID, run, contract SHA, frozen-pack SHA, figure PNG SHA, and old FAIL SHA match the bytes hashed in this run",
+        "A01 SELF-01 through SELF-10 are producer claims. This verdict does not use them as acceptance results",
+        "The cited original JPEG SHA256 2ae118b72245e88b6b8eaee719b46061029adebe6b90a9e424e21f84804d320a was not in the inspected attachments. The owner file itself says jpeg_checked_by_a00 is false"
+      ]
+    },
+    {
+      "id": "jpeg-bytes",
+      "status": "NOT_RUN",
+      "evidence": [
+        "No JPEG was attached to SHIP-11. This run hashed the PNG only",
+        "This NOT_RUN is the absent JPEG, not a missing product file. It is not a cause for failing S1-T01-AC01"
+      ]
+    },
+    {
+      "id": "budget",
+      "status": "PASS",
+      "evidence": [
+        "Contract budget remains max_repair_attempts 2, max_run_minutes 120, max_cost_cny null",
+        "This is business rework round 1 of 2. This review did not copy the T00 unlimited-duration override onto T01 and did not invent a cost"
+      ]
+    },
+    {
+      "id": "gate-program",
+      "status": "NOT_RUN",
+      "evidence": [
+        "Frozen acceptance_gate_policy.json status is implementation_required. No gate program was executed",
+        "This NOT_RUN records that fact. It is not a missing product-file check"
+      ]
+    },
+    {
+      "id": "t02-t03-a15",
+      "status": "NOT_RUN",
+      "evidence": [
+        "This run does not release T02 or T03 and does not decide for A15",
+        "S1-AC01 through S1-AC12 remain future checks. Figure provenance is closed for the spec text only"
+      ]
+    },
+    {
+      "id": "source-unchanged",
+      "status": "PASS",
+      "evidence": [
+        "This run wrote only its own evidence directory. It did not repack or replace the candidate",
+        "After the record was written, both candidate zip copies still hash to 4cf141de3796dc0b2232a56a3fd6925559b9b538c66f8a3e75e1ff8348c52b37, the contract still hashes to eb16b7b6b7b10cac2a2fd73f250e4580b09f6a6cb8e794ac4baa2715c12b2947, the figure still hashes to 47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2, and both FAIL-record copies still hash to 11662edf534e53f1b9594a8e0abfdc32c325276980438780cfda40dd98f1c676"
+      ]
+    },
+    {
+      "id": "S1-T01-AC01",
+      "status": "PASS",
+      "evidence": [
+        "Scope, journey, units, stop, unreachable, return, the 100-route caliber, the 20 negative cases, and the 26 observable rows are present and agree",
+        "The two v1.1 failures are closed in this candidate: the matrix range is 001 through 026 with a v1.2.0 self-label, and 55.0 degrees plus or minus 2.0 degrees is an owner and S1-AC02 target rather than a figure measurement",
+        "This PASS is the requirements-spec acceptance only. It does not release T02 or T03, does not replace the Android performance clause, and does not pass visual runtime acceptance"
+      ]
+    }
+  ],
+  "evidence_paths": [
+    "attachment:01a1b084-5504-7b96-90df-ddf4dadcca38/S1-T01-product-specs-v1.2.zip",
+    "attachment:01a1b083-0e0f-778b-a5b3-4c2d32690c1c/S1-T01-product-specs-v1.2.zip",
+    "attachment:01a1b084-5516-7d49-b5a7-039eb33337f1/figure04_ocean.png",
+    "attachment:01a1b071-19ca-7c43-a79d-4d458df8e040/project_inputs_20261106_registered.json",
+    "attachment:01a1b039-3640-7bb3-9d01-7795e54ceae8/t01-contract-v1.json",
+    "attachment:01a1b039-364d-7e94-b7d3-e861a7806854/t00-specs-verified.zip",
+    "attachment:01a1b06f-87a2-7c3b-9c5f-e4fbf45beb47/t01-acc-a02-review-record.json",
+    "attachment:01a1b066-19ca-797c-9202-d0f31139ddf6/S1-T01-product-specs-v1.1.zip",
+    "evidence/runs/01a1b084-5850-7517-a40e-fb98fbbb683c/t01-rework1-acc-a02-review-record.json"
+  ],
+  "source_unchanged": true
+}

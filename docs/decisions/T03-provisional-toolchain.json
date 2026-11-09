@@ -1,0 +1,27 @@
+{
+    "cli_version":  "1.0.0-beta.15",
+    "declared_dependencies":  {
+                                  "com.unity.ide.rider":  "3.0.40",
+                                  "com.unity.ide.visualstudio":  "2.0.28",
+                                  "com.unity.inputsystem":  "1.20.0",
+                                  "com.unity.render-pipelines.universal":  "17.6.0",
+                                  "com.unity.ugui":  "2.6.0",
+                                  "com.unity.collab-proxy":  "2.13.6",
+                                  "com.unity.modules.vectorgraphics":  "1.0.0",
+                                  "com.unity.pipeline":  "0.8.0-exp.1"
+                              },
+    "quality":  "Template defaults; PROVISIONAL; not owner final approval",
+    "template":  "com.unity.template.urp-blank-17.2.6.tgz",
+    "package_resolution":  "NOT_RUN",
+    "editor_version":  "6000.6.6f1",
+    "template_sha256":  "fbfa9d0f4d7f5579459d6b1baf1ad952b091ecbcdb17ba393e07d4994941d570",
+    "performance_target":  {
+                               "status":  "NOT_RUN",
+                               "p95_ms":  33.3,
+                               "fps":  30,
+                               "resolution":  "1920x1080"
+                           },
+    "editor_revision":  "d20c9ac777da",
+    "status":  "PROVISIONAL_BLOCKED",
+    "package_content_lock":  "NOT_RUN"
+}

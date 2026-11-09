@@ -1,0 +1,219 @@
+{
+  "schema": "s1_task_deliverable_manifest_v1",
+  "task_id": "S1-T01",
+  "title": "需求与验收冻结",
+  "candidate_id": "S1-T01-CANDIDATE-v1.2-20261106",
+  "spec_version": "v1.2.0",
+  "issue_id": "01a1b071-19d9-7717-8d32-c00f2350ac5f",
+  "issue_identifier": "SHIP-10",
+  "original_task_issue_id": "01a1b039-3663-75aa-96bf-962529e2ba2f",
+  "original_task_issue_identifier": "SHIP-6",
+  "parent_issue_id": "01a1afca-75a7-717f-943b-30a50bf4af2b",
+  "parent_issue_identifier": "SHIP-1",
+  "idempotency_key": "T01-REWORK-1",
+  "child_key": "S1-T01+c88eba1ea39699dc3895957d4544427d902c7041af049135134edbff508c33fa+1+A01+1",
+  "stage": 31,
+  "attempt_index": 1,
+  "max_repair_attempts": 2,
+  "producer": {
+    "role_id": "A01",
+    "role_name": "A01 需求与玩法规格",
+    "agent_uuid": "df0859d2-a436-4389-9c83-da8890471e97",
+    "run_id": "01a1b071-1d70-741a-9f14-2d64d5530ea8",
+    "prior_rejected_v1_1_run_id": "01a1b050-f133-70d2-add6-0a011087ef29",
+    "prior_text_freeze_run_id": "01a1b046-2f0b-77f8-b548-8e6e33a56cdf",
+    "prior_failed_handshake_run_id": "01a1b045-a3eb-7ba2-9ecc-baf46714652f",
+    "profile_id": "G_DESIGN",
+    "tool": "Antigravity CLI (agy)",
+    "tool_version": "1.5.2",
+    "multica_cli_version": "0.7.2 (commit: f05a525ac, built: 2026-10-30T09:45:40Z)",
+    "model_display_name": "Gemini 4 Argon (High)",
+    "reasoning_effort": "high",
+    "multica_thinking_field": null
+  },
+  "designated_independent_reviewer": {
+    "role_id": "A02",
+    "role_name": "A02 需求与任务验收",
+    "agent_uuid": "1e385681-ce16-4e44-9db3-c82ea8dcd2e4",
+    "acceptance_id": "S1-T01-AC01",
+    "acceptance_status": "NOT_RUN",
+    "author_reviewer_separation_verified": true
+  },
+  "candidate_commit": "NOT_APPLICABLE_NO_GIT",
+  "allowed_paths_enforced": ["docs/product/"],
+  "implemented": false,
+  "executed": false,
+  "numbers_are_targets_not_results": true,
+  "gate_program_status": "NOT_RUN",
+  "budget": {
+    "max_repair_attempts": 2,
+    "max_run_minutes": 120,
+    "max_cost_cny": null,
+    "t00_unlimited_duration_extended_to_t01": false
+  },
+  "verified_inputs": {
+    "prior_product_review_fail_record": {
+      "review_issue": "SHIP-8",
+      "review_issue_id": "01a1b066-19eb-7386-a719-273b1075dc8a",
+      "comment_id": "01a1b06f-87b0-7e53-b09c-d1137260f409",
+      "attachment_id": "01a1b071-19ab-725c-9b46-0eeb75447797",
+      "source_attachment_id": "01a1b06f-87a2-7c3b-9c5f-e4fbf45beb47",
+      "filename": "t01-acc-a02-review-record.json",
+      "size_bytes": 13945,
+      "sha256": "11662edf534e53f1b9594a8e0abfdc32c325276980438780cfda40dd98f1c676",
+      "reviewer_agent_uuid": "1e385681-ce16-4e44-9db3-c82ea8dcd2e4",
+      "reviewer_run_id": "01a1b066-1a09-769a-8243-764a9441b2be",
+      "rejected_candidate_id": "S1-T01-CANDIDATE-v1.1-20261106",
+      "rejected_candidate_zip_sha256": "c88eba1ea39699dc3895957d4544427d902c7041af049135134edbff508c33fa",
+      "verdict": "FAIL",
+      "failed_checks": [
+        "matrix-range-and-version",
+        "fig4-obs-06",
+        "S1-T01-AC01"
+      ],
+      "preserved_readonly": true
+    },
+    "figure04_reference_image": {
+      "status": "PROVIDED_AND_VERIFIED",
+      "repository_target_path": "references/style/figure04_ocean.png",
+      "git_commit_plan": "S1-T03 初始化 Git 仓库后将该图提交到 references/style/figure04_ocean.png 并纳入版本管理",
+      "multica_comment_id": "01a1b050-f123-701f-bdbc-e03015c8809f",
+      "multica_attachment_id": "01a1b050-f10f-7be8-a788-d954c2cb9dbf",
+      "rework_issue_attachment_id": "01a1b071-19c2-7ba4-a9bc-31f379540788",
+      "uploader_member_id": "902a2d4d-b2eb-4a8d-b4bb-3373fd78e177",
+      "source": "owner 提供",
+      "filename": "figure04_ocean.png",
+      "dimensions_px": [1006, 303],
+      "pixel_format": "Format24bppRgb",
+      "size_bytes": 269377,
+      "png_sha256": "47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2",
+      "original_jpeg_sha256": "2ae118b72245e88b6b8eaee719b46061029adebe6b90a9e424e21f84804d320a",
+      "provenance_clarification": "PNG 图像本身无相机 EXIF 元数据、无角度标注、无几何比例尺标注；仅支持定性确认倾斜俯视构图及 FIG4-OBS-01..05 视觉特征。55.0° ± 2.0° 默认起测俯角明确源自 Owner 方向及冻结 S1-AC02 起测目标（非图像测量）；85.0 m 相机高度（及 35.0 m / 220.0 m）与水道 4~8 倍船宽明确源自 A01 在 S1-T01 制定的类别 B 设计建议初值（非从图读得）。",
+      "derived_observable_criteria_ids": [
+        "FIG4-OBS-01",
+        "FIG4-OBS-02",
+        "FIG4-OBS-03",
+        "FIG4-OBS-04",
+        "FIG4-OBS-05",
+        "FIG4-OBS-06"
+      ],
+      "non_depicted_elements_kept_null": {
+        "hud_elements_in_figure04": null,
+        "port_landmark_architecture_in_figure04": null,
+        "three_ship_types_lineup_in_figure04": null
+      }
+    },
+    "owner_registered_inputs": {
+      "attachment_id": "01a1b071-19ca-7c43-a79d-4d458df8e040",
+      "filename": "project_inputs_20261106_registered.json",
+      "size_bytes": 2327,
+      "sha256": "03280271aadd21e89806f1b3d69924369f9856ad8f215a44d0a027e8c003cf2c",
+      "amendment_review_issue": "SHIP-9",
+      "g14_resigned": false,
+      "hold_policy": "登记保留 Owner 已确认的 Windows-only (1920x1080 / 30fps / p95<=33.3ms / 低-中档) 与空仓库 main 信息；在 SHIP-9 独立审核及修订契约经 G14 签核通过前，保留原 Android 冻结条款与冲突说明，不降低 33.3 ms、不删 PSS/内存检查、不直接将 PSS 换为 Windows 指标、不改 S1-T03 负责人 A14"
+    },
+    "contract": {
+      "version": "T01-contract-v1",
+      "attachment_id": "01a1b039-3640-7bb3-9d01-7795e54ceae8",
+      "filename": "t01-contract-v1.json",
+      "size_bytes": 2629,
+      "sha256": "eb16b7b6b7b10cac2a2fd73f250e4580b09f6a6cb8e794ac4baa2715c12b2947",
+      "encoding_note": "Includes 3-byte UTF-8 BOM EF BB BF; preserved unchanged"
+    },
+    "contract_independent_review": {
+      "review_issue": "SHIP-7",
+      "attachment_id": "01a1b045-a0c4-7b6c-8c14-875f5eccad05",
+      "origin_attachment_id": "01a1b044-375a-7f3e-8d95-0022d5840003",
+      "filename": "t01-contract-acc-a02-review-record.json",
+      "size_bytes": 10260,
+      "sha256": "6c48aa7bbb3c2074f9eb116810bbf882b43d42d543b180cc35c545f49aa614d2",
+      "reviewer_agent_uuid": "1e385681-ce16-4e44-9db3-c82ea8dcd2e4",
+      "reviewer_run_id": "01a1b039-387e-7869-8bf2-9459956a4592",
+      "verdict": "PASS"
+    },
+    "dependency_s1_t00": {
+      "task_id": "S1-T00",
+      "review_issue_id": "01a1b02c-3a16-7670-8256-f04be9a0a1e7",
+      "review_issue_identifier": "SHIP-5",
+      "record_attachment_id": "01a1b037-3b73-7e6c-91e1-282262ef0a2e",
+      "record_sha256": "ff41eaf2c6e79da9fa9020250f6128325d9b458de3740794dd2731d39595bbd9",
+      "candidate_sha256": "8853cef2800d319b8589325311a46543c16cfab212b4f9d930b6728657c308d9",
+      "reviewer_agent_uuid": "44a5c3cb-185b-4b55-a0d1-a4f43449c0de",
+      "reviewer_run_id": "01a1b02c-3d7c-7e0e-b049-a8e4cdf302a8",
+      "verdict": "PASS",
+      "historical_ship3_fail_preserved": true
+    },
+    "frozen_specs_pack": {
+      "attachment_id": "01a1b039-364d-7e94-b7d3-e861a7806854",
+      "filename": "t00-specs-verified.zip",
+      "size_bytes": 32148,
+      "sha256": "870ee7637dee62bfea3f528c84193fb455a6cea1f00c87ffc798b9dae39f0215",
+      "files": {
+        "specs/S1_acceptance.json": "2f4b70701b21610e5af2a55d1af7dd1e1f591ec07394dff2717f718a265dc441",
+        "specs/S1_tasks.json": "22d5eb65bfaafd00de9b337f24078c9bdf104807bdc2c2c6135c1b718de87ea7",
+        "specs/S1任务与验收细则.txt": "7d87681e14d5fe715fe601111fc44039c21ef7f2a1e35ec523ffbb0d32cd5df6",
+        "specs/acceptance_gate_policy.json": "fd2305a093b83bbc9ca47f1a911ec4eef4931caf901a6b4457388052056f9b15",
+        "specs/agents_registry.json": "3e859b313921a0a7d3d244c758cb2d69c3d94b77f28e0a3be8345ce9bfdf1a0e",
+        "specs/review_record.schema.json": "95b0c757e20ca02958c611a0e08f83486a33cf362a466a029ef6f763d2e2c113",
+        "specs/task_acceptance.json": "910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+        "specs/task_contract.schema.json": "fddd2ae49c8869e2b98ba52c1784cfb9ae60c6caaa6a72c920f9d2456db17305",
+        "specs/toolchain_lock.template.json": "e0070c86b23a12059448b84f022e37580decce0ba1cfeefe7de9d265ac969de7",
+        "specs/workflow_routing.json": "3d8daf5c49592adca7f77e3f2343d94c79fcc2c15019cbf02c19343f245715d1",
+        "specs/SHA256SUMS.txt": "10e924ec4d9d3005948610a44375aea8ec62b704fb39a20f7d373dc4551c6270"
+      }
+    }
+  },
+  "deliverable_files": [
+    {
+      "path": "docs/product/S1_requirements_baseline.md",
+      "document_id": "S1-REQ-BASELINE-v1.2",
+      "role_deliverable_category": "S1需求基线（v1.2.0，修正FIG4-OBS-06与关联参数来源归属）",
+      "size_bytes": 33852,
+      "sha256": "b5fd492363ef52b089d8d9c18659384003028d4cf910fcd2e854cab63fbc64d9"
+    },
+    {
+      "path": "docs/product/S1_behavior_and_exception_spec.md",
+      "document_id": "S1-BEHAVIOR-SPEC-v1.2",
+      "role_deliverable_category": "行为与异常规格（v1.2.0，含图4定性观察与目标来源区分）",
+      "size_bytes": 43048,
+      "sha256": "6c9226b7e3dc9d0bce328cabb8842de67db549d4b74d69092ce6b06ef8236217"
+    },
+    {
+      "path": "docs/product/S1_acceptance_traceability_matrix.md",
+      "document_id": "S1-TRACE-MATRIX-v1.2",
+      "role_deliverable_category": "需求追踪表（Markdown可读版 v1.2.0，修正REQ-S1-001..026共26条与版本标识）",
+      "size_bytes": 39200,
+      "sha256": "1d5e6282d23983803b7b94ee784f08da22aca2279b2a1156bc6b214aff6100f7"
+    },
+    {
+      "path": "docs/product/S1_acceptance_traceability_matrix.json",
+      "document_id": "S1-TRACE-MATRIX-v1.2",
+      "role_deliverable_category": "需求追踪表（JSON结构化矩阵版 v1.2.0，REQ-S1-001..026共26条）",
+      "size_bytes": 38418,
+      "sha256": "ce564c7770082c1a868a8b11467c12d1018dc4efa1ada2657734c8f512adc960"
+    },
+    {
+      "path": "docs/product/S1_inputs_unknowns_and_blockers.md",
+      "document_id": "S1-INPUTS-UNKNOWNS-v1.2",
+      "role_deliverable_category": "输入核对、平台冲突保留说明、新旧差异与开发侧自检记录（v1.2.0）",
+      "size_bytes": 22379,
+      "sha256": "d5a1dd2c6235ac0d76c56ca313201e0e9f94698cf6d89d72c8a5029e2a380c1a"
+    }
+  ],
+  "missing_inputs_and_blockers": [
+    {
+      "id": "U-01",
+      "item": "用户图4实际图像文件（references/style/figure04_ocean.png）及目标来源归属边界",
+      "status": "RESOLVED_PROVIDED_BY_OWNER_AND_PROVENANCE_CORRECTED",
+      "blocks_s1_t01_written_freeze": false,
+      "resolution_summary": "Owner已提供 figure04_ocean.png（1006x303，SHA256 47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2；原始JPEG SHA256 2ae118b72245e88b6b8eaee719b46061029adebe6b90a9e424e21f84804d320a）。PNG无角度或比例尺标注，仅支持定性倾斜俯视观察及 FIG4-OBS-01..05 特征读取；55.0° ± 2.0° 明确源自 Owner 方向与冻结 S1-AC02 起测目标（非图像测量），85.0 m 相机高度与水道 4~8 倍船宽明确源自 A01 在 S1-T01 制定的设计建议初值（非从图读得）；图中不存在的 HUD/港口建筑/三船并列细节保持 null；S1-T03（A14）初始化 Git 后提交至 references/style/figure04_ocean.png。"
+    },
+    {
+      "id": "U-03",
+      "item": "Git仓库、Unity/URP/Blender版本锁及Windows-only修订与原Android冻结规格冲突（project_inputs_20261106_registered.json）",
+      "status": "PENDING_SHIP9_G14_AND_T03_LOCK",
+      "blocks_s1_t01_written_freeze": false,
+      "recovery_condition": "已登记 project_inputs_20261106_registered.json（SHA256 03280271aadd21e89806f1b3d69924369f9856ad8f215a44d0a027e8c003cf2c）。在 SHIP-9 独立审核及修订契约经 G14 签核前，保留原 Android 冻结条款与冲突说明，不降低 33.3 ms、不删 PSS/内存项、不把 PSS 直接换为 Windows 指标；S1-T03（负责人 A14）须在 S1-T02 独立 PASS 且最终修订契约经 G14 通过后方可执行。"
+    }
+  ]
+}

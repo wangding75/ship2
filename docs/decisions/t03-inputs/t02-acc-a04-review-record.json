@@ -1,0 +1,298 @@
+{
+  "task_id": "S1-T02",
+  "artifact_id": "S1-T02-CANDIDATE-v1.0.2-20261107",
+  "issue_id": "01a1b403-64ee-7329-bb26-ae679dcab61c",
+  "producer_agent_uuid": "c7c6d8e7-11db-4f0b-b31c-a975ad2fc956",
+  "producer_run_id": "01a1b3fc-c47f-7e87-b7af-d37e32a2ca27",
+  "reviewer_agent_uuid": "4702408e-ea84-463c-8697-4f083ab903ed",
+  "reviewer_run_id": "01a1b403-6508-7cea-8b65-dbb8be9cea5e",
+  "candidate_commit": "NOT_APPLICABLE_NO_GIT",
+  "artifact_sha256": "22abc110927e155e5642d1dded7947306257525fd6a62861ca356c31edb9cfcb",
+  "spec_sha256": "22d5eb65bfaafd00de9b337f24078c9bdf104807bdc2c2c6135c1b718de87ea7",
+  "contract_sha256": "b331e573b1b63353517d1cec16efb2040c447239ad5c747df286affe1bed7a32",
+  "interface_sha256": "e1f982b991fb2c95ea6b54981b5a99fb97d7242a020f3e844c4a3fd41e1942bb",
+  "manifest_sha256": "a23cfec0bdc1b781a3e3bfce976a6f1cd7b983f85d04fa6964a99a31abd1c97b",
+  "interface_version": "S1-INTERFACES/1.0.2",
+  "test_version": "S1-T02-AC01@task_acceptance.json:910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+  "protocol_model_sha256": "80fb157257d1182a7364ef45db78bebae64eee60fb32200b3bebcd7c4e5249fe",
+  "verify_py_sha256": "407d20df246887e62b2acda2c124fc62e4e42b6eb2a94c7084cc22beb0b6828e",
+  "audit_rework2_sha256": "704a80b502219183712eaf3984dd9f5433bafa7ba43d96669247d81aa0f2e925",
+  "adr_001_sha256": "9785d70a90acd0cd3252bc0b7792c3deafc73f709d5db4ee6bce92dcc2da5444",
+  "adr_002_sha256": "47eef4c75599db73046c65b2eac1046294aac399e3c5e5c645cdad9d478dd49f",
+  "effective_model": "grok-4.7",
+  "effective_effort": "high",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "id": "S1-T02-AC01",
+      "status": "PASS",
+      "evidence": [
+        "世界水平面为 X/Z，1 单位等于 1 米，固定 50Hz / 0.02s。导航状态在 NavCore，VisualRoot 不写导航坐标。",
+        "状态机仍为 Idle/Moving/Stopping/Arrived/Blocked。模块 API、目录/GUID/Prefab 与可航水域锚点约束仍在，锚点净空下限 1.5*R_nav,max 未降。",
+        "同目标 pending 合并现已同时要求 pending.map_sha 与 pending.profile_sha。SHIP-16 的 B 到 C 竞态在 v1.0.1 上复现为旧 token，在 v1.0.2 上改为签发当前 token。",
+        "26 条需求与追踪表一致，100 条合法路线与至少 20 条负例仍是配额声明，本 Run 未执行真实路线。",
+        "作者 48 项开发检查重放通过，只作为开发证据。完整 JSON Schema、Unity、GPU、触控、性能和正式 Gate 未执行。Windows 最终性能契约仍 BLOCKED。"
+      ]
+    },
+    {
+      "id": "archive-integrity",
+      "status": "PASS",
+      "evidence": [
+        "zip_sha256=22abc110927e155e5642d1dded7947306257525fd6a62861ca356c31edb9cfcb",
+        "zip_bytes=6237004",
+        "manifest_entries=69",
+        "manifest_sha256=a23cfec0bdc1b781a3e3bfce976a6f1cd7b983f85d04fa6964a99a31abd1c97b",
+        "directory_mismatches=[]",
+        "zip_payload_mismatches=[]",
+        "zip_member_set_ok=True",
+        "interface_sha256=e1f982b991fb2c95ea6b54981b5a99fb97d7242a020f3e844c4a3fd41e1942bb"
+      ]
+    },
+    {
+      "id": "historical-fail-bytes",
+      "status": "PASS",
+      "evidence": [
+        "S1-T02-architecture-v1.0.0.zip embedded==downloaded True sha256=1df6a151698fd9a7c05889385781281d90c6cd3ffcb81d1f61a12793f644717d",
+        "t02-acc-a04-review-record.json embedded==downloaded True sha256=0541aa5fb7786ba05a1f487b264902f156464e99e1e66bfe50502427086986db",
+        "a04-probe-report.json embedded==downloaded True sha256=b38aa10a7b916c1435e8ac41a197363d6b917a08e21bcbba9f93d9c094f853bf",
+        "S1-T02-architecture-v1.0.1.zip embedded==downloaded True sha256=c2aeedd58af2bdae22f43f401ec2a1173e04f61e10a7c277ee633891177ffb1e",
+        "t02-acc-a04-review-record.json embedded==downloaded True sha256=83e4ca90edf0efc804b19280b76541fcc4fe0fe2739aace74f7431430984c983",
+        "a04-probe-report.json embedded==downloaded True sha256=60c5110e52945023ddd0871cef5b58d3bbda8438263d30c3a3743871d999e331",
+        "ship14_verdict=FAIL artifact=1df6a151698fd9a7c05889385781281d90c6cd3ffcb81d1f61a12793f644717d",
+        "ship16_verdict=FAIL artifact=c2aeedd58af2bdae22f43f401ec2a1173e04f61e10a7c277ee633891177ffb1e",
+        "v1.0.1_manifest_entries=62 zip_members=63",
+        "Historical verdicts stay FAIL. This run does not reuse either PASS subset as the v1.0.2 conclusion."
+      ]
+    },
+    {
+      "id": "identity-separation",
+      "status": "PASS",
+      "evidence": [
+        "producer=c7c6d8e7-11db-4f0b-b31c-a975ad2fc956 run=01a1b3fc-c47f-7e87-b7af-d37e32a2ca27",
+        "reviewer=4702408e-ea84-463c-8697-4f083ab903ed run=01a1b403-6508-7cea-8b65-dbb8be9cea5e",
+        "candidate_ref=S1-T02-CANDIDATE-v1.0.2-20261107",
+        "candidate_reviewer_run_id=None",
+        "This run did not edit the candidate."
+      ]
+    },
+    {
+      "id": "version-and-pending-rule-text",
+      "status": "PASS",
+      "evidence": [
+        "contract_frozen_body_equal_to_v101=True",
+        "changed_version=Request a new plan; do not return ALREADY_ACTIVE using the old path. Merge same-target pending only when BOTH pending.map_sha==map_sha AND pending.profile_sha==profile_sha; otherwise invalidate the old token, increment generation and issue a token bound to current hashes, including Idle before acceptance. Stale resolves must fail.",
+        "schema_structure_unchanged_after_version_swap=True",
+        "example_structure_unchanged_after_version_swap=True",
+        "protocol_model_only_pending_condition_changed=True",
+        "snapshot_schema_keeps_separate_version_field_checked_by_structure_compare=True"
+      ]
+    },
+    {
+      "id": "thresholds-omega-and-1-05",
+      "status": "PASS",
+      "evidence": [
+        "omega_max=[65.0, 48.0, 35.0]",
+        "nav_radius_m=[4.5, 6.5, 8.0]",
+        "frozen_parameters_equal_t01=True",
+        "1.05_lines_unchanged_vs_v101=True",
+        "0.25R, 0.5R, 0.20, 0.05 and 5 arrival ticks remain in protocol_model.py.",
+        "fixed_dt_s=0.02"
+      ]
+    },
+    {
+      "id": "pending-version-race",
+      "status": "PASS",
+      "evidence": [
+        "Moving ('map_sha',): old_bug=True new_fixed=True new_gen=2->3 old_resolved=False new_resolved=True retry_same=True",
+        "Moving ('profile_sha',): old_bug=True new_fixed=True new_gen=2->3 old_resolved=False new_resolved=True retry_same=True",
+        "Moving ('map_sha', 'profile_sha'): old_bug=True new_fixed=True new_gen=2->3 old_resolved=False new_resolved=True retry_same=True",
+        "Idle ('map_sha',): old_bug=True new_fixed=True new_gen=1->2 old_resolved=False new_resolved=True retry_same=True",
+        "Idle ('profile_sha',): old_bug=True new_fixed=True new_gen=1->2 old_resolved=False new_resolved=True retry_same=True",
+        "Idle ('map_sha', 'profile_sha'): old_bug=True new_fixed=True new_gen=1->2 old_resolved=False new_resolved=True retry_same=True",
+        "asymmetric_profile_only=True",
+        "asymmetric_map_only=True",
+        "Moving setup is active target (100,0), R=8, speed 5, position (1,0), pending target (101,0).",
+        "Idle setup requests (100,0) before acceptance, then changes the selected hash.",
+        "v1.0.1 still returns the stale token. v1.0.2 issues the current token, rejects the old resolve, and accepts the new one."
+      ]
+    },
+    {
+      "id": "content-hash-and-replay",
+      "status": "PASS",
+      "evidence": [
+        "roundtrip ('map_sha',): rejected_while_changed=True accepted_when_restored=True",
+        "roundtrip ('profile_sha',): rejected_while_changed=True accepted_when_restored=True",
+        "roundtrip ('map_sha', 'profile_sha'): rejected_while_changed=True accepted_when_restored=True",
+        "one_sided_restore_still_rejected=True",
+        "both_restored_accepted=True",
+        "hash_restored_after_new_request_does_not_revive=True",
+        "token_bound_to_intermediate_hash_resolves_when_that_hash_returns=True",
+        "command_replay_keeps_new_pending=True",
+        "merged_command_replay_does_not_revive=True"
+      ]
+    },
+    {
+      "id": "stable-merge-and-near-boundary",
+      "status": "PASS",
+      "evidence": [
+        "Idle stable_merge=True generation_held=True resolved=True",
+        "Moving stable_merge=True generation_held=True resolved=True",
+        "R=4.5 boundary_preserves_far_pending=True just_outside_replans=True",
+        "R=6.5 boundary_preserves_far_pending=True just_outside_replans=True",
+        "R=8.0 boundary_preserves_far_pending=True just_outside_replans=True",
+        "map_change_near_point_replans=True"
+      ]
+    },
+    {
+      "id": "heading-shortest-arc",
+      "status": "PASS",
+      "evidence": [
+        "pinned_failures=[]",
+        "pinned +180 is (0,180)->180 and +20 is (350,10)->20",
+        "integer_sweep_inside_open_closed_range=True",
+        "integer_inputs_never_return_exact_-180=True",
+        "nonfinite_rejected=True",
+        "Python result only. Isolated C# formula is a separate check."
+      ]
+    },
+    {
+      "id": "preserved-stop-illegal-tr02",
+      "status": "PASS",
+      "evidence": [
+        "stop_invalidates_without_moving_pose=True",
+        "moving_illegal_stops_before_blocked=True",
+        "static_illegal_zero_displacement=True",
+        "tr02_near_stationary_arrives_without_displacement=True"
+      ]
+    },
+    {
+      "id": "architecture-scope-documents",
+      "status": "PASS",
+      "evidence": [
+        "requirements=26 trace_match=True",
+        "route_quota_sum=100",
+        "negative_min=20",
+        "windows_effective=False memory=None quality=None aspect_20_9=None",
+        "android_p95=33.3 pss_gib=1.2",
+        "figure04_unknowns={'hud_elements_in_figure04': None, 'port_landmark_architecture_in_figure04': None, 'three_ship_types_lineup_in_figure04': None}",
+        "X/Z plane and 1 unit = 1 metre are in ADR-001 and contract.coordinate_system. ADR-002 states nav/display isolation and the pending rule.",
+        "Route counts are quotas in the frozen spec. No production route was executed."
+      ]
+    },
+    {
+      "id": "input-and-g14-binding",
+      "status": "PASS",
+      "evidence": [
+        "spec_sha256=22d5eb65bfaafd00de9b337f24078c9bdf104807bdc2c2c6135c1b718de87ea7",
+        "task_acceptance_sha256=910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+        "t02_contract_sha256=b331e573b1b63353517d1cec16efb2040c447239ad5c747df286affe1bed7a32",
+        "g14_verdict=PASS g14_artifact=b331e573b1b63353517d1cec16efb2040c447239ad5c747df286affe1bed7a32",
+        "G14 signed the task contract. It did not accept S1-T02-AC01."
+      ]
+    },
+    {
+      "id": "regression-ast-and-producer-evidence",
+      "status": "PASS",
+      "evidence": [
+        "v100_tests=33 v101_tests=38 v102_tests=48",
+        "added=['ProtocolChecks.test_39_moving_same_pending_map_changes', 'ProtocolChecks.test_40_moving_same_pending_profile_changes', 'ProtocolChecks.test_41_moving_same_pending_both_change', 'ProtocolChecks.test_42_idle_same_pending_map_changes', 'ProtocolChecks.test_43_idle_same_pending_profile_changes', 'ProtocolChecks.test_44_idle_same_pending_both_change', 'ProtocolChecks.test_45_same_versions_coalesce_pending_in_idle_and_moving', 'ProtocolChecks.test_46_content_sha_roundtrip_without_new_request_still_resolves', 'ProtocolChecks.test_47_near_threshold_scales_with_radius_and_includes_boundary', 'ProtocolChecks.test_48_transport_replay_does_not_reactivate_stale_token']",
+        "original_38_ast_unchanged=True",
+        "original_33_ast_unchanged=True",
+        "before_fix_log_shows_stale_token_identity=True",
+        "stored_diff_contains_both_hash_conditions=True",
+        "files_changed_from_v101=['docs/architecture/ADR-001-foundation.md', 'docs/architecture/ADR-002-navigation.md', 'docs/architecture/CHANGELOG.md', 'docs/architecture/README.md', 'docs/architecture/candidate.json', 'docs/architecture/evidence/developer-notes.md', 'docs/architecture/evidence/developer-validation.json', 'docs/architecture/evidence/developer-validation.log', 'docs/architecture/evidence/input-manifest.json', 'docs/architecture/evidence/runtime.json', 'docs/architecture/interaction-recovery.md', 'docs/architecture/traceability.json', 'prototypes/architecture/package.py', 'prototypes/architecture/prepare_candidate.py', 'prototypes/architecture/protocol_model.py', 'prototypes/architecture/verify.py', 'specs/interfaces/contract.json', 'specs/interfaces/data.schema.json', 'specs/interfaces/examples/move-command.json', 'specs/interfaces/module-api.md']",
+        "before-fix.log is the producer pre-fix capture. The old-versus-new execution above is the acceptance evidence.",
+        "audit_rework.py is the round-1 historical script and was not used as this round's entry."
+      ]
+    },
+    {
+      "id": "author-suite-replay",
+      "status": "PASS",
+      "evidence": [
+        "verify.py exit=0 last=\u001b[32mOK\u001b[0m",
+        "audit_rework2.py exit=0 last=}",
+        "package.py exit=0 last=PASS: 69 files match complete SHA256 manifest; archive not present in extracted payload.",
+        "Commands were python -B verify.py, python -B audit_rework2.py, and python -B package.py --verify.",
+        "--record was not passed. This replay is developer-suite evidence, not the S1-T02-AC01 verdict by itself."
+      ]
+    },
+    {
+      "id": "heading-csharp-formula",
+      "status": "PASS",
+      "evidence": [
+        "compiler=C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "compile_exit=0",
+        "run_exit=0",
+        "Isolated formula only: Euclidean remainder adjustment for the documented shortest-turn function.",
+        "Unity, a scene, and production C# navigation were not compiled or run."
+      ]
+    },
+    {
+      "id": "JSON_SCHEMA_FULL_VALIDATION",
+      "status": "NOT_RUN",
+      "evidence": [
+        "import jsonschema failed before this probe. No package was installed. Local reference walk remains the author's test_10 only."
+      ]
+    },
+    {
+      "id": "UNITY_SCENE_ROUTES_GPU_TOUCH_PERFORMANCE",
+      "status": "NOT_RUN",
+      "evidence": [
+        "No Unity project was opened, no scene or real route was run, and no GPU, touch, or performance capture was taken."
+      ]
+    },
+    {
+      "id": "GATE_AND_LEASE_IMPLEMENTATION",
+      "status": "NOT_RUN",
+      "evidence": [
+        "gate-lease-protocol.md was read as design text. No Gate lease was acquired or executed."
+      ]
+    },
+    {
+      "id": "WINDOWS_PERFORMANCE_BASELINE",
+      "status": "BLOCKED",
+      "evidence": [
+        "windows_amendment.effective is false.",
+        "memory counter, memory threshold, growth rule, quality settings, and the 20:9 decision are null.",
+        "Recovery remains owner parameters, then A00 amendment, then A02 G14. This does not by itself fail or pass the pending-token fix."
+      ]
+    },
+    {
+      "id": "source-unchanged",
+      "status": "PASS",
+      "evidence": [
+        "zip_sha256_before=22abc110927e155e5642d1dded7947306257525fd6a62861ca356c31edb9cfcb",
+        "zip_sha256_after=22abc110927e155e5642d1dded7947306257525fd6a62861ca356c31edb9cfcb",
+        "extracted_payload_hash_changes=[]",
+        "bytecode_files=[]",
+        "python=3.14.3"
+      ]
+    }
+  ],
+  "evidence_paths": [
+    "t02-acc-a04-review-record.json",
+    "a04-probe-report.json",
+    "a04_independent_probe.py",
+    "a04-author-verify.log",
+    "a04-author-audit-rework2.log",
+    "a04-package-verify.log",
+    "a04-heading-csharp.log",
+    "HeadingCheck.cs"
+  ],
+  "source_unchanged": true,
+  "minimal_fixes": [],
+  "business_repair_attempt_observed": 2,
+  "t03_released": false,
+  "historical_verdicts": {
+    "SHIP-14_v1.0.0": "FAIL",
+    "SHIP-16_v1.0.1": "FAIL"
+  },
+  "automated_gate": "NOT_RUN",
+  "limits": {
+    "json_schema_full": "NOT_RUN",
+    "unity_routes_gpu_touch_performance": "NOT_RUN",
+    "gate_lease": "NOT_RUN",
+    "windows_performance_baseline": "BLOCKED",
+    "csharp_heading_formula": "PASS_ISOLATED_NOT_UNITY"
+  }
+}

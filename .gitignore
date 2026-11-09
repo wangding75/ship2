@@ -1,0 +1,32 @@
+# Unity generated caches and local state
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/[Bb]uilds/
+**/[Bb]uild/
+**/MemoryCaptures/
+**/Recordings/
+*.csproj
+*.sln
+*.slnx
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.vs/
+.idea/
+# Task runtime metadata and downloaded working copies
+.agent_context/
+.multica/
+inputs/
+tools/leases/*.lock
+releases/windows/
+releases/t03-recovery/*.guard
+!tools/build/
+!tools/build/**

@@ -1,0 +1,694 @@
+{
+  "schema": "s1_product_acceptance_traceability_matrix_v1",
+  "document_id": "S1-TRACE-MATRIX-v1.2",
+  "version": "1.2.0",
+  "spec_version": "v1.2.0",
+  "candidate_id": "S1-T01-CANDIDATE-v1.2-20261106",
+  "task_id": "S1-T01",
+  "issue_id": "01a1b071-19d9-7717-8d32-c00f2350ac5f",
+  "issue_identifier": "SHIP-10",
+  "original_task_issue_id": "01a1b039-3663-75aa-96bf-962529e2ba2f",
+  "original_task_issue_identifier": "SHIP-6",
+  "idempotency_key": "T01-REWORK-1",
+  "child_key": "S1-T01+c88eba1ea39699dc3895957d4544427d902c7041af049135134edbff508c33fa+1+A01+1",
+  "stage": 31,
+  "business_rework_attempt": 1,
+  "max_business_rework_attempts": 2,
+  "contract_version": "T01-contract-v1",
+  "contract_sha256": "eb16b7b6b7b10cac2a2fd73f250e4580b09f6a6cb8e794ac4baa2715c12b2947",
+  "contract_review_record_attachment_id": "01a1b045-a0c4-7b6c-8c14-875f5eccad05",
+  "contract_review_record_sha256": "6c48aa7bbb3c2074f9eb116810bbf882b43d42d543b180cc35c545f49aa614d2",
+  "source_specs_zip_sha256": "870ee7637dee62bfea3f528c84193fb455a6cea1f00c87ffc798b9dae39f0215",
+  "source_s1_tasks_sha256": "22d5eb65bfaafd00de9b337f24078c9bdf104807bdc2c2c6135c1b718de87ea7",
+  "source_s1_acceptance_sha256": "2f4b70701b21610e5af2a55d1af7dd1e1f591ec07394dff2717f718a265dc441",
+  "source_task_acceptance_sha256": "910ff7c765586a5696da7275d2165ad7ca703d1707b852d96e38b86a24cafe22",
+  "source_handbook_txt_sha256": "7d87681e14d5fe715fe601111fc44039c21ef7f2a1e35ec523ffbb0d32cd5df6",
+  "producer_role": "A01",
+  "producer_agent_uuid": "df0859d2-a436-4389-9c83-da8890471e97",
+  "producer_run_id": "01a1b071-1d70-741a-9f14-2d64d5530ea8",
+  "prior_rejected_v1_1_run_id": "01a1b050-f133-70d2-add6-0a011087ef29",
+  "prior_rejected_v1_1_candidate_id": "S1-T01-CANDIDATE-v1.1-20261106",
+  "prior_rejected_v1_1_zip_sha256": "c88eba1ea39699dc3895957d4544427d902c7041af049135134edbff508c33fa",
+  "prior_rejected_v1_1_review_issue": "SHIP-8",
+  "prior_rejected_v1_1_review_comment_id": "01a1b06f-87b0-7e53-b09c-d1137260f409",
+  "prior_rejected_v1_1_review_record_attachment_id": "01a1b071-19ab-725c-9b46-0eeb75447797",
+  "prior_rejected_v1_1_review_record_source_attachment_id": "01a1b06f-87a2-7c3b-9c5f-e4fbf45beb47",
+  "prior_rejected_v1_1_review_record_sha256": "11662edf534e53f1b9594a8e0abfdc32c325276980438780cfda40dd98f1c676",
+  "prior_producer_run_id": "01a1b046-2f0b-77f8-b548-8e6e33a56cdf",
+  "reviewer_role": "A02",
+  "reviewer_agent_uuid": "1e385681-ce16-4e44-9db3-c82ea8dcd2e4",
+  "implemented": false,
+  "executed": false,
+  "numbers_are_targets_not_results": true,
+  "total_requirements_count": 26,
+  "requirement_id_range": "REQ-S1-001..REQ-S1-026",
+  "figure04_reference": {
+    "status": "PROVIDED_AND_VERIFIED",
+    "repository_target_path": "references/style/figure04_ocean.png",
+    "git_commit_plan": "S1-T03 初始化 Git 仓库后将该图提交到 references/style/figure04_ocean.png 并纳入版本管理",
+    "multica_comment_id": "01a1b050-f123-701f-bdbc-e03015c8809f",
+    "multica_attachment_id": "01a1b050-f10f-7be8-a788-d954c2cb9dbf",
+    "rework_issue_attachment_id": "01a1b071-19c2-7ba4-a9bc-31f379540788",
+    "source": "owner (member_id: 902a2d4d-b2eb-4a8d-b4bb-3373fd78e177)",
+    "filename": "figure04_ocean.png",
+    "dimensions_px": [1006, 303],
+    "pixel_format": "Format24bppRgb",
+    "size_bytes": 269377,
+    "png_sha256": "47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2",
+    "original_jpeg_sha256": "2ae118b72245e88b6b8eaee719b46061029adebe6b90a9e424e21f84804d320a",
+    "image_annotation_limitations": "PNG 图像无相机 EXIF 元数据、无角度标注、无几何比例尺标注；仅支持定性确认倾斜俯视视角及画面构成，不支持直接测量 55° 相机俯角、85 m 相机高度或 4~8 倍船宽数值",
+    "header_text_in_image": "1. 海水表现，是当前画面最明显的短板",
+    "panels": {
+      "left_negative_panel": {
+        "caption": "平坦水面示意",
+        "role": "NEGATIVE_COUNTER_EXAMPLE",
+        "observed_features": [
+          "单一青绿色平坦水面，右侧带刺眼碎白镜面高光噪点",
+          "左侧岸线呈生硬直线/折角切割，无连续清晰的白色岸线泡沫带",
+          "浅水可见零星露出水面的灰岩与顶部绿顶石块，缺乏青绿浅水到深蓝深水的多级深度过渡",
+          "画面无船只、无尾迹"
+        ]
+      },
+      "right_positive_panel": {
+        "caption": "丰富水面示意",
+        "role": "POSITIVE_TARGET_DIRECTION",
+        "observed_features": [
+          "浅滩暖黄沙底 -> 青绿浅水带 -> 蓝绿中水过渡 -> 深蓝深水区的多层水深色彩过渡，带柔和波纹与微白浪花",
+          "浅水及过渡区可见半透明水下礁石暗影轮廓",
+          "每座圆润小岛沙滩岸线外侧环绕连续、清晰的白色岸线泡沫带",
+          "圆润有机小岛轮廓（外圈金黄沙滩、中部绿色草坡、圆润绿树植被簇、局部海岸灰白礁石），多岛围合形成可航水道",
+          "水道中央1艘3D帆船（深色船帆配桅杆顶旗、木质船体）航行，船尾拖出沿世界轨迹弯曲渐隐的白色泡沫尾迹",
+          "高于海平面的倾斜俯视视角（Elevated Oblique View，既非90度垂直顶视亦非水平平视），同时呈现船帆/船体3D体积、海岛层次、可航水道与弯曲尾迹（注：图像无角度与比例尺标注，55.0°±2.0°、85m高度及4~8倍船宽非从图测得）"
+        ]
+      }
+    },
+    "observable_criteria": [
+      {
+        "id": "FIG4-OBS-01",
+        "dimension": "水面深浅层次",
+        "source_type": "QUALITATIVE_IMAGE_OBSERVATION",
+        "pass_criterion": "近/中/远及低画质Player截图从岛岸向外呈现浅滩沙底->青绿浅水->蓝绿中水->深蓝深水多级过渡与柔和波纹",
+        "fail_criterion": "单一青绿纯色水面或仅靠生硬碎白镜面高光噪点（如图4左图）"
+      },
+      {
+        "id": "FIG4-OBS-02",
+        "dimension": "水下礁石与通透感",
+        "source_type": "QUALITATIVE_IMAGE_OBSERVATION",
+        "pass_criterion": "浅滩与过渡水域具备半透明水下礁石/地形暗影，且与可航水域/导航障碍边界一致",
+        "fail_criterion": "水体死板无深浅消光或礁石视觉与碰撞导航边界脱节"
+      },
+      {
+        "id": "FIG4-OBS-03",
+        "dimension": "岸线泡沫",
+        "source_type": "QUALITATIVE_IMAGE_OBSERVATION",
+        "pass_criterion": "圆润沙滩外沿环绕连续清晰的白色岸线泡沫带，近/中/远机位均可见",
+        "fail_criterion": "生硬折角切割岸线或无连续白色泡沫环带（如图4左图）"
+      },
+      {
+        "id": "FIG4-OBS-04",
+        "dimension": "岛屿轮廓与构成",
+        "source_type": "QUALITATIVE_IMAGE_OBSERVATION",
+        "pass_criterion": "圆润有机岛屿轮廓，含外圈沙滩、中部草坡、圆润树冠植被与海岸礁石分件",
+        "fail_criterion": "生硬直角多边形块或不可分件整图单网格"
+      },
+      {
+        "id": "FIG4-OBS-05",
+        "dimension": "3D帆船与弯曲白色尾迹",
+        "source_type": "QUALITATIVE_IMAGE_OBSERVATION",
+        "pass_criterion": "帆船具备清晰3D船体与帆面体积，船后白色泡沫尾迹沿世界轨迹平滑弯曲并渐隐衰减，不僵直、不穿岸",
+        "fail_criterion": "无尾迹、尾迹随船局部旋转呈僵直硬棍或360度转向破面"
+      },
+      {
+        "id": "FIG4-OBS-06",
+        "dimension": "倾斜俯视构图观察与相机起测目标衔接（区分图像观察与规格目标来源）",
+        "source_type": "QUALITATIVE_OBLIQUE_VIEW_FROM_IMAGE_PLUS_OWNER_AND_S1_AC02_NUMERIC_TARGETS",
+        "image_observation_scope": "figure04_ocean.png 右图仅支持定性确认倾斜俯视构图（同屏可见相邻岛岸、可航水道、3D帆船体积与弯曲尾迹），PNG 无角度标注与比例尺标注",
+        "target_provenance": {
+          "pitch_55_deg_pm_2_deg": "源自 Owner 方向及冻结 S1-AC02 / S1-T05 / S1-T10 规格的起测目标，非 PNG 图像测量",
+          "camera_height_85m_and_35m_220m": "源自 A01 在 S1-T01 给出的类别 B 工程设计建议初值，非 PNG 图像读数",
+          "channel_width_4_to_8_ship_widths": "源自 A01 在 S1-T01 给出的类别 B 常规航道视觉宽度设计建议（窄水道净空硬指标见 CAT-04 2.5~6.0 * R_nav），非 PNG 图像测量"
+        },
+        "pass_criterion": "视觉构图对齐图4右图倾斜俯视多岛水道与3D帆船层次；默认起测俯角满足 Owner 方向与 S1-AC02 冻结起测目标 55.0° ± 2.0°；中景默认高度（建议初值 85.0 m）下同屏清晰呈现多岛水道、3D船体姿态与尾迹弧线",
+        "fail_criterion": "机位角度偏离 55.0° ± 2.0° 起测目标、退化为平视或90度顶视导致丢失3D体积感，或将 55°/85m/4~8倍船宽伪称为从图4测量所得"
+      }
+    ],
+    "non_depicted_elements_kept_null": {
+      "hud_elements_in_figure04": null,
+      "port_landmark_architecture_in_figure04": null,
+      "three_ship_types_lineup_in_figure04": null,
+      "note": "图4原图中不包含HUD控件、港口地标建筑及3种船型并列图；严格不臆造，按文字规格由S1-T05/T06/T07/T13细化"
+    }
+  },
+  "frozen_parameters": {
+    "world": {
+      "plane_axes": "X/Z",
+      "vertical_axis": "Y",
+      "world_size_m": [2048.0, 2048.0],
+      "recommended_bounds_x_m": [-1024.0, 1024.0],
+      "recommended_bounds_z_m": [-1024.0, 1024.0],
+      "base_island_module_types": 3,
+      "island_instance_count": 12,
+      "port_landmark_count": 1,
+      "port_anchor_count": 1,
+      "port_anchor_min_clearance_ratio_to_max_r_nav": 1.5,
+      "deterministic_seed_required": true
+    },
+    "ships_and_kinematics": {
+      "ship_type_count": 3,
+      "controllable_player_ship_count": 1,
+      "performance_moving_npc_ship_count": 29,
+      "performance_total_visible_moving_ships": 30,
+      "required_lod_levels": ["LOD0", "LOD1", "LOD2"],
+      "state_enum": ["Idle", "Moving", "Stopping", "Arrived", "Blocked"],
+      "recommended_ship_Archetypes": [
+        {
+          "archetype_id": "ship_light",
+          "name": "轻型快船",
+          "length_m": 16.0,
+          "nav_radius_m": 4.5,
+          "v_max_m_per_s": 14.0,
+          "a_acc_m_per_s2": 5.0,
+          "a_stop_m_per_s2": 7.0,
+          "omega_max_deg_per_s": 65.0
+        },
+        {
+          "archetype_id": "ship_medium",
+          "name": "中型帆船",
+          "length_m": 24.0,
+          "nav_radius_m": 6.5,
+          "v_max_m_per_s": 11.0,
+          "a_acc_m_per_s2": 3.8,
+          "a_stop_m_per_s2": 5.5,
+          "omega_max_deg_per_s": 48.0
+        },
+        {
+          "archetype_id": "ship_heavy",
+          "name": "重型主力帆船",
+          "length_m": 32.0,
+          "nav_radius_m": 8.0,
+          "v_max_m_per_s": 8.5,
+          "a_acc_m_per_s2": 2.8,
+          "a_stop_m_per_s2": 4.5,
+          "omega_max_deg_per_s": 35.0
+        }
+      ],
+      "visual_wave_motion_affects_nav_xz": false
+    },
+    "arrival_and_stopping": {
+      "arrival_radius_ratio_to_r_nav": 0.5,
+      "arrival_speed_threshold_m_per_s": 0.2,
+      "arrival_debounce_ticks": 5,
+      "arrival_event_count_per_command": 1,
+      "stop_speed_zero_threshold_m_per_s": 0.05,
+      "swept_volume_check_required": true
+    },
+    "routes_100_sample_spec": {
+      "total_valid_routes": 100,
+      "required_pass_rate": 1.0,
+      "categories": [
+        {
+          "category_id": "CAT-01",
+          "name": "短途开阔水域路线",
+          "quota": 15,
+          "route_id_range": "R001-R015",
+          "distance_range_m": [80.0, 350.0]
+        },
+        {
+          "category_id": "CAT-02",
+          "name": "长途跨图路线",
+          "quota": 15,
+          "route_id_range": "R016-R030",
+          "distance_range_m": [900.0, 2400.0]
+        },
+        {
+          "category_id": "CAT-03",
+          "name": "贴岸掠行路线",
+          "quota": 20,
+          "route_id_range": "R031-R050",
+          "coast_clearance_ratio_to_r_nav": [1.2, 3.0]
+        },
+        {
+          "category_id": "CAT-04",
+          "name": "窄水道穿越路线",
+          "quota": 15,
+          "route_id_range": "R051-R065",
+          "channel_width_ratio_to_r_nav": [2.5, 6.0]
+        },
+        {
+          "category_id": "CAT-05",
+          "name": "岛后绕行与急转弯路线",
+          "quota": 20,
+          "route_id_range": "R066-R085",
+          "min_turn_angle_deg": 60.0
+        },
+        {
+          "category_id": "CAT-06",
+          "name": "港口锚点往返路线",
+          "quota": 15,
+          "route_id_range": "R086-R100",
+          "outbound_count": 7,
+          "return_to_anchor_count": 8
+        }
+      ],
+      "unreachable_negative_spec": {
+        "counted_separately_from_valid_routes": true,
+        "min_total_negative_cases": 20,
+        "categories": [
+          {
+            "category_id": "NEG-01",
+            "name": "岛屿陆地内部点",
+            "min_quota": 6,
+            "reason_code": "TARGET_ON_LAND"
+          },
+          {
+            "category_id": "NEG-02",
+            "name": "浅滩/贴岸净空不足点",
+            "min_quota": 5,
+            "reason_code": "CLEARANCE_INSUFFICIENT"
+          },
+          {
+            "category_id": "NEG-03",
+            "name": "封闭死水或超窄不可通行夹缝",
+            "min_quota": 4,
+            "reason_code": "NO_PATH_FOUND"
+          },
+          {
+            "category_id": "NEG-04",
+            "name": "世界边界外越界点",
+            "min_quota": 5,
+            "reason_code": "OUT_OF_BOUNDS"
+          }
+        ]
+      }
+    },
+    "camera_and_hud": {
+      "default_pitch_deg": 55.0,
+      "pitch_tolerance_deg": 2.0,
+      "pitch_provenance": "Owner 方向与冻结 S1-AC02 / S1-T05 / S1-T10 起测目标（非 figure04_ocean.png 图像测量；图4仅定性支持倾斜俯视）",
+      "recommended_zoom_heights_m": {
+        "near": 35.0,
+        "mid_default": 85.0,
+        "far": 220.0
+      },
+      "zoom_heights_provenance": "A01 在 S1-T01 给出的类别 B 设计建议初值（非 figure04_ocean.png 图像测量）",
+      "recommended_visual_channel_width_in_ship_widths": [4.0, 8.0],
+      "channel_width_provenance": "A01 在 S1-T01 给出的类别 B 常规航道视觉宽度设计建议（非 figure04_ocean.png 图像测量；窄水道净空硬指标见 CAT-04 2.5~6.0 * R_nav）",
+      "required_aspect_ratios": ["16:9", "20:9", "4:3"],
+      "ui_click_through_allowed_count": 0
+    },
+    "reentry_and_recovery": {
+      "reentry_iterations": 20,
+      "max_ship_position_restore_error_m": 0.01,
+      "max_ship_heading_restore_error_deg": 0.1,
+      "max_camera_lookat_restore_error_m": 0.05,
+      "allowed_orphan_objects": 0,
+      "allowed_duplicate_subscriptions": 0
+    },
+    "performance_baseline": {
+      "target_device_ram_gb": 6,
+      "target_platform": "Android_Real_Device",
+      "internal_render_resolution": "1280x720",
+      "visible_moving_ships_with_wakes": 30,
+      "warmup_duration_seconds": 300,
+      "measurement_duration_seconds": 1800,
+      "max_p95_frametime_ms": 33.3,
+      "max_total_pss_gib": 1.2,
+      "max_total_pss_mib": 1228.8,
+      "allow_monotonic_memory_leak": false,
+      "pending_windows_amendment_hold": {
+        "registered_inputs_attachment_id": "01a1b071-19ca-7c43-a79d-4d458df8e040",
+        "registered_inputs_sha256": "03280271aadd21e89806f1b3d69924369f9856ad8f215a44d0a027e8c003cf2c",
+        "amendment_review_issue": "SHIP-9",
+        "g14_resigned": false,
+        "policy": "保留原 Android 冻结条款与冲突说明；在 SHIP-9 独立审核及修订契约经 G14 正式签核前，不借 T01 返工实施未签核的 Windows-only 阈值变更，不降低 33.3 ms，不删除 PSS/内存检查，不直接将 Android PSS 等同替换为 Windows 指标，不改 T03 负责人 A14"
+      }
+    }
+  },
+  "requirements": [
+    {
+      "req_id": "REQ-S1-001",
+      "domain": "运行时预检",
+      "type": "HARD_REQUIREMENT",
+      "summary": "核实Multica/Codex/Grok/Antigravity版本、实际模型与思考等级、文件字节读写、失败退出码检测、真实PNG识别与结构化输出",
+      "observable_outcome": "5模型6配置原始回执与日志齐全，exit 7失败如实捕获，640x280 PNG差异准确识别",
+      "negative_probe": "隐藏失败退出码或仅用模型自报身份 -> A13 FAIL",
+      "stage_ac_ids": ["S1-AC10", "S1-AC11"],
+      "task_ids": ["S1-T00"],
+      "task_ac_ids": ["S1-T00-AC01"],
+      "producer_roles": ["A14"],
+      "reviewer_roles": ["A13"],
+      "status": "PASS",
+      "verified_by_issue": "SHIP-5"
+    },
+    {
+      "req_id": "REQ-S1-002",
+      "domain": "需求冻结",
+      "type": "HARD_REQUIREMENT",
+      "summary": "冻结世界/航行范围、可操作旅程、参数单位、不可达/停止/返航规则、100条路线样本口径及验收矩阵（REQ-S1-001..REQ-S1-026共26条）；区分硬要求与建议初值；登记owner已提供的图4原图（references/style/figure04_ocean.png，1006x303，SHA256 47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2），明确PNG仅支持定性倾斜俯视观察（无角度/比例标注），55.0°±2.0°源自Owner方向与冻结S1-AC02，85m高度与水道4~8倍船宽源自T01设计建议，图中不存在的细节保持null",
+      "observable_outcome": "docs/product/ 下规格与矩阵（v1.2.0）齐全，26条需求均有单位、可观测结果与追踪映射，图4原图元数据与FIG4-OBS-01..06来源区分准确，图中不存在细节保持null",
+      "negative_probe": "漏定义到达容差/100路线口径或将目标值冒充实测值或将55°/85m/4~8倍船宽伪称为从图4测量或臆造图4未包含细节 -> A02 FAIL",
+      "stage_ac_ids": ["S1-AC01", "S1-AC02", "S1-AC03", "S1-AC04", "S1-AC05", "S1-AC06", "S1-AC07", "S1-AC08", "S1-AC09", "S1-AC10", "S1-AC11", "S1-AC12"],
+      "task_ids": ["S1-T01"],
+      "task_ac_ids": ["S1-T01-AC01"],
+      "producer_roles": ["A01"],
+      "reviewer_roles": ["A02"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-003",
+      "domain": "世界空间",
+      "type": "HARD_REQUIREMENT",
+      "summary": "世界X/Z平面2048×2048世界米起测范围；3种基础岛型模块、12个岛屿实例、1个港口地标",
+      "observable_outcome": "场景导出数据验证世界边长为2048.0m×2048.0m，3种独立岛基Prefab，12个岛屿实例，1个港口地标",
+      "negative_probe": "尺寸不符、整岛不可分件或少于12实例 -> A04/A07 FAIL",
+      "stage_ac_ids": ["S1-AC01"],
+      "task_ids": ["S1-T02", "S1-T07", "S1-T09"],
+      "task_ac_ids": ["S1-T02-AC01", "S1-T07-AC01", "S1-T09-AC01"],
+      "producer_roles": ["A03", "A06", "A08"],
+      "reviewer_roles": ["A04", "A07"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-004",
+      "domain": "港口锚点",
+      "type": "HARD_REQUIREMENT",
+      "summary": "港口停泊锚点必须位于可航水域合法点内，与浅滩/陆地障碍保持船体安全净空（>= 1.5 * R_nav_max）",
+      "observable_outcome": "锚点坐标处于导出的可航水域多边形内，距陆地障碍有向距离 >= 12.0m，三类船型停泊零碰撞",
+      "negative_probe": "锚点落在陆地碰撞体或浅滩禁航区内 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC01", "S1-AC04"],
+      "task_ids": ["S1-T02", "S1-T07", "S1-T09", "S1-T12"],
+      "task_ac_ids": ["S1-T02-AC01", "S1-T07-AC01", "S1-T09-AC01", "S1-T12-AC01"],
+      "producer_roles": ["A03", "A06", "A08", "A09"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-005",
+      "domain": "确定性重建",
+      "type": "HARD_REQUIREMENT",
+      "summary": "世界场景、12个岛屿位姿、导航障碍底图及测试案例均可由固定 scenario_seed 确定性重建",
+      "observable_outcome": "相同 scenario_seed 两次重建导出的世界与导航底图数据 SHA256 完全一致（坐标误差 <= 1e-5 m）",
+      "negative_probe": "同 seed 重建结果漂移 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC01", "S1-AC05"],
+      "task_ids": ["S1-T09", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T09-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A08", "A11", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-006",
+      "domain": "视觉基线与海水（图4原图基准）",
+      "type": "HARD_REQUIREMENT",
+      "summary": "以 references/style/figure04_ocean.png（SHA256 47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2）右图「丰富水面示意」为定性正向目标：真实水面网格、青绿浅水->深蓝深水过渡、水下礁石、连续白色岸线泡沫、圆润小岛+树+礁石、船后弯曲白尾迹及倾斜俯视构图；默认起测俯角 55.0° ± 2.0° 源自 Owner 方向与冻结 S1-AC02 起测目标（非图像测量）；近中远机位均可见，低画质保留关键层次",
+      "observable_outcome": "真实GPU渲染的近/中/远及低画质Player截图通过A07按 FIG4-OBS-01..06 的逐项核验",
+      "negative_probe": "退化为图4左图「平坦水面示意」（单一青绿水色、碎白噪点高光、生硬无泡沫岸线）或低画质丢失深浅层次 -> A07/A04 FAIL",
+      "stage_ac_ids": ["S1-AC02"],
+      "task_ids": ["S1-T05", "S1-T08", "S1-T19"],
+      "task_ac_ids": ["S1-T05-AC01", "S1-T08-AC01", "S1-T19-AC01"],
+      "producer_roles": ["A05", "A08", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-007",
+      "domain": "舰船资产",
+      "type": "HARD_REQUIREMENT",
+      "summary": "3种真实3D网格船型，各有合理水线、枢轴、碰撞代理和尾迹挂点；LOD0/1/2及材质预算满足冻结标准，360度转向无破面",
+      "observable_outcome": "资产检查脚本验证3船型LOD0/1/2、枢轴、水线、碰撞体与挂点齐全；360度转台截图无破面",
+      "negative_probe": "缺LOD、破面、枢轴偏移或篡改共享GUID -> A04/A07 FAIL",
+      "stage_ac_ids": ["S1-AC03"],
+      "task_ids": ["S1-T06"],
+      "task_ac_ids": ["S1-T06-AC01"],
+      "producer_roles": ["A06"],
+      "reviewer_roles": ["A07", "A04"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-008",
+      "domain": "逻辑与表现分离",
+      "type": "HARD_REQUIREMENT",
+      "summary": "导航逻辑坐标(X,Z)与视觉渲染表现分离；运行时海浪与船体视觉起伏不改变导航坐标",
+      "observable_outcome": "开启波浪起伏时，Idle态主船连续300 ticks逻辑(X,Z)坐标偏移恒为0.000m",
+      "negative_probe": "视觉波浪带动逻辑坐标漂移 -> A04 FAIL",
+      "stage_ac_ids": ["S1-AC03", "S1-AC05"],
+      "task_ids": ["S1-T02", "S1-T11"],
+      "task_ac_ids": ["S1-T02-AC01", "S1-T11-AC01"],
+      "producer_roles": ["A03", "A09"],
+      "reviewer_roles": ["A04"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-009",
+      "domain": "状态机与连续运动",
+      "type": "HARD_REQUIREMENT",
+      "summary": "单一权威航行状态源（Idle/Moving/Stopping/Arrived/Blocked）可读；线速度与转向角速度连续变化且受上限约束",
+      "observable_outcome": "状态接口始终返回5态之一；采样日志满足 |Δv| <= a_max*Δt*1.05 且 |Δθ| <= ω_max*Δt*1.05",
+      "negative_probe": "多状态源冲突或单帧瞬间折向 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC03", "S1-AC04"],
+      "task_ids": ["S1-T02", "S1-T11", "S1-T18"],
+      "task_ac_ids": ["S1-T02-AC01", "S1-T11-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A03", "A09", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-010",
+      "domain": "选船与未选船保护",
+      "type": "HARD_REQUIREMENT",
+      "summary": "1艘主船可点选控制；未选船时点击水面不下发航行命令并给出清晰未选船提示",
+      "observable_outcome": "选中主船后HUD激活；未选船点水时主船位移为0.0m且HUD显示未选船提示",
+      "negative_probe": "未选船仍触发移动或产生多艘可控主船 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC03", "S1-AC04"],
+      "task_ids": ["S1-T12", "S1-T13", "S1-T18"],
+      "task_ac_ids": ["S1-T12-AC01", "S1-T13-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A10", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-011",
+      "domain": "绕岛寻路与扫掠净空",
+      "type": "HARD_REQUIREMENT",
+      "summary": "点击合法水域目的地自动规划绕岛路径并跟随；整个船体导航代理扫掠区域不穿陆地、不瞬移、不越界",
+      "observable_outcome": "轨迹日志中每一步船体半径 R_nav 胶囊扫掠区域与陆地多边形重叠面积 == 0.0 m²",
+      "negative_probe": "仅船中心不穿岛但船体边缘穿岸，或使用固定曲线假冒寻路 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04", "S1-AC05"],
+      "task_ids": ["S1-T09", "S1-T12", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T09-AC01", "S1-T12-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A08", "A09", "A11", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-012",
+      "domain": "到达容差与防抖",
+      "type": "HARD_REQUIREMENT",
+      "summary": "到达容差固定为 D_arr = 0.50 * R_nav，速度 v <= 0.20 m/s，连续停留满 5 ticks 后状态转为 Arrived 并只发 1 次到达事件",
+      "observable_outcome": "到达时 d <= 0.50 * R_nav、v <= 0.20 m/s 连续保持 5 ticks，OnArrived 触发次数 == 1",
+      "negative_probe": "测试或实现私自放大容差比例，或重复触发多次到达事件 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04", "S1-AC05"],
+      "task_ids": ["S1-T11", "S1-T12", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T11-AC01", "S1-T12-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A11", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-013",
+      "domain": "主动停止",
+      "type": "HARD_REQUIREMENT",
+      "summary": "Moving状态下点击停止按钮切入Stopping，平滑减速至 v <= 0.05 m/s 后停稳于合法水域并转为Idle",
+      "observable_outcome": "状态经历 Moving -> Stopping -> Idle，速度单调平滑降至0，停船点位于合法水域且零穿岛",
+      "negative_probe": "停止无效、单帧速度硬归零或制动穿岸 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04"],
+      "task_ids": ["S1-T11", "S1-T12", "S1-T13", "S1-T18"],
+      "task_ac_ids": ["S1-T11-AC01", "S1-T12-AC01", "S1-T13-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A10", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-014",
+      "domain": "改目标与重复命令幂等",
+      "type": "HARD_REQUIREMENT",
+      "summary": "航行途中点击新合法目的地平滑重规划转向；重发同一航行命令不卡顿且不新增同一主船实例",
+      "observable_outcome": "改目标前后位置与航向一阶连续（无瞬移）；连发20次命令后 ActivePlayerShipCount == 1",
+      "negative_probe": "改目标瞬移折头或重复命令克隆新主船 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04", "S1-AC05"],
+      "task_ids": ["S1-T12", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T12-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A11", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-015",
+      "domain": "不可达与越界反馈",
+      "type": "HARD_REQUIREMENT",
+      "summary": "点击陆地、浅滩净空不足点、封闭死水或越界点时拒绝非法移动，状态置为Blocked并给出HUD错误提示；负例单独计数",
+      "observable_outcome": ">=20条独立负例 100% 触发 Blocked 状态、原因码与 HUD 提示，零非法位移、零穿岛",
+      "negative_probe": "点击陆地强行穿岛、无Blocked反馈或混入合法路线成功率 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04", "S1-AC05"],
+      "task_ids": ["S1-T04", "S1-T12", "S1-T13", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T04-AC01", "S1-T12-AC01", "S1-T13-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A10", "A11", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-016",
+      "domain": "驶回港口锚点",
+      "type": "HARD_REQUIREMENT",
+      "summary": "点击返航按钮自动规划绕岛路径驶回唯一港口合法停泊锚点并以Arrived停泊；不引入采集结算或战斗",
+      "observable_outcome": "从各象限/岛后触发返航均100%绕岛抵达港口锚点容差圈满5 ticks进入Arrived，无经济/战斗逻辑",
+      "negative_probe": "返航穿岛、停入陆地网格或弹出未授权经济结算 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04", "S1-AC05"],
+      "task_ids": ["S1-T12", "S1-T13", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T12-AC01", "S1-T13-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A10", "A11", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-017",
+      "domain": "100条合法路线样本验证",
+      "type": "HARD_REQUIREMENT",
+      "summary": "100条独立冻结的合法路线（6大类别配额15/15/20/15/20/15）由A11制作、A13依独立数据复核冻结，在T17候选包上100%到达",
+      "observable_outcome": "100/100 条合法路线全部 Arrived，全航程扫掠零穿岛、零瞬移、零越界",
+      "negative_probe": "由A09自选路线、篡改fixture哈希或任一路线失败 -> A13 FAIL",
+      "stage_ac_ids": ["S1-AC05"],
+      "task_ids": ["S1-T04", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T04-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A11", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-018",
+      "domain": "相机控制与输入等价",
+      "type": "HARD_REQUIREMENT",
+      "summary": "约55度俯视起测机位（55.0°±2.0°源自Owner方向及冻结S1-AC02起测目标，非图像测量；近35m/中85m/远220m为T01设计建议初值）；支持地图拖动、连续缩放、选船跟随、复位与世界边界限制；PC鼠标和Android真机触控等价",
+      "observable_outcome": "PC与Android真机点选/拖动/缩放/跟随/复位正常，拖拽不误发点水命令，复位俯角 55.0° ± 2.0°",
+      "negative_probe": "仅用PC鼠标冒充真机触控、拖拽误发航行命令或镜头越界 -> A04/A07/A13 FAIL",
+      "stage_ac_ids": ["S1-AC02", "S1-AC06"],
+      "task_ids": ["S1-T10", "S1-T19"],
+      "task_ac_ids": ["S1-T10-AC01", "S1-T19-AC01"],
+      "producer_roles": ["A10", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-019",
+      "domain": "最小HUD与安全区防穿透",
+      "type": "HARD_REQUIREMENT",
+      "summary": "HUD显示主船/目标/距离(m)/速度(m/s)/状态，提供停止/返航/复位按钮；点击UI零穿透；16:9/20:9/4:3处于安全区",
+      "observable_outcome": "点击UI触发水面航行命令次数 == 0；16:9、20:9、4:3三画幅下全部关键UI控件100%位于Screen.safeArea内",
+      "negative_probe": "点击停止/返航按钮穿透点水，或20:9安全区裁切按钮 -> A04/A07/A13 FAIL",
+      "stage_ac_ids": ["S1-AC04", "S1-AC06"],
+      "task_ids": ["S1-T10", "S1-T13", "S1-T19"],
+      "task_ac_ids": ["S1-T10-AC01", "S1-T13-AC01", "S1-T19-AC01"],
+      "producer_roles": ["A10", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-020",
+      "domain": "尾迹表现与30船池化",
+      "type": "HARD_REQUIREMENT",
+      "summary": "对应图4右图船后白色泡沫尾迹：按世界轨迹弯曲留存渐隐，停船后自然衰减，转弯不僵直、不穿岸；LOD切换无消失/跳位；30船池化无持续对象增长",
+      "observable_outcome": "实机帧与对象池日志确认转弯尾迹平滑不穿岸、停船自然衰减、LOD切换零跳变、30船稳态对象增长为0",
+      "negative_probe": "尾迹随船体局部旋转僵直穿岸或尾迹对象无限增长 -> A04/A07/A13 FAIL",
+      "stage_ac_ids": ["S1-AC02", "S1-AC08"],
+      "task_ids": ["S1-T08", "S1-T14", "S1-T19", "S1-T20"],
+      "task_ac_ids": ["S1-T08-AC01", "S1-T14-AC01", "S1-T19-AC01", "S1-T20-AC01"],
+      "producer_roles": ["A08", "A12"],
+      "reviewer_roles": ["A04", "A07", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-021",
+      "domain": "20次重入与状态恢复",
+      "type": "HARD_REQUIREMENT",
+      "summary": "20次场景重入无重复船、孤儿对象、重复订阅；最小主船位置(<=0.01m)/航向(<=0.1°)/镜头状态(<=0.05m)恢复按T01定义",
+      "observable_outcome": "20次重入后 ActivePlayerShipCount == 1、OrphanCount == 0、订阅倍增因子 == 1，位置与相机恢复误差符合T01阈值",
+      "negative_probe": "重入后产生第2艘主船、回调触发多次或位置丢失 -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC07"],
+      "task_ids": ["S1-T11", "S1-T16", "S1-T18"],
+      "task_ac_ids": ["S1-T11-AC01", "S1-T16-AC01", "S1-T18-AC01"],
+      "producer_roles": ["A09", "A11", "A12"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-022",
+      "domain": "Android真机30船性能与热稳",
+      "type": "HARD_REQUIREMENT",
+      "summary": "登记6GB Android真机、720p、1可控+29实际运动带尾迹可见船；预热5分钟后测30分钟，p95<=33.3ms、总PSS峰值<=1.2GiB、无持续增长/崩溃/Error（Windows-only修订SHIP-9尚待G14签核，保留原Android条款与冲突说明，不降低33.3ms、不删PSS/内存项、不把PSS直接换为Windows指标）",
+      "observable_outcome": "真机GPU帧时序列 p95 <= 33.3 ms（含p50/p95/p99），30分钟总PSS峰值 <= 1228.8 MiB 且无持续增长，30船全程可见且运动",
+      "negative_probe": "用模拟器/PC代替真机、隐藏29艘船或只报平均FPS -> A13 FAIL（缺真机则记 BLOCKED）",
+      "stage_ac_ids": ["S1-AC08"],
+      "task_ids": ["S1-T20"],
+      "task_ac_ids": ["S1-T20-AC01"],
+      "producer_roles": ["A12"],
+      "reviewer_roles": ["A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-023",
+      "domain": "双端构建、图4入库与运行稳定",
+      "type": "HARD_REQUIREMENT",
+      "summary": "S1-T03（负责人A14）初始化Git仓库后将图4原图提交到 references/style/figure04_ocean.png 纳入版本管理；干净commit的Windows与Android包可启动；无编译错误、丢失引用、粉色材质、崩溃或运行时Error",
+      "observable_outcome": "Git仓库含 references/style/figure04_ocean.png（SHA256 47778e452a519f6482abfee15cdab3e202a3475f3186fac99c507693eb4cb0b2）；Windows与Android包构建哈希可追溯、安装冒烟启动正常，missing_refs==0、pink_materials==0、runtime_errors==0",
+      "negative_probe": "未将图4入库、编译错误、粉色材质、丢失引用或运行时异常 -> A04/A12/A13 FAIL",
+      "stage_ac_ids": ["S1-AC09"],
+      "task_ids": ["S1-T03", "S1-T15", "S1-T17", "S1-T18", "S1-T19", "S1-T20"],
+      "task_ac_ids": ["S1-T03-AC01", "S1-T15-AC01", "S1-T17-AC01", "S1-T18-AC01", "S1-T19-AC01", "S1-T20-AC01"],
+      "producer_roles": ["A14", "A12"],
+      "reviewer_roles": ["A04", "A07", "A12", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-024",
+      "domain": "测试有效性与门禁负例",
+      "type": "HARD_REQUIREMENT",
+      "summary": "用例/脚本经A04/A13检查，至少3类受控故障能触发正确失败；Gate身份/哈希/缺证据/双租约负例均被拒绝",
+      "observable_outcome": "注入3类受控业务故障时测试100%报红失败；注入G01-G14门禁负例时Gate 100%拒绝",
+      "negative_probe": "测试写死PASS、放宽阈值或Gate放行自验收/旧SHA -> A04/A13 FAIL",
+      "stage_ac_ids": ["S1-AC10"],
+      "task_ids": ["S1-T03", "S1-T04", "S1-T16"],
+      "task_ac_ids": ["S1-T03-AC01", "S1-T04-AC01", "S1-T16-AC01"],
+      "producer_roles": ["A14", "A11"],
+      "reviewer_roles": ["A04", "A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-025",
+      "domain": "独立证据与归档",
+      "type": "HARD_REQUIREMENT",
+      "summary": "所有required任务具备作者分离记录；文档/概念/资产审查绑定各自冻结SHA，最终运行证据绑定同一T17候选包、设备和配置；T21完整归档",
+      "observable_outcome": "S1-T21归档包完整包含T17候选与全部原始证据，19个标准证据字段齐全且SHA256校验100%匹配",
+      "negative_probe": "缺原始证据、哈希不匹配或混用不同构建包证据 -> A13 FAIL",
+      "stage_ac_ids": ["S1-AC11"],
+      "task_ids": ["S1-T21"],
+      "task_ac_ids": ["S1-T21-AC01"],
+      "producer_roles": ["A14"],
+      "reviewer_roles": ["A13"],
+      "status": "NOT_RUN"
+    },
+    {
+      "req_id": "REQ-S1-026",
+      "domain": "阶段交付与A15终验",
+      "type": "HARD_REQUIREMENT",
+      "summary": "A00汇总交付报告和剩余限制；A15独立检查全部必需签核并在同一候选复跑普通绕岛、不可达、停止改目标返航三组关键旅程",
+      "observable_outcome": "全部前置必需检查PASS且A15在同一T17候选包独立复跑三组关键旅程均复现通过后，签发阶段决定",
+      "negative_probe": "前置存在未通过项或A15未独立复跑即签PASS -> 违反G13拒绝放行",
+      "stage_ac_ids": ["S1-AC12"],
+      "task_ids": ["S1-T22"],
+      "task_ac_ids": ["S1-T22-AC01"],
+      "producer_roles": ["A00"],
+      "reviewer_roles": ["A15"],
+      "status": "NOT_RUN"
+    }
+  ]
+}

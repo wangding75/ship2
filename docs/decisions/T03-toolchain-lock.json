@@ -1,0 +1,178 @@
+﻿{
+    "status":  "PROVISIONAL",
+    "utc":  "2026-11-09T07:06:34.7645893Z",
+    "editor":  "6000.6.6f1",
+    "revision":  "d20c9ac777da",
+    "cli":  "1.0.0-beta.15",
+    "packages":  [
+                     {
+                         "id":  "com.unity.burst",
+                         "version":  "2.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.collab-proxy",
+                         "version":  "2.13.6",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.collections",
+                         "version":  "6.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.ext.nunit",
+                         "version":  "2.1.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.graph-authoring",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.ide.rider",
+                         "version":  "3.0.40",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.ide.visualstudio",
+                         "version":  "2.0.28",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.inputsystem",
+                         "version":  "1.20.0",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.nuget.mono-cecil",
+                         "version":  "1.11.6",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.nuget.newtonsoft-json",
+                         "version":  "3.2.2",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.pipeline",
+                         "version":  "0.8.0-exp.1",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.profiling.core",
+                         "version":  "1.0.3",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.render-pipelines.core",
+                         "version":  "17.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.render-pipelines.universal",
+                         "version":  "17.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.render-pipelines.universal-config",
+                         "version":  "17.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.searcher",
+                         "version":  "4.9.5",
+                         "source":  "registry"
+                     },
+                     {
+                         "id":  "com.unity.shadergraph",
+                         "version":  "17.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.test-framework",
+                         "version":  "1.8.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.test-framework.performance",
+                         "version":  "6.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.ugui",
+                         "version":  "2.6.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.animation",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.audio",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.hierarchycore",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.imageconversion",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.imgui",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.jsonserialize",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.physics",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.physics2d",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.physicscore2d",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.screencapture",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.ui",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.uielements",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     },
+                     {
+                         "id":  "com.unity.modules.vectorgraphics",
+                         "version":  "1.0.0",
+                         "source":  "builtin"
+                     }
+                 ],
+    "quality":  "Template PC quality, explicit URP asset; final quality owner-deferred",
+    "performance":  "NOT_RUN; final GPU measurements deferred",
+    "packagesLockSha256":  "c8eb9d31f9281a33bead54006890aef3a0e45857551e2f036739220a72989549",
+    "contractSha256":  "d8feb47928806feb790650507e5950120fcf5dc7ab6485da93a818104e362eb5"
+}

@@ -1,0 +1,338 @@
+{
+  "interface_version": "S1-INTERFACES/1.0.2",
+  "candidate_ref": "S1-T02-CANDIDATE-v1.0.2-20261107",
+  "status": "CANDIDATE_PENDING_A04",
+  "product_spec_version": "v1.2.0",
+  "product_source_sha": "4cf141de3796dc0b2232a56a3fd6925559b9b538c66f8a3e75e1ff8348c52b37",
+  "frozen_parameters_verbatim": {
+    "world": {
+      "plane_axes": "X/Z",
+      "vertical_axis": "Y",
+      "world_size_m": [
+        2048.0,
+        2048.0
+      ],
+      "recommended_bounds_x_m": [
+        -1024.0,
+        1024.0
+      ],
+      "recommended_bounds_z_m": [
+        -1024.0,
+        1024.0
+      ],
+      "base_island_module_types": 3,
+      "island_instance_count": 12,
+      "port_landmark_count": 1,
+      "port_anchor_count": 1,
+      "port_anchor_min_clearance_ratio_to_max_r_nav": 1.5,
+      "deterministic_seed_required": true
+    },
+    "ships_and_kinematics": {
+      "ship_type_count": 3,
+      "controllable_player_ship_count": 1,
+      "performance_moving_npc_ship_count": 29,
+      "performance_total_visible_moving_ships": 30,
+      "required_lod_levels": [
+        "LOD0",
+        "LOD1",
+        "LOD2"
+      ],
+      "state_enum": [
+        "Idle",
+        "Moving",
+        "Stopping",
+        "Arrived",
+        "Blocked"
+      ],
+      "recommended_ship_Archetypes": [
+        {
+          "archetype_id": "ship_light",
+          "name": "轻型快船",
+          "length_m": 16.0,
+          "nav_radius_m": 4.5,
+          "v_max_m_per_s": 14.0,
+          "a_acc_m_per_s2": 5.0,
+          "a_stop_m_per_s2": 7.0,
+          "omega_max_deg_per_s": 65.0
+        },
+        {
+          "archetype_id": "ship_medium",
+          "name": "中型帆船",
+          "length_m": 24.0,
+          "nav_radius_m": 6.5,
+          "v_max_m_per_s": 11.0,
+          "a_acc_m_per_s2": 3.8,
+          "a_stop_m_per_s2": 5.5,
+          "omega_max_deg_per_s": 48.0
+        },
+        {
+          "archetype_id": "ship_heavy",
+          "name": "重型主力帆船",
+          "length_m": 32.0,
+          "nav_radius_m": 8.0,
+          "v_max_m_per_s": 8.5,
+          "a_acc_m_per_s2": 2.8,
+          "a_stop_m_per_s2": 4.5,
+          "omega_max_deg_per_s": 35.0
+        }
+      ],
+      "visual_wave_motion_affects_nav_xz": false
+    },
+    "arrival_and_stopping": {
+      "arrival_radius_ratio_to_r_nav": 0.5,
+      "arrival_speed_threshold_m_per_s": 0.2,
+      "arrival_debounce_ticks": 5,
+      "arrival_event_count_per_command": 1,
+      "stop_speed_zero_threshold_m_per_s": 0.05,
+      "swept_volume_check_required": true
+    },
+    "routes_100_sample_spec": {
+      "total_valid_routes": 100,
+      "required_pass_rate": 1.0,
+      "categories": [
+        {
+          "category_id": "CAT-01",
+          "name": "短途开阔水域路线",
+          "quota": 15,
+          "route_id_range": "R001-R015",
+          "distance_range_m": [
+            80.0,
+            350.0
+          ]
+        },
+        {
+          "category_id": "CAT-02",
+          "name": "长途跨图路线",
+          "quota": 15,
+          "route_id_range": "R016-R030",
+          "distance_range_m": [
+            900.0,
+            2400.0
+          ]
+        },
+        {
+          "category_id": "CAT-03",
+          "name": "贴岸掠行路线",
+          "quota": 20,
+          "route_id_range": "R031-R050",
+          "coast_clearance_ratio_to_r_nav": [
+            1.2,
+            3.0
+          ]
+        },
+        {
+          "category_id": "CAT-04",
+          "name": "窄水道穿越路线",
+          "quota": 15,
+          "route_id_range": "R051-R065",
+          "channel_width_ratio_to_r_nav": [
+            2.5,
+            6.0
+          ]
+        },
+        {
+          "category_id": "CAT-05",
+          "name": "岛后绕行与急转弯路线",
+          "quota": 20,
+          "route_id_range": "R066-R085",
+          "min_turn_angle_deg": 60.0
+        },
+        {
+          "category_id": "CAT-06",
+          "name": "港口锚点往返路线",
+          "quota": 15,
+          "route_id_range": "R086-R100",
+          "outbound_count": 7,
+          "return_to_anchor_count": 8
+        }
+      ],
+      "unreachable_negative_spec": {
+        "counted_separately_from_valid_routes": true,
+        "min_total_negative_cases": 20,
+        "categories": [
+          {
+            "category_id": "NEG-01",
+            "name": "岛屿陆地内部点",
+            "min_quota": 6,
+            "reason_code": "TARGET_ON_LAND"
+          },
+          {
+            "category_id": "NEG-02",
+            "name": "浅滩/贴岸净空不足点",
+            "min_quota": 5,
+            "reason_code": "CLEARANCE_INSUFFICIENT"
+          },
+          {
+            "category_id": "NEG-03",
+            "name": "封闭死水或超窄不可通行夹缝",
+            "min_quota": 4,
+            "reason_code": "NO_PATH_FOUND"
+          },
+          {
+            "category_id": "NEG-04",
+            "name": "世界边界外越界点",
+            "min_quota": 5,
+            "reason_code": "OUT_OF_BOUNDS"
+          }
+        ]
+      }
+    },
+    "camera_and_hud": {
+      "default_pitch_deg": 55.0,
+      "pitch_tolerance_deg": 2.0,
+      "pitch_provenance": "Owner 方向与冻结 S1-AC02 / S1-T05 / S1-T10 起测目标（非 figure04_ocean.png 图像测量；图4仅定性支持倾斜俯视）",
+      "recommended_zoom_heights_m": {
+        "near": 35.0,
+        "mid_default": 85.0,
+        "far": 220.0
+      },
+      "zoom_heights_provenance": "A01 在 S1-T01 给出的类别 B 设计建议初值（非 figure04_ocean.png 图像测量）",
+      "recommended_visual_channel_width_in_ship_widths": [
+        4.0,
+        8.0
+      ],
+      "channel_width_provenance": "A01 在 S1-T01 给出的类别 B 常规航道视觉宽度设计建议（非 figure04_ocean.png 图像测量；窄水道净空硬指标见 CAT-04 2.5~6.0 * R_nav）",
+      "required_aspect_ratios": [
+        "16:9",
+        "20:9",
+        "4:3"
+      ],
+      "ui_click_through_allowed_count": 0
+    },
+    "reentry_and_recovery": {
+      "reentry_iterations": 20,
+      "max_ship_position_restore_error_m": 0.01,
+      "max_ship_heading_restore_error_deg": 0.1,
+      "max_camera_lookat_restore_error_m": 0.05,
+      "allowed_orphan_objects": 0,
+      "allowed_duplicate_subscriptions": 0
+    },
+    "performance_baseline": {
+      "target_device_ram_gb": 6,
+      "target_platform": "Android_Real_Device",
+      "internal_render_resolution": "1280x720",
+      "visible_moving_ships_with_wakes": 30,
+      "warmup_duration_seconds": 300,
+      "measurement_duration_seconds": 1800,
+      "max_p95_frametime_ms": 33.3,
+      "max_total_pss_gib": 1.2,
+      "max_total_pss_mib": 1228.8,
+      "allow_monotonic_memory_leak": false,
+      "pending_windows_amendment_hold": {
+        "registered_inputs_attachment_id": "01a1b071-19ca-7c43-a79d-4d458df8e040",
+        "registered_inputs_sha256": "03280271aadd21e89806f1b3d69924369f9856ad8f215a44d0a027e8c003cf2c",
+        "amendment_review_issue": "SHIP-9",
+        "g14_resigned": false,
+        "policy": "保留原 Android 冻结条款与冲突说明；在 SHIP-9 独立审核及修订契约经 G14 正式签核前，不借 T01 返工实施未签核的 Windows-only 阈值变更，不降低 33.3 ms，不删除 PSS/内存检查，不直接将 Android PSS 等同替换为 Windows 指标，不改 T03 负责人 A14"
+      }
+    }
+  },
+  "architecture_decisions": {
+    "coordinate_system": {
+      "plane": "XZ",
+      "up": "+Y",
+      "north": "+Z",
+      "starboard": "+X",
+      "bounds_x_m": [
+        -1024,
+        1024
+      ],
+      "bounds_z_m": [
+        -1024,
+        1024
+      ],
+      "water_y_m": 0,
+      "units_per_metre": 1,
+      "heading_zero": "+Z",
+      "heading_90": "+X",
+      "chunk_size_m": 256
+    },
+    "fixed_tick_hz": 50,
+    "fixed_dt_s": 0.02,
+    "single_navigation_state_source": true,
+    "shortest_heading_delta": {
+      "range": "(-180,180]",
+      "half_turn_deg": 180,
+      "definition": "d=EuclideanMod(EuclideanMod(to,360)-EuclideanMod(from,360),360); return d-360 if d>180 else d",
+      "csharp_remainder": "Normalize negative remainder before using it as Euclidean modulo",
+      "pinned_examples": [
+        {
+          "from": 0,
+          "to": 180,
+          "delta": 180
+        },
+        {
+          "from": 350,
+          "to": 10,
+          "delta": 20
+        }
+      ]
+    },
+    "already_active_binding": {
+      "capture": "Successful goal acceptance binds active_map_sha and active_profile_sha from the validated plan token",
+      "condition": "Moving AND distance<=0.25*R_nav AND active_map_sha==map_sha AND active_profile_sha==profile_sha",
+      "changed_version": "Request a new plan; do not return ALREADY_ACTIVE using the old path. Merge same-target pending only when BOTH pending.map_sha==map_sha AND pending.profile_sha==profile_sha; otherwise invalidate the old token, increment generation and issue a token bound to current hashes, including Idle before acceptance. Stale resolves must fail.",
+      "clear": "Goal removal, Stop, session restore",
+      "pending_far_target_on_near_click": "Unchanged: ALREADY_ACTIVE does not cancel the pending far target"
+    },
+    "illegal_target_while_moving": "Stopping_then_Blocked",
+    "restore_mode": "SAFE_IDLE",
+    "state_values": [
+      "Idle",
+      "Moving",
+      "Stopping",
+      "Arrived",
+      "Blocked"
+    ],
+    "geometric_reasons": [
+      "TARGET_ON_LAND",
+      "CLEARANCE_INSUFFICIENT",
+      "NO_PATH_FOUND",
+      "OUT_OF_BOUNDS"
+    ],
+    "arrival_near_stationary_exception": "T01_TR02",
+    "runtime_ui": "uGUI",
+    "input": "com.unity.inputsystem",
+    "render_pipeline": "URP",
+    "editor_selected_owner_report": "6000.6.6f1",
+    "resolved_versions": {
+      "urp": null,
+      "input_system": null,
+      "ugui": null,
+      "test_framework": null,
+      "unity_mcp_commit": null
+    },
+    "version_lock_owner": "A14_T03",
+    "wake_technical_defaults": {
+      "sample_hz": 10,
+      "moving_lifetime_s": 6,
+      "stopped_fade_s": 4,
+      "slots_per_ship": 64,
+      "ships": 30
+    }
+  },
+  "windows_amendment": {
+    "effective": false,
+    "status": "BLOCKED",
+    "owner_authorized_platform": "Windows-only",
+    "resolution": [
+      1920,
+      1080
+    ],
+    "minimum_fps": 30,
+    "p95_max_ms": 33.3,
+    "memory_counter": null,
+    "memory_threshold": null,
+    "memory_growth_rule": null,
+    "quality_settings": null,
+    "aspect_20_9_decision": null,
+    "recovery": "Owner parameters -> A00 complete amendment -> A02 G14; T03 also requires T02 independent PASS"
+  },
+  "figure04_unknowns": {
+    "hud_elements_in_figure04": null,
+    "port_landmark_architecture_in_figure04": null,
+    "three_ship_types_lineup_in_figure04": null
+  },
+  "runtime_acceptance": "NOT_RUN",
+  "t03_released": false
+}
