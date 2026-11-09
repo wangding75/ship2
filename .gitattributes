@@ -6,3 +6,4 @@
 *.meta text eol=lf
 *.png binary
 *.zip binary
+docs/decisions/t03-inputs/* -text
