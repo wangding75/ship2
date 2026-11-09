@@ -1,0 +1,15 @@
+name: T03 tool regression
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  negative-probes:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m unittest discover -s tools/gates -p test_gate.py -v
+      - run: python -m unittest discover -s tools/leases -p test_lease.py -v
+# This workflow does not sign acceptance, publish an ACCEPTED decision, or claim a Unity build.

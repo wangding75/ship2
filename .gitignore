@@ -30,3 +30,6 @@ releases/windows/
 releases/t03-recovery/*.guard
 !tools/build/
 !tools/build/**
+__pycache__/
+*.pyc
+releases/clean-checkout/
