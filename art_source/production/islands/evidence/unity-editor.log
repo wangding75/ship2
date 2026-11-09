@@ -1,0 +1,918 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 39680)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 5516)
+VBCSCompiler prewarm took 12.52 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.6f1 (d20c9ac777da) revision 13765786'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-wangding" at "2026-11-09T18:10:47.3421437Z"
+OS: 'Windows 11  (10.0.26100) Enterprise' Language: 'zh' Physical Memory: 32107 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-09T18:10:47Z
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 7240, path: "D:/install/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              467fee631a65436b81be95560536dfe8
+  Correlation Id:          070d9d2e89a8ee5e5d1f80ed49fcc6ea
+  External correlation Id: 6846404952211619684
+  Machine Id:              rBbpgHeiOGGrVZD+YillLo4heJA=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-wangding" (connect: 0.00s, validation: 0.00s, handshake: 0.04s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-wangding-notifications" at "2026-11-09T18:10:47.3860183Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 2476067051951-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.05s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+C:\t07isl\client\UnityProject
+-executeMethod
+T07Import.Run
+-logFile
+C:\t07isl\unity-editor.log
+Successfully changed project path to: C:\t07isl\client\UnityProject
+C:/t07isl/client/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [50216]  Target information:
+
+Player connection [50216]  * "[IP] 10.236.15.76 [Port] 55504 [Flags] 2 [Guid] 266727497 [EditorId] 266727497 [Version] 1048832 [Id] WindowsEditor(7,yk-wangding) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [50216]  * "[IP] 169.254.83.107 [Port] 55504 [Flags] 2 [Guid] 266727497 [EditorId] 266727497 [Version] 1048832 [Id] WindowsEditor(7,yk-wangding) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [50216] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [50216] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-26612" after 0.4 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/t07isl/client/UnityProjectFMOD initialized on nosound output
+Unity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.6f1 (d20c9ac777da)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/t07isl/client/UnityProject/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon(TM) Graphics (ID=0x1638)
+    Vendor:   ATI
+    VRAM:     16053 MB
+    Driver:   30.0.14030.4003
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56612
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Registered in 0.010754 seconds.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  0.799 seconds
+Domain Reload Profiling: 1572ms
+	BeginReloadAssembly (182ms)
+		CreateAndSetChildDomain (10ms)
+	RebuildCommonClasses (6ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (111ms)
+	LoadAllAssembliesAndSetupDomain (454ms)
+		LoadAssemblies (165ms)
+		TypeCache.Refresh (301ms)
+			TypeCache.ScanAssembly (285ms)
+		AnalyzeDomain (1ms)
+	FinalizeReload (800ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (15ms)
+			BeforeProcessingInitializeOnLoad (118ms)
+			ProcessInitializeOnLoadAttributes (137ms)
+			ProcessInitializeOnLoadMethodAttributes (285ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 33 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ide.rider@3.0.40 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.ide.rider@e4950c6d131b)
+    com.unity.ide.visualstudio@2.0.28 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@b5edea5f33f4)
+    com.unity.inputsystem@1.20.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.inputsystem@7a4e1a2a8194)
+    com.unity.collab-proxy@2.13.6 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.collab-proxy@4628d2ba6ea4)
+    com.unity.pipeline@0.8.0-exp.1 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.pipeline@62c08c808737)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.5 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@9b1eb8be54e0)
+    com.unity.ugui@2.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.ugui@0b1771797efc)
+    com.unity.modules.vectorgraphics@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.test-framework@1.8.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.modules.uielements@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.screencapture@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.ui@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.audio@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@e18bd88df4e3)
+    com.unity.shadergraph@17.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.shadergraph@0de771837e0e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.ext.nunit@2.1.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.modules.animation@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.test-framework.performance@6.6.0 (location: C:\t07isl\client\UnityProject\Library\PackageCache\com.unity.test-framework.performance@54c5bd86aedb)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/t07isl/client/UnityProject
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 1s490ms
+[684/866    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[862/866    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[863/866    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 146 defines and 373 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[864/866    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[865/866    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (1.45 seconds), 5 items updated, 866 evaluated
+AssetDatabase: script compilation time: 2.195640s
+Begin MonoManager ReloadAssembly
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 2.56 ms, found 3 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Start HTTP server: port:7800
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.377 seconds
+Domain Reload Profiling: 3001ms
+	BeginReloadAssembly (425ms)
+		DisableScriptedObjects (35ms)
+		CreateAndSetChildDomain (171ms)
+	RebuildCommonClasses (15ms)
+	RebuildNativeTypeToScriptingClass (18ms)
+	initialDomainReloadingComplete (138ms)
+	LoadAllAssembliesAndSetupDomain (1028ms)
+		LoadAssemblies (539ms)
+		TypeCache.Refresh (286ms)
+			TypeCache.ScanAssembly (267ms)
+		AnalyzeDomain (53ms)
+			BuildScriptInfoCaches (46ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (1379ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (15ms)
+			BeforeProcessingInitializeOnLoad (136ms)
+			ProcessInitializeOnLoadAttributes (610ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (19ms)
+		AwakeInstancesAfterBackupRestoration (30ms)
+Starting new worker id: 0 with log in C:/t07isl/client/UnityProject/Logs/AssetImportWorkerHW0.log
+Refreshing native plugins compatible for Editor in 2.79 ms, found 3 plugins.
+
+Asset Pipeline Refresh (id=8124ca9d35d061140bbce9ce47fc25d4): Total: 6.230 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1963 ms
+		Asset DB Callback time: managed=195 ms, native=30 ms
+		Scripting: domain reloads=1, domain reload time=1743 ms, compile time=2197 ms, other=98 ms
+		Project Asset Count: scripts=1093, non-scripts=2131
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 25.526ms
+	ApplyChangesToAssetFolders: 0.676ms
+	Scan: 134.081ms
+	Collect global state as custom dependencies: 30.387ms
+	OnSourceAssetsModified: 0.935ms
+	CategorizeScriptCompilationAssets: 45.034ms
+	ProcessAssetsWithTransientArtifactChanges: 75.399ms
+	CategorizeAssets: 53.829ms
+	CompileScripts: 2197.476ms
+	ImportOutOfDateAssets: 1399.358ms (1388.854ms without children)
+		UnloadImportedAssets: 2.075ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.742ms
+		ImportSchedulerStart: 7.640ms
+	PostProcessAllAssets: 198.982ms
+		XRBuildSystem.XRAssetImported 1.465ms
+		VCAutoAddAssetPostprocess 1.246ms
+		LocalizationDatabase.AssetDatabasePostprocessCallback 0.628ms
+		PostProcessCallbackCreateDeferredMaterials 0.052ms
+		MonoPostProcessAllAssets: 194.852ms
+			AssetPostprocessor.OnPostprocessAllAssets 110.962ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 19.646ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 18.319ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 10.433ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 2.771ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 2.147ms
+			AssetChangedListener.OnPostprocessAllAssets 2.043ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.922ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.696ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.331ms
+			MaterialPostprocessor.OnPostprocessAllAssets 1.085ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.869ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.810ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.809ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.634ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.532ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.510ms
+			PostProcessor.OnPostprocessAllAssets 0.438ms
+			AssetEvents.OnPostprocessAllAssets 0.421ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.393ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.382ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.379ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.371ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.367ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.269ms
+			SyncVS.PostprocessSyncProject 0.206ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.198ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.183ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.161ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.160ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.147ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.146ms
+			AssetReloadNotifier.OnPostprocessAllAssets 0.119ms
+	PostAssetChangesProfiler: 3.820ms
+	UnloadStreamsBegin: 1.413ms
+	PersistCurrentRevisions: 0.091ms
+	GenerateScriptTypeHashes: 1.633ms
+	GenerateScriptTypeSerializationHashes: 2.961ms
+	Untracked: 2054.029ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Scanning for USB devices : 15.249ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-S1 T03 Foundation
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4863 unused Assets / (10.6 MB). Loaded Objects now: 5788.
+Memory consumption went from 403.5 MB to 392.9 MB.
+Total: 12.607200 ms (FindLiveObjects: 0.772600 ms CreateObjectMapping: 0.209700 ms MarkObjects: 7.954000 ms  DeleteObjects: 3.449500 ms)
+
+T07 stage refresh
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:28)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 28)
+
+Asset Pipeline Refresh (id=9929acee447e6314e952063ccb576a01): Total: 0.079 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+T07 stage textures
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:30)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 30)
+
+Importing 'GUID: d6e57201a2ae8824991a3a7d588e8e54 - Path: Assets/Game/Art/Islands/Textures/island_atlas_1024.png' with importer (TextureImporter)
+Imported 'GUID: d6e57201a2ae8824991a3a7d588e8e54' -> (Import Result ID: '2cd5f99c17176ca570b63aa4968c94ff') in 0.031 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=25abbe769657fdd76f5de7f468a79c14 DependenciesID=e9f1929bb9782fee058d452bdaac70ed StaticDependenciesID=ac75998cbe3efac2d6b3c6797a12e36a 
+Refreshing native plugins compatible for Editor in 2.72 ms, found 3 plugins.
+Asset Pipeline Refresh (id=cdbd29606fe36f6458f229838fe3cc06): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: cc38dde4a6f32d0439fd8f5de46ad2d9 - Path: Assets/Game/Art/Islands/Textures/island_atlas_512.png' with importer (TextureImporter)
+Imported 'GUID: cc38dde4a6f32d0439fd8f5de46ad2d9' -> (Import Result ID: 'f3b493af6b0d014ec8cf712080d6a118') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5b301ef537eb13a04deaddfa690419b3 DependenciesID=f7d2edac07af223090f412c9cb891016 StaticDependenciesID=88e7d2c5625cbc2d94b0001a1a73ec2c 
+Refreshing native plugins compatible for Editor in 2.07 ms, found 3 plugins.
+Asset Pipeline Refresh (id=bdca98ce7018de54c84c5d65cc9d7f4b): Total: 0.029 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: be7d57f30cba79747ad6f377b965f97e - Path: Assets/Game/Art/Islands/Textures/port_atlas_1024.png' with importer (TextureImporter)
+Imported 'GUID: be7d57f30cba79747ad6f377b965f97e' -> (Import Result ID: '67d724e98a8a4031a5efeb17607ecea0') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=70dfdb982165350ccceb60af06c9522a DependenciesID=9a0199118e96f0e2d53311579f1b9b00 StaticDependenciesID=8423c3ccff98e0b06a606d81b49efa50 
+Refreshing native plugins compatible for Editor in 2.23 ms, found 3 plugins.
+Asset Pipeline Refresh (id=4f81b51c851299d47a6d7e81576a438d): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: b83a26f3b4e321a4d9394d1eb4e96c23 - Path: Assets/Game/Art/Islands/Textures/port_atlas_512.png' with importer (TextureImporter)
+Imported 'GUID: b83a26f3b4e321a4d9394d1eb4e96c23' -> (Import Result ID: '2af867df5f2d7e091602d59bc145131a') in 0.006 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3a029b1680cbe5459aba916102eabd97 DependenciesID=66680d4b38291bd7edf4b82a0bcc8c46 StaticDependenciesID=8c6306da7c9a08844c870413c25e725c 
+Refreshing native plugins compatible for Editor in 2.31 ms, found 3 plugins.
+Asset Pipeline Refresh (id=fdfcbbc2fde105549ae3dcafcc9f060f): Total: 0.027 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+T07 stage models
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:32)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 32)
+
+Importing 'GUID: 87f6d22de47222e4a83928ba00ec74c9 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: 87f6d22de47222e4a83928ba00ec74c9' -> (Import Result ID: 'eef3e60e1a02107cd9a668a9c7aee809') in 0.026 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1a6ab2c685961f4b8dfafdd5aca4161a DependenciesID=27c84e358cf3cac47020b0b9bdfbb3a2 StaticDependenciesID=537e9db90aa66deab1e49e46513b23ab 
+Refreshing native plugins compatible for Editor in 2.21 ms, found 3 plugins.
+Asset Pipeline Refresh (id=01b143f9bd96e164680903ff378cb4de): Total: 0.089 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1a4cbe2335f824741a29c4186513d054 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD1.fbx' with importer (FBXImporter)
+File 'ISL-S_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: 1a4cbe2335f824741a29c4186513d054' -> (Import Result ID: '47fb4068ff247ba12993d13c6a758c7c') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3c7142cc3630e6be336057593fb01b65 DependenciesID=2985525a64c54e4308f600b4d1fe6065 StaticDependenciesID=e73fa3d84722787e12f1613a6b04b4cf 
+Refreshing native plugins compatible for Editor in 2.37 ms, found 3 plugins.
+Asset Pipeline Refresh (id=d0187c1705bb87542b5e67373e069b36): Total: 0.072 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: b8c4e8aa0882d564e951d9c81b47af97 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD2.fbx' with importer (FBXImporter)
+File 'ISL-S_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: b8c4e8aa0882d564e951d9c81b47af97' -> (Import Result ID: '0b9a8e7b59bdfce27c6bede9e1b35b9c') in 0.016 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5de7bfa60bd18c24a85b8fe0669f9621 DependenciesID=4aacd37dcdf8cca5526737026a9def1e StaticDependenciesID=0b3705745b3eded376e9294324dc9e95 
+Refreshing native plugins compatible for Editor in 2.09 ms, found 3 plugins.
+Asset Pipeline Refresh (id=201a7c37ed7ebc84aa4dd4899d4b84da): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c82be5daa261d2d4bab19efa6bc4ec8d - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: c82be5daa261d2d4bab19efa6bc4ec8d' -> (Import Result ID: 'dfc52d04781a2844adb0c44c9da45761') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=36a03ed7745e5acc99c772e34cb5137f DependenciesID=59a5a3672c42147eb92e090a91ae407f StaticDependenciesID=7624fbd0f43f68c8ba0dc712bd6e328b 
+Refreshing native plugins compatible for Editor in 2.74 ms, found 3 plugins.
+Asset Pipeline Refresh (id=0f8fea93d9926924b9830eb7941a7dcf): Total: 0.074 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: cf893ed934304434c9bdc0e28787d465 - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD1.fbx' with importer (FBXImporter)
+File 'ISL-M_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: cf893ed934304434c9bdc0e28787d465' -> (Import Result ID: '6d772cc318a15a05ae0998b27ffcb2bb') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e24290fec35844f3be6442397322d84b DependenciesID=f738b19d9b205acc37cb01d9749f9da7 StaticDependenciesID=19bb193ac8bb202581d75917f0db8fba 
+Refreshing native plugins compatible for Editor in 2.35 ms, found 3 plugins.
+Asset Pipeline Refresh (id=84059fb210877344ba0549d4bc015a4c): Total: 0.075 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1cb171b12657d214c92fcaceea15bc9a - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD2.fbx' with importer (FBXImporter)
+File 'ISL-M_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: 1cb171b12657d214c92fcaceea15bc9a' -> (Import Result ID: '0bf1dd85481f1a6f3b3208e541db8286') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=024d4f8b7e9b0b20bb985a9c20634058 DependenciesID=dbd76255fbfb35fd49509626cf3de2b7 StaticDependenciesID=11a9b43424785386caf95d3638d26427 
+Refreshing native plugins compatible for Editor in 2.05 ms, found 3 plugins.
+Asset Pipeline Refresh (id=c575b0f5df50cff4f917b0431e239dcb): Total: 0.072 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3304edb77cbaf514783af4cf8e42999f - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: 3304edb77cbaf514783af4cf8e42999f' -> (Import Result ID: 'bc566df22c274b087141a6e1a6f6904b') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8b93623fdc6b82dc78bdf3c258dc095c DependenciesID=18084630902820c445b20b3bf02a5bcc StaticDependenciesID=3a7c1dd51ed36d771fd95096f9344421 
+Refreshing native plugins compatible for Editor in 2.29 ms, found 3 plugins.
+Asset Pipeline Refresh (id=107df63fcdbf30d4e88fddeaad3548a1): Total: 0.069 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 0489b1d9f60276945841554c26266ed1 - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD1.fbx' with importer (FBXImporter)
+File 'ISL-L_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: 0489b1d9f60276945841554c26266ed1' -> (Import Result ID: '21bb8bf410feb05be9f6598aea377ae1') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=377ed9506790da4e023d200be00eff53 DependenciesID=5b07d5264294fe95f06ed71bd8deb38c StaticDependenciesID=7f55ea57c6ecd9d26d7e02e8632c41a5 
+Refreshing native plugins compatible for Editor in 2.33 ms, found 3 plugins.
+Asset Pipeline Refresh (id=1a47a3438dfa22c42b7093a43e8edd91): Total: 0.074 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 4f692718ba7b4c8439bf50ffb778103f - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD2.fbx' with importer (FBXImporter)
+File 'ISL-L_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: 4f692718ba7b4c8439bf50ffb778103f' -> (Import Result ID: 'cc136d263ff0c7801dad573a90a46607') in 0.015 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f9ca0c4bc6f3c0f62f25334cbeb5f8f2 DependenciesID=fa591fee784a90236a6b0eb3318d9479 StaticDependenciesID=4f40bbaad7eebb79abfcf599124ad25e 
+Refreshing native plugins compatible for Editor in 2.20 ms, found 3 plugins.
+Asset Pipeline Refresh (id=5ba94a5a7669c864aaf2ded84bdf44e7): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: e3cf8a310d17fbc4b97a43912a03ce90 - Path: Assets/Game/Art/Islands/Models/PORT_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: e3cf8a310d17fbc4b97a43912a03ce90' -> (Import Result ID: '64f2dd52c1e1d139ddb7022ebaed41da') in 0.016 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fa551132d31e32a02b07a2e7527f0027 DependenciesID=a58958184c925fbc584845bf220ad27f StaticDependenciesID=f0a35d510598aac181d4e643afe825ab 
+Refreshing native plugins compatible for Editor in 2.92 ms, found 3 plugins.
+Asset Pipeline Refresh (id=0c4cbc7513c38c242b2867c6a6290d7d): Total: 0.066 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1fb8c0a875e3d624eb72d4f8fe4e7637 - Path: Assets/Game/Art/Islands/Models/PORT_LOD1.fbx' with importer (FBXImporter)
+File 'PORT_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: 1fb8c0a875e3d624eb72d4f8fe4e7637' -> (Import Result ID: 'a3fd40657b232aa757c81de8dff70755') in 0.015 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e04d3a0875305be02e62d68383ef464f DependenciesID=7a7b334b217bacd2ca14d1b0980f5745 StaticDependenciesID=d2cecbab111fb5d5d9c2445d2bc439de 
+Refreshing native plugins compatible for Editor in 2.32 ms, found 3 plugins.
+Asset Pipeline Refresh (id=4d0f5f22417a7e549b8ef961d7ca968a): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 0df499d4dbab7464793d9336da8c01d7 - Path: Assets/Game/Art/Islands/Models/PORT_LOD2.fbx' with importer (FBXImporter)
+File 'PORT_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:ConfigureModels () (at Assets/Game/Editor/T07Import.cs:100)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:33)
+
+[Assets/Game/Editor/T07Import.cs line 100]
+
+Imported 'GUID: 0df499d4dbab7464793d9336da8c01d7' -> (Import Result ID: '73b4e26dc6f650db8df926b5120f0e40') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b128b4a081cdd21a883cccac108217e3 DependenciesID=7b718adca3b23d04c217233d1e2fca46 StaticDependenciesID=44af1330cdd8c21160ec6fcf414e50fa 
+Refreshing native plugins compatible for Editor in 2.72 ms, found 3 plugins.
+Asset Pipeline Refresh (id=d123b1e386ada3646a14471d6c4ebeaf): Total: 0.069 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+T07 stage materials
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:34)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 34)
+
+Refreshing native plugins compatible for Editor in 2.30 ms, found 3 plugins.
+Asset Pipeline Refresh (id=e7dde1238f9d8164a893f3e7a524a89c): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 6a9f45bdc06ee3e4583268639fd443c8 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Sand.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 6a9f45bdc06ee3e4583268639fd443c8' -> (Import Result ID: '606b4738b4023cde8a354acbc2a57a96') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0aeb9e591536d7d4c9e524bee3bb8fbf DependenciesID=e0b4371e6155fda367b4b3c6413f7a9c StaticDependenciesID=a589838b9b027f0257eaac7d838b6bbe 
+Refreshing native plugins compatible for Editor in 2.18 ms, found 3 plugins.
+Asset Pipeline Refresh (id=41febf86b9fd6d3428a1ee43d0ba58b9): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
+Asset Pipeline Refresh (id=927ff1c8bb094b946a709059ebb817c8): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1b4274ae826003b449016da3c0eac495 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Grass.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1b4274ae826003b449016da3c0eac495' -> (Import Result ID: '1a1075ba08876a8d71ae4e7454f4084c') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=862ae3e787f56af1fa0157da23dce6e8 DependenciesID=6906da07fab23f9d4e43122f61e95cf8 StaticDependenciesID=d92d948e53856aa5d8f8687c966afbc6 
+Refreshing native plugins compatible for Editor in 2.14 ms, found 3 plugins.
+Asset Pipeline Refresh (id=b136df5c0ff917249a2b30bf0f57f4ad): Total: 0.051 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.26 ms, found 3 plugins.
+Asset Pipeline Refresh (id=993224137216dc14c92368f4a2522b80): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a312c11f57e5b3d4d99a9bd1a8030c49 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Rock.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a312c11f57e5b3d4d99a9bd1a8030c49' -> (Import Result ID: 'bed52d5da90c004c1ddbf9dfc9ed96ef') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=a1cab331ace78292c4fa97dfd9f9a90f DependenciesID=7331075dbbd5e173546bb81300418a80 StaticDependenciesID=45085c843eb93fb2c728d7b7d4372adf 
+Refreshing native plugins compatible for Editor in 2.37 ms, found 3 plugins.
+Asset Pipeline Refresh (id=051cffcd67085114994f7f6b39ab2bad): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.76 ms, found 3 plugins.
+Asset Pipeline Refresh (id=52b89ee5e777b4c4f931e9f2f876a713): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a736bc96e394e6b4fb3326d6f24d2bdd - Path: Assets/Game/Art/Islands/Materials/M_Isl_Sand_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a736bc96e394e6b4fb3326d6f24d2bdd' -> (Import Result ID: '99b2972edc394282b4fab1306647640c') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=2086bd6cb83b13d4ffe2e634f2387e95 DependenciesID=87b419ff461e904aa6d5c8450f48b69c StaticDependenciesID=cceb7b7255eb14d709174ce97c1c6b21 
+Refreshing native plugins compatible for Editor in 2.74 ms, found 3 plugins.
+Asset Pipeline Refresh (id=0d7a80f54cd48354f90cd6f012b40e5b): Total: 0.066 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.31 ms, found 3 plugins.
+Asset Pipeline Refresh (id=1d513bf9cf185844db5a3545f08fb8a1): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 4030747e3543faa4580e72ef3ceddcf0 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Grass_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 4030747e3543faa4580e72ef3ceddcf0' -> (Import Result ID: 'af5503215b8ec4ed154af6b3b3c69746') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=9b580dfefd18be34736d0ed2d3fb8a47 DependenciesID=82835a1a0877d29e1bb7cf7ab3289737 StaticDependenciesID=03cb78a51e1fc587bac139c4d3f51dfb 
+Refreshing native plugins compatible for Editor in 2.11 ms, found 3 plugins.
+Asset Pipeline Refresh (id=99de8e0c54277fa4293258e1e9fded3d): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.69 ms, found 3 plugins.
+Asset Pipeline Refresh (id=6f584540139606c4dad0b5c7802e72c9): Total: 0.039 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 4e87ad03dc8df6e4eb0b9094ab640cbc - Path: Assets/Game/Art/Islands/Materials/M_Isl_Rock_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 4e87ad03dc8df6e4eb0b9094ab640cbc' -> (Import Result ID: '124d732299bd3ec7076685dd0137f0b5') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d6e2da069333b0275ad4b779b693f655 DependenciesID=defde58f31fd99081a5766b039c6b557 StaticDependenciesID=de358ec862116172165cdbb03e5ae0fc 
+Refreshing native plugins compatible for Editor in 2.42 ms, found 3 plugins.
+Asset Pipeline Refresh (id=022ac2dd75aa9564b98e9582766ff480): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.14 ms, found 3 plugins.
+Asset Pipeline Refresh (id=5dff89662bbf3ab4cbb2beb306ad7e72): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: d29a2f6ffc84b07479b86a964a3abf84 - Path: Assets/Game/Art/Islands/Materials/M_Port_Wood.mat' with importer (NativeFormatImporter)
+Imported 'GUID: d29a2f6ffc84b07479b86a964a3abf84' -> (Import Result ID: 'bcbd162d7d790facfac3309a81ca7158') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0329f9c1e8d3327dc3b653772aafe417 DependenciesID=a1d1de948e62ffd9004af99530cc54f0 StaticDependenciesID=b5f70b6eabad76b62ee99edae62b8fba 
+Refreshing native plugins compatible for Editor in 2.90 ms, found 3 plugins.
+Asset Pipeline Refresh (id=5490b11985633bd4a84e0f9986494fe9): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Worker ready: AssetImportWorkerHW0 0
+Refreshing native plugins compatible for Editor in 2.21 ms, found 3 plugins.
+Asset Pipeline Refresh (id=8e0345a86e03a98448c016e87d5ee998): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7525329e0bb6c8747a55b73c4d00c5b2 - Path: Assets/Game/Art/Islands/Materials/M_Port_Wall.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 7525329e0bb6c8747a55b73c4d00c5b2' -> (Import Result ID: '638c4e7dbf8ae560b6189c5e67287d1d') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0002fb013ed2033c00ee3e9ba8d9f165 DependenciesID=ed64f6d92ed3decb7ff1e45ace86af2f StaticDependenciesID=79b826c3533e9e0677dc39d63965b2c2 
+Refreshing native plugins compatible for Editor in 2.32 ms, found 3 plugins.
+Asset Pipeline Refresh (id=b797c56c9f9987244a902532f94825dd): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.09 ms, found 3 plugins.
+Asset Pipeline Refresh (id=3fc857030b7a0524789b010e44212042): Total: 0.039 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: d3b71b86b81f61e4eb201a3d1c6701cc - Path: Assets/Game/Art/Islands/Materials/M_Port_Wood_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: d3b71b86b81f61e4eb201a3d1c6701cc' -> (Import Result ID: 'e8eee00b2314e4a1a4031a887161ab7e') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0d5e8581cf25714b951d70546b5780ca DependenciesID=3680814707641bede58c571d7c44e4fb StaticDependenciesID=b9811d1cf27622efe5f554a500ff37c1 
+Refreshing native plugins compatible for Editor in 2.72 ms, found 3 plugins.
+Asset Pipeline Refresh (id=7e36153f4e777ee47a40f074272edb05): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.54 ms, found 3 plugins.
+Asset Pipeline Refresh (id=f781a6126a125cb419cedfb18d61a267): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: ef1d2fdfb4fa6274ebeca571a8a76d81 - Path: Assets/Game/Art/Islands/Materials/M_Port_Wall_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: ef1d2fdfb4fa6274ebeca571a8a76d81' -> (Import Result ID: 'd098f2e28fdabf96008b9ec12a6d4f11') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=b1f6dea053e987f767ff3cf191b75125 DependenciesID=a6db9c65aa4c879d0c43580424d435d0 StaticDependenciesID=f49552347054ad77cf0a7547afbcf0d7 
+Refreshing native plugins compatible for Editor in 3.33 ms, found 3 plugins.
+Asset Pipeline Refresh (id=c91a3153d3560cd4cb408ee1e35171c9): Total: 0.076 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+T07 stage rotations
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:36)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 36)
+
+T07 stage slots
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:38)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 38)
+
+Importing 'GUID: 82cacc130da85934fa12f9f4af96f703 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD0_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 82cacc130da85934fa12f9f4af96f703' -> (Import Result ID: '650f06a7f8ef305c6bfddb19e156d199') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=4ba8fdb555c6add7b557c5fbeae4063d DependenciesID=f29f447b745e9ebdecc61aebdfc488d7 StaticDependenciesID=a2a76e294df1bf44a1972b59f0071f4b 
+Refreshing native plugins compatible for Editor in 2.35 ms, found 3 plugins.
+Asset Pipeline Refresh (id=9f8c63c0cad85f541b420aa305935e57): Total: 0.051 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: f34c7601a756658429d243c61ff84d24 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD1_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: f34c7601a756658429d243c61ff84d24' -> (Import Result ID: '3b6e85238af932311ddeb91247f14b14') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d4466a9362b0a6aa719390cf2d7f6e18 DependenciesID=98a174384306705bdb994080291c646c StaticDependenciesID=7d610d5a4b626841812e55ff36075173 
+Refreshing native plugins compatible for Editor in 2.16 ms, found 3 plugins.
+Asset Pipeline Refresh (id=8f8f945d8ed46b041b54a0b6e1b5dca7): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: fc0ffb9a1d4357d4fb8b8a05c7aecd4a - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD2_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: fc0ffb9a1d4357d4fb8b8a05c7aecd4a' -> (Import Result ID: '4324f42c131a115df7d26ee86e77f5f8') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=695484acb71b8f21ade6df4a627578d7 DependenciesID=97dbb86005f7c3c612157f585d3e7129 StaticDependenciesID=5983a0ddce3b810cbdc7a1de2e312b32 
+Refreshing native plugins compatible for Editor in 2.60 ms, found 3 plugins.
+Asset Pipeline Refresh (id=9a1c39fd95bd89f4f82070a66ec31b6d): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7d1f717a11b258d489a556638150a6da - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD0_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 7d1f717a11b258d489a556638150a6da' -> (Import Result ID: '1bb1085e7c932d23fe816692e0cf59fe') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=b2cd04b46f464319fe21067183eed10c DependenciesID=3cd2b6de0d92aaeba02bb172b354af91 StaticDependenciesID=13ab20b11331dbac39c8c9ebe1d001f5 
+Refreshing native plugins compatible for Editor in 2.75 ms, found 3 plugins.
+Asset Pipeline Refresh (id=70992be5e105f4a4b84b45853d999f0f): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a7fbe19efd5cd1e4d9f68cf1c5f5aef0 - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD1_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: a7fbe19efd5cd1e4d9f68cf1c5f5aef0' -> (Import Result ID: 'f89a199239dd43862cb489b87fcdf4ef') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=384544b786e9c180de86ce86b5edea9a DependenciesID=8431d35c866ea65cfe900ee226595541 StaticDependenciesID=b6f7f003090531add4db2d962b9af7fd 
+Refreshing native plugins compatible for Editor in 2.19 ms, found 3 plugins.
+Asset Pipeline Refresh (id=71ca429811c2fcf48977e9a8cb2dee2f): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 4a7b26444e3aea14897384a41877057e - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD2_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 4a7b26444e3aea14897384a41877057e' -> (Import Result ID: 'cf89f225f3912bcddae00cde11b2e552') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=6f8954f02f791466fc4fe205c0fd7857 DependenciesID=a321cfe294cbf635b22b834949042e9f StaticDependenciesID=69f675e40bdb02fe63cd371d04e07cc3 
+Refreshing native plugins compatible for Editor in 2.40 ms, found 3 plugins.
+Asset Pipeline Refresh (id=bc29b746b26be8144b38bf6152a7ff9e): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7d06a3226965e674c86927c2f6332b12 - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD0_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 7d06a3226965e674c86927c2f6332b12' -> (Import Result ID: 'ecf4d706d3e9dc3ceccdb9020bc4be87') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=a25e1654261211759cc40120eb7770e8 DependenciesID=771d58eba2d41ee0471896029a69ce81 StaticDependenciesID=20bb259d4684ae0d17bbba4120e343c9 
+Refreshing native plugins compatible for Editor in 3.05 ms, found 3 plugins.
+Asset Pipeline Refresh (id=91c1773bd528a754abaa29278e9e5f58): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: db16bc43a84b2ee479a753e83fa217c8 - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD1_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: db16bc43a84b2ee479a753e83fa217c8' -> (Import Result ID: 'd4379ce041bf199923881375657f6085') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=25d69829a558c6a4ad8970ecefbe7fd6 DependenciesID=b94be94189fdb4a8861e0c0ae151eac3 StaticDependenciesID=5caed0ea8b789dc3aa4fd23dc7ea46ea 
+Refreshing native plugins compatible for Editor in 3.59 ms, found 3 plugins.
+Asset Pipeline Refresh (id=c645513ea1156524680f6034cef4d453): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: d482a2dd662ca3640a68a4837141e1ef - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD2_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: d482a2dd662ca3640a68a4837141e1ef' -> (Import Result ID: '932205c0203d7683598285f6bfd5be5e') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=0f7e8c64f0967148647f7825b7bbf4d5 DependenciesID=de55ab10220893d35ab20d37ce1e82a9 StaticDependenciesID=2db56d68b5723d7ce33a572d46f2e632 
+Refreshing native plugins compatible for Editor in 2.23 ms, found 3 plugins.
+Asset Pipeline Refresh (id=6b9e8d1b16966274d857cb895692f86f): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: a72de4723c91b8d46bbc9893c772c9db - Path: Assets/Game/Art/Islands/Models/PORT_LOD0_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: a72de4723c91b8d46bbc9893c772c9db' -> (Import Result ID: '47f5763b90e85dee853dd96ff9f22efa') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=f0c934164f3e47257013b2a1f5ed7ab9 DependenciesID=1e54780f388cafef3b6b3ac545177c19 StaticDependenciesID=499138db8ed0fb9b26fd9284f2eca41b 
+Refreshing native plugins compatible for Editor in 2.37 ms, found 3 plugins.
+Asset Pipeline Refresh (id=79709b5b118959341a063e5e79f1e90e): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c199c34b4298c1443b2b627dc6af3dfc - Path: Assets/Game/Art/Islands/Models/PORT_LOD1_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: c199c34b4298c1443b2b627dc6af3dfc' -> (Import Result ID: '67f21d37cf08651586e49b8111caa8fd') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=8691574b318bf377af479dbfc2c372d9 DependenciesID=77225038ee64cbae4e636d0aca8fcf67 StaticDependenciesID=219025eef4bc31f19d507ee66751ce9c 
+Refreshing native plugins compatible for Editor in 2.25 ms, found 3 plugins.
+Asset Pipeline Refresh (id=00a4238430d0b634a99ac6d6772f1c09): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: fe3a966eeea59794e927c08c0631d0fb - Path: Assets/Game/Art/Islands/Models/PORT_LOD2_slots.asset' with importer (NativeFormatImporter)
+Imported 'GUID: fe3a966eeea59794e927c08c0631d0fb' -> (Import Result ID: '459c4a86de8f0b1074f57de2febdc981') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=383dce3ade1fbac3b7d06b0c7f71d116 DependenciesID=4dc73faee253f1b7739d698285347a62 StaticDependenciesID=3141096a09da461b07e2cebc5e03642d 
+Refreshing native plugins compatible for Editor in 2.29 ms, found 3 plugins.
+Asset Pipeline Refresh (id=48895b21e96a36a48a62e4135cbb43df): Total: 0.039 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 87f6d22de47222e4a83928ba00ec74c9 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: 87f6d22de47222e4a83928ba00ec74c9' -> (Import Result ID: 'ecd36fb1622d2cbeca3a96d3ca3a8743') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5b1609de0d8597dd639daa99d949e082 DependenciesID=9d36a2e0782087c1936e7e0363b16c72 StaticDependenciesID=dac2c99d3b20617b6b5b65717c44c6d1 
+Refreshing native plugins compatible for Editor in 2.81 ms, found 3 plugins.
+Asset Pipeline Refresh (id=2f00e2183c901f548baa683169d9d8ff): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1a4cbe2335f824741a29c4186513d054 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD1.fbx' with importer (FBXImporter)
+File 'ISL-S_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: 1a4cbe2335f824741a29c4186513d054' -> (Import Result ID: 'bf0514114c3deff6e92f4eba82e446ea') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1d140f68620bb6f79be940833385e8e0 DependenciesID=1bd06214f0b0a656b3e2ed95d57b457c StaticDependenciesID=43c507b02488d5d925d6805c95dee742 
+Refreshing native plugins compatible for Editor in 2.43 ms, found 3 plugins.
+Asset Pipeline Refresh (id=e9ce9e9eb7f32224791378f932b40618): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: b8c4e8aa0882d564e951d9c81b47af97 - Path: Assets/Game/Art/Islands/Models/ISL-S_LOD2.fbx' with importer (FBXImporter)
+File 'ISL-S_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: b8c4e8aa0882d564e951d9c81b47af97' -> (Import Result ID: '4e6b4fea52abd26f921c175e0e146636') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=52dd6221973809b230002e8ef98392e4 DependenciesID=e932a3fcdc660593856b282873da6488 StaticDependenciesID=0fc4d89382caa11855dac8356a5d0673 
+Refreshing native plugins compatible for Editor in 2.38 ms, found 3 plugins.
+Asset Pipeline Refresh (id=0b40093265aeb6041ab2462aa08d5b96): Total: 0.074 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c82be5daa261d2d4bab19efa6bc4ec8d - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: c82be5daa261d2d4bab19efa6bc4ec8d' -> (Import Result ID: '544a4b7d8594a9b067cd8c69c6055303') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fb102bc158fc4616a290bd100a610f9e DependenciesID=416869b4135cceb7233a459653badb1f StaticDependenciesID=8e7694361a287667ccfa0759a926656c 
+Refreshing native plugins compatible for Editor in 2.63 ms, found 3 plugins.
+Asset Pipeline Refresh (id=89bad0047df73124490e6420d572a6e7): Total: 0.084 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: cf893ed934304434c9bdc0e28787d465 - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD1.fbx' with importer (FBXImporter)
+File 'ISL-M_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: cf893ed934304434c9bdc0e28787d465' -> (Import Result ID: '2f1864c8359cfc12dee76792982263d5') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c8eb954c63dfda4fed92ea5bf24b331c DependenciesID=fc8805d428daeac64bac2cf3a999b6b4 StaticDependenciesID=d02c57760dcc601a5acccf9ce7887d2a 
+Refreshing native plugins compatible for Editor in 3.34 ms, found 3 plugins.
+Asset Pipeline Refresh (id=f80332e5f541d4541b6ef742db7d4b17): Total: 0.078 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1cb171b12657d214c92fcaceea15bc9a - Path: Assets/Game/Art/Islands/Models/ISL-M_LOD2.fbx' with importer (FBXImporter)
+File 'ISL-M_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: 1cb171b12657d214c92fcaceea15bc9a' -> (Import Result ID: 'c9a9c3b2a9f663fb90be1f7390b3b569') in 0.016 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=55896290981b602dec3fcafca9c86c19 DependenciesID=e9c136b001e60f7bc668c43374962b7d StaticDependenciesID=0d3bcec8462297fb76ad0bd273aaea75 
+Refreshing native plugins compatible for Editor in 3.12 ms, found 3 plugins.
+Asset Pipeline Refresh (id=9c12381d1639c06448dd230c7b0813e1): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3304edb77cbaf514783af4cf8e42999f - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: 3304edb77cbaf514783af4cf8e42999f' -> (Import Result ID: 'c982927e2e267db2429f94e70c6362bc') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=52d15a018694e3af804043c3fe840468 DependenciesID=a3f8c1f858fed80e05e563787caff2fc StaticDependenciesID=7022f1a8bc334528660624796dbd9bae 
+Refreshing native plugins compatible for Editor in 2.27 ms, found 3 plugins.
+Asset Pipeline Refresh (id=11f28b1edfc2c324dbc86d6400650701): Total: 0.067 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 0489b1d9f60276945841554c26266ed1 - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD1.fbx' with importer (FBXImporter)
+File 'ISL-L_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: 0489b1d9f60276945841554c26266ed1' -> (Import Result ID: '03afc24e8dcb0081042b5f9bbdb6ee6f') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=212b83e15fd91b2862299a377b23957e DependenciesID=f49e2518dd2486abfd32cf099d501dfb StaticDependenciesID=e632283858cb4ca2b2dce7b5a4d38f06 
+Refreshing native plugins compatible for Editor in 2.35 ms, found 3 plugins.
+Asset Pipeline Refresh (id=51dba625ca978a84facda6f1cca59083): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 4f692718ba7b4c8439bf50ffb778103f - Path: Assets/Game/Art/Islands/Models/ISL-L_LOD2.fbx' with importer (FBXImporter)
+File 'ISL-L_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: 4f692718ba7b4c8439bf50ffb778103f' -> (Import Result ID: 'e918e84d071a12bfde47a8511524bfa0') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=da3a21beb0371a5da5c85e590af94ca7 DependenciesID=33c7aceaa6c4037de791516698433bd4 StaticDependenciesID=0e1d611f5de88ca093a4b8ed6fcd0f43 
+Refreshing native plugins compatible for Editor in 3.39 ms, found 3 plugins.
+Asset Pipeline Refresh (id=2e946d6b45c9dd241b6d148065e881e0): Total: 0.075 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: e3cf8a310d17fbc4b97a43912a03ce90 - Path: Assets/Game/Art/Islands/Models/PORT_LOD0.fbx' with importer (FBXImporter)
+Imported 'GUID: e3cf8a310d17fbc4b97a43912a03ce90' -> (Import Result ID: '711ed913f00559f2b92977df40906acb') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7f8cd44c6e1731e89ab5ad3c77f5e582 DependenciesID=8f68e199613c4b6540980b762d75fb30 StaticDependenciesID=5586588d6c76067d2886019c0c3c6b8a 
+Refreshing native plugins compatible for Editor in 2.48 ms, found 3 plugins.
+Asset Pipeline Refresh (id=f349f9f1d338494438e0cb05609ee6e9): Total: 0.085 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1fb8c0a875e3d624eb72d4f8fe4e7637 - Path: Assets/Game/Art/Islands/Models/PORT_LOD1.fbx' with importer (FBXImporter)
+File 'PORT_LOD1' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: 1fb8c0a875e3d624eb72d4f8fe4e7637' -> (Import Result ID: '2131ae0ccc4df144eadaa1e1644ba315') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bf8d414eacb0950deae25ecca40c6faf DependenciesID=8b3b3fe61ebe3f78bc9532558b56edc8 StaticDependenciesID=9613e930d055cb9ae4c28c03617b48e4 
+Refreshing native plugins compatible for Editor in 2.59 ms, found 3 plugins.
+Asset Pipeline Refresh (id=daf576762ecaf7c4da0d06867154251b): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 0df499d4dbab7464793d9336da8c01d7 - Path: Assets/Game/Art/Islands/Models/PORT_LOD2.fbx' with importer (FBXImporter)
+File 'PORT_LOD2' has inconsistent LOD naming (_LOD2 found but no _LOD1).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+T07Import:MakeUnreadable (System.Collections.Generic.IEnumerable`1<string>) (at Assets/Game/Editor/T07Import.cs:182)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:40)
+
+[Assets/Game/Editor/T07Import.cs line 182]
+
+Imported 'GUID: 0df499d4dbab7464793d9336da8c01d7' -> (Import Result ID: '6624a4108afe558b91cb8de4e54e2ad5') in 0.015 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=21e79d1adaea8b26217b316b7270a3dc DependenciesID=810b0fcf0da4492ebc5919c0590ea789 StaticDependenciesID=364628d9419361e57a8a9333149919d9 
+Refreshing native plugins compatible for Editor in 2.13 ms, found 3 plugins.
+Asset Pipeline Refresh (id=41669f4bd4bacf741abaa86153309467): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+T07 stage prefabs
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:41)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 41)
+
+Refreshing native plugins compatible for Editor in 2.16 ms, found 3 plugins.
+Asset Pipeline Refresh (id=f63d7629da8dcd9498c6adc8dd004de1): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 0edd6735abaa8584a97b68f461c6cb77 - Path: Assets/Game/Art/Islands/Prefabs/ISL-S.prefab' with importer (PrefabImporter)
+Imported 'GUID: 0edd6735abaa8584a97b68f461c6cb77' -> (Import Result ID: '8f98177e9876c64ca563911de2e58a6d') in 0.005 seconds [static dependencies only]. Details - ImportResultOutputID=88de2bbcb1ce3e3ea4370d1494ded943 DependenciesID=0e52847215583360fab9f87775193561 StaticDependenciesID=ef029f92b1060bf26423e5c5107d3195 
+Refreshing native plugins compatible for Editor in 2.05 ms, found 3 plugins.
+Asset Pipeline Refresh (id=5b217ee81e59dd646851b95269bf787b): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
+Asset Pipeline Refresh (id=2b06dda189e722d469a7ff65198ed7b3): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c0a0482e8635d584eb04bb144c719870 - Path: Assets/Game/Art/Islands/Prefabs/ISL-M.prefab' with importer (PrefabImporter)
+Imported 'GUID: c0a0482e8635d584eb04bb144c719870' -> (Import Result ID: '038f7c959c379b0ca24107d6a131233f') in 0.005 seconds [static dependencies only]. Details - ImportResultOutputID=cad4239502a58e4fd6696753f999379c DependenciesID=0e3f64d79154d2673593ef6421281732 StaticDependenciesID=9c4ff4d30495754fb5c460c953a989b9 
+Refreshing native plugins compatible for Editor in 2.12 ms, found 3 plugins.
+Asset Pipeline Refresh (id=4b6ef23f2742f384ba3a819d374f3a2f): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.12 ms, found 3 plugins.
+Asset Pipeline Refresh (id=0ebc3bbf6a70d2d499bf0619732044c0): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: b5f1723b69145224bb3d42ebfe8ea1b1 - Path: Assets/Game/Art/Islands/Prefabs/ISL-L.prefab' with importer (PrefabImporter)
+Imported 'GUID: b5f1723b69145224bb3d42ebfe8ea1b1' -> (Import Result ID: 'e15b71da50becbb6bd2664cf67681dbf') in 0.004 seconds [static dependencies only]. Details - ImportResultOutputID=d67d30cca8e7cb7d291ac7268d3988b7 DependenciesID=2b7c4ad8f80bde4fc7bb44fe40478aed StaticDependenciesID=0476662e7614f3a2aea52a32cfda920f 
+Refreshing native plugins compatible for Editor in 2.22 ms, found 3 plugins.
+Asset Pipeline Refresh (id=2ee7236f8d4c24a47b9a7e4f84e384d4): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.13 ms, found 3 plugins.
+Asset Pipeline Refresh (id=b442a5f09341e9742ad75caf7c6237bb): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 2d205e84a0001844eb7ac603a3ffbefc - Path: Assets/Game/Art/Islands/Prefabs/PORT.prefab' with importer (PrefabImporter)
+Imported 'GUID: 2d205e84a0001844eb7ac603a3ffbefc' -> (Import Result ID: 'b7df7d363d07c29bda3998d239cebac8') in 0.005 seconds [static dependencies only]. Details - ImportResultOutputID=f4620677c839647688c70a2b8df9f93a DependenciesID=e5bb069eac8eff6c57b926842b8ca54f StaticDependenciesID=61961fe085a047c51c69209c55967298 
+Refreshing native plugins compatible for Editor in 2.75 ms, found 3 plugins.
+Asset Pipeline Refresh (id=1f4ecd6bc8f9d784797a92daf4b79bef): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+T07 stage render
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:43)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 43)
+
+Releasing render texture that is set as Camera.targetTexture!
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Object:DestroyImmediate (UnityEngine.Object,bool)
+UnityEngine.Object:DestroyImmediate (UnityEngine.Object)
+T07Import:Render (string,System.Collections.Generic.Dictionary`2<string, object>) (at Assets/Game/Editor/T07Import.cs:424)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:44)
+
+[Assets/Game/Editor/T07Import.cs line 424]
+
+T07 stage done
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+T07Import:Run () (at Assets/Game/Editor/T07Import.cs:45)
+
+(Filename: Assets/Game/Editor/T07Import.cs Line: 45)
+
+Importing 'GUID: 00000000000000009000000000000000 - Path: ProjectSettings/QualitySettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000009000000000000000' -> (Import Result ID: '04a2ad5c93241dd0c9602175e4f438c8') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=2a108b3da874f726c62fbe5f12be4a8a DependenciesID=eea71cc5ed5a38021f6cf84aef9054ea StaticDependenciesID=2be9fcdbf20a12f22d23494d506bb0e2 
+Importing 'GUID: 4030747e3543faa4580e72ef3ceddcf0 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Grass_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 4030747e3543faa4580e72ef3ceddcf0' -> (Import Result ID: 'ea8ffa6fe8a9261d1a0692fe7218d00f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=9b580dfefd18be34736d0ed2d3fb8a47 DependenciesID=453a83a5f33e62e0240be0eb7c357de6 StaticDependenciesID=898ac2628c436791e8e48765894ad3bd 
+Importing 'GUID: d29a2f6ffc84b07479b86a964a3abf84 - Path: Assets/Game/Art/Islands/Materials/M_Port_Wood.mat' with importer (NativeFormatImporter)
+Imported 'GUID: d29a2f6ffc84b07479b86a964a3abf84' -> (Import Result ID: '52c41a24df6dc5ccda79d97eb09a2b90') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0329f9c1e8d3327dc3b653772aafe417 DependenciesID=c9cd37badab2ac0ebf71974d8b7f66c4 StaticDependenciesID=355fc0a94257c72853aa034cc3a59ee2 
+Importing 'GUID: a312c11f57e5b3d4d99a9bd1a8030c49 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Rock.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a312c11f57e5b3d4d99a9bd1a8030c49' -> (Import Result ID: '848ea2a4f29b84d90e81a256d5a98dec') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=a1cab331ace78292c4fa97dfd9f9a90f DependenciesID=920d6a317ecb0e65998202c857508cc0 StaticDependenciesID=2f66866dbe70fb6333d9117b13b2e469 
+Importing 'GUID: d3b71b86b81f61e4eb201a3d1c6701cc - Path: Assets/Game/Art/Islands/Materials/M_Port_Wood_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: d3b71b86b81f61e4eb201a3d1c6701cc' -> (Import Result ID: '543a4917e419bcb082bbf9aa8fef5b58') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0d5e8581cf25714b951d70546b5780ca DependenciesID=75aecaa8c63ba810ffdc19458b61f15f StaticDependenciesID=fb5b15b07a7c09107b6dd12e6c5d48df 
+Importing 'GUID: 7525329e0bb6c8747a55b73c4d00c5b2 - Path: Assets/Game/Art/Islands/Materials/M_Port_Wall.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 7525329e0bb6c8747a55b73c4d00c5b2' -> (Import Result ID: 'd4348b76e2c74867d516cf804e187016') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0002fb013ed2033c00ee3e9ba8d9f165 DependenciesID=1b4779bdc246de389847b504bf7fe44d StaticDependenciesID=46f48c08e5702a40643a3653707f8383 
+Importing 'GUID: a736bc96e394e6b4fb3326d6f24d2bdd - Path: Assets/Game/Art/Islands/Materials/M_Isl_Sand_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a736bc96e394e6b4fb3326d6f24d2bdd' -> (Import Result ID: '4f8aa39b17e528be5108c251ef4253e2') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=2086bd6cb83b13d4ffe2e634f2387e95 DependenciesID=9396aacc329ec073a363ef815b159864 StaticDependenciesID=12d9ac012b00bcae9a999e407afb5556 
+Importing 'GUID: 6a9f45bdc06ee3e4583268639fd443c8 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Sand.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 6a9f45bdc06ee3e4583268639fd443c8' -> (Import Result ID: '0fe3c1eef97c847350efe73414c54e2a') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0aeb9e591536d7d4c9e524bee3bb8fbf DependenciesID=03741e781bdd99b0e816e434740088db StaticDependenciesID=f8cdc9c10b6158ad94103b1badaa5e2e 
+Importing 'GUID: 1b4274ae826003b449016da3c0eac495 - Path: Assets/Game/Art/Islands/Materials/M_Isl_Grass.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1b4274ae826003b449016da3c0eac495' -> (Import Result ID: '76b93910c30ecd3291d059faa7071695') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=862ae3e787f56af1fa0157da23dce6e8 DependenciesID=c9e852e9186df3a873003e6e4768ab11 StaticDependenciesID=a9d4379ace01a541691b4a53f752ad85 
+Importing 'GUID: 4e87ad03dc8df6e4eb0b9094ab640cbc - Path: Assets/Game/Art/Islands/Materials/M_Isl_Rock_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 4e87ad03dc8df6e4eb0b9094ab640cbc' -> (Import Result ID: 'd4880991a8f6e2f65c8c8f0eeaa36b06') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d6e2da069333b0275ad4b779b693f655 DependenciesID=123be361505ea4bf04e7f47d1c0346a9 StaticDependenciesID=e54e7a09a98b05388dfa8e27facc5bb0 
+Importing 'GUID: ef1d2fdfb4fa6274ebeca571a8a76d81 - Path: Assets/Game/Art/Islands/Materials/M_Port_Wall_LOD2.mat' with importer (NativeFormatImporter)
+Imported 'GUID: ef1d2fdfb4fa6274ebeca571a8a76d81' -> (Import Result ID: 'a6321a38cc5ddf7e9539f2c1a9dfc299') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=b1f6dea053e987f767ff3cf191b75125 DependenciesID=cea77f70818238dfdecc809ac7b71a79 StaticDependenciesID=c82aade3cc54e6c6f3c2283e003e86bb 
+Refreshing native plugins compatible for Editor in 2.23 ms, found 3 plugins.
+Asset Pipeline Refresh (id=79102640534ae7942802ab4aacb05ca3): Total: 0.056 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+MonoPathRemapper: Attempts to remap: 12009; Successful remaps: 4
+Serialized file version minimum: 23, current 23
+Curl error 42: Callback aborted
+Pipeline Server stopped
+Killing ADB server in 2.0885682 seconds.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-wangding-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-wangding channel disconnected successfully.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+VBCSCompilerPreWarmer: requested VBCSCompiler shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1794247866686,"processId":26612,"allocatedMemory":15888098,"memoryLabels":[{"Default":204646},{"Permanent":15516},{"NewDelete":68879},{"Thread":4198384},{"Manager":819440},{"VertexData":104},{"Geometry":816},{"Texture":24},{"Shader":839915},{"Material":132},{"GfxDevice":56040},{"Animation":952},{"Audio":1272},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":32960},{"Input":42840},{"JobScheduler":256},{"TextLib":336},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1307568},{"BaseObject":48912},{"Resource":1444},{"Renderer":2504},{"Transform":4685},{"File":4416},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":375623},{"StaticString":3808},{"Utility":2674262},{"Curl":2792},{"PoolAlloc":2360},{"AI":80},{"TypeTree":23229},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":7152},{"WebRequest":989},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":768},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":114405},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4482605},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40441},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":266},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3606},{"Windowing":456},{"Licensing":12760},{"AssetReference":32},{"IPCStream":32}]}

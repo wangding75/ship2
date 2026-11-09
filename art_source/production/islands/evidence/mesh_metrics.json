@@ -1,0 +1,421 @@
+{
+  "generator": "art_source/production/islands/generate_islands.py",
+  "blender": "5.2.3 LTS",
+  "blender_hash": "e13b728c6880",
+  "utc": "2026-11-09T17:46:20Z",
+  "author": {
+    "uuid": "913948fc-cfc0-41f2-a6fd-c7f661450afd",
+    "run": "01a1c14f-e6ce-7db0-9fd7-e8e7644df216",
+    "session": "01a1c14f-ed14-7ae3-be8f-3e25ec19af15",
+    "model": "grok-4.7",
+    "effort": "high"
+  },
+  "geometry_sha": "efa7240dc363e00de8b56b48d35c9861285c6e1f02d9dbe0eb24e1b825c57038",
+  "render_engine": "BLENDER_EEVEE",
+  "rendered": [
+    "evidence/turntable/ISL-S_LOD0_yaw000.png",
+    "evidence/turntable/ISL-S_LOD0_yaw045.png",
+    "evidence/turntable/ISL-S_LOD0_yaw090.png",
+    "evidence/turntable/ISL-S_LOD0_yaw135.png",
+    "evidence/turntable/ISL-S_LOD0_yaw180.png",
+    "evidence/turntable/ISL-S_LOD0_yaw225.png",
+    "evidence/turntable/ISL-S_LOD0_yaw270.png",
+    "evidence/turntable/ISL-S_LOD0_yaw315.png",
+    "evidence/turntable/ISL-S_LOD1_yaw000.png",
+    "evidence/turntable/ISL-S_LOD1_yaw045.png",
+    "evidence/turntable/ISL-S_LOD1_yaw090.png",
+    "evidence/turntable/ISL-S_LOD1_yaw135.png",
+    "evidence/turntable/ISL-S_LOD1_yaw180.png",
+    "evidence/turntable/ISL-S_LOD1_yaw225.png",
+    "evidence/turntable/ISL-S_LOD1_yaw270.png",
+    "evidence/turntable/ISL-S_LOD1_yaw315.png",
+    "evidence/turntable/ISL-S_LOD2_yaw000.png",
+    "evidence/turntable/ISL-S_LOD2_yaw045.png",
+    "evidence/turntable/ISL-S_LOD2_yaw090.png",
+    "evidence/turntable/ISL-S_LOD2_yaw135.png",
+    "evidence/turntable/ISL-S_LOD2_yaw180.png",
+    "evidence/turntable/ISL-S_LOD2_yaw225.png",
+    "evidence/turntable/ISL-S_LOD2_yaw270.png",
+    "evidence/turntable/ISL-S_LOD2_yaw315.png",
+    "evidence/turntable/ISL-M_LOD0_yaw000.png",
+    "evidence/turntable/ISL-M_LOD0_yaw045.png",
+    "evidence/turntable/ISL-M_LOD0_yaw090.png",
+    "evidence/turntable/ISL-M_LOD0_yaw135.png",
+    "evidence/turntable/ISL-M_LOD0_yaw180.png",
+    "evidence/turntable/ISL-M_LOD0_yaw225.png",
+    "evidence/turntable/ISL-M_LOD0_yaw270.png",
+    "evidence/turntable/ISL-M_LOD0_yaw315.png",
+    "evidence/turntable/ISL-M_LOD1_yaw000.png",
+    "evidence/turntable/ISL-M_LOD1_yaw045.png",
+    "evidence/turntable/ISL-M_LOD1_yaw090.png",
+    "evidence/turntable/ISL-M_LOD1_yaw135.png",
+    "evidence/turntable/ISL-M_LOD1_yaw180.png",
+    "evidence/turntable/ISL-M_LOD1_yaw225.png",
+    "evidence/turntable/ISL-M_LOD1_yaw270.png",
+    "evidence/turntable/ISL-M_LOD1_yaw315.png",
+    "evidence/turntable/ISL-M_LOD2_yaw000.png",
+    "evidence/turntable/ISL-M_LOD2_yaw045.png",
+    "evidence/turntable/ISL-M_LOD2_yaw090.png",
+    "evidence/turntable/ISL-M_LOD2_yaw135.png",
+    "evidence/turntable/ISL-M_LOD2_yaw180.png",
+    "evidence/turntable/ISL-M_LOD2_yaw225.png",
+    "evidence/turntable/ISL-M_LOD2_yaw270.png",
+    "evidence/turntable/ISL-M_LOD2_yaw315.png",
+    "evidence/turntable/ISL-L_LOD0_yaw000.png",
+    "evidence/turntable/ISL-L_LOD0_yaw045.png",
+    "evidence/turntable/ISL-L_LOD0_yaw090.png",
+    "evidence/turntable/ISL-L_LOD0_yaw135.png",
+    "evidence/turntable/ISL-L_LOD0_yaw180.png",
+    "evidence/turntable/ISL-L_LOD0_yaw225.png",
+    "evidence/turntable/ISL-L_LOD0_yaw270.png",
+    "evidence/turntable/ISL-L_LOD0_yaw315.png",
+    "evidence/turntable/ISL-L_LOD1_yaw000.png",
+    "evidence/turntable/ISL-L_LOD1_yaw045.png",
+    "evidence/turntable/ISL-L_LOD1_yaw090.png",
+    "evidence/turntable/ISL-L_LOD1_yaw135.png",
+    "evidence/turntable/ISL-L_LOD1_yaw180.png",
+    "evidence/turntable/ISL-L_LOD1_yaw225.png",
+    "evidence/turntable/ISL-L_LOD1_yaw270.png",
+    "evidence/turntable/ISL-L_LOD1_yaw315.png",
+    "evidence/turntable/ISL-L_LOD2_yaw000.png",
+    "evidence/turntable/ISL-L_LOD2_yaw045.png",
+    "evidence/turntable/ISL-L_LOD2_yaw090.png",
+    "evidence/turntable/ISL-L_LOD2_yaw135.png",
+    "evidence/turntable/ISL-L_LOD2_yaw180.png",
+    "evidence/turntable/ISL-L_LOD2_yaw225.png",
+    "evidence/turntable/ISL-L_LOD2_yaw270.png",
+    "evidence/turntable/ISL-L_LOD2_yaw315.png",
+    "evidence/turntable/PORT_LOD0_yaw000.png",
+    "evidence/turntable/PORT_LOD0_yaw045.png",
+    "evidence/turntable/PORT_LOD0_yaw090.png",
+    "evidence/turntable/PORT_LOD0_yaw135.png",
+    "evidence/turntable/PORT_LOD0_yaw180.png",
+    "evidence/turntable/PORT_LOD0_yaw225.png",
+    "evidence/turntable/PORT_LOD0_yaw270.png",
+    "evidence/turntable/PORT_LOD0_yaw315.png",
+    "evidence/turntable/PORT_LOD1_yaw000.png",
+    "evidence/turntable/PORT_LOD1_yaw045.png",
+    "evidence/turntable/PORT_LOD1_yaw090.png",
+    "evidence/turntable/PORT_LOD1_yaw135.png",
+    "evidence/turntable/PORT_LOD1_yaw180.png",
+    "evidence/turntable/PORT_LOD1_yaw225.png",
+    "evidence/turntable/PORT_LOD1_yaw270.png",
+    "evidence/turntable/PORT_LOD1_yaw315.png",
+    "evidence/turntable/PORT_LOD2_yaw000.png",
+    "evidence/turntable/PORT_LOD2_yaw045.png",
+    "evidence/turntable/PORT_LOD2_yaw090.png",
+    "evidence/turntable/PORT_LOD2_yaw135.png",
+    "evidence/turntable/PORT_LOD2_yaw180.png",
+    "evidence/turntable/PORT_LOD2_yaw225.png",
+    "evidence/turntable/PORT_LOD2_yaw270.png",
+    "evidence/turntable/PORT_LOD2_yaw315.png",
+    "evidence/turntable/ISL-S_LOD0_near_h35.png",
+    "evidence/turntable/ISL-S_LOD0_mid_h85.png",
+    "evidence/turntable/ISL-S_LOD0_far_h220.png",
+    "evidence/turntable/ISL-M_LOD0_near_h35.png",
+    "evidence/turntable/ISL-M_LOD0_mid_h85.png",
+    "evidence/turntable/ISL-M_LOD0_far_h220.png",
+    "evidence/turntable/ISL-L_LOD0_near_h35.png",
+    "evidence/turntable/ISL-L_LOD0_mid_h85.png",
+    "evidence/turntable/ISL-L_LOD0_far_h220.png",
+    "evidence/turntable/PORT_LOD0_near_h35.png",
+    "evidence/turntable/PORT_LOD0_mid_h85.png",
+    "evidence/turntable/PORT_LOD0_far_h220.png"
+  ],
+  "clearance_m": {
+    "contract_min_m": 12.0,
+    "r_nav_max_m": 8.0,
+    "ratio": 1.5,
+    "ship_h_length_m": 32.0,
+    "capsule_centerline_half_m": 8.0,
+    "capsule_tip_m": 16.0,
+    "measured_to_solid_m": 17.000000000000014
+  },
+  "port_local_m": {
+    "landmark_xz": [
+      79.16658,
+      -8.0
+    ],
+    "anchor_xz": [
+      132.16658,
+      0.0
+    ],
+    "shed_xz": [
+      83.16658459183283,
+      7.5
+    ],
+    "pier_inner_m": 89.16658459183283,
+    "pier_outer_m": 115.16658459183283
+  },
+  "meshes": {
+    "ISL-S": {
+      "lods": {
+        "0": {
+          "triangles": 1160,
+          "material_triangles": {
+            "rock": 662,
+            "grass": 78,
+            "sand": 420
+          },
+          "bounds_unity_m": {
+            "min": [
+              -21.006,
+              -1.5,
+              -21.35565
+            ],
+            "max": [
+              23.86853,
+              11.12563071965026,
+              20.02279
+            ]
+          },
+          "shore_chord_deviation_m": 0.0
+        },
+        "1": {
+          "triangles": 360,
+          "material_triangles": {
+            "rock": 180,
+            "grass": 30,
+            "sand": 150
+          },
+          "bounds_unity_m": {
+            "min": [
+              -20.86734,
+              -1.5,
+              -21.35565
+            ],
+            "max": [
+              23.77054,
+              10.566391623126107,
+              20.02279
+            ]
+          },
+          "shore_chord_deviation_m": 0.30099297278515963
+        },
+        "2": {
+          "triangles": 160,
+          "material_triangles": {
+            "rock": 55,
+            "grass": 5,
+            "sand": 100
+          },
+          "bounds_unity_m": {
+            "min": [
+              -21.006,
+              -1.5,
+              -21.1621
+            ],
+            "max": [
+              23.77054,
+              10.566391623126107,
+              20.02279
+            ]
+          },
+          "shore_chord_deviation_m": 0.5718313746226008
+        }
+      },
+      "lod0_shore_max_error_m": 0.0
+    },
+    "ISL-M": {
+      "lods": {
+        "0": {
+          "triangles": 1776,
+          "material_triangles": {
+            "grass": 720,
+            "sand": 560,
+            "rock": 496
+          },
+          "bounds_unity_m": {
+            "min": [
+              -50.25705,
+              -1.5,
+              -49.6643
+            ],
+            "max": [
+              54.2914,
+              16.137647883731095,
+              49.82253
+            ]
+          },
+          "shore_chord_deviation_m": 0.0
+        },
+        "1": {
+          "triangles": 652,
+          "material_triangles": {
+            "grass": 280,
+            "sand": 200,
+            "rock": 172
+          },
+          "bounds_unity_m": {
+            "min": [
+              -50.17372,
+              -1.5,
+              -49.6643
+            ],
+            "max": [
+              54.2033,
+              15.80717953301017,
+              49.62803
+            ]
+          },
+          "shore_chord_deviation_m": 0.31717585103189566
+        },
+        "2": {
+          "triangles": 248,
+          "material_triangles": {
+            "grass": 60,
+            "sand": 60,
+            "rock": 128
+          },
+          "bounds_unity_m": {
+            "min": [
+              -49.89064,
+              -1.5,
+              -48.94329
+            ],
+            "max": [
+              53.75936,
+              15.80717953301017,
+              49.58039
+            ]
+          },
+          "shore_chord_deviation_m": 1.257997745006661
+        }
+      },
+      "lod0_shore_max_error_m": 0.0
+    },
+    "ISL-L": {
+      "lods": {
+        "0": {
+          "triangles": 2640,
+          "material_triangles": {
+            "grass": 1056,
+            "sand": 672,
+            "rock": 912
+          },
+          "bounds_unity_m": {
+            "min": [
+              -89.78026,
+              -1.5,
+              -86.92385
+            ],
+            "max": [
+              98.69259,
+              25.75693150698841,
+              82.74242
+            ]
+          },
+          "shore_chord_deviation_m": 0.0
+        },
+        "1": {
+          "triangles": 880,
+          "material_triangles": {
+            "grass": 336,
+            "sand": 240,
+            "rock": 304
+          },
+          "bounds_unity_m": {
+            "min": [
+              -89.78026,
+              -1.5,
+              -86.92385
+            ],
+            "max": [
+              98.69259,
+              25.312070265633317,
+              82.74242
+            ]
+          },
+          "shore_chord_deviation_m": 0.4601012411777029
+        },
+        "2": {
+          "triangles": 400,
+          "material_triangles": {
+            "grass": 72,
+            "sand": 72,
+            "rock": 256
+          },
+          "bounds_unity_m": {
+            "min": [
+              -89.33123,
+              -1.5,
+              -86.92385
+            ],
+            "max": [
+              97.16658,
+              25.312070265633317,
+              82.74242
+            ]
+          },
+          "shore_chord_deviation_m": 1.8148435671008414
+        }
+      },
+      "lod0_shore_max_error_m": 0.0
+    },
+    "PORT": {
+      "lods": {
+        "0": {
+          "triangles": 758,
+          "material_triangles": {
+            "wood": 582,
+            "wall": 176
+          },
+          "bounds_unity_m": {
+            "min": [
+              77.11658459183283,
+              -1.1,
+              -10.05
+            ],
+            "max": [
+              115.16658459183283,
+              12.829514315386131,
+              9.5
+            ]
+          }
+        },
+        "1": {
+          "triangles": 382,
+          "material_triangles": {
+            "wood": 270,
+            "wall": 112
+          },
+          "bounds_unity_m": {
+            "min": [
+              77.11658459183283,
+              -1.1,
+              -10.05
+            ],
+            "max": [
+              115.16658459183283,
+              12.829514315386131,
+              9.5
+            ]
+          }
+        },
+        "2": {
+          "triangles": 254,
+          "material_triangles": {
+            "wood": 158,
+            "wall": 96
+          },
+          "bounds_unity_m": {
+            "min": [
+              77.39123251407473,
+              -1.1,
+              -10.05
+            ],
+            "max": [
+              115.16658459183283,
+              12.829514315386131,
+              9.5
+            ]
+          }
+        }
+      },
+      "lod0_shore_max_error_m": 0.0
+    }
+  },
+  "unity_rx_deg": -90,
+  "axis_note": "Mesh-local stores Unity (x, y, z) as (x, -z, y). Prefab mesh children use Rx(-90). Identity roots then match this Unity space.",
+  "acceptance": "NOT_RUN"
+}
