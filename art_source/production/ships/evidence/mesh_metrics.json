@@ -1,0 +1,877 @@
+{
+  "generator": "art_source/production/ships/generate_ships.py",
+  "blender": "5.2.3 LTS",
+  "coordinate_space": "Unity +X starboard, +Y up, +Z bow, pivot waterline center",
+  "texture": {
+    "lod0_and_lod1": "textures/ship_atlas_1024.png",
+    "lod2_optional_drop": "textures/ship_atlas_512.png",
+    "lod1_cap": "T05 does not state an LOD1 texture cap. This candidate does not invent one. LOD0 and LOD1 share the single 1024 atlas. LOD2 uses the 512 atlas.",
+    "material_roles": [
+      "Hull",
+      "Sail",
+      "Trim"
+    ]
+  },
+  "production_choices_not_new_thresholds": {
+    "freeboard_m": "Chosen so the sheer reads above Y=0. Not in the frozen T05 table.",
+    "ship_l_mast_z_m": "1.278. Sailplan mast is drawn at x=239 with stern x=72 and 18 px/m, so z=-8+(239-72)/18. The SVG says T06 chooses the step and the drawing does not freeze it.",
+    "other_mast_steps_and_minor_mast_heights": "Chosen so fore/main/mizzen silhouettes separate. Only the named main-mast height is the frozen 主桅高.",
+    "wake_socket": "T05 suggested stern-centerline coordinates are adopted, not promoted to a new threshold.",
+    "bowsprit": "Cutter headsails end at the stem. No geometry extends the frozen length."
+  },
+  "ships": [
+    {
+      "id": "SHIP-L",
+      "name": "轻型纵帆快船",
+      "frozen": {
+        "length_m": 16.0,
+        "beam_m": 4.0,
+        "draft_m": 1.2,
+        "main_mast_m": 14.0,
+        "r_nav_m": 4.5,
+        "wake_suggested_adopted": [
+          0.0,
+          0.0,
+          -7.4
+        ],
+        "lod_triangle_caps": [
+          1800,
+          700,
+          280
+        ]
+      },
+      "lods": [
+        {
+          "lod": 0,
+          "triangles": {
+            "hull": 588,
+            "masts_trim": 348,
+            "sails": 396,
+            "total": 1332,
+            "cap": 1800
+          },
+          "fbx": "export/SHIP-L_LOD0.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 588,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 348,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 396,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -2.0,
+              -1.1999999999999997,
+              -8.0
+            ],
+            "max": [
+              2.0,
+              14.0,
+              8.0
+            ]
+          },
+          "different_from_other_lods": true
+        },
+        {
+          "lod": 1,
+          "triangles": {
+            "hull": 276,
+            "masts_trim": 64,
+            "sails": 124,
+            "total": 464,
+            "cap": 700
+          },
+          "fbx": "export/SHIP-L_LOD1.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 276,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 64,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 124,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -2.0,
+              -1.2,
+              -8.0
+            ],
+            "max": [
+              2.0,
+              14.0,
+              8.0
+            ]
+          },
+          "different_from_other_lods": true
+        },
+        {
+          "lod": 2,
+          "triangles": {
+            "hull": 112,
+            "masts_trim": 60,
+            "sails": 72,
+            "total": 244,
+            "cap": 280
+          },
+          "fbx": "export/SHIP-L_LOD2.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 112,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 60,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 72,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -1.9999999999999998,
+              -1.2,
+              -8.0
+            ],
+            "max": [
+              1.9999999999999998,
+              14.0,
+              8.0
+            ]
+          },
+          "different_from_other_lods": true
+        }
+      ],
+      "sail_records_lod0": [
+        {
+          "type": "mast",
+          "name": "main",
+          "z": 1.278,
+          "h": 14.0
+        },
+        {
+          "type": "sail",
+          "rig": "mainsail",
+          "mast": "main",
+          "bbox": {
+            "min": [
+              0.0,
+              1.4,
+              -6.122
+            ],
+            "max": [
+              0.26629582456264306,
+              10.92,
+              1.2780000000000002
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "headsail",
+          "name": "inner",
+          "mast": "main",
+          "bbox": {
+            "min": [
+              0.0,
+              1.3,
+              1.328
+            ],
+            "max": [
+              0.55,
+              8.68,
+              6.57
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "headsail",
+          "name": "outer",
+          "mast": "main",
+          "bbox": {
+            "min": [
+              0.0,
+              1.3,
+              1.328
+            ],
+            "max": [
+              0.55,
+              11.76,
+              7.92
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "SHIP-M",
+      "name": "中型双桅帆船",
+      "frozen": {
+        "length_m": 24.0,
+        "beam_m": 5.6,
+        "draft_m": 1.6,
+        "main_mast_m": 18.0,
+        "r_nav_m": 6.5,
+        "wake_suggested_adopted": [
+          0.0,
+          0.0,
+          -11.2
+        ],
+        "lod_triangle_caps": [
+          3200,
+          1200,
+          420
+        ]
+      },
+      "lods": [
+        {
+          "lod": 0,
+          "triangles": {
+            "hull": 716,
+            "masts_trim": 540,
+            "sails": 984,
+            "total": 2240,
+            "cap": 3200
+          },
+          "fbx": "export/SHIP-M_LOD0.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 716,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 540,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 984,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -2.7999999999999994,
+              -1.6,
+              -12.0
+            ],
+            "max": [
+              2.7999999999999994,
+              18.0,
+              12.0
+            ]
+          },
+          "different_from_other_lods": true
+        },
+        {
+          "lod": 1,
+          "triangles": {
+            "hull": 276,
+            "masts_trim": 116,
+            "sails": 128,
+            "total": 520,
+            "cap": 1200
+          },
+          "fbx": "export/SHIP-M_LOD1.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 276,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 116,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 128,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -2.7999999999999994,
+              -1.6,
+              -12.0
+            ],
+            "max": [
+              2.7999999999999994,
+              18.0,
+              12.0
+            ]
+          },
+          "different_from_other_lods": true
+        },
+        {
+          "lod": 2,
+          "triangles": {
+            "hull": 112,
+            "masts_trim": 76,
+            "sails": 24,
+            "total": 212,
+            "cap": 420
+          },
+          "fbx": "export/SHIP-M_LOD2.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 112,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 76,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 24,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -2.8,
+              -1.6,
+              -12.0
+            ],
+            "max": [
+              2.8,
+              18.0,
+              12.0
+            ]
+          },
+          "different_from_other_lods": true
+        }
+      ],
+      "sail_records_lod0": [
+        {
+          "type": "mast",
+          "name": "fore",
+          "z": 4.2,
+          "h": 16.2
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "fore",
+          "index": 0,
+          "bbox": {
+            "min": [
+              -2.352,
+              4.283999999999999,
+              4.25
+            ],
+            "max": [
+              2.352,
+              6.804,
+              4.523904276693004
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "fore",
+          "index": 1,
+          "bbox": {
+            "min": [
+              -2.352,
+              7.523999999999997,
+              4.25
+            ],
+            "max": [
+              2.352,
+              10.044,
+              4.523904276693004
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "fore",
+          "index": 2,
+          "bbox": {
+            "min": [
+              -2.352,
+              10.440000000000001,
+              4.25
+            ],
+            "max": [
+              2.352,
+              12.960000000000003,
+              4.523904276693004
+            ]
+          }
+        },
+        {
+          "type": "mast",
+          "name": "main",
+          "z": -2.6,
+          "h": 18.0
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "main",
+          "index": 0,
+          "bbox": {
+            "min": [
+              -2.352,
+              5.039999999999999,
+              -2.5500000000000007
+            ],
+            "max": [
+              2.352,
+              7.5600000000000005,
+              -2.276095723306996
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "main",
+          "index": 1,
+          "bbox": {
+            "min": [
+              -2.352,
+              8.64,
+              -2.5500000000000007
+            ],
+            "max": [
+              2.352,
+              11.16,
+              -2.276095723306996
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "main",
+          "index": 2,
+          "bbox": {
+            "min": [
+              -2.352,
+              11.879999999999999,
+              -2.5500000000000007
+            ],
+            "max": [
+              2.352,
+              14.400000000000002,
+              -2.276095723306996
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "SHIP-H",
+      "name": "重型三桅帆船",
+      "frozen": {
+        "length_m": 32.0,
+        "beam_m": 7.2,
+        "draft_m": 2.0,
+        "main_mast_m": 24.0,
+        "r_nav_m": 8.0,
+        "wake_suggested_adopted": [
+          0.0,
+          0.0,
+          -15.2
+        ],
+        "lod_triangle_caps": [
+          5200,
+          1800,
+          600
+        ]
+      },
+      "lods": [
+        {
+          "lod": 0,
+          "triangles": {
+            "hull": 948,
+            "masts_trim": 708,
+            "sails": 1476,
+            "total": 3132,
+            "cap": 5200
+          },
+          "fbx": "export/SHIP-H_LOD0.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 948,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 708,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 1476,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -3.5999999999999996,
+              -2.0,
+              -16.0
+            ],
+            "max": [
+              3.5999999999999996,
+              24.0,
+              16.0
+            ]
+          },
+          "different_from_other_lods": true
+        },
+        {
+          "lod": 1,
+          "triangles": {
+            "hull": 348,
+            "masts_trim": 168,
+            "sails": 360,
+            "total": 876,
+            "cap": 1800
+          },
+          "fbx": "export/SHIP-H_LOD1.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 348,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 168,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 360,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -3.6,
+              -2.0,
+              -16.0
+            ],
+            "max": [
+              3.6,
+              24.0,
+              16.0
+            ]
+          },
+          "different_from_other_lods": true
+        },
+        {
+          "lod": 2,
+          "triangles": {
+            "hull": 112,
+            "masts_trim": 108,
+            "sails": 36,
+            "total": 256,
+            "cap": 600
+          },
+          "fbx": "export/SHIP-H_LOD2.fbx",
+          "manifold": {
+            "Hull": {
+              "triangles": 112,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Masts": {
+              "triangles": 108,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            },
+            "Sails": {
+              "triangles": 36,
+              "boundary_edges": 0,
+              "nonmanifold_edges": 0
+            }
+          },
+          "bounds_unity_m": {
+            "min": [
+              -3.6,
+              -2.0,
+              -16.0
+            ],
+            "max": [
+              3.6,
+              24.0,
+              16.0
+            ]
+          },
+          "different_from_other_lods": true
+        }
+      ],
+      "sail_records_lod0": [
+        {
+          "type": "mast",
+          "name": "fore",
+          "z": 7.2,
+          "h": 21.0
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "fore",
+          "index": 0,
+          "bbox": {
+            "min": [
+              -3.024,
+              5.46,
+              7.25
+            ],
+            "max": [
+              3.024,
+              8.82,
+              7.582869780703303
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "fore",
+          "index": 1,
+          "bbox": {
+            "min": [
+              -3.024,
+              9.66,
+              7.25
+            ],
+            "max": [
+              3.024,
+              13.02,
+              7.582869780703303
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "fore",
+          "index": 2,
+          "bbox": {
+            "min": [
+              -3.024,
+              13.440000000000001,
+              7.25
+            ],
+            "max": [
+              3.024,
+              16.8,
+              7.582869780703303
+            ]
+          }
+        },
+        {
+          "type": "mast",
+          "name": "main",
+          "z": 0.4,
+          "h": 24.0
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "main",
+          "index": 0,
+          "bbox": {
+            "min": [
+              -3.024,
+              6.72,
+              0.44999999999999996
+            ],
+            "max": [
+              3.024,
+              10.08,
+              0.7828697807033038
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "main",
+          "index": 1,
+          "bbox": {
+            "min": [
+              -3.024,
+              11.52,
+              0.44999999999999996
+            ],
+            "max": [
+              3.024,
+              14.879999999999999,
+              0.7828697807033038
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "main",
+          "index": 2,
+          "bbox": {
+            "min": [
+              -3.024,
+              15.840000000000003,
+              0.44999999999999996
+            ],
+            "max": [
+              3.024,
+              19.200000000000003,
+              0.7828697807033038
+            ]
+          }
+        },
+        {
+          "type": "mast",
+          "name": "mizzen",
+          "z": -7.6,
+          "h": 17.5
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "mizzen",
+          "index": 0,
+          "bbox": {
+            "min": [
+              -3.024,
+              3.9899999999999993,
+              -7.550000000000001
+            ],
+            "max": [
+              3.024,
+              7.35,
+              -7.2171302192966955
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "mizzen",
+          "index": 1,
+          "bbox": {
+            "min": [
+              -3.024,
+              7.489999999999999,
+              -7.550000000000001
+            ],
+            "max": [
+              3.024,
+              10.85,
+              -7.2171302192966955
+            ]
+          }
+        },
+        {
+          "type": "sail",
+          "rig": "square",
+          "mast": "mizzen",
+          "index": 2,
+          "bbox": {
+            "min": [
+              -3.024,
+              10.64,
+              -7.550000000000001
+            ],
+            "max": [
+              3.024,
+              14.000000000000002,
+              -7.2171302192966955
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "turntable_files": [
+    "SHIP-L_LOD0_yaw000.png",
+    "SHIP-L_LOD0_yaw045.png",
+    "SHIP-L_LOD0_yaw090.png",
+    "SHIP-L_LOD0_yaw135.png",
+    "SHIP-L_LOD0_yaw180.png",
+    "SHIP-L_LOD0_yaw225.png",
+    "SHIP-L_LOD0_yaw270.png",
+    "SHIP-L_LOD0_yaw315.png",
+    "SHIP-L_LOD0_side.png",
+    "SHIP-L_LOD0_top.png",
+    "SHIP-L_LOD0_bottom.png",
+    "SHIP-L_LOD1_yaw040.png",
+    "SHIP-L_LOD1_yaw200.png",
+    "SHIP-L_LOD2_yaw040.png",
+    "SHIP-L_LOD2_yaw200.png",
+    "SHIP-M_LOD0_yaw000.png",
+    "SHIP-M_LOD0_yaw045.png",
+    "SHIP-M_LOD0_yaw090.png",
+    "SHIP-M_LOD0_yaw135.png",
+    "SHIP-M_LOD0_yaw180.png",
+    "SHIP-M_LOD0_yaw225.png",
+    "SHIP-M_LOD0_yaw270.png",
+    "SHIP-M_LOD0_yaw315.png",
+    "SHIP-M_LOD0_side.png",
+    "SHIP-M_LOD0_top.png",
+    "SHIP-M_LOD0_bottom.png",
+    "SHIP-M_LOD1_yaw040.png",
+    "SHIP-M_LOD1_yaw200.png",
+    "SHIP-M_LOD2_yaw040.png",
+    "SHIP-M_LOD2_yaw200.png",
+    "SHIP-H_LOD0_yaw000.png",
+    "SHIP-H_LOD0_yaw045.png",
+    "SHIP-H_LOD0_yaw090.png",
+    "SHIP-H_LOD0_yaw135.png",
+    "SHIP-H_LOD0_yaw180.png",
+    "SHIP-H_LOD0_yaw225.png",
+    "SHIP-H_LOD0_yaw270.png",
+    "SHIP-H_LOD0_yaw315.png",
+    "SHIP-H_LOD0_side.png",
+    "SHIP-H_LOD0_top.png",
+    "SHIP-H_LOD0_bottom.png",
+    "SHIP-H_LOD1_yaw040.png",
+    "SHIP-H_LOD1_yaw200.png",
+    "SHIP-H_LOD2_yaw040.png",
+    "SHIP-H_LOD2_yaw200.png",
+    "lineup_LOD0_oblique.png"
+  ],
+  "render_engine": "BLENDER_EEVEE",
+  "source_blend": "source/S1_T06_ships.blend"
+}

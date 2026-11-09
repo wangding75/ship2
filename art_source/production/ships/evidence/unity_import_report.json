@@ -1,0 +1,52 @@
+{
+  "unity": "6000.6.6f1",
+  "note": "LOD1 uses the 1024 atlas because T05 states no LOD1 texture cap. LOD2 uses the 512 atlas. Each LOD renderer set has 3 material slots. Navigation collider is the T02 axial capsule on SelectionProxy and does not include mast height. Wake sockets adopt the T05 suggested stern-centerline coordinates.",
+  "lod_mapping": "screenRelativeTransitionHeight derived from T05 suggested camera heights 50 m and 140 m at 55 degrees pitch and an assumed 60 degree vertical FOV. The FOV is not a frozen threshold.",
+  "ships": [
+    {
+      "id": "SHIP-L",
+      "import": "scale=1 bakeAxis=False size=(4.00, 15.20, 16.00) score=0.000",
+      "triangles": [1332, 464, 244],
+      "caps": [1800, 700, 280],
+      "bounds_lod0": { "min": [-2, -1.2, -8], "size": [4, 15.2, 16] },
+      "capsule": { "direction": "Z", "radius": 4.5, "height": 16, "center": [0,0,0] },
+      "wake_local": [0, 0, -7.4],
+      "lod_screen_relative": [0.227, 0.0811, 0.01],
+      "lod_screen_relative_raw": [0.227, 0.0811, 0.01],
+      "lod_group_size": 16,
+      "material_slots_per_lod": 3,
+      "mast_top_y": 14,
+      "prefab": "Assets/Game/Art/Ships/Prefabs/SHIP-L/ShipRoot.prefab"
+    },
+    {
+      "id": "SHIP-M",
+      "import": "scale=1 bakeAxis=False size=(5.60, 19.60, 24.00) score=0.000",
+      "triangles": [2240, 520, 212],
+      "caps": [3200, 1200, 420],
+      "bounds_lod0": { "min": [-2.8, -1.6, -12], "size": [5.6, 19.6, 24] },
+      "capsule": { "direction": "Z", "radius": 6.5, "height": 24, "center": [0,0,0] },
+      "wake_local": [0, 0, -11.2],
+      "lod_screen_relative": [0.3405, 0.1216, 0.01],
+      "lod_screen_relative_raw": [0.3405, 0.1216, 0.01],
+      "lod_group_size": 24,
+      "material_slots_per_lod": 3,
+      "mast_top_y": 18,
+      "prefab": "Assets/Game/Art/Ships/Prefabs/SHIP-M/ShipRoot.prefab"
+    },
+    {
+      "id": "SHIP-H",
+      "import": "scale=1 bakeAxis=False size=(7.20, 26.00, 32.00) score=0.000",
+      "triangles": [3132, 876, 256],
+      "caps": [5200, 1800, 600],
+      "bounds_lod0": { "min": [-3.6, -2, -16], "size": [7.2, 26, 32] },
+      "capsule": { "direction": "Z", "radius": 8, "height": 32, "center": [0,0,0] },
+      "wake_local": [0, 0, -15.2],
+      "lod_screen_relative": [0.454, 0.1622, 0.01],
+      "lod_screen_relative_raw": [0.454, 0.1622, 0.01],
+      "lod_group_size": 32,
+      "material_slots_per_lod": 3,
+      "mast_top_y": 24,
+      "prefab": "Assets/Game/Art/Ships/Prefabs/SHIP-H/ShipRoot.prefab"
+    }
+  ]
+}
