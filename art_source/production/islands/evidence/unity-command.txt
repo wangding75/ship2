@@ -1,15 +1,2 @@
-utc=2026-11-09T17:54:12Z
-exe=C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Unity.exe
-args=-batchmode -quit -projectPath C:\t07isl\client\UnityProject -executeMethod T07Import.Run -logFile C:\t07isl\unity-editor.log
-nographics=falseworking_directory=C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor
-relaunched_pid=53512
-foreground_start=2026-11-09T17:58:34Z
-foreground_exit= utc=2026-11-09T17:58:34Z
-wait_start=2026-11-09T17:59:31Z
-wait_exit=1 utc=2026-11-09T18:01:36Z
-axis_debug_start=2026-11-09T18:05:52Z
-axis_debug_exit=1 utc=2026-11-09T18:06:10Z
-mirror_start=2026-11-09T18:08:28Z
-mirror_exit=0 utc=2026-11-09T18:08:47Z
-slots_start=2026-11-09T18:10:47Z
-slots_exit=0 utc=2026-11-09T18:11:07Z
+C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Unity.exe -batchmode -quit -projectPath C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-61-17aa33ad01fc\workdir\u -executeMethod T07UnityVerification.RunAll -logFile C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-61-17aa33ad01fc\workdir\evidence-v3\unity_editor.log
+C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Unity.exe -batchmode -quit -projectPath C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-61-17aa33ad01fc\workdir\u -executeMethod T07UnityVerification.RunChecksOnly -logFile C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-61-17aa33ad01fc\workdir\evidence-v3\unity_checks.log

@@ -1,0 +1,13 @@
+{
+  "windows_max_path_limit": 260,
+  "relative_package_cache_file": "Library\\PackageCache\\com.unity.render-pipelines.core@e18bd88df4e3\\Editor-PrivateShared\\Tools\\Converter\\Window\\RenderPipelineConverterVisualElementListFilter.uxml",
+  "relative_length": 161,
+  "original_project_root": "C:\\Users\\wangding\\multica_workspaces\\ship-509dc9df575c\\ship-61-17aa33ad01fc\\workdir\\ship2\\client\\UnityProject",
+  "original_project_root_length": 109,
+  "original_full_path_length": 271,
+  "exceeds_max_path_in_original_root": true,
+  "isolated_short_project_root": "C:\\Users\\wangding\\multica_workspaces\\ship-509dc9df575c\\ship-61-17aa33ad01fc\\workdir\\u",
+  "isolated_short_project_root_length": 85,
+  "isolated_full_path_length": 247,
+  "exceeds_max_path_in_isolated_root": false
+}

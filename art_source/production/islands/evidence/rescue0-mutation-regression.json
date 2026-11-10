@@ -1,0 +1,297 @@
+{
+  "development": "PASS",
+  "acceptance": "NOT_RUN",
+  "rows": [
+    {
+      "asset": "ISL-S",
+      "lod": 0,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999998002895154,
+      "triangles": {
+        "Beach": 300,
+        "Grass": 104,
+        "Trees": 0,
+        "Reef": 756
+      }
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 1,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999998076818883,
+      "triangles": {
+        "Beach": 270,
+        "Grass": 24,
+        "Trees": 0,
+        "Reef": 186
+      }
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 2,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999998463317752,
+      "triangles": {
+        "Beach": 140,
+        "Grass": 5,
+        "Trees": 0,
+        "Reef": 55
+      }
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 0,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999997969716787,
+      "triangles": {
+        "Beach": 400,
+        "Grass": 880,
+        "Trees": 336,
+        "Reef": 160
+      }
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 1,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999998197556828,
+      "triangles": {
+        "Beach": 360,
+        "Grass": 280,
+        "Trees": 132,
+        "Reef": 40
+      }
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 2,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999998278855117,
+      "triangles": {
+        "Beach": 180,
+        "Grass": 20,
+        "Trees": 108,
+        "Reef": 20
+      }
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 0,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999997677793999,
+      "triangles": {
+        "Beach": 480,
+        "Grass": 1248,
+        "Trees": 672,
+        "Reef": 240
+      }
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 1,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.9999998072310063,
+      "triangles": {
+        "Beach": 432,
+        "Grass": 336,
+        "Trees": 264,
+        "Reef": 40
+      }
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 2,
+      "edited_directed_geometry_uv_material_equal": true,
+      "deterministic_mesh_data": true,
+      "min_normal_dot": 0.999999837949872,
+      "triangles": {
+        "Beach": 408,
+        "Grass": 24,
+        "Trees": 216,
+        "Reef": 40
+      }
+    }
+  ],
+  "preview_save_reopen": [
+    {
+      "asset": "ISL-S",
+      "lod": 0,
+      "mode": "parts",
+      "visible": [
+        "ISL-S_LOD0_Beach",
+        "ISL-S_LOD0_Grass",
+        "ISL-S_LOD0_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 0,
+      "mode": "parts",
+      "visible": [
+        "ISL-M_LOD0_Beach",
+        "ISL-M_LOD0_Grass",
+        "ISL-M_LOD0_Trees",
+        "ISL-M_LOD0_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 0,
+      "mode": "parts",
+      "visible": [
+        "ISL-L_LOD0_Beach",
+        "ISL-L_LOD0_Grass",
+        "ISL-L_LOD0_Trees",
+        "ISL-L_LOD0_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 1,
+      "mode": "parts",
+      "visible": [
+        "ISL-S_LOD1_Beach",
+        "ISL-S_LOD1_Grass",
+        "ISL-S_LOD1_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 1,
+      "mode": "parts",
+      "visible": [
+        "ISL-M_LOD1_Beach",
+        "ISL-M_LOD1_Grass",
+        "ISL-M_LOD1_Trees",
+        "ISL-M_LOD1_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 1,
+      "mode": "parts",
+      "visible": [
+        "ISL-L_LOD1_Beach",
+        "ISL-L_LOD1_Grass",
+        "ISL-L_LOD1_Trees",
+        "ISL-L_LOD1_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 2,
+      "mode": "parts",
+      "visible": [
+        "ISL-S_LOD2_Beach",
+        "ISL-S_LOD2_Grass",
+        "ISL-S_LOD2_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 2,
+      "mode": "parts",
+      "visible": [
+        "ISL-M_LOD2_Beach",
+        "ISL-M_LOD2_Grass",
+        "ISL-M_LOD2_Trees",
+        "ISL-M_LOD2_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 2,
+      "mode": "parts",
+      "visible": [
+        "ISL-L_LOD2_Beach",
+        "ISL-L_LOD2_Grass",
+        "ISL-L_LOD2_Trees",
+        "ISL-L_LOD2_Reef"
+      ]
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 0,
+      "mode": "assembled",
+      "visible": [
+        "ISL-S_LOD0_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 0,
+      "mode": "assembled",
+      "visible": [
+        "ISL-M_LOD0_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 0,
+      "mode": "assembled",
+      "visible": [
+        "ISL-L_LOD0_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 1,
+      "mode": "assembled",
+      "visible": [
+        "ISL-S_LOD1_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 1,
+      "mode": "assembled",
+      "visible": [
+        "ISL-M_LOD1_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 1,
+      "mode": "assembled",
+      "visible": [
+        "ISL-L_LOD1_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 2,
+      "mode": "assembled",
+      "visible": [
+        "ISL-S_LOD2_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 2,
+      "mode": "assembled",
+      "visible": [
+        "ISL-M_LOD2_Assembled"
+      ]
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 2,
+      "mode": "assembled",
+      "visible": [
+        "ISL-L_LOD2_Assembled"
+      ]
+    }
+  ],
+  "edited_mesh_save_reopen_exact": true,
+  "missing_required_part_rejected": true,
+  "normal_direction_regression_dot_floor": 0.99999,
+  "note": "Normal dot floor is a development corruption check, not a replacement precision/visual acceptance threshold."
+}

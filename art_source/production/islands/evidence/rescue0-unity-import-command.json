@@ -1,0 +1,17 @@
+{
+  "name": "unity_gpu_verification",
+  "cmd": [
+    "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.6f1\\Editor\\Unity.exe",
+    "-batchmode",
+    "-quit",
+    "-projectPath",
+    "C:\\Users\\wangding\\multica_workspaces\\ship-509dc9df575c\\ship-61-17aa33ad01fc\\workdir\\u",
+    "-executeMethod",
+    "T07UnityVerification.RunAll",
+    "-logFile",
+    "C:\\Users\\wangding\\multica_workspaces\\ship-509dc9df575c\\ship-61-17aa33ad01fc\\workdir\\evidence-v3\\unity_editor.log"
+  ],
+  "utc_start": "2026-11-10T11:56:58.624123+00:00",
+  "utc_end": "2026-11-10T11:59:59.668087+00:00",
+  "exit_code": 0
+}

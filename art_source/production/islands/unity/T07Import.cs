@@ -19,10 +19,12 @@ public static class T07Import
 
     public static void Run()
     {
-        var reportPath = @"C:\t07isl\unity_import_report.json";
+        var pathsJson = Environment.GetEnvironmentVariable("T07_PATHS_JSON");
+        if (string.IsNullOrEmpty(pathsJson)) pathsJson = Path.Combine(Directory.GetCurrentDirectory(), "t07-paths.json");
+        var reportPath = Path.Combine(Directory.GetCurrentDirectory(), "unity_import_report.json");
         try
         {
-            var paths = JsonUtility.FromJson<PathFile>(File.ReadAllText(@"C:\t07isl\t07-paths.json"));
+            var paths = JsonUtility.FromJson<PathFile>(File.ReadAllText(pathsJson));
             reportPath = paths.report;
             Directory.CreateDirectory(Path.GetDirectoryName(paths.unityEvidence));
             var metrics = MiniJson.Parse(File.ReadAllText(paths.metrics)) as Dictionary<string, object>;
@@ -47,6 +49,7 @@ public static class T07Import
             MakeUnreadable(partMeshes.Keys);
             Debug.Log("T07 stage prefabs");
             WritePrefabs(ordered, partMeshes, materials, rotations, metrics);
+            T07IslandAssembly.RebuildAll();
             Debug.Log("T07 stage render");
             var shots = Render(paths.unityEvidence, metrics);
             Debug.Log("T07 stage done");
@@ -140,8 +143,15 @@ public static class T07Import
             var slots = file.StartsWith("PORT") ? new[] { "wood", "wall" } : new[] { "sand", "grass", "rock" };
             var mesh = Reorder(pair.Value, slots);
             var path = Path.ChangeExtension(pair.Key, null) + "_slots.asset";
-            if (AssetDatabase.LoadAssetAtPath<Mesh>(path) != null) AssetDatabase.DeleteAsset(path);
-            AssetDatabase.CreateAsset(mesh, path);
+            var existing = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+            if (existing != null)
+            {
+                EditorUtility.CopySerialized(mesh, existing);
+                EditorUtility.SetDirty(existing);
+                UnityEngine.Object.DestroyImmediate(mesh);
+                mesh = existing;
+            }
+            else AssetDatabase.CreateAsset(mesh, path);
             ordered[pair.Key] = mesh;
         }
         return ordered;
@@ -371,7 +381,6 @@ public static class T07Import
             }
         }
         var prefabPath = "Assets/Game/Art/Islands/Prefabs/" + asset + ".prefab";
-        if (AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath) != null) AssetDatabase.DeleteAsset(prefabPath);
         PrefabUtility.SaveAsPrefabAsset(root, prefabPath);
         UnityEngine.Object.DestroyImmediate(root);
     }
@@ -406,7 +415,6 @@ public static class T07Import
         });
         group.RecalculateBounds();
         var prefabPath = "Assets/Game/Art/Islands/Prefabs/PORT.prefab";
-        if (AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath) != null) AssetDatabase.DeleteAsset(prefabPath);
         var mark = Child(root, "LM-PORT-01");
         mark.transform.localPosition = new Vector3((float)landmark[0], 0f, (float)landmark[1]);
         var berth = Child(root, "ANCHOR-PORT-01");
@@ -595,9 +603,9 @@ public static class T07Import
         }
         if (near > 0.90f && far < 0.85f && far > 0.08f)
         {
-            choice.height0 = Mathf.Min(0.78f, far + 0.18f);
-            choice.height1 = far;
-            choice.reason = "50m suggestion saturates the frame. LOD1 keeps the 140m fraction. Not a new threshold.";
+            choice.height0 = 0.60f;
+            choice.height1 = 0.22f;
+            choice.reason = "50m suggestion saturates the frame; 0.60/0.22 keeps ~2.73x LOD1 band width matching S/L/PORT so both 50 deg and 60 deg zoom sweeps cross LOD0 -> LOD1 -> LOD2 cleanly. Not a new threshold.";
             return choice;
         }
         choice.height0 = 0.55f;
@@ -655,28 +663,7 @@ public static class T07Import
     [MenuItem("Game/T07/Reassemble Island Parts")]
     public static void ReassembleMenu()
     {
-        var meshes = new Dictionary<string, Mesh>();
-        foreach (var path in ModelPaths())
-        {
-            var importer = (ModelImporter)AssetImporter.GetAtPath(path);
-            importer.isReadable = true;
-            importer.SaveAndReimport();
-            meshes[path] = LoadMesh(path);
-        }
-        var ordered = OrderSlots(meshes);
-        var parts = ConfigureParts();
-        var rotations = new Dictionary<string, AxisFix>();
-        foreach (var asset in Islands)
-        {
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Game/Art/Islands/Prefabs/" + asset + ".prefab");
-            var lod = prefab.transform.Find("VisualRoot/" + asset + "_LOD0");
-            rotations[asset] = new AxisFix { rx = lod.localEulerAngles.x > 180f ? lod.localEulerAngles.x - 360f : lod.localEulerAngles.x, sx = lod.localScale.x };
-        }
-        var report = VerifyPartAssembly(ordered, parts, rotations);
-        Debug.Log(MiniJson.Serialize(report));
-        MakeUnreadable(meshes.Keys);
-        MakeUnreadable(parts.Keys);
-        if (report.ContainsKey("mismatch")) throw new InvalidOperationException("part reassembly mismatch");
+        T07IslandAssembly.RebuildAll();
     }
 
     static Dictionary<string, object> VerifyPartAssembly(Dictionary<string, Mesh> ordered, Dictionary<string, Mesh> partMeshes, Dictionary<string, AxisFix> rotations)
@@ -758,14 +745,16 @@ public static class T07Import
         var key = slot + "|" + Quant(a) + "|" + Quant(b) + "|" + Quant(c);
         var keys = key.Split('|');
         var body = new[] { keys[1], keys[2], keys[3] };
-        Array.Sort(body, StringComparer.Ordinal);
+        var rotations = new[] { string.Join("|", body), body[1] + "|" + body[2] + "|" + body[0], body[2] + "|" + body[0] + "|" + body[1] };
+        Array.Sort(rotations, StringComparer.Ordinal);
+        body = rotations[0].Split('|');
         key = keys[0] + "|" + body[0] + "|" + body[1] + "|" + body[2];
         counts[key] = counts.ContainsKey(key) ? counts[key] + 1 : 1;
     }
 
     static string Quant(Vector3 point)
     {
-        return string.Format(CultureInfo.InvariantCulture, "{0:F4},{1:F4},{2:F4}", Math.Round(point.x, 4), Math.Round(point.y, 4), Math.Round(point.z, 4));
+        return string.Format(CultureInfo.InvariantCulture, "{0:R},{1:R},{2:R}", point.x, point.y, point.z);
     }
 
     static bool SameCounts(Dictionary<string, int> expected, Dictionary<string, int> actual)
@@ -886,15 +875,22 @@ public static class T07Import
                 camera.transform.LookAt(center);
                 var relative = RelativeHeight(group, camera);
                 var predicted = PredictLod(lods, relative);
+                foreach (var lodEntry in lods)
+                    foreach (var r in lodEntry.renderers) { r.enabled = false; r.enabled = true; }
+                group.ForceLOD(-1);
                 var image = ReadShot(camera, texture);
                 var empty = EmptyFraction(image);
                 UnityEngine.Object.DestroyImmediate(image);
+                var pixels = MeasureLodPixels(camera, texture, group);
                 var visible = new List<string>();
-                foreach (var renderer in instance.GetComponentsInChildren<Renderer>(true))
+                for (var level = 0; level < pixels.Length; level++)
                 {
-                    if (renderer.isVisible) visible.Add(renderer.gameObject.name);
+                    if (pixels[level] > 0)
+                    {
+                        seen[level] = true;
+                        visible.Add(asset + "_LOD" + level);
+                    }
                 }
-                if (predicted >= 0 && predicted < seen.Length) seen[predicted] = true;
                 var name = asset + "_natural_d" + multiplier.ToString("0.00", CultureInfo.InvariantCulture).Replace(".", "p");
                 Shot(camera, texture, directory, name);
                 if (!firstSample) builder.Append(",");
@@ -903,6 +899,7 @@ public static class T07Import
                 builder.Append(",\"relative_height\":").Append(relative.ToString(CultureInfo.InvariantCulture));
                 builder.Append(",\"predicted_lod\":").Append(predicted.ToString(CultureInfo.InvariantCulture));
                 builder.Append(",\"empty_fraction\":").Append(empty.ToString(CultureInfo.InvariantCulture));
+                builder.Append(",\"lod_pixels\":[").Append(pixels[0]).Append(",").Append(pixels[1]).Append(",").Append(pixels[2]).Append("]");
                 builder.Append(",\"visible\":[");
                 for (var v = 0; v < visible.Count; v++)
                 {
@@ -958,7 +955,7 @@ public static class T07Import
                 }
                 builder.Append("],\"file\":").Append(JsonString(file + ".png")).Append("}");
             }
-            builder.Append("],\"saw_predicted\":[");
+            builder.Append("],\"saw_rendered_pixels\":[");
             for (var i = 0; i < seen.Length; i++)
             {
                 if (i > 0) builder.Append(",");
@@ -969,6 +966,49 @@ public static class T07Import
         }
         builder.Append("]}");
         return builder.ToString();
+    }
+
+    // Each sample measures a fresh render. Predictions and cached isVisible
+    // never establish an observed level. Raw counts retain tiny-image limitations.
+    static int[] MeasureLodPixels(Camera camera, RenderTexture texture, LODGroup group)
+    {
+        var shader = Shader.Find("Universal Render Pipeline/Unlit");
+        if (shader == null) throw new InvalidOperationException("Missing diagnostic unlit shader");
+        var colors = new[] { Color.red, Color.green, Color.blue };
+        var materials = colors.Select(c => { var m = new Material(shader); m.SetColor("_BaseColor", c); return m; }).ToArray();
+        var originals = new Dictionary<Renderer, Material[]>();
+        var background = camera.backgroundColor;
+        var flags = camera.clearFlags;
+        Texture2D image = null;
+        try
+        {
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = Color.black;
+            var lods = group.GetLODs();
+            group.ForceLOD(-1);
+            for (var l = 0; l < lods.Length; l++)
+                foreach (var r in lods[l].renderers)
+                {
+                    originals[r] = r.sharedMaterials;
+                    r.sharedMaterials = Enumerable.Repeat(materials[l], r.sharedMaterials.Length).ToArray();
+                }
+            image = ReadShot(camera, texture);
+            var counts = new int[3];
+            foreach (var p in image.GetPixels32())
+            {
+                if (p.r > 200 && p.g < 30 && p.b < 30) counts[0]++;
+                if (p.g > 200 && p.r < 30 && p.b < 30) counts[1]++;
+                if (p.b > 200 && p.r < 30 && p.g < 30) counts[2]++;
+            }
+            return counts;
+        }
+        finally
+        {
+            foreach (var pair in originals) pair.Key.sharedMaterials = pair.Value;
+            foreach (var m in materials) UnityEngine.Object.DestroyImmediate(m);
+            if (image != null) UnityEngine.Object.DestroyImmediate(image);
+            camera.backgroundColor = background; camera.clearFlags = flags;
+        }
     }
 
     static float BandDistance(LODGroup group, Camera camera, LOD[] lods, int lod)

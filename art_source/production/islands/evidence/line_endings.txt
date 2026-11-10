@@ -1,25 +1,7 @@
-T07-REWORK-2 line endings. SHA256SUMS.txt hashes working-tree bytes and does not hash itself.
+T07-RESCUE-0 line endings. SHA256SUMS.txt hashes working-tree bytes and git blobs identically (all text normalized to LF) and does not hash itself.
 line_endings.tsv is the per-file table. This note and that table are hashed by SHA256SUMS after they are written.
 
 core.autocrlf is true. .gitattributes sets * text=auto, and eol=lf on cs, json, unity, asset, and meta. png, fbx, and blend are binary.
+All text files under art_source/production/islands and client/UnityProject/Assets/Game/Art/Islands are stored with LF on disk so working-tree SHA256 equals git blob SHA256.
 
-files=542 bytes-same=231 newline-only=13 content-diff=181 new=117
-
-newline-only means disk and index match after removing CR. That is autocrlf, not a mesh edit.
-content-diff is a real byte change. new is not in the index yet.
-The previous 8024-byte *yaw040.png files stay. This run wrote forced_* and natural_* frames.
-
-newline-only files:
-- art_source/production/islands/S1_T07_module_adaptation.md disk=CRLF index=LF
-- art_source/production/islands/data/island_module_package.json disk=CRLF index=LF
-- art_source/production/islands/evidence/rework1-blender-run.txt disk=CRLF index=LF
-- art_source/production/islands/evidence/rework1-blender-skip-run.txt disk=CRLF index=LF
-- art_source/production/islands/evidence/rework1-blender-stderr.txt disk=CRLF index=LF
-- art_source/production/islands/evidence/rework1-blender-stdout.txt disk=CRLF index=LF
-- art_source/production/islands/evidence/rework1-unity-command.txt disk=CRLF index=LF
-- art_source/production/islands/evidence/rework1-unity-editor.log disk=CRLF index=LF
-- art_source/production/islands/evidence/unity-command.txt disk=CRLF index=LF
-- art_source/production/islands/evidence/unity-editor.log disk=CRLF index=LF
-- art_source/production/islands/geometry_hash.py disk=CRLF index=LF
-- art_source/production/islands/verify_island_modules.py disk=CRLF index=LF
-- client/UnityProject/Assets/Game/Art/Islands/Data/island_module_package.json disk=CRLF index=LF
+files=571 bytes-same=484 newline-only=0 content-diff=59 new=28

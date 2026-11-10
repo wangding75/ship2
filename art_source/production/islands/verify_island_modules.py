@@ -263,8 +263,10 @@ def main():
         "errors": errors,
         "verdict": "DEVELOPMENT_OK" if not errors else "DEVELOPMENT_FAIL",
         "acceptance": "NOT_RUN",
+        "metrics_scope": "cached Python builder diagnostics only; not saved geometry measurements",
+        "saved_blend_fbx_unity": "NOT_RUN by this script; run verify_saved_precision.py and the Unity probe",
     }
-    out = os.path.join(root, "evidence", "verify.json")
+    out = os.environ.get("T07_VERIFY_REPORT", os.path.join(root, "evidence", "verify.json"))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as handle:
         json.dump(report, handle, indent=2, ensure_ascii=False)
