@@ -1,0 +1,194 @@
+{
+  "status": "MATCH",
+  "results": [
+    {
+      "asset": "ISL-S",
+      "lod": 0,
+      "ok": true,
+      "triangles": {
+        "Beach": 300,
+        "Grass": 104,
+        "Trees": 0,
+        "Reef": 756
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": null,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 1,
+      "ok": true,
+      "triangles": {
+        "Beach": 270,
+        "Grass": 24,
+        "Trees": 0,
+        "Reef": 186
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": null,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-S",
+      "lod": 2,
+      "ok": true,
+      "triangles": {
+        "Beach": 140,
+        "Grass": 5,
+        "Trees": 0,
+        "Reef": 55
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": null,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 0,
+      "ok": true,
+      "triangles": {
+        "Beach": 400,
+        "Grass": 880,
+        "Trees": 336,
+        "Reef": 160
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": true,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 1,
+      "ok": true,
+      "triangles": {
+        "Beach": 360,
+        "Grass": 280,
+        "Trees": 132,
+        "Reef": 40
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": true,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-M",
+      "lod": 2,
+      "ok": true,
+      "triangles": {
+        "Beach": 180,
+        "Grass": 20,
+        "Trees": 108,
+        "Reef": 20
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": true,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 0,
+      "ok": true,
+      "triangles": {
+        "Beach": 480,
+        "Grass": 1248,
+        "Trees": 672,
+        "Reef": 240
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": true,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 1,
+      "ok": true,
+      "triangles": {
+        "Beach": 432,
+        "Grass": 336,
+        "Trees": 264,
+        "Reef": 40
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": true,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    },
+    {
+      "asset": "ISL-L",
+      "lod": 2,
+      "ok": true,
+      "triangles": {
+        "Beach": 408,
+        "Grass": 24,
+        "Trees": 216,
+        "Reef": 40
+      },
+      "beach_unchanged": true,
+      "reef_moved": true,
+      "trees_moved": true,
+      "hidden": {
+        "beach": false,
+        "grass": true,
+        "trees": false,
+        "reef": true
+      },
+      "restored": true
+    }
+  ]
+}

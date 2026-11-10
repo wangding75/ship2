@@ -3,8 +3,8 @@
 这是制作候选，不是验收结论。视觉由 A07 看，模块数据和技术约束由 A04 看。
 
 - 作者 UUID `913948fc-cfc0-41f2-a6fd-c7f661450afd`
-- 作者 Run `01a1c217-cf85-743d-bc6b-752eb0a3646f`
-- Grok 会话 `01a1c217-d815-7392-a7a9-98b5dde67a0d`
+- 作者 Run `01a1c2d0-7b25-74f0-916d-fcc6bd98441e`
+- Grok 会话 `01a1c2d0-7b25-74f0-916d-fcc6bd98441e`
 - 实际模型 grok-4.7 / high。平台身份说明里的 gpt-6.1-sol 名称没有沿用。
 - Blender 5.2.3 LTS，构建哈希 e13b728c6880。
 - 基线 `ca391a4f341f25d7a99aa27a35de678fd684eaf4` 在 `refs/heads/t06/ship-assets-rework-1`，`refs/heads/main` 是 `bddd5441777b521045edd0549958704b23d82036`。该基线不是 main 已合并。
@@ -23,6 +23,11 @@ LOD 切换建议仍是相机高度 50 米和 140 米，不是硬阈值。假定�
 
 每个 LOD 的 y=0 水线使用同一条 canonical 陆地环的全部顶点。减面发生在沙环以内的山体，以及放不下竖向裙边时的水下封底。沙环内缘放在各自 sand_t（S 0.70、M 0.78、L 0.80），外缘就是水线，顶面按这个环分到沙，不再把两环中点 0.75 整圈分给草。
 
+## T07-REWORK-2 语义分件
+
+源 blend 里每个岛的每个 LOD 是四件可独立移动和隐藏的对象，不是一张岛网格。名字是 `{岛}_LOD{n}_Beach`（沙滩）、`_Grass`（草坡）、`_Trees`（树团）、`_Reef`（礁石）。沙滩用 Sand 槽，草坡用 Grass 槽，树团和礁石共用 Rock 槽。活动渲染仍把这四件确定性装成每个 LOD 一个网格、三个材质槽，三角数是四件之和，不是额外的面。ISL-S 的生产选择没有树，`_Trees` 是空对象，不新增树，也不改外形。LOD1/LOD2 不是 LOD0 的抽稀结果，而是同一条 canonical 岸线和同一套语义规则按该档 step/rings/rock_keep/trunk/leaf 重算。
+
+操作入口：`assemble_island_parts.py` 在源 blend 上移动树团、隐藏礁石和草坡，再还原并核对三角签名。Unity 预制件的 `SemanticParts` 默认关闭，不进 LODGroup；菜单 `Game/T07/Reassemble Island Parts` 和导入里的 `T07Import.Run` 会做同样的拆装核对。对应表在 `data/semantic_part_map.json`。
 
 ## 图4 和 T05
 

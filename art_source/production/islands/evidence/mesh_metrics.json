@@ -2,17 +2,20 @@
   "generator": "art_source/production/islands/generate_islands.py",
   "blender": "5.2.3 LTS",
   "blender_hash": "e13b728c6880",
-  "utc": "2026-11-09T21:18:48Z",
+  "utc": "2026-11-10T00:37:05Z",
   "author": {
     "uuid": "913948fc-cfc0-41f2-a6fd-c7f661450afd",
-    "run": "01a1c217-cf85-743d-bc6b-752eb0a3646f",
-    "session": "01a1c217-d815-7392-a7a9-98b5dde67a0d",
+    "run": "01a1c2d0-7b25-74f0-916d-fcc6bd98441e",
+    "session": "01a1c2d0-7b25-74f0-916d-fcc6bd98441e",
     "model": "grok-4.7",
     "effort": "high"
   },
   "geometry_sha": "efa7240dc363e00de8b56b48d35c9861285c6e1f02d9dbe0eb24e1b825c57038",
   "render_engine": "BLENDER_EEVEE",
   "rendered": [
+    "evidence/turntable/ISL-S_LOD0_parts_reef_hidden_trees_moved.png",
+    "evidence/turntable/ISL-M_LOD0_parts_reef_hidden_trees_moved.png",
+    "evidence/turntable/ISL-L_LOD0_parts_reef_hidden_trees_moved.png",
     "evidence/turntable/ISL-S_LOD0_yaw000.png",
     "evidence/turntable/ISL-S_LOD0_yaw045.png",
     "evidence/turntable/ISL-S_LOD0_yaw090.png",
@@ -184,6 +187,14 @@
             "grass": 104,
             "sand": 300
           },
+          "semantic_parts": {
+            "Beach": 300,
+            "Grass": 104,
+            "Trees": 0,
+            "Reef": 756
+          },
+          "semantic_part_sum": 1160,
+          "render_mesh": "ISL-S_LOD0",
           "bounds_unity_m": {
             "min": [
               -21.006,
@@ -226,6 +237,14 @@
             "grass": 24,
             "sand": 270
           },
+          "semantic_parts": {
+            "Beach": 270,
+            "Grass": 24,
+            "Trees": 0,
+            "Reef": 186
+          },
+          "semantic_part_sum": 480,
+          "render_mesh": "ISL-S_LOD1",
           "bounds_unity_m": {
             "min": [
               -21.006,
@@ -268,6 +287,14 @@
             "grass": 5,
             "sand": 140
           },
+          "semantic_parts": {
+            "Beach": 140,
+            "Grass": 5,
+            "Trees": 0,
+            "Reef": 55
+          },
+          "semantic_part_sum": 200,
+          "render_mesh": "ISL-S_LOD2",
           "bounds_unity_m": {
             "min": [
               -21.006,
@@ -315,6 +342,14 @@
             "sand": 400,
             "rock": 496
           },
+          "semantic_parts": {
+            "Beach": 400,
+            "Grass": 880,
+            "Trees": 336,
+            "Reef": 160
+          },
+          "semantic_part_sum": 1776,
+          "render_mesh": "ISL-M_LOD0",
           "bounds_unity_m": {
             "min": [
               -50.25705,
@@ -357,6 +392,14 @@
             "sand": 360,
             "rock": 172
           },
+          "semantic_parts": {
+            "Beach": 360,
+            "Grass": 280,
+            "Trees": 132,
+            "Reef": 40
+          },
+          "semantic_part_sum": 812,
+          "render_mesh": "ISL-M_LOD1",
           "bounds_unity_m": {
             "min": [
               -50.25705,
@@ -399,6 +442,14 @@
             "sand": 180,
             "rock": 128
           },
+          "semantic_parts": {
+            "Beach": 180,
+            "Grass": 20,
+            "Trees": 108,
+            "Reef": 20
+          },
+          "semantic_part_sum": 328,
+          "render_mesh": "ISL-M_LOD2",
           "bounds_unity_m": {
             "min": [
               -50.25705,
@@ -446,6 +497,14 @@
             "sand": 480,
             "rock": 912
           },
+          "semantic_parts": {
+            "Beach": 480,
+            "Grass": 1248,
+            "Trees": 672,
+            "Reef": 240
+          },
+          "semantic_part_sum": 2640,
+          "render_mesh": "ISL-L_LOD0",
           "bounds_unity_m": {
             "min": [
               -89.78026,
@@ -488,6 +547,14 @@
             "sand": 432,
             "rock": 304
           },
+          "semantic_parts": {
+            "Beach": 432,
+            "Grass": 336,
+            "Trees": 264,
+            "Reef": 40
+          },
+          "semantic_part_sum": 1072,
+          "render_mesh": "ISL-L_LOD1",
           "bounds_unity_m": {
             "min": [
               -89.78026,
@@ -530,6 +597,14 @@
             "sand": 408,
             "rock": 256
           },
+          "semantic_parts": {
+            "Beach": 408,
+            "Grass": 24,
+            "Trees": 216,
+            "Reef": 40
+          },
+          "semantic_part_sum": 688,
+          "render_mesh": "ISL-L_LOD2",
           "bounds_unity_m": {
             "min": [
               -89.78026,
@@ -630,6 +705,569 @@
       },
       "lod0_shore_max_error_m": 0.0
     }
+  },
+  "semantic_parts": {
+    "names": {
+      "Beach": "\u6c99\u6ee9",
+      "Grass": "\u8349\u5761",
+      "Trees": "\u6811\u56e2",
+      "Reef": "\u7901\u77f3"
+    },
+    "material_slots": {
+      "Beach": "sand",
+      "Grass": "grass",
+      "Trees": "rock",
+      "Reef": "rock"
+    },
+    "active_render": "One mesh per LOD, three material slots. Part triangles sum to that mesh. SemanticParts in the prefab stay inactive and are not LOD renderers.",
+    "isl_s_trees": "ISL-S production choice has no trees. The Trees object exists and has zero triangles so the silhouette stays the reef body, sand edge and grass wedge.",
+    "lod_relation": "LOD1 and LOD2 rebuild the same canonical shoreline and the same Beach/Grass/Trees/Reef partition. They are not decimated copies of LOD0.",
+    "operation": "art_source/production/islands/assemble_island_parts.py",
+    "reassembly": [
+      {
+        "asset": "ISL-S",
+        "lod": 0,
+        "render_triangles": 1160,
+        "part_triangles": 1160,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-S_LOD0_Beach",
+            "triangles": 300,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-S_LOD0_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-S_LOD0_Grass",
+            "triangles": 104,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-S_LOD0_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-S_LOD0_Trees",
+            "triangles": 0,
+            "material_slot": "rock",
+            "exported_fbx": null
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-S_LOD0_Reef",
+            "triangles": 756,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-S_LOD0_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": null,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 1,
+          "rings": 6,
+          "rock_sub": 1,
+          "rock_keep": 4
+        }
+      },
+      {
+        "asset": "ISL-S",
+        "lod": 1,
+        "render_triangles": 480,
+        "part_triangles": 480,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-S_LOD1_Beach",
+            "triangles": 270,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-S_LOD1_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-S_LOD1_Grass",
+            "triangles": 24,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-S_LOD1_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-S_LOD1_Trees",
+            "triangles": 0,
+            "material_slot": "rock",
+            "exported_fbx": null
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-S_LOD1_Reef",
+            "triangles": 186,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-S_LOD1_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": null,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 2,
+          "rings": 4,
+          "rock_sub": 0,
+          "rock_keep": 3
+        }
+      },
+      {
+        "asset": "ISL-S",
+        "lod": 2,
+        "render_triangles": 200,
+        "part_triangles": 200,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-S_LOD2_Beach",
+            "triangles": 140,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-S_LOD2_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-S_LOD2_Grass",
+            "triangles": 5,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-S_LOD2_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-S_LOD2_Trees",
+            "triangles": 0,
+            "material_slot": "rock",
+            "exported_fbx": null
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-S_LOD2_Reef",
+            "triangles": 55,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-S_LOD2_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": null,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 3,
+          "rings": 2,
+          "rock_sub": 0,
+          "rock_keep": 2
+        }
+      },
+      {
+        "asset": "ISL-M",
+        "lod": 0,
+        "render_triangles": 1776,
+        "part_triangles": 1776,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-M_LOD0_Beach",
+            "triangles": 400,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-M_LOD0_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-M_LOD0_Grass",
+            "triangles": 880,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-M_LOD0_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-M_LOD0_Trees",
+            "triangles": 336,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-M_LOD0_Trees.fbx"
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-M_LOD0_Reef",
+            "triangles": 160,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-M_LOD0_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": true,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 1,
+          "rings": 7,
+          "rock_sub": 1,
+          "rock_keep": 2,
+          "trunk": 8,
+          "leaf": 1
+        }
+      },
+      {
+        "asset": "ISL-M",
+        "lod": 1,
+        "render_triangles": 812,
+        "part_triangles": 812,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-M_LOD1_Beach",
+            "triangles": 360,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-M_LOD1_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-M_LOD1_Grass",
+            "triangles": 280,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-M_LOD1_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-M_LOD1_Trees",
+            "triangles": 132,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-M_LOD1_Trees.fbx"
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-M_LOD1_Reef",
+            "triangles": 40,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-M_LOD1_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": true,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 2,
+          "rings": 5,
+          "rock_sub": 0,
+          "rock_keep": 2,
+          "trunk": 6,
+          "leaf": 0
+        }
+      },
+      {
+        "asset": "ISL-M",
+        "lod": 2,
+        "render_triangles": 328,
+        "part_triangles": 328,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-M_LOD2_Beach",
+            "triangles": 180,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-M_LOD2_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-M_LOD2_Grass",
+            "triangles": 20,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-M_LOD2_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-M_LOD2_Trees",
+            "triangles": 108,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-M_LOD2_Trees.fbx"
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-M_LOD2_Reef",
+            "triangles": 20,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-M_LOD2_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": true,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 4,
+          "rings": 2,
+          "rock_sub": 0,
+          "rock_keep": 1,
+          "trunk": 4,
+          "leaf": 0
+        }
+      },
+      {
+        "asset": "ISL-L",
+        "lod": 0,
+        "render_triangles": 2640,
+        "part_triangles": 2640,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-L_LOD0_Beach",
+            "triangles": 480,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-L_LOD0_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-L_LOD0_Grass",
+            "triangles": 1248,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-L_LOD0_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-L_LOD0_Trees",
+            "triangles": 672,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-L_LOD0_Trees.fbx"
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-L_LOD0_Reef",
+            "triangles": 240,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-L_LOD0_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": true,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 1,
+          "rings": 8,
+          "rock_sub": 1,
+          "rock_keep": 3,
+          "trunk": 8,
+          "leaf": 1
+        }
+      },
+      {
+        "asset": "ISL-L",
+        "lod": 1,
+        "render_triangles": 1072,
+        "part_triangles": 1072,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-L_LOD1_Beach",
+            "triangles": 432,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-L_LOD1_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-L_LOD1_Grass",
+            "triangles": 336,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-L_LOD1_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-L_LOD1_Trees",
+            "triangles": 264,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-L_LOD1_Trees.fbx"
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-L_LOD1_Reef",
+            "triangles": 40,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-L_LOD1_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": true,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 2,
+          "rings": 5,
+          "rock_sub": 0,
+          "rock_keep": 2,
+          "trunk": 6,
+          "leaf": 0
+        }
+      },
+      {
+        "asset": "ISL-L",
+        "lod": 2,
+        "render_triangles": 688,
+        "part_triangles": 688,
+        "material_slots_on_render_mesh": [
+          "sand",
+          "grass",
+          "rock"
+        ],
+        "parts": {
+          "Beach": {
+            "zh": "\u6c99\u6ee9",
+            "object": "ISL-L_LOD2_Beach",
+            "triangles": 408,
+            "material_slot": "sand",
+            "exported_fbx": "export/parts/ISL-L_LOD2_Beach.fbx"
+          },
+          "Grass": {
+            "zh": "\u8349\u5761",
+            "object": "ISL-L_LOD2_Grass",
+            "triangles": 24,
+            "material_slot": "grass",
+            "exported_fbx": "export/parts/ISL-L_LOD2_Grass.fbx"
+          },
+          "Trees": {
+            "zh": "\u6811\u56e2",
+            "object": "ISL-L_LOD2_Trees",
+            "triangles": 216,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-L_LOD2_Trees.fbx"
+          },
+          "Reef": {
+            "zh": "\u7901\u77f3",
+            "object": "ISL-L_LOD2_Reef",
+            "triangles": 40,
+            "material_slot": "rock",
+            "exported_fbx": "export/parts/ISL-L_LOD2_Reef.fbx"
+          }
+        },
+        "independence": {
+          "beach_unchanged_while_others_moved": true,
+          "grass_unchanged_while_reef_and_trees_moved": true,
+          "reef_sample_moved": true,
+          "trees_sample_moved": true,
+          "beach_stayed_visible": true,
+          "trees_stayed_visible": true,
+          "grass_hidden": true,
+          "reef_hidden": true,
+          "restored": true,
+          "ok": true
+        },
+        "lod_parameters": {
+          "step": 4,
+          "rings": 2,
+          "rock_sub": 0,
+          "rock_keep": 2,
+          "trunk": 4,
+          "leaf": 0
+        }
+      }
+    ]
   },
   "unity_rx_deg": -90,
   "axis_note": "Mesh-local stores Unity (x, y, z) as (x, -z, y). Prefab mesh children use Rx(-90). Identity roots then match this Unity space.",

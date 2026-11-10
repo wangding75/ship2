@@ -32,6 +32,8 @@ public static class T07Import
             ConfigureTextures();
             Debug.Log("T07 stage models");
             var meshes = ConfigureModels();
+            Debug.Log("T07 stage parts");
+            var partMeshes = ConfigureParts();
             Debug.Log("T07 stage materials");
             var materials = CreateMaterials();
             Debug.Log("T07 stage rotations");
@@ -39,9 +41,12 @@ public static class T07Import
             Debug.Log("T07 stage slots");
             var ordered = OrderSlots(meshes);
             var waterline = MeasureWaterlines(meshes, rotations, paths.metrics);
+            Debug.Log("T07 stage part assembly");
+            var assembly = VerifyPartAssembly(ordered, partMeshes, rotations);
             MakeUnreadable(meshes.Keys);
+            MakeUnreadable(partMeshes.Keys);
             Debug.Log("T07 stage prefabs");
-            WritePrefabs(ordered, materials, rotations, metrics);
+            WritePrefabs(ordered, partMeshes, materials, rotations, metrics);
             Debug.Log("T07 stage render");
             var shots = Render(paths.unityEvidence, metrics);
             Debug.Log("T07 stage done");
@@ -55,6 +60,7 @@ public static class T07Import
                 { "triangles", TriangleReport(ordered) },
                 { "shots", shots },
                 { "waterline_unity", waterline },
+                { "semantic_parts", assembly },
                 { "lod_transitions", TransitionReport() },
                 { "lod_note", "Yaw, top and oblique frames disable LODGroup and show one mesh. natural_lod.json is the automatic LODGroup sweep. 50 m and 140 m stay suggestions. A saturated suggestion is not clamped to 0.99." }
             };
@@ -271,14 +277,57 @@ public static class T07Import
         return material;
     }
 
-    static void WritePrefabs(Dictionary<string, Mesh> meshes, Dictionary<string, Material> materials, Dictionary<string, AxisFix> rotations, Dictionary<string, object> metrics)
+    static void WritePrefabs(Dictionary<string, Mesh> meshes, Dictionary<string, Mesh> partMeshes, Dictionary<string, Material> materials, Dictionary<string, AxisFix> rotations, Dictionary<string, object> metrics)
     {
         EnsureFolder("Assets/Game/Art/Islands/Prefabs");
-        foreach (var asset in Islands) SaveIsland(asset, meshes, materials, rotations[asset]);
+        foreach (var asset in Islands) SaveIsland(asset, meshes, partMeshes, materials, rotations[asset]);
         SavePort(meshes, materials, rotations["PORT"], metrics);
     }
 
-    static void SaveIsland(string asset, Dictionary<string, Mesh> meshes, Dictionary<string, Material> materials, AxisFix fix)
+    static readonly string[] PartNames = { "Beach", "Grass", "Trees", "Reef" };
+
+    static string PartPath(string asset, int lod, string part)
+    {
+        return "Assets/Game/Art/Islands/Parts/" + asset + "_LOD" + lod + "_" + part + ".fbx";
+    }
+
+    static Dictionary<string, Mesh> ConfigureParts()
+    {
+        var result = new Dictionary<string, Mesh>();
+        EnsureFolder("Assets/Game/Art/Islands/Parts");
+        foreach (var asset in Islands)
+        {
+            for (var lod = 0; lod < 3; lod++)
+            {
+                foreach (var part in PartNames)
+                {
+                    var path = PartPath(asset, lod, part);
+                    if (AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path) == null) continue;
+                    var importer = (ModelImporter)AssetImporter.GetAtPath(path);
+                    importer.globalScale = 1f;
+                    importer.useFileScale = true;
+                    importer.bakeAxisConversion = false;
+                    importer.materialImportMode = ModelImporterMaterialImportMode.None;
+                    importer.isReadable = true;
+                    importer.importAnimation = false;
+                    importer.animationType = ModelImporterAnimationType.None;
+                    importer.SaveAndReimport();
+                    result[path] = LoadMesh(path);
+                }
+            }
+        }
+        return result;
+    }
+
+    static Material PartMaterial(string part, int lod, Dictionary<string, Material> materials)
+    {
+        var lod2 = lod == 2;
+        if (part == "Beach") return lod2 ? materials["sand2"] : materials["sand"];
+        if (part == "Grass") return lod2 ? materials["grass2"] : materials["grass"];
+        return lod2 ? materials["rock2"] : materials["rock"];
+    }
+
+    static void SaveIsland(string asset, Dictionary<string, Mesh> meshes, Dictionary<string, Mesh> partMeshes, Dictionary<string, Material> materials, AxisFix fix)
     {
         var root = new GameObject(asset);
         var visual = Child(root, "VisualRoot");
@@ -304,6 +353,23 @@ public static class T07Import
         lods[2] = new LOD(0.01f, new[] { renderers[2] });
         group.SetLODs(lods);
         group.RecalculateBounds();
+        var partsRoot = Child(root, "SemanticParts");
+        partsRoot.SetActive(false);
+        for (var lod = 0; lod < 3; lod++)
+        {
+            var lodRoot = Child(partsRoot, asset + "_LOD" + lod + "_Parts");
+            lodRoot.transform.localRotation = Quaternion.Euler(fix.rx, 0f, 0f);
+            lodRoot.transform.localScale = new Vector3(fix.sx, 1f, 1f);
+            foreach (var part in PartNames)
+            {
+                var partObject = Child(lodRoot, asset + "_LOD" + lod + "_" + part);
+                var path = PartPath(asset, lod, part);
+                if (!partMeshes.ContainsKey(path)) continue;
+                partObject.AddComponent<MeshFilter>().sharedMesh = partMeshes[path];
+                var partRenderer = partObject.AddComponent<MeshRenderer>();
+                partRenderer.sharedMaterial = PartMaterial(part, lod, materials);
+            }
+        }
         var prefabPath = "Assets/Game/Art/Islands/Prefabs/" + asset + ".prefab";
         if (AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath) != null) AssetDatabase.DeleteAsset(prefabPath);
         PrefabUtility.SaveAsPrefabAsset(root, prefabPath);
@@ -584,6 +650,187 @@ public static class T07Import
             report[pair.Key] = counts;
         }
         return report;
+    }
+
+    [MenuItem("Game/T07/Reassemble Island Parts")]
+    public static void ReassembleMenu()
+    {
+        var meshes = new Dictionary<string, Mesh>();
+        foreach (var path in ModelPaths())
+        {
+            var importer = (ModelImporter)AssetImporter.GetAtPath(path);
+            importer.isReadable = true;
+            importer.SaveAndReimport();
+            meshes[path] = LoadMesh(path);
+        }
+        var ordered = OrderSlots(meshes);
+        var parts = ConfigureParts();
+        var rotations = new Dictionary<string, AxisFix>();
+        foreach (var asset in Islands)
+        {
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Game/Art/Islands/Prefabs/" + asset + ".prefab");
+            var lod = prefab.transform.Find("VisualRoot/" + asset + "_LOD0");
+            rotations[asset] = new AxisFix { rx = lod.localEulerAngles.x > 180f ? lod.localEulerAngles.x - 360f : lod.localEulerAngles.x, sx = lod.localScale.x };
+        }
+        var report = VerifyPartAssembly(ordered, parts, rotations);
+        Debug.Log(MiniJson.Serialize(report));
+        MakeUnreadable(meshes.Keys);
+        MakeUnreadable(parts.Keys);
+        if (report.ContainsKey("mismatch")) throw new InvalidOperationException("part reassembly mismatch");
+    }
+
+    static Dictionary<string, object> VerifyPartAssembly(Dictionary<string, Mesh> ordered, Dictionary<string, Mesh> partMeshes, Dictionary<string, AxisFix> rotations)
+    {
+        var assets = new List<object>();
+        string mismatch = null;
+        foreach (var asset in Islands)
+        {
+            var fix = rotations[asset];
+            for (var lod = 0; lod < 3; lod++)
+            {
+                var render = ordered[ModelPath(asset, lod)];
+                var expected = new Dictionary<string, int>();
+                AddTriangles(expected, render, 0, "sand");
+                AddTriangles(expected, render, 1, "grass");
+                AddTriangles(expected, render, 2, "rock");
+                var actual = new Dictionary<string, int>();
+                var partTriangles = new Dictionary<string, object>();
+                foreach (var part in PartNames)
+                {
+                    var path = PartPath(asset, lod, part);
+                    var slot = part == "Beach" ? "sand" : part == "Grass" ? "grass" : "rock";
+                    if (!partMeshes.ContainsKey(path))
+                    {
+                        partTriangles[part] = 0;
+                        if (part != "Trees" || asset != "ISL-S") mismatch = asset + " LOD" + lod + " missing " + part;
+                        continue;
+                    }
+                    var count = AddTriangles(actual, partMeshes[path], -1, slot);
+                    partTriangles[part] = count;
+                }
+                var same = SameCounts(expected, actual);
+                if (!same && mismatch == null) mismatch = asset + " LOD" + lod + " triangles differ";
+                var moved = MoveAndRestore(asset, lod, fix, partMeshes);
+                if (!moved && mismatch == null) mismatch = asset + " LOD" + lod + " parts stayed bound";
+                assets.Add(new Dictionary<string, object>
+                {
+                    { "asset", asset },
+                    { "lod", lod },
+                    { "render_submeshes", new List<object> { render.GetIndexCount(0) / 3, render.GetIndexCount(1) / 3, render.GetIndexCount(2) / 3 } },
+                    { "part_triangles", partTriangles },
+                    { "active_material_slots", 3 },
+                    { "geometry_match", same },
+                    { "independent_move", moved }
+                });
+            }
+        }
+        var report = new Dictionary<string, object>
+        {
+            { "active_renderers_per_lod", 1 },
+            { "active_material_slots", 3 },
+            { "parts_in_lod_group", false },
+            { "assets", assets }
+        };
+        if (mismatch != null)
+        {
+            report["mismatch"] = mismatch;
+            throw new InvalidOperationException(mismatch);
+        }
+        return report;
+    }
+
+    static int AddTriangles(Dictionary<string, int> counts, Mesh mesh, int submesh, string slot)
+    {
+        var total = 0;
+        if (submesh >= 0)
+        {
+            var tris = mesh.GetTriangles(submesh);
+            total = tris.Length / 3;
+            for (var i = 0; i < tris.Length; i += 3) AddKey(counts, mesh.vertices[tris[i]], mesh.vertices[tris[i + 1]], mesh.vertices[tris[i + 2]], slot);
+            return total;
+        }
+        for (var sub = 0; sub < mesh.subMeshCount; sub++) total += AddTriangles(counts, mesh, sub, slot);
+        return total;
+    }
+
+    static void AddKey(Dictionary<string, int> counts, Vector3 a, Vector3 b, Vector3 c, string slot)
+    {
+        var key = slot + "|" + Quant(a) + "|" + Quant(b) + "|" + Quant(c);
+        var keys = key.Split('|');
+        var body = new[] { keys[1], keys[2], keys[3] };
+        Array.Sort(body, StringComparer.Ordinal);
+        key = keys[0] + "|" + body[0] + "|" + body[1] + "|" + body[2];
+        counts[key] = counts.ContainsKey(key) ? counts[key] + 1 : 1;
+    }
+
+    static string Quant(Vector3 point)
+    {
+        return string.Format(CultureInfo.InvariantCulture, "{0:F4},{1:F4},{2:F4}", Math.Round(point.x, 4), Math.Round(point.y, 4), Math.Round(point.z, 4));
+    }
+
+    static bool SameCounts(Dictionary<string, int> expected, Dictionary<string, int> actual)
+    {
+        if (expected.Count != actual.Count) return false;
+        foreach (var pair in expected)
+        {
+            if (!actual.ContainsKey(pair.Key) || actual[pair.Key] != pair.Value) return false;
+        }
+        return true;
+    }
+
+    static bool MoveAndRestore(string asset, int lod, AxisFix fix, Dictionary<string, Mesh> partMeshes)
+    {
+        var root = new GameObject(asset + "_partcheck");
+        try
+        {
+            var beach = PartProbe(root, asset, lod, "Beach", fix, partMeshes);
+            var grass = PartProbe(root, asset, lod, "Grass", fix, partMeshes);
+            var trees = PartProbe(root, asset, lod, "Trees", fix, partMeshes);
+            var reef = PartProbe(root, asset, lod, "Reef", fix, partMeshes);
+            if (beach == null || grass == null || reef == null) return false;
+            var beachBefore = WorldPoint(beach);
+            var grassBefore = WorldPoint(grass);
+            var reefBefore = WorldPoint(reef);
+            var treesBefore = trees == null ? (Vector3?)null : WorldPoint(trees);
+            reef.transform.localPosition += new Vector3(4f, 0f, 0f);
+            if (trees != null) trees.transform.localPosition += new Vector3(-3f, 0f, 0f);
+            var beachSame = Vector3.Distance(WorldPoint(beach), beachBefore) < 1e-4f;
+            var grassSame = Vector3.Distance(WorldPoint(grass), grassBefore) < 1e-4f;
+            var reefMoved = Vector3.Distance(WorldPoint(reef), reefBefore) > 1f;
+            var treesMoved = trees == null || Vector3.Distance(WorldPoint(trees), treesBefore.Value) > 1f;
+            reef.SetActive(false);
+            grass.SetActive(false);
+            var hidden = !reef.activeSelf && !grass.activeSelf && beach.activeSelf;
+            reef.SetActive(true);
+            grass.SetActive(true);
+            reef.transform.localPosition -= new Vector3(4f, 0f, 0f);
+            if (trees != null) trees.transform.localPosition -= new Vector3(-3f, 0f, 0f);
+            var restored = Vector3.Distance(WorldPoint(reef), reefBefore) < 1e-3f && Vector3.Distance(WorldPoint(beach), beachBefore) < 1e-4f;
+            return beachSame && grassSame && reefMoved && treesMoved && hidden && restored;
+        }
+        finally
+        {
+            UnityEngine.Object.DestroyImmediate(root);
+        }
+    }
+
+    static GameObject PartProbe(GameObject root, string asset, int lod, string part, AxisFix fix, Dictionary<string, Mesh> partMeshes)
+    {
+        var path = PartPath(asset, lod, part);
+        if (!partMeshes.ContainsKey(path)) return null;
+        var mesh = partMeshes[path];
+        if (mesh == null || mesh.vertexCount == 0) return null;
+        var go = Child(root, part);
+        go.transform.localRotation = Quaternion.Euler(fix.rx, 0f, 0f);
+        go.transform.localScale = new Vector3(fix.sx, 1f, 1f);
+        go.AddComponent<MeshFilter>().sharedMesh = mesh;
+        return go;
+    }
+
+    static Vector3 WorldPoint(GameObject go)
+    {
+        var mesh = go.GetComponent<MeshFilter>().sharedMesh;
+        return go.transform.TransformPoint(mesh.vertices[0]);
     }
 
     static IEnumerable<string> ModelPaths()
@@ -915,7 +1162,7 @@ static class MiniJson
         if (value == null) writer.Write("null");
         else if (value is string text) writer.Write("\"" + text.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\"");
         else if (value is bool flag) writer.Write(flag ? "true" : "false");
-        else if (value is int || value is float || value is double) writer.Write(Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture));
+        else if (value is int || value is long || value is uint || value is float || value is double) writer.Write(Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture));
         else if (value is Dictionary<string, object> map)
         {
             writer.Write("{");
@@ -980,6 +1227,18 @@ static class MiniJson
             {
                 if (i > 0) writer.Write(",");
                 writer.Write(numbers[i]);
+            }
+            writer.Write("]");
+        }
+        else if (value is System.Collections.IList list)
+        {
+            writer.Write("[");
+            var first = true;
+            foreach (var item in list)
+            {
+                if (!first) writer.Write(",");
+                first = false;
+                Write(writer, item);
             }
             writer.Write("]");
         }

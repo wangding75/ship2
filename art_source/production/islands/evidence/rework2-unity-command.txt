@@ -1,0 +1,7 @@
+start=2026-11-10T00:44:14.6081207Z
+end=2026-11-10T00:44:47.0890618Z
+exit=0
+seen=True
+pid=46268
+exe=C:\Program Files\Unity\Hub\Editor\6000.6.6f1\Editor\Unity.exe
+args=-batchmode -quit -projectPath C:\t07isl\client\UnityProject -executeMethod T07Import.Run -logFile C:\Users\wangding\multica_workspaces\ship-509dc9df575c\ship-57-371860ca2e65\workdir\ship2\art_source\production\islands\evidence\rework2-unity-editor.log

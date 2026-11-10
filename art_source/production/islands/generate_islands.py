@@ -116,15 +116,28 @@ CONTRACT_CLEARANCE = 12.0
 CAPSULE_TIP = 16.0
 
 
+PART_NAMES = ("Beach", "Grass", "Trees", "Reef")
+PART_ZH = {"Beach": "沙滩", "Grass": "草坡", "Trees": "树团", "Reef": "礁石"}
+PART_SLOT = {"Beach": SAND, "Grass": GRASS, "Trees": ROCK, "Reef": ROCK}
+SEMANTIC_PART = {"beach": "Beach", "grass": "Grass", "trees": "Trees", "reef": "Reef"}
+
+
 class Builder:
     def __init__(self):
         self.verts = []
         self.faces = []
         self.uvs = []
+        # None uses the material default. Trees set this so they do not share the reef part.
+        self.semantic_override = None
 
     def v(self, point):
         self.verts.append((float(point[0]), float(point[1]), float(point[2])))
         return len(self.verts) - 1
+
+    def semantic_for(self, mat):
+        if self.semantic_override:
+            return self.semantic_override
+        return {SAND: "beach", GRASS: "grass", ROCK: "reef", WOOD: "wood", WALL: "wall"}[mat]
 
     def tri(self, a, b, c, mat, uvs):
         if len({a, b, c}) < 3:
@@ -137,7 +150,7 @@ class Builder:
         nz = (bx - ax) * (cy - ay) - (by - ay) * (cx - ax)
         if nx * nx + ny * ny + nz * nz < 1e-16:
             return
-        self.faces.append((a, b, c, mat))
+        self.faces.append((a, b, c, mat, self.semantic_for(mat)))
         self.uvs.append(uvs)
 
     def tri_dot(self, a, b, c, mat, uvs, direction):
@@ -521,13 +534,17 @@ def add_props(builder, spec, lod, land_points):
         add_icosphere(builder, (x, y, z), radius, lod["rock_sub"], ROCK, ROCK_UV, 0.14)
     trunk_sides = lod.get("trunk", 4)
     leaf = lod.get("leaf", 0)
-    for t, theta, height in spec["trees"]:
-        if spec["id"] == "ISL-L" and t > 0.62 and abs((theta + math.pi) % math.tau - math.pi) < 0.45:
-            continue
-        x, z = point_on(land_points, theta, t)
-        ground = height_at(t, spec)
-        add_cylinder(builder, (x, ground, z), (x, ground + height * 0.42, z), height * 0.06, height * 0.045, trunk_sides, ROCK, ROCK_UV)
-        add_icosphere(builder, (x, ground + height * 0.62, z), height * 0.34, leaf, ROCK, LEAF_UV, 0.08)
+    builder.semantic_override = "trees"
+    try:
+        for t, theta, height in spec["trees"]:
+            if spec["id"] == "ISL-L" and t > 0.62 and abs((theta + math.pi) % math.tau - math.pi) < 0.45:
+                continue
+            x, z = point_on(land_points, theta, t)
+            ground = height_at(t, spec)
+            add_cylinder(builder, (x, ground, z), (x, ground + height * 0.42, z), height * 0.06, height * 0.045, trunk_sides, ROCK, ROCK_UV)
+            add_icosphere(builder, (x, ground + height * 0.62, z), height * 0.34, leaf, ROCK, LEAF_UV, 0.08)
+    finally:
+        builder.semantic_override = None
 
 
 def point_on(land_points, theta, t):
@@ -848,7 +865,7 @@ def waterline_report(builder, land_ring, shore_ids):
                 best = dist
         worst_edge = max(worst_edge, 0.0 if best is None else best)
     upward = {}
-    for a, b, c, mat in builder.faces:
+    for a, b, c, mat, _semantic in builder.faces:
         ax, ay, az = builder.verts[a]
         bx, by, bz = builder.verts[b]
         cx, cy, cz = builder.verts[c]
@@ -1011,6 +1028,120 @@ def blender_upward(obj):
     return counts
 
 
+def split_parts(builder):
+    buckets = {name: Builder() for name in PART_NAMES}
+    index_maps = {name: {} for name in PART_NAMES}
+    for face, uvs in zip(builder.faces, builder.uvs):
+        a, b, c, mat, semantic = face
+        if semantic not in SEMANTIC_PART:
+            raise RuntimeError("island face has no semantic part: %s" % semantic)
+        name = SEMANTIC_PART[semantic]
+        part = buckets[name]
+        mapping = index_maps[name]
+
+        def take(old, mapping=mapping, part=part):
+            if old not in mapping:
+                mapping[old] = part.v(builder.verts[old])
+            return mapping[old]
+
+        part.faces.append((take(a), take(b), take(c), mat, semantic))
+        part.uvs.append(uvs)
+    return buckets
+
+
+def face_signature(builder):
+    rows = []
+    for a, b, c, mat, semantic in builder.faces:
+        corners = tuple(sorted((builder.verts[a], builder.verts[b], builder.verts[c])))
+        rows.append((corners, mat, semantic))
+    rows.sort()
+    return rows
+
+
+def face_signature_of_parts(parts):
+    rows = []
+    for name in PART_NAMES:
+        rows.extend(face_signature(parts[name]))
+    rows.sort()
+    return rows
+
+
+def object_list(value):
+    if isinstance(value, (list, tuple)):
+        return list(value)
+    return [value]
+
+
+def flatten_objects(mapping):
+    result = []
+    for value in mapping.values():
+        result.extend(object_list(value))
+    return result
+
+
+def reveal(value):
+    for obj in object_list(value):
+        obj.hide_render = False
+        obj.hide_set(False)
+
+
+def world_sample(obj):
+    if obj.type != "MESH" or obj.data is None or len(obj.data.vertices) == 0:
+        return None
+    bpy.context.view_layer.update()
+    point = obj.matrix_world @ obj.data.vertices[0].co
+    return (round(point.x, 5), round(point.y, 5), round(point.z, 5))
+
+
+def prove_parts_independent(part_objects):
+    beach = part_objects["Beach"]
+    grass = part_objects["Grass"]
+    trees = part_objects["Trees"]
+    reef = part_objects["Reef"]
+    before = {name: world_sample(obj) for name, obj in part_objects.items()}
+    origin = {name: tuple(obj.location) for name, obj in part_objects.items()}
+    trees.location.x += 4.0
+    reef.location.x -= 3.0
+    bpy.context.view_layer.update()
+    beach_during = world_sample(beach)
+    grass_during = world_sample(grass)
+    trees_during = world_sample(trees)
+    reef_during = world_sample(reef)
+    grass.hide_set(True)
+    reef.hide_set(True)
+    hidden = {"grass": grass.hide_get(), "reef": reef.hide_get(), "beach": beach.hide_get(), "trees": trees.hide_get()}
+    grass.hide_set(False)
+    reef.hide_set(False)
+    for name, obj in part_objects.items():
+        obj.location = origin[name]
+    bpy.context.view_layer.update()
+    restored = {name: world_sample(obj) for name, obj in part_objects.items()}
+    report = {
+        "beach_unchanged_while_others_moved": beach_during == before["Beach"],
+        "grass_unchanged_while_reef_and_trees_moved": grass_during == before["Grass"],
+        "reef_sample_moved": reef_during != before["Reef"],
+        "trees_sample_moved": None if before["Trees"] is None else trees_during != before["Trees"],
+        "beach_stayed_visible": hidden["beach"] is False,
+        "trees_stayed_visible": hidden["trees"] is False,
+        "grass_hidden": hidden["grass"] is True,
+        "reef_hidden": hidden["reef"] is True,
+        "restored": restored == before,
+    }
+    ok = (
+        report["beach_unchanged_while_others_moved"]
+        and report["grass_unchanged_while_reef_and_trees_moved"]
+        and report["reef_sample_moved"]
+        and report["beach_stayed_visible"]
+        and report["grass_hidden"]
+        and report["reef_hidden"]
+        and report["restored"]
+    )
+    if before["Trees"] is not None:
+        ok = ok and report["trees_sample_moved"] is True
+    report["ok"] = ok
+    return report
+
+
 def export_fbx(obj, path):
     bpy.ops.object.select_all(action="DESELECT")
     obj.select_set(True)
@@ -1083,6 +1214,11 @@ def write_note(package, metrics):
         "",
         "每个 LOD 的 y=0 水线使用同一条 canonical 陆地环的全部顶点。减面发生在沙环以内的山体，以及放不下竖向裙边时的水下封底。沙环内缘放在各自 sand_t（S 0.70、M 0.78、L 0.80），外缘就是水线，顶面按这个环分到沙，不再把两环中点 0.75 整圈分给草。",
         "",
+        "## T07-REWORK-2 语义分件",
+        "",
+        "源 blend 里每个岛的每个 LOD 是四件可独立移动和隐藏的对象，不是一张岛网格。名字是 `{岛}_LOD{n}_Beach`（沙滩）、`_Grass`（草坡）、`_Trees`（树团）、`_Reef`（礁石）。沙滩用 Sand 槽，草坡用 Grass 槽，树团和礁石共用 Rock 槽。活动渲染仍把这四件确定性装成每个 LOD 一个网格、三个材质槽，三角数是四件之和，不是额外的面。ISL-S 的生产选择没有树，`_Trees` 是空对象，不新增树，也不改外形。LOD1/LOD2 不是 LOD0 的抽稀结果，而是同一条 canonical 岸线和同一套语义规则按该档 step/rings/rock_keep/trunk/leaf 重算。",
+        "",
+        "操作入口：`assemble_island_parts.py` 在源 blend 上移动树团、隐藏礁石和草坡，再还原并核对三角签名。Unity 预制件的 `SemanticParts` 默认关闭，不进 LODGroup；菜单 `Game/T07/Reassemble Island Parts` 和导入里的 `T07Import.Run` 会做同样的拆装核对。对应表在 `data/semantic_part_map.json`。",
         "",
         "## 图4 和 T05",
         "",
@@ -1141,6 +1277,7 @@ def mirror_modules(canon):
 
 def main():
     os.makedirs(EXPORT_DIR, exist_ok=True)
+    os.makedirs(os.path.join(EXPORT_DIR, "parts"), exist_ok=True)
     os.makedirs(TEXTURE_DIR, exist_ok=True)
     os.makedirs(TURN_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -1180,6 +1317,9 @@ def main():
         "unit": "1e-5m",
     }
     digest = geo.geometry_sha(canon)
+    expected_geometry = "efa7240dc363e00de8b56b48d35c9861285c6e1f02d9dbe0eb24e1b825c57038"
+    if digest != expected_geometry:
+        raise RuntimeError("geometry_sha changed %s" % digest)
     solids = list(large["polygons"]) + canon["port_attachment"]["polygons"]
     ax = canon["port_attachment"]["anchor_q"][0] / geo.QUANTUM
     az = canon["port_attachment"]["anchor_q"][1] / geo.QUANTUM
@@ -1248,6 +1388,9 @@ def main():
     }
     metrics_meshes = {}
     objects = {}
+    part_index = {}
+    reassembly = []
+    parts_dir = os.path.join(EXPORT_DIR, "parts")
     for spec, module in zip(ISLANDS, modules):
         # zip follows ISLANDS order, modules follows build order which is the same.
         entry = {"lods": {}}
@@ -1271,17 +1414,89 @@ def main():
             if report["upward_sand_triangles"] < 1:
                 raise RuntimeError("%s LOD%d upward sand %s" % (spec["id"], lod_index, json.dumps(report["upward_triangles"])))
             size = 512 if lod_index == 2 else 1024
-            obj = to_blender("%s_LOD%d" % (spec["id"], lod_index), builder, island_mats[size], ISLAND_SLOTS)
-            export_fbx(obj, os.path.join(EXPORT_DIR, "%s_LOD%d.fbx" % (spec["id"], lod_index)))
-            objects[(spec["id"], lod_index)] = obj
-            blender_up = blender_upward(obj)
+            joined = to_blender("%s_LOD%d" % (spec["id"], lod_index), builder, island_mats[size], ISLAND_SLOTS)
+            export_fbx(joined, os.path.join(EXPORT_DIR, "%s_LOD%d.fbx" % (spec["id"], lod_index)))
+            blender_up = blender_upward(joined)
             sand_names = [name for name in blender_up if name.lower().startswith("sand")]
             blender_sand = sum(blender_up[name] for name in sand_names)
             if blender_sand < 1:
                 raise RuntimeError("%s LOD%d blender upward sand %s" % (spec["id"], lod_index, json.dumps(blender_up)))
+            parts = split_parts(builder)
+            if face_signature(builder) != face_signature_of_parts(parts):
+                raise RuntimeError("%s LOD%d part signature drifted" % (spec["id"], lod_index))
+            part_total = sum(len(parts[name].faces) for name in PART_NAMES)
+            if part_total != total:
+                raise RuntimeError("%s LOD%d part triangles %d != %d" % (spec["id"], lod_index, part_total, total))
+            parent = bpy.data.objects.new("%s_LOD%d_Parts" % (spec["id"], lod_index), None)
+            bpy.context.collection.objects.link(parent)
+            parent.empty_display_type = "PLAIN_AXES"
+            parent["t07_role"] = "semantic_parts_root"
+            named = {}
+            shown = []
+            part_report = {}
+            for part_name in PART_NAMES:
+                part_builder = parts[part_name]
+                count = len(part_builder.faces)
+                obj_name = "%s_LOD%d_%s" % (spec["id"], lod_index, part_name)
+                if count == 0:
+                    obj = bpy.data.objects.new(obj_name, None)
+                    bpy.context.collection.objects.link(obj)
+                    exported = None
+                else:
+                    slot = PART_SLOT[part_name]
+                    obj = to_blender(obj_name, part_builder, [island_mats[size][ISLAND_SLOTS.index(slot)]], (slot,))
+                    group = obj.vertex_groups.new(name=part_name)
+                    group.add(list(range(len(obj.data.vertices))), 1.0, "REPLACE")
+                    export_fbx(obj, os.path.join(parts_dir, obj_name + ".fbx"))
+                    shown.append(obj)
+                    exported = "export/parts/%s.fbx" % obj_name
+                obj.parent = parent
+                obj["t07_role"] = "semantic_part"
+                obj["t07_semantic"] = part_name
+                obj["t07_semantic_zh"] = PART_ZH[part_name]
+                obj["t07_material_slot"] = PART_SLOT[part_name]
+                obj["t07_triangles"] = count
+                obj["t07_asset"] = spec["id"]
+                obj["t07_lod"] = lod_index
+                named[part_name] = obj
+                part_report[part_name] = {
+                    "zh": PART_ZH[part_name],
+                    "object": obj_name,
+                    "triangles": count,
+                    "material_slot": PART_SLOT[part_name],
+                    "exported_fbx": exported,
+                }
+            for required in ("Beach", "Grass", "Reef"):
+                if part_report[required]["triangles"] < 1:
+                    raise RuntimeError("%s LOD%d missing %s" % (spec["id"], lod_index, required))
+            if spec["id"] != "ISL-S" and part_report["Trees"]["triangles"] < 1:
+                raise RuntimeError("%s LOD%d missing Trees" % (spec["id"], lod_index))
+            if spec["id"] == "ISL-S" and part_report["Trees"]["triangles"] != 0:
+                raise RuntimeError("ISL-S gained trees; shape must stay")
+            proof = prove_parts_independent(named)
+            if not proof["ok"]:
+                raise RuntimeError("%s LOD%d parts are bound %s" % (spec["id"], lod_index, json.dumps(proof)))
+            reassembly.append({
+                "asset": spec["id"],
+                "lod": lod_index,
+                "render_triangles": total,
+                "part_triangles": part_total,
+                "material_slots_on_render_mesh": ["sand", "grass", "rock"],
+                "parts": part_report,
+                "independence": proof,
+                "lod_parameters": lod,
+            })
+            part_index[(spec["id"], lod_index)] = named
+            objects[(spec["id"], lod_index)] = shown
+            joined_mesh = joined.data
+            bpy.data.objects.remove(joined, do_unlink=True)
+            bpy.data.meshes.remove(joined_mesh)
             entry["lods"][str(lod_index)] = {
                 "triangles": total,
                 "material_triangles": counts,
+                "semantic_parts": {name: part_report[name]["triangles"] for name in PART_NAMES},
+                "semantic_part_sum": part_total,
+                "render_mesh": "%s_LOD%d" % (spec["id"], lod_index),
                 "bounds_unity_m": bounds_of(builder),
                 "shore_chord_deviation_m": report["mesh_waterline_chord_deviation_m"],
                 "mesh_waterline_chord_deviation_m": report["mesh_waterline_chord_deviation_m"],
@@ -1362,12 +1577,35 @@ def main():
 
     rendered = []
     if os.environ.get("T07_SKIP_RENDER") != "1":
-        all_objs = list(objects.values())
+        all_objs = flatten_objects(objects)
+        for asset in ("ISL-S", "ISL-M", "ISL-L"):
+            parts = part_index[(asset, 0)]
+            hide_all(all_objs, True)
+            reveal(objects[(asset, 0)])
+            parts["Reef"].hide_render = True
+            parts["Reef"].hide_set(True)
+            parts["Trees"].location.x += 8.0
+            bpy.context.view_layer.update()
+            distance = next(spec["diameter"] for spec in ISLANDS if spec["id"] == asset) * 1.15
+            pitch = math.radians(32.0)
+            yaw_r = math.radians(40.0)
+            location = blender_vec(
+                distance * math.cos(pitch) * math.sin(yaw_r),
+                distance * math.sin(pitch),
+                distance * math.cos(pitch) * math.cos(yaw_r),
+            )
+            look_at(cam, location, blender_vec(0.0, 2.0, 0.0))
+            path = os.path.join(TURN_DIR, "%s_LOD0_parts_reef_hidden_trees_moved.png" % asset)
+            render_path(scene, path)
+            rendered.append(path)
+            parts["Trees"].location.x -= 8.0
+            parts["Reef"].hide_render = False
+            parts["Reef"].hide_set(False)
+            bpy.context.view_layer.update()
         for key, obj in objects.items():
             asset, lod_index = key
             hide_all(all_objs, True)
-            obj.hide_render = False
-            obj.hide_set(False)
+            reveal(obj)
             if asset == "PORT":
                 bounds = metrics_meshes["PORT"]["lods"][str(lod_index)]["bounds_unity_m"]
                 target_u = (
@@ -1408,14 +1646,11 @@ def main():
         for asset, spec in (("ISL-S", ISLANDS[0]), ("ISL-M", ISLANDS[1]), ("ISL-L", ISLANDS[2]), ("PORT", None)):
             hide_all(all_objs, True)
             if asset == "PORT":
-                objects[("ISL-L", 0)].hide_render = False
-                objects[("ISL-L", 0)].hide_set(False)
-                objects[("PORT", 0)].hide_render = False
-                objects[("PORT", 0)].hide_set(False)
+                reveal(objects[("ISL-L", 0)])
+                reveal(objects[("PORT", 0)])
                 look = (port["landmark"][0], 4.0, port["landmark"][1])
             else:
-                objects[(asset, 0)].hide_render = False
-                objects[(asset, 0)].hide_set(False)
+                reveal(objects[(asset, 0)])
                 shore = next(item["shore"] for item in (port["pier"],) if asset == "ISL-L") if asset == "ISL-L" else spec["diameter"] * 0.45
                 if asset != "ISL-L":
                     shore = spec["diameter"] * 0.42
@@ -1449,9 +1684,7 @@ def main():
                         continue
                     other.hide_render = True
                     other.hide_set(True)
-                obj = objects[(asset, lod_index)]
-                obj.hide_render = False
-                obj.hide_set(False)
+                reveal(objects[(asset, lod_index)])
                 ribbon.hide_render = False
                 ribbon.hide_set(False)
                 distance = next(spec["diameter"] for spec in ISLANDS if spec["id"] == asset) * 1.2
@@ -1463,6 +1696,12 @@ def main():
             bpy.data.objects.remove(ribbon, do_unlink=True)
             ribbons[asset] = None
 
+    for obj in bpy.data.objects:
+        role = obj.get("t07_role")
+        if role in ("semantic_part", "semantic_parts_root") or obj.name.startswith("PORT_LOD"):
+            obj.hide_render = False
+            obj.hide_set(False)
+            obj.location = (0.0, 0.0, 0.0)
     bpy.ops.wm.save_as_mainfile(filepath=SOURCE_BLEND)
     metrics = {
         "generator": "art_source/production/islands/generate_islands.py",
@@ -1488,12 +1727,39 @@ def main():
             "pier_outer_m": port["pier"]["outer"],
         },
         "meshes": metrics_meshes,
+        "semantic_parts": {
+            "names": {name: PART_ZH[name] for name in PART_NAMES},
+            "material_slots": {name: PART_SLOT[name] for name in PART_NAMES},
+            "active_render": "One mesh per LOD, three material slots. Part triangles sum to that mesh. SemanticParts in the prefab stay inactive and are not LOD renderers.",
+            "isl_s_trees": "ISL-S production choice has no trees. The Trees object exists and has zero triangles so the silhouette stays the reef body, sand edge and grass wedge.",
+            "lod_relation": "LOD1 and LOD2 rebuild the same canonical shoreline and the same Beach/Grass/Trees/Reef partition. They are not decimated copies of LOD0.",
+            "operation": "art_source/production/islands/assemble_island_parts.py",
+            "reassembly": reassembly,
+        },
         "unity_rx_deg": -90,
         "axis_note": "Mesh-local stores Unity (x, y, z) as (x, -z, y). Prefab mesh children use Rx(-90). Identity roots then match this Unity space.",
         "acceptance": "NOT_RUN",
     }
     with open(os.path.join(EVIDENCE_DIR, "mesh_metrics.json"), "w", encoding="utf-8") as handle:
         json.dump(metrics, handle, indent=2)
+        handle.write("\n")
+    part_map = {
+        "record_type": "T07SemanticPartMap",
+        "geometry_sha": digest,
+        "parts": [
+            {"name": name, "zh": PART_ZH[name], "material_slot": PART_SLOT[name]}
+            for name in PART_NAMES
+        ],
+        "active_material_slots": ["sand", "grass", "rock"],
+        "active_renderers_per_lod": 1,
+        "note": "Part meshes are a partition of the render mesh. Sharing Rock between Trees and Reef does not add a fourth material slot. ISL-S Trees is an empty object.",
+        "lods": reassembly,
+    }
+    with open(os.path.join(DATA_DIR, "semantic_part_map.json"), "w", encoding="utf-8") as handle:
+        json.dump(part_map, handle, indent=2, ensure_ascii=False)
+        handle.write("\n")
+    with open(os.path.join(EVIDENCE_DIR, "part_reassembly.json"), "w", encoding="utf-8") as handle:
+        json.dump(part_map, handle, indent=2, ensure_ascii=False)
         handle.write("\n")
     write_note(package, metrics)
     print("T07 geometry_sha", digest)
